@@ -1,3 +1,5 @@
+@use '../../../../styles/tokens' as tokens;
+
 // Dropdown Component Styles - Based on Figma Design System
 
 .dropdown {
@@ -73,8 +75,8 @@
 	cursor: pointer !important;
 	transition: all 0.2s ease-in-out !important;
 	box-shadow:
-		0px 0px 1px 0px rgba(0, 0, 0, 0.04),
-		0px 1px 2px 0px rgba(0, 0, 0, 0.06) !important;
+		0px 0px 1px 0px rgba(tokens.$base-color-base-black, 0.04),
+		0px 1px 2px 0px rgba(tokens.$base-color-base-black, 0.06) !important;
 	text-decoration: none !important;
 	text-align: left !important;
 	width: 100% !important;
@@ -240,7 +242,7 @@
 	// No distinct hover border is defined in the Figma spec for this state; kept as a
 	// non-token hover affordance since there's nothing in the design to match it to.
 	&:hover {
-		border-color: #b2b5bb !important;
+		border-color: tokens.$color-utility-gray-400 !important;
 		text-decoration: none !important;
 	}
 }
@@ -251,7 +253,7 @@
 	background: var(--color-bg-primary) !important;
 
 	&:hover {
-		border-color: #b2b5bb !important;
+		border-color: tokens.$color-utility-gray-400 !important;
 		text-decoration: none !important;
 	}
 }
@@ -343,7 +345,7 @@
 	}
 
 	&:hover {
-		border-color: #b2b5bb !important;
+		border-color: tokens.$color-utility-gray-400 !important;
 		text-decoration: none !important;
 	}
 }
@@ -451,8 +453,8 @@
 	border-radius: 8px;
 	padding-top: 4px;
 	box-shadow:
-		0px 10px 15px 0px rgba(0, 0, 0, 0.1),
-		0px 4px 6px 0px rgba(0, 0, 0, 0.06);
+		0px 10px 15px 0px rgba(tokens.$base-color-base-black, 0.1),
+		0px 4px 6px 0px rgba(tokens.$base-color-base-black, 0.06);
 	width: 100%; // End-to-end width matching input
 	max-height: 300px;
 	overflow-y: auto;
@@ -557,12 +559,12 @@
 // Filters dropdown - matching Figma design
 .filtersDropdown {
 	background: var(--color-bg-primary);
-	border: 1px solid #e2e8f0;
+	border: 1px solid tokens.$color-border-primary;
 	border-radius: 8px;
 	padding: 0;
 	box-shadow:
-		0px 10px 15px -3px rgba(0, 0, 0, 0.1),
-		0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+		0px 10px 15px -3px rgba(tokens.$base-color-base-black, 0.1),
+		0px 4px 6px -2px rgba(tokens.$base-color-base-black, 0.05);
 	min-width: 200px;
 	max-height: 300px;
 	overflow: hidden;
@@ -576,7 +578,7 @@
 		font-size: 12px;
 		line-height: 16px;
 		font-weight: 600;
-		color: #717680;
+		color: tokens.$color-text-quanternary;
 		white-space: nowrap;
 	}
 }
@@ -602,31 +604,31 @@
 		font-size: 14px;
 		line-height: 20px;
 		font-weight: 500;
-		color: #374151;
+		color: tokens.$color-text-secondary;
 	}
 
 	&:hover {
-		background: #f9fafb;
+		background: tokens.$color-bg-primary-2;
 
 		.filterLabel {
-			color: #1f2937;
+			color: tokens.$color-text-secondary-hover;
 		}
 	}
 
 	&:active {
-		background: #f3f4f6;
+		background: tokens.$color-bg-secondary-hover;
 	}
 }
 
 // Count Badge - Dark variant matching Figma design using element targeting
 .countBadge {
-	background-color: #0a0d12 !important;
+	background-color: tokens.$color-bg-primary-solid !important;
 	border-radius: 4px !important;
 	border-color: transparent !important;
 
 	// Target the label span directly
 	> span {
-		color: #ffffff !important;
+		color: tokens.$color-text-white !important;
 		font-weight: 500 !important;
 		font-size: 14px !important;
 		line-height: 20px !important;
@@ -634,30 +636,30 @@
 
 	// Target the close button directly
 	> button {
-		color: #ffffff !important;
+		color: tokens.$color-text-white !important;
 		opacity: 0.7 !important;
 
 		&:hover {
 			opacity: 1 !important;
-			background-color: rgba(255, 255, 255, 0.1) !important;
+			background-color: rgba(tokens.$base-color-base-white, 0.1) !important;
 		}
 
 		svg {
-			color: #ffffff !important;
-			fill: #ffffff !important;
+			color: tokens.$color-text-white !important;
+			fill: tokens.$color-fg-white !important;
 		}
 	}
 }
 
 // Count Badge Disabled State - Light variant matching Figma design
 .countBadgeDisabled {
-	background-color: #ffffff !important;
-	border: 1px solid #d5d7da !important;
+	background-color: tokens.$color-bg-primary !important;
+	border: 1px solid tokens.$color-border-primary !important;
 	border-radius: 4px !important;
 
 	// Target the label span directly
 	> span {
-		color: #a4a7ae !important; // Placeholder text color from Figma
+		color: tokens.$color-text-disabled !important; // Placeholder text color from Figma
 		font-weight: 500 !important;
 		font-size: 14px !important;
 		line-height: 20px !important;
@@ -665,7 +667,7 @@
 
 	// Target the close button directly
 	> button {
-		color: #a4a7ae !important; // Same placeholder color
+		color: tokens.$color-text-disabled !important; // Same placeholder color
 		opacity: 0.7 !important;
 		cursor: not-allowed !important; // Show disabled cursor
 		pointer-events: none !important; // Disable all interactions
@@ -676,8 +678,8 @@
 		}
 
 		svg {
-			color: #a4a7ae !important;
-			fill: #a4a7ae !important;
+			color: tokens.$color-text-disabled !important;
+			fill: tokens.$color-text-disabled !important;
 		}
 	}
 }
@@ -701,11 +703,11 @@
 	align-items: center;
 	justify-content: center;
 	background: var(--color-bg-primary);
-	color: #a4a7ae;
+	color: tokens.$color-text-placeholder;
 	font-family: Jakarta;
 	font-size: 12px;
 	font-weight: 500;
-	border: 1px solid #e9eaeb;
+	border: 1px solid tokens.$color-border-secondary;
 	border-radius: 4px;
 	padding: 1px 4px;
 	user-select: none;
@@ -722,11 +724,11 @@
 	gap: 8px;
 	padding: 10px 12px;
 	background: var(--color-bg-primary);
-	border: 1px solid #d5d7da;
+	border: 1px solid tokens.$color-border-primary;
 	border-radius: 8px;
 	box-shadow:
-		0px 0px 1px 0px rgba(0, 0, 0, 0.04),
-		0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+		0px 0px 1px 0px rgba(tokens.$base-color-base-black, 0.04),
+		0px 1px 2px 0px rgba(tokens.$base-color-base-black, 0.06);
 	transition: all 0.2s ease-in-out;
 	width: 100%;
 
@@ -743,7 +745,7 @@
 
 	// Focus state
 	&.focus {
-		border: 2px solid #2e90fa;
+		border: 2px solid tokens.$color-border-brand;
 		padding: 9px 11px; // Adjust for thicker border
 		box-shadow: none;
 
@@ -760,38 +762,38 @@
 	// Disabled state
 	&.disabled {
 		background: var(--color-bg-primary-2);
-		border: 1px solid #d5d7da;
+		border: 1px solid tokens.$color-border-primary;
 		cursor: not-allowed;
 		box-shadow: none;
 
 		.searchInput {
 			background: transparent;
-			color: #a4a7ae;
+			color: tokens.$color-text-placeholder;
 			cursor: not-allowed;
 		}
 
 		.searchIcon svg {
-			color: #a4a7ae;
+			color: tokens.$color-text-placeholder;
 		}
 	}
 
 	// Error state
 	&.error {
-		border: 1px solid #f04438;
+		border: 1px solid tokens.$color-border-error;
 		background: var(--color-bg-primary);
 
 		&:hover {
-			border-color: #d92d20;
+			border-color: tokens.$color-fg-error-primary;
 		}
 	}
 
 	// Warning state
 	&.warning {
-		border: 1px solid #f79009;
+		border: 1px solid tokens.$color-fg-warning-secondary;
 		background: var(--color-bg-primary);
 
 		&:hover {
-			border-color: #dc6803;
+			border-color: tokens.$color-fg-warning-primary;
 		}
 	}
 }
@@ -804,7 +806,7 @@
 	svg {
 		width: 100%;
 		height: 100%;
-		color: #535862;
+		color: tokens.$color-text-tertiary;
 		transition: color 0.2s ease-in-out;
 	}
 }
@@ -818,7 +820,7 @@
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 24px;
-	color: #181d27;
+	color: tokens.$color-text-primary;
 	min-width: 120px; // Maintain minimum usable width
 
 	// Hide TextField container styling to use as simple input
@@ -883,14 +885,14 @@
 		font-weight: 400 !important;
 		font-size: 16px !important;
 		line-height: 24px !important;
-		color: #181d27 !important;
+		color: tokens.$color-text-primary !important;
 		min-width: 120px !important;
 		padding: 0 !important;
 		margin: 0 !important;
 		box-shadow: none !important;
 
 		&::placeholder {
-			color: #a4a7ae !important;
+			color: tokens.$color-text-placeholder !important;
 			font-weight: 400 !important;
 		}
 
@@ -979,7 +981,7 @@
 	&.searchInputFilled {
 		.mainInput {
 			font-weight: 400 !important;
-			color: #181d27 !important;
+			color: tokens.$color-text-primary !important;
 		}
 	}
 }
@@ -989,7 +991,7 @@
 	align-items: center;
 	justify-content: center;
 	background: var(--color-bg-primary);
-	border: 1px solid #e9eaeb;
+	border: 1px solid tokens.$color-border-secondary;
 	border-radius: 4px;
 	padding: 1px 4px;
 	user-select: none;
@@ -1001,7 +1003,7 @@
 	font-weight: 500;
 	font-size: 12px;
 	line-height: 16px;
-	color: #a4a7ae;
+	color: tokens.$color-text-placeholder;
 	white-space: nowrap;
 }
 
@@ -1033,7 +1035,7 @@
 	align-items: center;
 	gap: 3px;
 	background: var(--color-bg-primary);
-	border: 1px solid #d5d7da;
+	border: 1px solid tokens.$color-border-primary;
 	border-radius: 6px;
 	padding: 4px 8px 4px 8px;
 	height: 24px;
@@ -1048,7 +1050,7 @@
 	font-weight: 500;
 	font-size: 12px;
 	line-height: 16px;
-	color: #717680;
+	color: tokens.$color-text-quanternary;
 	white-space: nowrap;
 }
 
@@ -1057,7 +1059,7 @@
 	font-weight: 500;
 	font-size: 12px;
 	line-height: 16px;
-	color: #414651;
+	color: tokens.$color-text-secondary;
 	white-space: nowrap;
 }
 
@@ -1066,7 +1068,7 @@
 	font-weight: 500;
 	font-size: 12px;
 	line-height: 16px;
-	color: #414651;
+	color: tokens.$color-text-secondary;
 	background: transparent;
 	border: none;
 	outline: none;
@@ -1077,7 +1079,7 @@
 	max-width: 100px;
 
 	&::placeholder {
-		color: #a4a7ae;
+		color: tokens.$color-text-placeholder;
 		font-weight: 400;
 	}
 }
@@ -1091,14 +1093,14 @@
 	background: none;
 	border: none;
 	cursor: pointer;
-	color: #717680;
+	color: tokens.$color-text-quanternary;
 	font-size: 10px;
 	line-height: 1;
 	padding: 0;
 
 	&:hover {
-		color: #414651;
-		background-color: rgba(0, 0, 0, 0.05);
+		color: tokens.$color-text-secondary;
+		background-color: rgba(tokens.$base-color-base-black, 0.05);
 		border-radius: 2px;
 	}
 }
@@ -1106,14 +1108,14 @@
 .tagKey {
 	font-family: Jakarta;
 	font-weight: 400;
-	color: #717680;
+	color: tokens.$color-text-quanternary;
 	white-space: nowrap;
 }
 
 .tagValue {
 	font-family: Jakarta;
 	font-weight: 500;
-	color: #414651;
+	color: tokens.$color-text-secondary;
 	cursor: pointer;
 	white-space: nowrap;
 	overflow: hidden;
@@ -1121,7 +1123,7 @@
 	min-width: 20px;
 
 	&:hover {
-		background: rgba(46, 144, 250, 0.1);
+		background: rgba(tokens.$base-color-brand-blue-b-500, 0.1);
 		border-radius: 3px;
 		padding: 1px 2px;
 		margin: -1px -2px;
@@ -1136,14 +1138,14 @@
 	font-weight: 500;
 	font-size: 12px;
 	line-height: 16px;
-	color: #414651;
+	color: tokens.$color-text-secondary;
 	min-width: 20px;
 	width: auto;
 	padding: 0;
 	margin: 0;
 
 	&::placeholder {
-		color: #a4a7ae;
+		color: tokens.$color-text-placeholder;
 		font-weight: 400;
 	}
 
@@ -1155,7 +1157,7 @@
 // Filter Key Tag Styles - Based on Figma Design
 .filterKeyTag {
 	background: var(--color-bg-primary);
-	border: 1px solid #d5d7da;
+	border: 1px solid tokens.$color-border-primary;
 	border-radius: 6px;
 	padding: 4px 8px;
 	display: flex;
@@ -1170,6 +1172,6 @@
 	font-weight: 500;
 	font-size: 12px;
 	line-height: 16px;
-	color: #414651;
+	color: tokens.$color-text-secondary;
 	white-space: nowrap;
 }

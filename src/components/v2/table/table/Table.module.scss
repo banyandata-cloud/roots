@@ -100,7 +100,7 @@
 		top: 0;
 	}
 	.overlay {
-		background: rgba(0, 0, 0, 0.16);
+		background: rgba(tokens.$base-color-base-black, 0.16);
 		backdrop-filter: blur(5px);
 		height: 100%;
 		position: absolute;

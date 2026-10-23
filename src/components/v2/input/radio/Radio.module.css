@@ -67,10 +67,10 @@
   line-height: 0;
 }
 .radio-icon.focus {
-  box-shadow: 0 0 0 2px var(--Foregroundcolor-fg-brand-primary, #1570ef);
+  box-shadow: 0 0 0 2px var(--color-fg-brand-primary);
 }
 .radio-icon.focus-error {
-  box-shadow: 0 0 0 2px var(--Foregroundcolor-fg-error-primary, #d92d20);
+  box-shadow: 0 0 0 2px var(--color-fg-error-primary);
 }
 
 .feedback {

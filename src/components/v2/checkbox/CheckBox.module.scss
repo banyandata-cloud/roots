@@ -12,20 +12,20 @@ $checkbox-sizes: (
 	xlg: 20px,
 );
 
-$color-brand: #1570ef;
-$color-brand-hover: #175cd3;
-$color-brand-bg: #eff8ff;
+$color-brand: tokens.$color-fg-brand-primary;
+$color-brand-hover: tokens.$color-bg-brand-solid-hover;
+$color-brand-bg: tokens.$color-bg-brand-primary;
 $color-border: tokens.$color-border-primary;
-$color-border-hover: #a4a7ae;
-$color-error: #d92d20;
-$color-error-bg: #fef3f2;
-$color-warning: #dc6803;
-$color-warning-bg: #fffaeb;
-$color-readonly-bg: #f5f5f5;
-$color-readonly-icon: #414651;
-$color-disabled-bg: #f5f5f5;
-$color-disabled-border: #e9eaeb;
-$color-disabled-icon: #a4a7ae;
+$color-border-hover: tokens.$color-utility-gray-400;
+$color-error: tokens.$color-fg-error-primary;
+$color-error-bg: tokens.$color-bg-error-primary;
+$color-warning: tokens.$color-fg-warning-primary;
+$color-warning-bg: tokens.$color-bg-warning-primary;
+$color-readonly-bg: tokens.$color-bg-secondary;
+$color-readonly-icon: tokens.$color-fg-secondary;
+$color-disabled-bg: tokens.$color-bg-disabled;
+$color-disabled-border: tokens.$color-border-disable-subtle;
+$color-disabled-icon: tokens.$color-fg-disabled;
 $color-white: tokens.$color-bg-primary;
 
 .wrapper {
@@ -151,13 +151,13 @@ $color-white: tokens.$color-bg-primary;
 .label {
 	font-family: jakarta, sans-serif;
 	font-weight: 500;
-	color: #252b37;
+	color: tokens.$color-text-secondary-hover;
 }
 
 .subLabel {
 	font-family: jakarta, sans-serif;
 	font-weight: 400;
-	color: #535862;
+	color: tokens.$color-text-tertiary;
 }
 
 .message {
@@ -297,8 +297,8 @@ $color-white: tokens.$color-bg-primary;
 
 	&:hover .input:checked ~ .box,
 	&:hover .input:indeterminate ~ .box {
-		background: darken($color-error, 8%);
-		border-color: darken($color-error, 8%);
+		background: tokens.$color-utility-error-700;
+		border-color: tokens.$color-utility-error-700;
 	}
 
 	.message {

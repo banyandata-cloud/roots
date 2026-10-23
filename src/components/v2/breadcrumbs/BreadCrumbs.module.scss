@@ -1,24 +1,25 @@
-$gray-500: #717680;
-$gray-600: #535862;
-$gray-700: #414651;
-$brand-600: #1570ef;
-$brand-700: #175cd3;
+@use '../../../styles/tokens' as tokens;
+$gray-500: tokens.$color-utility-gray-500;
+$gray-600: tokens.$color-utility-gray-600;
+$gray-700: tokens.$color-utility-gray-700;
+$brand-600: tokens.$color-utility-brand-600;
+$brand-700: tokens.$color-utility-brand-700;
 
 $color-label-default: $gray-500;
 $color-label-hover: $gray-700;
 $color-label-active: $brand-700;
 
-$color-border-secondary: #e9eaeb;
-$color-border-focus: #1570ef;
+$color-border-secondary: tokens.$color-border-secondary;
+$color-border-focus: tokens.$color-border-brand-alt;
 
-$color-bg-hover-button: #fafafa;
-$color-bg-active-button: #fafafa;
+$color-bg-hover-button: tokens.$color-bg-primary-2;
+$color-bg-active-button: tokens.$color-bg-primary-2;
 
-$color-dropdown-bg: #ffffff;
-$color-dropdown-border: #e4e7ec;
-$color-dropdown-label: #344054;
+$color-dropdown-bg: tokens.$color-bg-primary;
+$color-dropdown-border: tokens.$color-border-primary;
+$color-dropdown-label: tokens.$color-text-secondary;
 $color-dropdown-label-hover: $brand-600;
-$color-dropdown-item-hover-bg: #f9fafb;
+$color-dropdown-item-hover-bg: tokens.$color-bg-primary-2;
 
 $transition-default: 0.15s ease;
 $border-radius-default: 6px;
@@ -380,7 +381,7 @@ $font-family: 'Jakarta', sans-serif;
 	background: $color-dropdown-bg;
 	border: 1px solid $color-dropdown-border;
 	border-radius: $border-radius-dropdown;
-	box-shadow: 0px 8px 24px rgba(16, 24, 40, 0.12);
+	box-shadow: 0px 8px 24px rgba(tokens.$base-color-base-black, 0.12);
 	min-width: 180px;
 	padding: 6px 0;
 	animation: dropdownIn 0.15s ease;

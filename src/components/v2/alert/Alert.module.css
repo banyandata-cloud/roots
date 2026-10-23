@@ -6,10 +6,10 @@
   position: fixed;
   opacity: 1;
   border-radius: 8px;
-  color: #0f172a;
+  color: var(--color-text-primary);
 }
 .root.shadow {
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 .root.position-bottom-center {
   left: 50%;
@@ -86,7 +86,7 @@
   align-items: center;
   border: 0.5px solid transparent;
   border-left: 2px solid transparent;
-  background: #f8fafc;
+  background: var(--color-bg-secondary);
   border-radius: 0.5rem;
 }
 .root.inline .description,
@@ -100,82 +100,82 @@
   gap: 0.75rem;
   border-radius: 0.75rem;
   border-left: 2px solid transparent;
-  background: #ffffff;
+  background: var(--color-bg-primary);
 }
 .root.success.inline {
-  border-color: #22c55e;
+  border-color: #12B76A;
 }
 .root.success.card {
-  border-color: #22c55e;
+  border-color: #12B76A;
 }
 .root.error.inline, .root.danger.inline {
-  border-color: #ef4444;
+  border-color: #F04438;
 }
 .root.error.card, .root.danger.card {
-  border-color: #ef4444;
+  border-color: #F04438;
 }
 .root.warning.inline {
-  border-color: #f59e0b;
+  border-color: #F79009;
 }
 .root.warning.card {
-  border-color: #f59e0b;
+  border-color: #F79009;
 }
 .root.info.inline {
-  border-color: #3b82f6;
+  border-color: #2E90FA;
 }
 .root.info.card {
-  border-color: #3b82f6;
+  border-color: #2E90FA;
 }
 .root.light {
-  color: #0f172a;
+  color: #181D27;
 }
 .root.light.success.inline, .root.light.success.card {
-  background: #ecfdf5;
+  background: #ECFDF3;
 }
 .root.light.error.inline, .root.light.error.card, .root.light.danger.inline, .root.light.danger.card {
-  background: #fef2f2;
+  background: #FEF3F2;
 }
 .root.light.warning.inline, .root.light.warning.card {
-  background: #fffbeb;
+  background: #FFFAEB;
 }
 .root.light.info.inline, .root.light.info.card {
-  background: #eff6ff;
+  background: #EFF8FF;
 }
 .root.light.card {
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 .root.light .description,
 .root.light .time {
-  color: #475569;
+  color: #535862;
 }
 .root.dark {
-  color: #e5e7eb;
+  color: #ECECED;
 }
 .root.dark.inline, .root.dark.card {
-  background: #0b0f14;
+  background: #0A0D12;
 }
 .root.dark.card {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
 }
 .root.dark .title {
-  color: #e5e7eb;
+  color: #ECECED;
 }
 .root.dark .description,
 .root.dark .time {
-  color: #9ca3af;
+  color: #94979C;
 }
 .root.dark .icon-container {
   background: rgba(255, 255, 255, 0.12);
 }
 .root.dark.success.inline {
-  border-color: #22c55e;
+  border-color: #12B76A;
 }
 .root.dark.info.inline {
-  border-color: #3b82f6;
+  border-color: #2E90FA;
 }
 .root.dark.warning.inline {
-  border-color: #f59e0b;
+  border-color: #F79009;
 }
 .root.dark.error.inline, .root.dark.danger.inline {
-  border-color: #ef4444;
+  border-color: #F04438;
 }/*# sourceMappingURL=Alert.module.css.map */

@@ -13,7 +13,7 @@
   height: 1px;
 }
 .root [data-elem=label] {
-  color: var(--text-text-secondary, #484848);
+  color: var(--color-text-secondary);
   font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   font-size: 12px;
   font-weight: 400;
@@ -30,7 +30,7 @@
   width: 48px;
   height: 24px;
   border-radius: 20px;
-  background: var(--Miscellaneous-toggle-off, #bfbfbf);
+  background: var(--color-utility-gray-400);
   position: relative;
   transition: background 0.2s ease;
 }
@@ -40,13 +40,13 @@
   width: 18px;
   height: 18px;
   border-radius: 18px;
-  background: var(--icon-icon-on-color, #fff);
+  background: var(--color-fg-white);
   top: 3px;
   left: 3px;
   transition: transform 0.2s ease;
 }
 .root.size-l input:checked + .pill {
-  background: var(--support-support-success, #24a148);
+  background: var(--color-bg-sucess-solid);
 }
 .root.size-l input:checked + .pill::before {
   transform: translateX(24px);
@@ -58,7 +58,7 @@
   width: 32px;
   height: 16px;
   border-radius: 20px;
-  background: var(--Miscellaneous-toggle-off, #bfbfbf);
+  background: var(--color-utility-gray-400);
   position: relative;
   transition: background 0.2s ease;
 }
@@ -68,7 +68,7 @@
   width: 10px;
   height: 10px;
   border-radius: 10px;
-  background: var(--icon-icon-on-color, #fff);
+  background: var(--color-fg-white);
   top: 3px;
   left: 3px;
   transition: transform 0.2s ease;
@@ -91,7 +91,7 @@
   visibility: hidden !important;
 }
 .root.size-s input:checked + .pill {
-  background: var(--support-support-success, #24a148);
+  background: var(--color-bg-sucess-solid);
 }
 .root.size-s input:checked + .pill::before {
   transform: translateX(16px);
@@ -104,18 +104,18 @@
 }
 .root.readonly .pill {
   background: transparent;
-  border: 1px solid var(--border-border-subtle, #ededed);
+  border: 1px solid var(--color-border-secondary);
 }
 .root.readonly .pill::before {
   top: 2px;
   left: 2px;
-  background: var(--icon-icon-primary, #161616);
+  background: var(--color-fg-primary);
 }
 .root.disabled {
   cursor: not-allowed;
 }
 .root.disabled [data-elem=label] {
-  color: var(--text-text-disabled, #161616);
+  color: var(--color-text-disabled);
   font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   font-size: 12px;
   font-style: normal;
@@ -125,14 +125,14 @@
   opacity: 0.25;
 }
 .root.disabled [data-elem=label] {
-  color: var(--text-text-disabled, #161616);
+  color: var(--color-text-disabled);
 }
 .root.disabled .pill {
-  background: var(--button-button-disabled, #dcdcdc);
+  background: var(--color-bg-disabled);
 }
 .root.disabled .pill::before {
-  background: var(--icon-icon-on-color-disable, #828282);
+  background: var(--color-fg-disabled);
 }
 .root input:focus-visible + .pill {
-  box-shadow: 0 0 0 0.5px #fff, 0 0 0 2px var(--focus-focus-primary, #3b82f6);
+  box-shadow: 0 0 0 0.5px var(--color-fg-white), 0 0 0 2px var(--color-border-brand);
 }/*# sourceMappingURL=Toggle.module.css.map */

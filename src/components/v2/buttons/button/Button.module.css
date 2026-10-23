@@ -62,7 +62,7 @@ button.root[data-elem=base-cell].radius-none {
 button.root[data-elem=base-cell].primary {
   background: var(--color-bg-brand-solid);
   color: var(--color-fg-white);
-  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(113, 118, 128, 0.08), 0 0 0 1px rgba(113, 118, 128, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 }
 button.root[data-elem=base-cell].primary:hover:not(:disabled) {
   background: var(--color-bg-brand-solid-hover);
@@ -72,7 +72,7 @@ button.root[data-elem=base-cell].primary:hover:not(:disabled) {
 }
 button.root[data-elem=base-cell].primary:active:not(:disabled) {
   background: #1849A9;
-  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(113, 118, 128, 0.08), 0 0 0 1px rgba(113, 118, 128, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   transition-duration: 70ms;
   transition-timing-function: cubic-bezier(0, 0, 0.38, 0.9);
 }
@@ -83,17 +83,17 @@ button.root[data-elem=base-cell].primary:focus-visible:not(:disabled) {
 button.root[data-elem=base-cell].secondary {
   background: var(--color-bg-primary-black);
   color: var(--color-fg-white);
-  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(113, 118, 128, 0.08), 0 0 0 1px rgba(113, 118, 128, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 }
 button.root[data-elem=base-cell].secondary:hover:not(:disabled) {
   background: var(--color-bg-primary-black-hover);
-  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(113, 118, 128, 0.08), 0 0 0 1px rgba(113, 118, 128, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   transition-duration: 70ms;
   transition-timing-function: cubic-bezier(0.2, 0, 1, 0.9);
 }
 button.root[data-elem=base-cell].secondary:active:not(:disabled) {
   background: #181D27;
-  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(113, 118, 128, 0.08), 0 0 0 1px rgba(113, 118, 128, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   transition-duration: 70ms;
   transition-timing-function: cubic-bezier(0, 0, 0.38, 0.9);
 }
@@ -104,7 +104,7 @@ button.root[data-elem=base-cell].secondary:focus-visible:not(:disabled) {
 button.root[data-elem=base-cell].soft {
   background: var(--color-bg-secondary);
   color: var(--color-fg-secondary);
-  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(113, 118, 128, 0.08), 0 0 0 1px rgba(113, 118, 128, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 }
 button.root[data-elem=base-cell].soft:not(:disabled) svg {
   color: var(--color-fg-secondary);
@@ -112,14 +112,14 @@ button.root[data-elem=base-cell].soft:not(:disabled) svg {
 button.root[data-elem=base-cell].soft:hover:not(:disabled) {
   background: var(--color-bg-secondary-hover);
   color: var(--color-fg-secondary-hover);
-  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(113, 118, 128, 0.08), 0 0 0 1px rgba(113, 118, 128, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   transition-duration: 70ms;
   transition-timing-function: cubic-bezier(0.2, 0, 1, 0.9);
 }
 button.root[data-elem=base-cell].soft:active:not(:disabled) {
   background: var(--color-bg-tertiary);
   color: var(--color-fg-secondary);
-  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(113, 118, 128, 0.08), 0 0 0 1px rgba(113, 118, 128, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   transition-duration: 70ms;
   transition-timing-function: cubic-bezier(0, 0, 0.38, 0.9);
 }
@@ -130,18 +130,18 @@ button.root[data-elem=base-cell].soft:focus-visible:not(:disabled) {
 button.root[data-elem=base-cell].outline {
   background: var(--color-bg-primary);
   color: var(--color-fg-secondary);
-  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(113, 118, 128, 0.08), 0 0 0 1px rgba(113, 118, 128, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 }
 button.root[data-elem=base-cell].outline:hover:not(:disabled) {
   background: var(--color-bg-primary-hover);
   color: var(--color-fg-secondary-hover);
-  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(113, 118, 128, 0.08), 0 0 0 1px rgba(113, 118, 128, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   transition-duration: 70ms;
   transition-timing-function: cubic-bezier(0.2, 0, 1, 0.9);
 }
 button.root[data-elem=base-cell].outline:active:not(:disabled) {
   background: var(--color-bg-tertiary);
-  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(113, 118, 128, 0.08), 0 0 0 1px rgba(113, 118, 128, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   transition-duration: 70ms;
   transition-timing-function: cubic-bezier(0, 0, 0.38, 0.9);
 }
@@ -174,17 +174,17 @@ button.root[data-elem=base-cell].ghost:focus-visible:not(:disabled) {
 button.root[data-elem=base-cell].critical {
   background: var(--color-bg-error-solid);
   color: var(--color-fg-white);
-  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(113, 118, 128, 0.08), 0 0 0 1px rgba(113, 118, 128, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 }
 button.root[data-elem=base-cell].critical:hover:not(:disabled) {
   background: var(--color-bg-error-solid);
-  box-shadow: 0 0 0 2px rgba(243, 65, 65, 0.4), 0 2px 5px 0 rgba(243, 65, 65, 0.08), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 0 0 2px rgba(240, 68, 56, 0.4), 0 2px 5px 0 rgba(240, 68, 56, 0.08), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   transition-duration: 70ms;
   transition-timing-function: cubic-bezier(0.2, 0, 1, 0.9);
 }
 button.root[data-elem=base-cell].critical:active:not(:disabled) {
   background: #B42318;
-  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(113, 118, 128, 0.08), 0 0 0 1px rgba(113, 118, 128, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   transition-duration: 70ms;
   transition-timing-function: cubic-bezier(0, 0, 0.38, 0.9);
 }

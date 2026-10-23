@@ -54,7 +54,7 @@
   display: inline-flex;
   align-items: center;
   height: 20px;
-  color: #717680 !important;
+  color: var(--color-utility-gray-500) !important;
   font-family: "Jakarta", sans-serif;
   font-size: 14px;
   font-style: normal;
@@ -64,7 +64,7 @@
   transition: color 0.15s ease;
 }
 .crumbItem:hover .crumbLabel {
-  color: #414651 !important;
+  color: var(--color-utility-gray-700) !important;
 }
 
 .crumbEllipsis {
@@ -73,7 +73,7 @@
   height: 20px;
   align-items: center;
   justify-content: center;
-  color: #717680 !important;
+  color: var(--color-utility-gray-500) !important;
   font-family: "Jakarta", sans-serif;
   font-size: 14px;
   font-weight: 600;
@@ -82,7 +82,7 @@
   transition: color 0.15s ease;
 }
 .crumbItem:hover .crumbEllipsis {
-  color: #414651 !important;
+  color: var(--color-utility-gray-700) !important;
 }
 
 .separator {
@@ -101,14 +101,14 @@
   width: 20px;
   height: 20px;
   line-height: 0;
-  color: #717680;
+  color: var(--color-utility-gray-500);
   transition: color 0.15s ease;
 }
 .crumbItem:hover .iconWrapper {
-  color: #414651;
+  color: var(--color-utility-gray-700);
 }
 .crumbItem.active .iconWrapper {
-  color: #175cd3;
+  color: var(--color-utility-brand-700);
 }
 
 .iconCrumbWrapper {
@@ -118,13 +118,13 @@
   border-radius: 6px;
   transition: background 0.15s ease, color 0.15s ease;
   cursor: pointer;
-  color: #717680;
+  color: var(--color-utility-gray-500);
 }
 .crumbItem:hover .iconCrumbWrapper {
-  color: #414651;
+  color: var(--color-utility-gray-700);
 }
 .crumbItem.active .iconCrumbWrapper {
-  color: #175cd3;
+  color: var(--color-utility-brand-700);
 }
 
 .dropdownWrapper {
@@ -147,22 +147,22 @@
 }
 .text .crumbItem .breadcrumbBtn,
 .text .crumbItem a {
-  color: #717680 !important;
+  color: var(--color-utility-gray-500) !important;
   padding: 0 !important;
 }
 .text .crumbItem.active .crumbLabel {
-  color: #175cd3 !important;
+  color: var(--color-utility-brand-700) !important;
   font-weight: 600;
 }
 .text .crumbItem.focused a,
 .text .crumbItem.focused .breadcrumbBtn {
-  outline: 2px solid #1570ef !important;
+  outline: 2px solid var(--color-border-brand-alt) !important;
   outline-offset: 2px !important;
   border-radius: 6px !important;
 }
 .text .iconCrumbItem.focused a,
 .text .iconCrumbItem.focused .breadcrumbBtn {
-  outline: 2px solid #1570ef !important;
+  outline: 2px solid var(--color-border-brand-alt) !important;
   outline-offset: 2px !important;
   border-radius: 6px !important;
 }
@@ -171,8 +171,8 @@
   height: 36px;
   padding: 0 8px;
   gap: 8px;
-  border-top: 1px solid #e9eaeb;
-  border-bottom: 1px solid #e9eaeb;
+  border-top: 1px solid var(--color-border-secondary);
+  border-bottom: 1px solid var(--color-border-secondary);
   width: -moz-fit-content;
   width: fit-content;
 }
@@ -185,22 +185,22 @@
 }
 .textWithLine .crumbItem .breadcrumbBtn,
 .textWithLine .crumbItem a {
-  color: #717680 !important;
+  color: var(--color-utility-gray-500) !important;
   padding: 0 !important;
 }
 .textWithLine .crumbItem.active .crumbLabel {
-  color: #175cd3 !important;
+  color: var(--color-utility-brand-700) !important;
   font-weight: 600;
 }
 .textWithLine .crumbItem.focused a,
 .textWithLine .crumbItem.focused .breadcrumbBtn {
-  outline: 2px solid #1570ef !important;
+  outline: 2px solid var(--color-border-brand-alt) !important;
   outline-offset: 2px !important;
   border-radius: 6px !important;
 }
 .textWithLine .iconCrumbItem.focused a,
 .textWithLine .iconCrumbItem.focused .breadcrumbBtn {
-  outline: 2px solid #1570ef !important;
+  outline: 2px solid var(--color-border-brand-alt) !important;
   outline-offset: 2px !important;
   border-radius: 3px !important;
 }
@@ -231,60 +231,60 @@
   justify-content: center !important;
 }
 .button .crumbLabel {
-  color: #717680 !important;
+  color: var(--color-utility-gray-500) !important;
   font-weight: 600;
 }
 .button .crumbItem:hover .breadcrumbBtn {
-  background: #fafafa !important;
+  background: var(--color-bg-primary-2) !important;
 }
 .button .crumbItem:hover .iconCrumbWrapper {
-  background: #fafafa;
+  background: var(--color-bg-primary-2);
 }
 .button .iconCrumbItem:hover .breadcrumbBtn {
   background: transparent !important;
 }
 .button .iconCrumbItem:hover .iconCrumbWrapper {
-  color: #414651;
+  color: var(--color-utility-gray-700);
 }
 .button .iconCrumbItem.active .iconCrumbWrapper {
-  color: #175cd3;
+  color: var(--color-utility-brand-700);
 }
 .button .crumbItem:hover .crumbLabel {
-  color: #414651 !important;
+  color: var(--color-utility-gray-700) !important;
 }
 .button .crumbItem.active .breadcrumbBtn {
-  background: #fafafa !important;
+  background: var(--color-bg-primary-2) !important;
   padding: 4px 8px !important;
 }
 .button .crumbItem.active .iconCrumbWrapper {
-  background: #fafafa;
+  background: var(--color-bg-primary-2);
 }
 .button .iconCrumbItem.active .breadcrumbBtn {
   background: transparent !important;
   padding: 4px !important;
 }
 .button .crumbItem.active .crumbLabel {
-  color: #535862 !important;
+  color: var(--color-utility-gray-600) !important;
   font-weight: 600;
 }
 .button .crumbItem.active:hover .crumbLabel {
-  color: #535862 !important;
+  color: var(--color-utility-gray-600) !important;
 }
 .button .crumbItem:not(.iconCrumbItem).focused .breadcrumbBtn {
-  outline: 2px solid #1570ef !important;
+  outline: 2px solid var(--color-border-brand-alt) !important;
   outline-offset: 2px !important;
   border-radius: 6px !important;
   box-shadow: none !important;
 }
 .button .crumbItem:not(.iconCrumbItem).focused.active .breadcrumbBtn {
-  outline: 2px solid #1570ef !important;
+  outline: 2px solid var(--color-border-brand-alt) !important;
   outline-offset: 2px !important;
   border-radius: 6px !important;
   box-shadow: none !important;
-  background: #fafafa !important;
+  background: var(--color-bg-primary-2) !important;
 }
 .button .iconCrumbItem.focused .iconCrumbWrapper {
-  outline: 2px solid #1570ef !important;
+  outline: 2px solid var(--color-border-brand-alt) !important;
   outline-offset: 2px !important;
   border-radius: 8px !important;
   box-shadow: none !important;
@@ -294,11 +294,11 @@
   outline: none !important;
 }
 .button .iconCrumbItem.focused.active .iconCrumbWrapper {
-  outline: 2px solid #1570ef !important;
+  outline: 2px solid var(--color-border-brand-alt) !important;
   outline-offset: 2px !important;
   border-radius: 8px !important;
   box-shadow: none !important;
-  background: #fafafa;
+  background: var(--color-bg-primary-2);
 }
 .button .iconCrumbItem.focused.active .breadcrumbBtn {
   box-shadow: none !important;
@@ -308,10 +308,10 @@
 .dropdown {
   position: fixed;
   z-index: 9999;
-  background: #ffffff;
-  border: 1px solid #e4e7ec;
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-primary);
   border-radius: 8px;
-  box-shadow: 0px 8px 24px rgba(16, 24, 40, 0.12);
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
   min-width: 180px;
   padding: 6px 0;
   animation: dropdownIn 0.15s ease;
@@ -334,12 +334,12 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-  color: #344054;
+  color: var(--color-text-secondary);
   cursor: pointer;
   white-space: nowrap;
   transition: background 0.15s ease, color 0.15s ease;
 }
 .dropdownItem:hover {
-  background: #f9fafb;
-  color: #1570ef;
+  background: var(--color-bg-primary-2);
+  color: var(--color-utility-brand-600);
 }/*# sourceMappingURL=BreadCrumbs.module.css.map */

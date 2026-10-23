@@ -52,24 +52,24 @@ $button-radii: (
 );
 
 $shadow-normal:
-	0 2px 5px 0 rgba(103, 110, 118, 0.08),
-	0 0 0 1px rgba(103, 110, 118, 0.16),
-	0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	0 2px 5px 0 rgba(tokens.$base-color-gray-light-mode-g-500, 0.08),
+	0 0 0 1px rgba(tokens.$base-color-gray-light-mode-g-500, 0.16),
+	0 1px 1px 0 rgba(tokens.$base-color-base-black, 0.12);
 
 $shadow-hover-primary:
-	0 2px 5px 0 rgba(46, 144, 250, 0.08),
-	0 0 0 1px rgba(46, 144, 250, 0.4),
-	0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	0 2px 5px 0 rgba(tokens.$base-color-brand-blue-b-500, 0.08),
+	0 0 0 1px rgba(tokens.$base-color-brand-blue-b-500, 0.4),
+	0 1px 1px 0 rgba(tokens.$base-color-base-black, 0.12);
 
 $shadow-hover-secondary:
-	0 2px 5px 0 rgba(103, 110, 118, 0.08),
-	0 0 0 1px rgba(103, 110, 118, 0.16),
-	0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	0 2px 5px 0 rgba(tokens.$base-color-gray-light-mode-g-500, 0.08),
+	0 0 0 1px rgba(tokens.$base-color-gray-light-mode-g-500, 0.16),
+	0 1px 1px 0 rgba(tokens.$base-color-base-black, 0.12);
 
 $shadow-hover-critical:
-	0 0 0 2px rgba(243, 65, 65, 0.4),
-	0 2px 5px 0 rgba(243, 65, 65, 0.08),
-	0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	0 0 0 2px rgba(tokens.$base-color-error-r-500, 0.4),
+	0 2px 5px 0 rgba(tokens.$base-color-error-r-500, 0.08),
+	0 1px 1px 0 rgba(tokens.$base-color-base-black, 0.12);
 
 button.root[data-elem='base-cell'] {
 	transition:

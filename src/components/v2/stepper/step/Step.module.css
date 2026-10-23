@@ -113,15 +113,15 @@
   border-bottom-color: var(--primary-color4);
 }
 .root.error .left .icon-container {
-  background: var(--white);
-  border-color: var(--primary-color1);
-  color: var(--primary-color1);
+  background: var(--color-bg-primary);
+  border-color: var(--color-fg-error-primary);
+  color: var(--color-fg-error-primary);
 }
 .root.error .right .title {
-  color: var(--primary-color1);
+  color: var(--color-text-error-primary);
 }
 .root.error .right .description {
-  color: rgba(var(--primary-color1), 0.6);
+  color: color-mix(in srgb, var(--color-text-error-primary) 60%, transparent);
 }
 .root.vertical {
   height: 100%;

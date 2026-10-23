@@ -5,8 +5,8 @@ const Sort = ({
     className?: string | undefined;
     position: 'az' | 'za' | 'default';
 }) => {
-    const upColor = position === 'az' ? '#1f5fcc' : '#A4A7AE';
-    const downColor = position === 'za' ? '#1f5fcc' : '#A4A7AE';
+    const upColor = position === 'az' ? 'var(--color-fg-brand-primary)' : 'var(--color-fg-disabled)';
+    const downColor = position === 'za' ? 'var(--color-fg-brand-primary)' : 'var(--color-fg-disabled)';
 
     return (
         <svg

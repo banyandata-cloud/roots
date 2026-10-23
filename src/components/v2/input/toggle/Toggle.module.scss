@@ -17,7 +17,7 @@
 	}
 
 	[data-elem='label'] {
-		color: var(--text-text-secondary, #484848);
+		color: tokens.$color-text-secondary;
 		font-family: tokens.$font-family-base;
 		font-size: tokens.$font-size-12;
 		font-weight: tokens.$font-weight-regular;
@@ -35,7 +35,7 @@
 			width: 48px;
 			height: 24px;
 			border-radius: 20px;
-			background: var(--Miscellaneous-toggle-off, #bfbfbf);
+			background: tokens.$color-utility-gray-400;
 			position: relative;
 			transition: background 0.2s ease;
 
@@ -45,7 +45,7 @@
 				width: 18px;
 				height: 18px;
 				border-radius: 18px;
-				background: var(--icon-icon-on-color, #fff);
+				background: tokens.$color-fg-white;
 				top: 3px;
 				left: 3px;
 				transition: transform 0.2s ease;
@@ -53,7 +53,7 @@
 		}
 
 		input:checked + .pill {
-			background: var(--support-support-success, #24a148);
+			background: tokens.$color-bg-sucess-solid;
 
 			&::before {
 				transform: translateX(24px);
@@ -70,7 +70,7 @@
 			width: 32px;
 			height: 16px;
 			border-radius: 20px;
-			background: var(--Miscellaneous-toggle-off, #bfbfbf);
+			background: tokens.$color-utility-gray-400;
 			position: relative;
 			transition: background 0.2s ease;
 
@@ -80,7 +80,7 @@
 				width: 10px;
 				height: 10px;
 				border-radius: 10px;
-				background: var(--icon-icon-on-color, #fff);
+				background: tokens.$color-fg-white;
 				top: 3px;
 				left: 3px;
 				transition: transform 0.2s ease;
@@ -106,7 +106,7 @@
 		}
 
 		input:checked + .pill {
-			background: var(--support-support-success, #24a148);
+			background: tokens.$color-bg-sucess-solid;
 
 			&::before {
 				transform: translateX(16px);
@@ -125,12 +125,12 @@
 
 		.pill {
 			background: transparent;
-			border: 1px solid var(--border-border-subtle, #ededed);
+			border: 1px solid tokens.$color-border-secondary;
 
 			&::before {
 				top: 2px;
 				left: 2px;
-				background: var(--icon-icon-primary, #161616);
+				background: tokens.$color-fg-primary;
 			}
 		}
 	}
@@ -141,7 +141,7 @@
 		cursor: not-allowed;
 
 		[data-elem='label'] {
-			color: var(--text-text-disabled, #161616);
+			color: tokens.$color-text-disabled;
 			font-family: tokens.$font-family-base;
 			font-size: tokens.$font-size-12;
 			font-style: normal;
@@ -152,14 +152,14 @@
 		}
 
 		[data-elem='label'] {
-			color: var(--text-text-disabled, #161616);
+			color: tokens.$color-text-disabled;
 		}
 
 		.pill {
-			background: var(--button-button-disabled, #dcdcdc);
+			background: tokens.$color-bg-disabled;
 
 			&::before {
-				background: var(--icon-icon-on-color-disable, #828282);
+				background: tokens.$color-fg-disabled;
 			}
 		}
 	}
@@ -168,7 +168,7 @@
 
 	input:focus-visible + .pill {
 		box-shadow:
-			0 0 0 0.5px #fff,
-			0 0 0 2px var(--focus-focus-primary, #3b82f6);
+			0 0 0 0.5px tokens.$color-fg-white,
+			0 0 0 2px tokens.$color-border-brand;
 	}
 }

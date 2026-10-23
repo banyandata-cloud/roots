@@ -1,3 +1,4 @@
+@use '../../../../styles/tokens' as tokens;
 @import '../../../../styles';
 
 .container {
@@ -70,11 +71,11 @@
 	line-height: 0;
 
 	&.focus {
-		box-shadow: 0 0 0 2px var(--Foregroundcolor-fg-brand-primary, #1570ef);
+		box-shadow: 0 0 0 2px tokens.$color-fg-brand-primary;
 	}
 
 	&.focus-error {
-		box-shadow: 0 0 0 2px var(--Foregroundcolor-fg-error-primary, #d92d20);
+		box-shadow: 0 0 0 2px tokens.$color-fg-error-primary;
 	}
 }
 

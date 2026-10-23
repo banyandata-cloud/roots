@@ -242,7 +242,7 @@ $tag-lg-textfield-gap: 3px;
 		width: 16px;
 		height: 16px;
 		border-radius: 50%;
-		background: #daecfd;
+		background: tokens.$color-utility-brand-100;
 
 		img {
 			position: absolute;
@@ -840,7 +840,7 @@ $tag-lg-textfield-gap: 3px;
 
 			&:focus-within {
 				border-color: tokens.$color-border-brand;
-				box-shadow: 0 0 0 2px rgba(132, 173, 255, 0.2);
+				box-shadow: 0 0 0 2px rgba(tokens.$base-color-brand-blue-b-400, 0.2);
 			}
 		}
 	}
@@ -964,7 +964,7 @@ $tag-lg-textfield-gap: 3px;
 
 			&:focus-within {
 				border-color: tokens.$color-border-brand;
-				box-shadow: 0 0 0 2px rgba(132, 173, 255, 0.2);
+				box-shadow: 0 0 0 2px rgba(tokens.$base-color-brand-blue-b-400, 0.2);
 			}
 		}
 	}

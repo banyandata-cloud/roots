@@ -125,13 +125,13 @@
 .label {
   font-family: jakarta, sans-serif;
   font-weight: 500;
-  color: #252b37;
+  color: var(--color-text-secondary-hover);
 }
 
 .subLabel {
   font-family: jakarta, sans-serif;
   font-weight: 400;
-  color: #535862;
+  color: var(--color-text-tertiary);
 }
 
 .message {
@@ -143,108 +143,108 @@
 }
 
 .wrapper:not(.disabled):not(.readOnly):not(.error):not(.warning):hover .box {
-  border-color: #1570ef;
+  border-color: var(--color-fg-brand-primary);
   background: var(--color-bg-primary);
 }
 .wrapper:not(.disabled):not(.readOnly):not(.error):not(.warning) .input:focus-visible ~ .box {
   border-color: var(--color-border-primary);
-  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px #1570ef;
+  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px var(--color-fg-brand-primary);
 }
 .wrapper:not(.disabled):not(.readOnly):not(.error):not(.warning) .input:checked ~ .box {
-  background: #1570ef;
-  border-color: #1570ef;
+  background: var(--color-fg-brand-primary);
+  border-color: var(--color-fg-brand-primary);
 }
 .wrapper:not(.disabled):not(.readOnly):not(.error):not(.warning) .input:checked ~ .box svg {
   color: var(--color-bg-primary);
 }
 .wrapper:not(.disabled):not(.readOnly):not(.error):not(.warning):hover .input:checked ~ .box {
-  background: #175cd3;
-  border-color: #175cd3;
+  background: var(--color-bg-brand-solid-hover);
+  border-color: var(--color-bg-brand-solid-hover);
 }
 .wrapper:not(.disabled):not(.readOnly):not(.error):not(.warning) .input:checked:focus-visible ~ .box {
-  background: #1570ef;
-  border-color: #1570ef;
-  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px #1570ef;
+  background: var(--color-fg-brand-primary);
+  border-color: var(--color-fg-brand-primary);
+  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px var(--color-fg-brand-primary);
 }
 .wrapper:not(.disabled):not(.readOnly):not(.error):not(.warning) .input:indeterminate ~ .box {
-  background: #1570ef;
-  border-color: #1570ef;
+  background: var(--color-fg-brand-primary);
+  border-color: var(--color-fg-brand-primary);
 }
 .wrapper:not(.disabled):not(.readOnly):not(.error):not(.warning) .input:indeterminate ~ .box svg {
   color: var(--color-bg-primary);
 }
 .wrapper:not(.disabled):not(.readOnly):not(.error):not(.warning):hover .input:indeterminate ~ .box {
-  background: #175cd3;
-  border-color: #175cd3;
+  background: var(--color-bg-brand-solid-hover);
+  border-color: var(--color-bg-brand-solid-hover);
 }
 .wrapper:not(.disabled):not(.readOnly):not(.error):not(.warning) .input:indeterminate:focus-visible ~ .box {
-  background: #1570ef;
-  border-color: #1570ef;
-  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px #1570ef;
+  background: var(--color-fg-brand-primary);
+  border-color: var(--color-fg-brand-primary);
+  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px var(--color-fg-brand-primary);
 }
 
 .wrapper.disabled .box {
-  background: #f5f5f5;
-  border-color: #e9eaeb;
+  background: var(--color-bg-disabled);
+  border-color: var(--color-border-disable-subtle);
 }
 .wrapper.disabled .input:checked ~ .box,
 .wrapper.disabled .input:indeterminate ~ .box {
-  background: #f5f5f5;
-  border-color: #e9eaeb;
+  background: var(--color-bg-disabled);
+  border-color: var(--color-border-disable-subtle);
 }
 .wrapper.disabled .input:checked ~ .box svg,
 .wrapper.disabled .input:indeterminate ~ .box svg {
-  color: #a4a7ae;
+  color: var(--color-fg-disabled);
 }
 .wrapper.disabled .label,
 .wrapper.disabled .subLabel {
-  color: #a4a7ae;
+  color: var(--color-fg-disabled);
 }
 
 .wrapper.readOnly {
   cursor: default;
 }
 .wrapper.readOnly .box {
-  background: #f5f5f5;
+  background: var(--color-bg-secondary);
   border-color: var(--color-border-primary);
 }
 .wrapper.readOnly .input:checked ~ .box,
 .wrapper.readOnly .input:indeterminate ~ .box {
-  background: #f5f5f5;
+  background: var(--color-bg-secondary);
   border-color: var(--color-border-primary);
 }
 .wrapper.readOnly .input:checked ~ .box svg,
 .wrapper.readOnly .input:indeterminate ~ .box svg {
-  color: #414651;
+  color: var(--color-fg-secondary);
 }
 
 .wrapper.error .box {
-  border-color: #d92d20;
+  border-color: var(--color-fg-error-primary);
   background: var(--color-bg-primary);
 }
 .wrapper.error:hover .box {
-  border-color: #d92d20;
-  background: #fef3f2;
+  border-color: var(--color-fg-error-primary);
+  background: var(--color-bg-error-primary);
 }
 .wrapper.error .input:focus-visible ~ .box {
   border-color: var(--color-border-primary);
-  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px #d92d20;
+  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px var(--color-fg-error-primary);
 }
 .wrapper.error .input:checked ~ .box,
 .wrapper.error .input:indeterminate ~ .box {
-  background: #d92d20;
-  border-color: #d92d20;
+  background: var(--color-fg-error-primary);
+  border-color: var(--color-fg-error-primary);
 }
 .wrapper.error .input:checked ~ .box svg,
 .wrapper.error .input:indeterminate ~ .box svg {
   color: var(--color-bg-primary);
 }
 .wrapper.error:hover .input:checked ~ .box, .wrapper.error:hover .input:indeterminate ~ .box {
-  background: rgb(181.443373494, 37.6265060241, 26.756626506);
-  border-color: rgb(181.443373494, 37.6265060241, 26.756626506);
+  background: var(--color-utility-error-700);
+  border-color: var(--color-utility-error-700);
 }
 .wrapper.error .message {
-  color: #d92d20;
+  color: var(--color-fg-error-primary);
 }
 
 .wrapper.warning .box {
@@ -252,24 +252,24 @@
   background: var(--color-bg-primary);
 }
 .wrapper.warning:hover .box {
-  border-color: #1570ef;
-  background: #eff8ff;
+  border-color: var(--color-fg-brand-primary);
+  background: var(--color-bg-brand-primary);
 }
 .wrapper.warning .input:focus-visible ~ .box {
   border-color: var(--color-border-primary);
-  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px #dc6803;
+  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px var(--color-fg-warning-primary);
 }
 .wrapper.warning input:checked ~ .box,
 .wrapper.warning .input:indeterminate ~ .box {
-  background: #1570ef;
-  border-color: #1570ef;
+  background: var(--color-fg-brand-primary);
+  border-color: var(--color-fg-brand-primary);
 }
 .wrapper.warning:hover .input:checked ~ .box, .wrapper.warning:hover .input:indeterminate ~ .box {
-  background: #175cd3;
-  border-color: #175cd3;
+  background: var(--color-bg-brand-solid-hover);
+  border-color: var(--color-bg-brand-solid-hover);
 }
 .wrapper.warning .message {
-  color: #dc6803;
+  color: var(--color-fg-warning-primary);
 }
 
 @media (prefers-reduced-motion: reduce) {

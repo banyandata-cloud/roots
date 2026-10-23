@@ -77,10 +77,10 @@
 		}
 
 		&:visited {
-			color: #8a3ffc; // no "visited" token exists in design-system yet
+			color: tokens.$color-utility-purple-600; // no semantic "visited" token yet
 
 			.icon {
-				stroke: #8a3ffc;
+				stroke: tokens.$color-utility-purple-600;
 			}
 		}
 

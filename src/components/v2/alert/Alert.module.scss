@@ -1,3 +1,4 @@
+@use '../../styles/tokens' as tokens;
 @import '../../styles/_index';
 
 .root {
@@ -5,10 +6,10 @@
 	position: fixed;
 	opacity: 1;
 	border-radius: 8px;
-	color: #0f172a;
+	color: tokens.$color-text-primary;
 
 	&.shadow {
-		box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+		box-shadow: 0 4px 12px rgba(tokens.$base-color-base-black, 0.08);
 	}
 
 	&.position-bottom-center {
@@ -45,7 +46,7 @@
 			place-items: center;
 			flex-shrink: 0;
 
-			background: rgba(255, 255, 255, 0.12);
+			background: rgba(tokens.$base-color-base-white, 0.12);
 
 			.icon {
 				width: 16px;
@@ -93,7 +94,7 @@
 		align-items: center;
 		border: 0.5px solid transparent;
 		border-left: 2px solid transparent;
-		background: #f8fafc;
+		background: tokens.$color-bg-secondary;
 		border-radius: 0.5rem;
 
 		.description,
@@ -109,53 +110,53 @@
 		gap: 0.75rem;
 		border-radius: 0.75rem;
 		border-left: 2px solid transparent;
-		background: #ffffff;
+		background: tokens.$color-bg-primary;
 	}
 
 	&.success {
 		&.inline {
-			border-color: #22c55e;
+			border-color: tokens.$base-color-success-g-500;
 		}
 		&.card {
-			border-color: #22c55e;
+			border-color: tokens.$base-color-success-g-500;
 		}
 	}
 
 	&.error,
 	&.danger {
 		&.inline {
-			border-color: #ef4444;
+			border-color: tokens.$base-color-error-r-500;
 		}
 		&.card {
-			border-color: #ef4444;
+			border-color: tokens.$base-color-error-r-500;
 		}
 	}
 
 	&.warning {
 		&.inline {
-			border-color: #f59e0b;
+			border-color: tokens.$base-color-warning-o-500;
 		}
 		&.card {
-			border-color: #f59e0b;
+			border-color: tokens.$base-color-warning-o-500;
 		}
 	}
 
 	&.info {
 		&.inline {
-			border-color: #3b82f6;
+			border-color: tokens.$base-color-brand-blue-b-500;
 		}
 		&.card {
-			border-color: #3b82f6;
+			border-color: tokens.$base-color-brand-blue-b-500;
 		}
 	}
 
 	&.light {
-		color: #0f172a;
+		color: tokens.$base-color-gray-light-mode-g-900;
 
 		&.success {
 			&.inline,
 			&.card {
-				background: #ecfdf5;
+				background: tokens.$base-color-success-g-50;
 			}
 		}
 
@@ -163,80 +164,80 @@
 		&.danger {
 			&.inline,
 			&.card {
-				background: #fef2f2;
+				background: tokens.$base-color-error-r-50;
 			}
 		}
 
 		&.warning {
 			&.inline,
 			&.card {
-				background: #fffbeb;
+				background: tokens.$base-color-warning-o-50;
 			}
 		}
 
 		&.info {
 			&.inline,
 			&.card {
-				background: #eff6ff;
+				background: tokens.$base-color-brand-blue-b-50;
 			}
 		}
 
 		&.card {
-			box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+			box-shadow: 0 4px 12px rgba(tokens.$base-color-base-black, 0.08);
 		}
 
 		.description,
 		.time {
-			color: #475569;
+			color: tokens.$base-color-gray-light-mode-g-600;
 		}
 	}
 	&.dark {
-		color: #e5e7eb;
+		color: tokens.$base-color-gray-drak-mode-g-200;
 
 		&.inline,
 		&.card {
-			background: #0b0f14;
+			background: tokens.$base-color-gray-light-mode-g-950;
 		}
 
 		&.card {
-			box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+			box-shadow: 0 6px 16px rgba(tokens.$base-color-base-black, 0.6);
 		}
 
 		.title {
-			color: #e5e7eb;
+			color: tokens.$base-color-gray-drak-mode-g-200;
 		}
 
 		.description,
 		.time {
-			color: #9ca3af;
+			color: tokens.$base-color-gray-drak-mode-g-400;
 		}
 
 		.icon-container {
-			background: rgba(255, 255, 255, 0.12);
+			background: rgba(tokens.$base-color-base-white, 0.12);
 		}
 
 		&.success {
 			&.inline {
-				border-color: #22c55e;
+				border-color: tokens.$base-color-success-g-500;
 			}
 		}
 
 		&.info {
 			&.inline {
-				border-color: #3b82f6;
+				border-color: tokens.$base-color-brand-blue-b-500;
 			}
 		}
 
 		&.warning {
 			&.inline {
-				border-color: #f59e0b;
+				border-color: tokens.$base-color-warning-o-500;
 			}
 		}
 
 		&.error,
 		&.danger {
 			&.inline {
-				border-color: #ef4444;
+				border-color: tokens.$base-color-error-r-500;
 			}
 		}
 	}

@@ -383,9 +383,9 @@
 		background: tokens.$color-bg-primary-hover !important;
 		border-color: tokens.$color-border-primary !important;
 		box-shadow:
-			0 2px 5px 0 rgba(46, 144, 250, 0.08),
-			0 0 0 1px rgba(46, 144, 250, 0.4),
-			0 1px 1px 0 rgba(0, 0, 0, 0.12) !important;
+			0 2px 5px 0 rgba(tokens.$base-color-brand-blue-b-500, 0.08),
+			0 0 0 1px rgba(tokens.$base-color-brand-blue-b-500, 0.4),
+			0 1px 1px 0 rgba(tokens.$base-color-base-black, 0.12) !important;
 	}
 
 	&:active:not(:disabled) {

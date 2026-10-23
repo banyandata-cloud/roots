@@ -57,10 +57,10 @@
   stroke: var(--color-text-brand-secondary);
 }
 .wrapper .link:visited {
-  color: #8a3ffc;
+  color: var(--color-utility-purple-600);
 }
 .wrapper .link:visited .icon {
-  stroke: #8a3ffc;
+  stroke: var(--color-utility-purple-600);
 }
 .wrapper .link:active {
   color: var(--color-fg-primary);

@@ -199,7 +199,7 @@
   background: var(--color-bg-primary) !important;
 }
 .dropdownContainer.default:hover {
-  border-color: #b2b5bb !important;
+  border-color: var(--color-utility-gray-400) !important;
   text-decoration: none !important;
 }
 
@@ -208,7 +208,7 @@
   background: var(--color-bg-primary) !important;
 }
 .dropdownContainer.selected:hover {
-  border-color: #b2b5bb !important;
+  border-color: var(--color-utility-gray-400) !important;
   text-decoration: none !important;
 }
 
@@ -286,7 +286,7 @@
   fill: var(--color-fg-warning-secondary) !important;
 }
 .dropdownContainer.warning:hover {
-  border-color: #b2b5bb !important;
+  border-color: var(--color-utility-gray-400) !important;
   text-decoration: none !important;
 }
 
@@ -454,7 +454,7 @@
 
 .filtersDropdown {
   background: var(--color-bg-primary);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-border-primary);
   border-radius: 8px;
   padding: 0;
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -471,7 +471,7 @@
   font-size: 12px;
   line-height: 16px;
   font-weight: 600;
-  color: #717680;
+  color: var(--color-text-quanternary);
   white-space: nowrap;
 }
 
@@ -496,31 +496,31 @@
   font-size: 14px;
   line-height: 20px;
   font-weight: 500;
-  color: #374151;
+  color: var(--color-text-secondary);
 }
 .filterOption:hover {
-  background: #f9fafb;
+  background: var(--color-bg-primary-2);
 }
 .filterOption:hover .filterLabel {
-  color: #1f2937;
+  color: var(--color-text-secondary-hover);
 }
 .filterOption:active {
-  background: #f3f4f6;
+  background: var(--color-bg-secondary-hover);
 }
 
 .countBadge {
-  background-color: #0a0d12 !important;
+  background-color: var(--color-bg-primary-solid) !important;
   border-radius: 4px !important;
   border-color: transparent !important;
 }
 .countBadge > span {
-  color: #ffffff !important;
+  color: var(--color-text-white) !important;
   font-weight: 500 !important;
   font-size: 14px !important;
   line-height: 20px !important;
 }
 .countBadge > button {
-  color: #ffffff !important;
+  color: var(--color-text-white) !important;
   opacity: 0.7 !important;
 }
 .countBadge > button:hover {
@@ -528,23 +528,23 @@
   background-color: rgba(255, 255, 255, 0.1) !important;
 }
 .countBadge > button svg {
-  color: #ffffff !important;
-  fill: #ffffff !important;
+  color: var(--color-text-white) !important;
+  fill: var(--color-fg-white) !important;
 }
 
 .countBadgeDisabled {
-  background-color: #ffffff !important;
-  border: 1px solid #d5d7da !important;
+  background-color: var(--color-bg-primary) !important;
+  border: 1px solid var(--color-border-primary) !important;
   border-radius: 4px !important;
 }
 .countBadgeDisabled > span {
-  color: #a4a7ae !important;
+  color: var(--color-text-disabled) !important;
   font-weight: 500 !important;
   font-size: 14px !important;
   line-height: 20px !important;
 }
 .countBadgeDisabled > button {
-  color: #a4a7ae !important;
+  color: var(--color-text-disabled) !important;
   opacity: 0.7 !important;
   cursor: not-allowed !important;
   pointer-events: none !important;
@@ -554,8 +554,8 @@
   background-color: transparent !important;
 }
 .countBadgeDisabled > button svg {
-  color: #a4a7ae !important;
-  fill: #a4a7ae !important;
+  color: var(--color-text-disabled) !important;
+  fill: var(--color-text-disabled) !important;
 }
 
 .selectedText {
@@ -576,11 +576,11 @@
   align-items: center;
   justify-content: center;
   background: var(--color-bg-primary);
-  color: #a4a7ae;
+  color: var(--color-text-placeholder);
   font-family: Jakarta;
   font-size: 12px;
   font-weight: 500;
-  border: 1px solid #e9eaeb;
+  border: 1px solid var(--color-border-secondary);
   border-radius: 4px;
   padding: 1px 4px;
   user-select: none;
@@ -595,7 +595,7 @@
   gap: 8px;
   padding: 10px 12px;
   background: var(--color-bg-primary);
-  border: 1px solid #d5d7da;
+  border: 1px solid var(--color-border-primary);
   border-radius: 8px;
   box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.04), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
   transition: all 0.2s ease-in-out;
@@ -610,7 +610,7 @@
   padding: 10px 12px;
 }
 .searchContainer.focus {
-  border: 2px solid #2e90fa;
+  border: 2px solid var(--color-border-brand);
   padding: 9px 11px;
   box-shadow: none;
 }
@@ -622,31 +622,31 @@
 }
 .searchContainer.disabled {
   background: var(--color-bg-primary-2);
-  border: 1px solid #d5d7da;
+  border: 1px solid var(--color-border-primary);
   cursor: not-allowed;
   box-shadow: none;
 }
 .searchContainer.disabled .searchInput {
   background: transparent;
-  color: #a4a7ae;
+  color: var(--color-text-placeholder);
   cursor: not-allowed;
 }
 .searchContainer.disabled .searchIcon svg {
-  color: #a4a7ae;
+  color: var(--color-text-placeholder);
 }
 .searchContainer.error {
-  border: 1px solid #f04438;
+  border: 1px solid var(--color-border-error);
   background: var(--color-bg-primary);
 }
 .searchContainer.error:hover {
-  border-color: #d92d20;
+  border-color: var(--color-fg-error-primary);
 }
 .searchContainer.warning {
-  border: 1px solid #f79009;
+  border: 1px solid var(--color-fg-warning-secondary);
   background: var(--color-bg-primary);
 }
 .searchContainer.warning:hover {
-  border-color: #dc6803;
+  border-color: var(--color-fg-warning-primary);
 }
 
 .searchIcon {
@@ -657,7 +657,7 @@
 .searchIcon svg {
   width: 100%;
   height: 100%;
-  color: #535862;
+  color: var(--color-text-tertiary);
   transition: color 0.2s ease-in-out;
 }
 
@@ -670,7 +670,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #181d27;
+  color: var(--color-text-primary);
   min-width: 120px;
 }
 .searchInput .textField {
@@ -720,14 +720,14 @@
   font-weight: 400 !important;
   font-size: 16px !important;
   line-height: 24px !important;
-  color: #181d27 !important;
+  color: var(--color-text-primary) !important;
   min-width: 120px !important;
   padding: 0 !important;
   margin: 0 !important;
   box-shadow: none !important;
 }
 .searchInput .mainInput::placeholder {
-  color: #a4a7ae !important;
+  color: var(--color-text-placeholder) !important;
   font-weight: 400 !important;
 }
 .searchInput .mainInput:focus {
@@ -793,7 +793,7 @@
 }
 .searchInput.searchInputFilled .mainInput {
   font-weight: 400 !important;
-  color: #181d27 !important;
+  color: var(--color-text-primary) !important;
 }
 
 .shortcutDisplay {
@@ -801,7 +801,7 @@
   align-items: center;
   justify-content: center;
   background: var(--color-bg-primary);
-  border: 1px solid #e9eaeb;
+  border: 1px solid var(--color-border-secondary);
   border-radius: 4px;
   padding: 1px 4px;
   user-select: none;
@@ -813,7 +813,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  color: #a4a7ae;
+  color: var(--color-text-placeholder);
   white-space: nowrap;
 }
 
@@ -843,7 +843,7 @@
   align-items: center;
   gap: 3px;
   background: var(--color-bg-primary);
-  border: 1px solid #d5d7da;
+  border: 1px solid var(--color-border-primary);
   border-radius: 6px;
   padding: 4px 8px 4px 8px;
   height: 24px;
@@ -858,7 +858,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  color: #717680;
+  color: var(--color-text-quanternary);
   white-space: nowrap;
 }
 
@@ -867,7 +867,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  color: #414651;
+  color: var(--color-text-secondary);
   white-space: nowrap;
 }
 
@@ -876,7 +876,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  color: #414651;
+  color: var(--color-text-secondary);
   background: transparent;
   border: none;
   outline: none;
@@ -887,7 +887,7 @@
   max-width: 100px;
 }
 .tagValueInput::placeholder {
-  color: #a4a7ae;
+  color: var(--color-text-placeholder);
   font-weight: 400;
 }
 
@@ -900,13 +900,13 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #717680;
+  color: var(--color-text-quanternary);
   font-size: 10px;
   line-height: 1;
   padding: 0;
 }
 .tagClose:hover {
-  color: #414651;
+  color: var(--color-text-secondary);
   background-color: rgba(0, 0, 0, 0.05);
   border-radius: 2px;
 }
@@ -914,14 +914,14 @@
 .tagKey {
   font-family: Jakarta;
   font-weight: 400;
-  color: #717680;
+  color: var(--color-text-quanternary);
   white-space: nowrap;
 }
 
 .tagValue {
   font-family: Jakarta;
   font-weight: 500;
-  color: #414651;
+  color: var(--color-text-secondary);
   cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
@@ -943,14 +943,14 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  color: #414651;
+  color: var(--color-text-secondary);
   min-width: 20px;
   width: auto;
   padding: 0;
   margin: 0;
 }
 .tagInput::placeholder {
-  color: #a4a7ae;
+  color: var(--color-text-placeholder);
   font-weight: 400;
 }
 .tagInput:focus {
@@ -959,7 +959,7 @@
 
 .filterKeyTag {
   background: var(--color-bg-primary);
-  border: 1px solid #d5d7da;
+  border: 1px solid var(--color-border-primary);
   border-radius: 6px;
   padding: 4px 8px;
   display: flex;
@@ -974,6 +974,6 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  color: #414651;
+  color: var(--color-text-secondary);
   white-space: nowrap;
 }

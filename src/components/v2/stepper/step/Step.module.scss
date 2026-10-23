@@ -1,3 +1,4 @@
+@use '../../../../styles/tokens' as tokens;
 @import '../../../../styles';
 
 .root {
@@ -142,18 +143,18 @@
 	&.error {
 		.left {
 			.icon-container {
-				background: $white;
-				border-color: $primary-color1;
-				color: $primary-color1;
+				background: tokens.$color-bg-primary;
+				border-color: tokens.$color-fg-error-primary;
+				color: tokens.$color-fg-error-primary;
 			}
 		}
 
 		.right {
 			.title {
-				color: $primary-color1;
+				color: tokens.$color-text-error-primary;
 			}
 			.description {
-				color: rgba($primary-color1, 0.6);
+				color: color-mix(in srgb, tokens.$color-text-error-primary 60%, transparent);
 			}
 		}
 	}

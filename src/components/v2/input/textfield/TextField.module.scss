@@ -1,3 +1,5 @@
+@use '../../../../styles/tokens' as tokens;
+
 // TextField Component Styles - Based on Figma Design System
 
 .textField {
@@ -337,10 +339,10 @@
 	}
 
 	// Custom selection styling. Not covered by a Figma state (native browser
-	// selection highlight), so left as a fixed brand blue rather than guessed.
+	// selection highlight), so uses the brand solid token.
 	&::selection {
-		background: #175cd3;
-		color: white;
+		background: tokens.$color-bg-brand-solid-hover;
+		color: tokens.$color-text-white;
 	}
 
 	&:focus {
@@ -418,13 +420,13 @@
 	background: var(--color-bg-primary);
 	border: 1px solid var(--color-border-primary);
 	box-shadow:
-		0px 0px 1px 0px rgba(0, 0, 0, 0.04),
-		0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+		0px 0px 1px 0px rgba(tokens.$base-color-base-black, 0.04),
+		0px 1px 2px 0px rgba(tokens.$base-color-base-black, 0.06);
 
 	// No distinct hover border is defined in the Figma spec for this state; kept as a
 	// non-token hover affordance since there's nothing in the design to match it to.
 	&:hover {
-		border-color: #b2b5bb;
+		border-color: tokens.$color-utility-gray-400;
 	}
 }
 
@@ -433,11 +435,11 @@
 	background: var(--color-bg-primary);
 	border: 1px solid var(--color-border-primary);
 	box-shadow:
-		0px 0px 1px 0px rgba(0, 0, 0, 0.04),
-		0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+		0px 0px 1px 0px rgba(tokens.$base-color-base-black, 0.04),
+		0px 1px 2px 0px rgba(tokens.$base-color-base-black, 0.06);
 
 	&:hover {
-		border-color: #b2b5bb;
+		border-color: tokens.$color-utility-gray-400;
 	}
 }
 
@@ -606,8 +608,8 @@
 	height: 44px !important;
 	flex-shrink: 0 !important;
 	box-shadow:
-		0px 0px 1px 0px rgba(0, 0, 0, 0.04),
-		0px 1px 2px 0px rgba(0, 0, 0, 0.06) !important;
+		0px 0px 1px 0px rgba(tokens.$base-color-base-black, 0.04),
+		0px 1px 2px 0px rgba(tokens.$base-color-base-black, 0.06) !important;
 	font-family: Jakarta !important;
 	font-weight: 500 !important;
 	font-size: 14px !important;
@@ -622,7 +624,7 @@
 	// border-color tweaks here are kept as non-token hover affordances.
 	&:hover {
 		background: var(--color-bg-primary-hover) !important;
-		border-color: #b2b5bb !important;
+		border-color: tokens.$color-utility-gray-400 !important;
 		border-left-color: var(--color-border-primary) !important; // Keep separator gray
 		color: var(--color-text-tertiary) !important;
 		text-decoration: none !important;
