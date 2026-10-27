@@ -1,0 +1,40 @@
+@use './tokens' as tokens;
+
+// Layout helpers shared by v2 components. Kept here (not in the v1 styles) so the v2
+// package has no dependency on the v1 stylesheets.
+
+@mixin flex($direction: row, $justify: center, $align: center) {
+	display: flex;
+	flex-direction: $direction;
+	justify-content: $justify;
+	align-items: $align;
+}
+
+@mixin ellipsis {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+@mixin remove-scrollbar {
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+@mixin custom-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: thin;
+
+	&::-webkit-scrollbar {
+		width: 0.25rem;
+		background: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		border-radius: 0.25rem;
+		background: tokens.$color-border-primary;
+	}
+}

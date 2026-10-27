@@ -1,6 +1,6 @@
 import { forwardRef, type ForwardedRef, type ReactElement } from 'react';
-import { classes } from '../../../../utils';
-import styles from './TabButtonBase.module.css';
+import { classes } from '../../utils';
+import styles from './TabButtonBase.module.scss';
 import type { TabButtonBaseProps } from './types';
 
 const TabButtonBase = forwardRef(

@@ -1,15 +1,20 @@
-@use '../../../styles/tokens' as tokens;
+@use '../styles/tokens' as tokens;
+
+// Figma "tool tip": dark surface, 8/12 padding (12 all round with supporting text), radius-md,
+// shadow-lg, and a 12px square rotated 45deg as the pointer.
+$pointer-size: 0.75rem;
 
 .tooltip {
 	position: relative;
-	background-color: tokens.$color-bg-primary-black; /* Always-dark surface regardless of app theme */
+	background-color: tokens.$color-bg-primary-solid;
 	color: tokens.$color-text-white;
 	padding: tokens.$spacing-md tokens.$spacing-lg;
-	border-radius: tokens.$radius-sm;
+	border-radius: tokens.$radius-md;
+	// Figma Shadow-lg, which has no token yet.
 	box-shadow:
-		0 4px 14px rgba(tokens.$base-color-base-black, 0.15),
-		0 0 1px rgba(tokens.$base-color-base-white, 0.1);
-	max-width: 320px;
+		0 10px 15px -3px rgba(tokens.$base-color-base-black, 0.1),
+		0 4px 6px -2px rgba(tokens.$base-color-base-black, 0.06);
+	max-width: 334px;
 	pointer-events: none; /* By default allow mouse to click straight through into the app */
 	will-change: transform, opacity;
 	box-sizing: border-box;
@@ -19,20 +24,30 @@
 	pointer-events: auto; /* Required exclusively if they want to click links inside */
 }
 
-/* Enforce the text styling purely for the component text */
-.textContent {
-	font-size: 13px !important;
-	font-weight: 600 !important;
-	line-height: 1.4 !important;
-	color: inherit !important;
-	font-family: tokens.$font-family-base;
+.tooltip.withSupporting {
+	display: flex;
+	flex-direction: column;
+	gap: tokens.$spacing-xxs;
+	padding: tokens.$spacing-lg;
+}
+
+// Text sets its own colour, so these need the extra class to win.
+.tooltip .title {
+	display: block;
+	color: tokens.$color-text-white;
+}
+
+.tooltip .supporting {
+	display: block;
+	color: tokens.$color-text-tooltips-supporting;
+	white-space: pre-wrap;
 }
 
 .arrow {
 	position: absolute;
-	width: 8px;
-	height: 8px;
-	background-color: tokens.$color-bg-primary-black;
+	width: $pointer-size;
+	height: $pointer-size;
+	background-color: tokens.$color-bg-primary-solid;
 	transform: rotate(45deg);
 	border-radius: 1px;
 }

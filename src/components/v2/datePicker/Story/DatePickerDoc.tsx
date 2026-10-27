@@ -1,5 +1,5 @@
 import { Heading, Source, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { PropsTable } from '../../../../components/docs';
+import { PropsTable } from '../../docs';
 
 const propsData = [
 	{
@@ -92,7 +92,7 @@ const DatePickerDoc = () => (
 		<Heading>Usage</Heading>
 		<Source
 			language='tsx'
-			code={`import { DatePicker } from '@banyan_cloud/roots';
+			code={`import { DatePicker } from '@banyandata-cloud/roots';
 
 const MyComponent = () => (
   <DatePicker

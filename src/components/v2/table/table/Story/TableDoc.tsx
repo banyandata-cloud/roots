@@ -1,5 +1,5 @@
 import { Heading, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../../docs';
+import { LinkHeader, PropsTable } from '../../../docs';
 
 const propsData = [
 	{
@@ -84,22 +84,14 @@ const propsData = [
 	},
 	{
 		prop: 'tableHeader',
-		type: '(props: { toggleDrawer? }) => ReactNode',
-		description:
-			'Renders a custom toolbar above the table. Receives toggleDrawer for opening the row drawer.',
+		type: '() => ReactNode',
+		description: 'Renders a custom toolbar above the table.',
 		default: 'undefined',
 	},
 	{
 		prop: 'tableInfo',
 		type: '{ title?: string; description?: string }',
 		description: 'Title and description displayed in the table toolbar.',
-		default: 'undefined',
-	},
-	{
-		prop: 'tableDrawerProps',
-		type: 'TableDrawerProps | ((data) => TableDrawerProps)',
-		description:
-			'Config for the side drawer that opens on row interaction. Accepts a static object or a function receiving row data.',
 		default: 'undefined',
 	},
 	{
@@ -384,12 +376,6 @@ const tableCellPropsData = [
 		default: 'undefined',
 	},
 	{
-		prop: 'toggleDrawer',
-		type: '(index: number, standalone: boolean) => void',
-		description: 'Callback to open the row drawer from within a cell.',
-		default: 'null',
-	},
-	{
 		prop: 'style',
 		type: 'CSSProperties',
 		description: 'Inline styles applied to the cell.',
@@ -427,12 +413,6 @@ const tableBodyPropsData = [
 		prop: 'setCheckedRows',
 		type: '(rows: Record<string, unknown>[]) => void',
 		description: 'Setter to update the checked rows state.',
-		default: 'undefined',
-	},
-	{
-		prop: 'toggleDrawer',
-		type: '(props: object) => void',
-		description: 'Callback to open the row drawer.',
 		default: 'undefined',
 	},
 ];
@@ -496,7 +476,7 @@ const TableDoc = () => (
 		<Title />
 		<Subtitle>
 			Table renders structured data in rows and columns with support for sorting, column
-			filters, checkboxes, sticky columns, infinite scroll, row drawers, and a fully
+			filters, checkboxes, sticky columns, infinite scroll, and a fully
 			customisable toolbar.
 		</Subtitle>
 
@@ -561,7 +541,7 @@ const TableDoc = () => (
 		<Heading>Usage</Heading>
 		<Source
 			language='tsx'
-			code={`import { Table } from '@banyan_cloud/roots';
+			code={`import { Table } from '@banyandata-cloud/roots';
 
 const MyComponent = () => (
   <Table

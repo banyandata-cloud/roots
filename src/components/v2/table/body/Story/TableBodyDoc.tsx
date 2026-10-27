@@ -1,5 +1,5 @@
 import { Heading, Source, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../../docs';
+import { LinkHeader, PropsTable } from '../../../docs';
 
 const propsData = [
 	{
@@ -83,12 +83,6 @@ const propsData = [
 		default: 'undefined',
 	},
 	{
-		prop: 'toggleDrawer',
-		type: '(props: object) => void',
-		description: 'Callback to open the side drawer for a row.',
-		default: 'undefined',
-	},
-	{
 		prop: 'customCells',
 		type: 'CustomCells',
 		description: 'Custom header or body cell renderers mapped by column id.',
@@ -107,7 +101,7 @@ const TableBodyDoc = () => (
 		<Title />
 		<Subtitle>
 			TableBody renders the row data of a table. It handles row selection, checkboxes, active
-			state, expandable rows, and drawer toggling. Always wrap it in a native table element
+			state and expandable rows. Always wrap it in a native table element
 			and manage checkedRows state externally.
 		</Subtitle>
 
@@ -123,7 +117,7 @@ const TableBodyDoc = () => (
 		<Heading>Usage</Heading>
 		<Source
 			language='tsx'
-			code={`import { TableBody } from '@banyan_cloud/roots';
+			code={`import { TableBody } from '@banyandata-cloud/roots';
 import { useState } from 'react';
 
 const MyComponent = () => {

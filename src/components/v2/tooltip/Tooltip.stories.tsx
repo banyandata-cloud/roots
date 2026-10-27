@@ -50,6 +50,24 @@ export const Default: Story = {
 				padding: '60px',
 			}}>
 			<div>
+				<h3 style={headingStyle}>Supporting Text</h3>
+				<div style={{ display: 'flex', justifyContent: 'center', gap: '24px' }}>
+					<Tooltip
+						content='This is a tooltip'
+						supportingText='Tooltips are used to describe or identify an element. In most scenarios, tooltips help the user understand meaning, function or alt-text.'
+						position='top'>
+						<div style={triggerStyle}>Hover me</div>
+					</Tooltip>
+					<Tooltip
+						content='This is a tooltip'
+						supportingText='Tooltips are used to describe or identify an element.'
+						position='bottom'
+						pointerPosition='start'>
+						<div style={triggerStyle}>Pointer at start</div>
+					</Tooltip>
+				</div>
+			</div>
+			<div>
 				<h3 style={headingStyle}>Position Variants</h3>
 				<div
 					style={{

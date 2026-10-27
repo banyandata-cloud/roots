@@ -8,37 +8,63 @@ exports[`Alert — Snapshot Rendering snapshot: alert open state 1`] = `
     data-testid="mock-popper"
   >
     <div
-      class="root info card light shadow position-bottom-center"
+      class="root info card shadow position-bottom-center"
     >
       <div
-        class="left"
+        class="body"
       >
-        <div
-          class="icon-container info"
+        <span
+          class="icon-container"
         >
-          <div
+          <svg
+            aria-hidden="true"
             class="icon"
-            data-testid="icon-info"
-          />
-        </div>
+            fill="none"
+            height="20"
+            viewBox="0 0 20 20"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="10"
+              cy="10"
+              fill="currentColor"
+              r="10"
+            />
+            <circle
+              class="mark-fill"
+              cx="9.75"
+              cy="6.39"
+              r="0.75"
+            />
+            <rect
+              class="mark-fill"
+              height="6.75"
+              width="1.5"
+              x="9"
+              y="8.08"
+            />
+          </svg>
+        </span>
         <div
           class="content"
         >
-          <span
-            class="title"
+          <div
+            class="text"
           >
-            Snapshot Title
-          </span>
-          <span
-            class="description"
-          >
-            Snap Desc
-          </span>
+            <span
+              class="title"
+            >
+              Snapshot Title
+            </span>
+            <span
+              class="description"
+            >
+              Snap Desc
+            </span>
+          </div>
         </div>
       </div>
-      <div
-        class="actions"
-      />
     </div>
   </div>
 </DocumentFragment>

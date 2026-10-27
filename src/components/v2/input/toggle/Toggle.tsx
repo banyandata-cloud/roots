@@ -1,10 +1,12 @@
-import React, { useRef, useState } from 'react';
-import { classes, inputHelper } from '../../../../utils';
-import { TickIcon } from '../../icons';
-import type { ToggleProps } from '../toggle/types';
-import styles from './Toggle.module.css';
+import { forwardRef } from 'react';
+import { classes } from '../../utils';
+import ToggleTick from './assets/ToggleTick';
+import type { ToggleProps } from './types';
+import styles from './Toggle.module.scss';
 
-const Toggle: React.FC<ToggleProps> = (props) => {
+// The checked look is driven by the native input (`input:checked + .pill`), so the component
+// keeps no state of its own.
+const Toggle = forwardRef<HTMLInputElement, ToggleProps>((props, ref) => {
 	const {
 		label,
 		checked,
@@ -16,59 +18,37 @@ const Toggle: React.FC<ToggleProps> = (props) => {
 		readonly,
 	} = props;
 
-	const { current: isControlled } = useRef<boolean>(checked !== undefined);
-
-	const [uncontrolledChecked, setUncontrolledChecked] = useState<boolean | undefined>(
-		defaultChecked
-	);
-
-	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		if (readonly || disabled) {
-			event.preventDefault();
-			return;
-		}
-
-		const helperResult = (
-			inputHelper as unknown as
-				| ((e: React.ChangeEvent<HTMLInputElement>) => { fieldValue?: boolean })
-				| undefined
-		)?.(event);
-		const fieldValue = helperResult?.fieldValue ?? event.target.checked;
-
-		if (isControlled) {
-			onChange?.(event, fieldValue);
-		} else {
-			setUncontrolledChecked(fieldValue);
-		}
-	};
-
-	const isChecked: boolean | undefined = isControlled ? checked : uncontrolledChecked;
-
 	return (
 		<label
 			className={classes(
 				styles.root,
 				styles[`size-${size}`],
-				readonly ? styles.readonly : '',
-				disabled ? styles.disabled : '',
+				readonly && styles.readonly,
+				disabled && styles.disabled,
 				className
-			)}>
-			{label && <span data-elem='label'>{label}</span>}
+			)}
+		>
+			{label && <span className={styles.label}>{label}</span>}
 			<input
-				disabled={disabled || readonly}
+				ref={ref}
 				type='checkbox'
-				checked={isChecked}
-				onChange={handleChange}
+				className={styles.input}
+				disabled={disabled}
+				aria-readonly={readonly || undefined}
+				{...(checked !== undefined && { checked })}
+				{...(defaultChecked !== undefined && { defaultChecked })}
+				onClick={readonly ? (event) => event.preventDefault() : undefined}
+				onChange={(event) => {
+					if (!readonly && !disabled) onChange?.(event, event.target.checked);
+				}}
 			/>
-			<div className={styles.pill}>
-				{size === 's' && (
-					<span className={classes(styles.tick, !isChecked && styles['hide-tick'])}>
-						<TickIcon />
-					</span>
-				)}
-			</div>
+			<span className={styles.pill}>
+				<span className={styles.knob}>{size === 's' && <ToggleTick />}</span>
+			</span>
 		</label>
 	);
-};
+});
+
+Toggle.displayName = 'Toggle';
 
 export default Toggle;

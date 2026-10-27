@@ -1,0 +1,108 @@
+@use 'sass:map';
+@use '../../styles/tokens' as tokens;
+
+// Figma "step icon" (2037:1226). The medium icon is the small one scaled by 4/3, so its ring is
+// 2.67px / 5.33px instead of the 2px / 4px of the shared focus-ring effect.
+$sizes: (
+	sm: (
+		box: tokens.$spacing-3xl,
+		dot: tokens.$spacing-md,
+		border: 1.5px,
+		number-border: 1px,
+		ring-inner: 2px,
+		ring-outer: 4px,
+		number-style: 'body-small',
+	),
+	md: (
+		box: tokens.$spacing-4xl,
+		dot: 0.625rem,
+		border: 2px,
+		number-border: 1.33px,
+		ring-inner: 2.67px,
+		ring-outer: 5.33px,
+		number-style: 'body',
+	),
+);
+
+.icon {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	box-sizing: border-box;
+	border-radius: 50%;
+	background: tokens.$color-bg-primary;
+	color: tokens.$color-fg-white;
+
+	&[data-kind='icon'][data-status='incomplete'] {
+		.dot {
+			background: tokens.$color-fg-disabled-subtle;
+		}
+	}
+
+	&[data-status='current'][data-kind='icon'] {
+		background: tokens.$color-bg-brand-solid;
+
+		.dot {
+			background: tokens.$color-fg-white;
+		}
+	}
+
+	&[data-status='completed'] {
+		background: tokens.$color-bg-brand-solid;
+
+		&[data-kind='number'] {
+			background: tokens.$color-bg-sucess-solid;
+		}
+	}
+
+	&[data-kind='number']:not([data-status='completed']) .number {
+		color: tokens.$color-text-secondary;
+	}
+
+	&[data-kind='number'][data-status='incomplete'] .number {
+		color: tokens.$color-text-disabled;
+	}
+}
+
+.dot {
+	border-radius: 50%;
+}
+
+.check {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+}
+
+@each $size, $spec in $sizes {
+	.icon[data-size='#{$size}'] {
+		width: map.get($spec, box);
+		height: map.get($spec, box);
+
+		.dot {
+			width: map.get($spec, dot);
+			height: map.get($spec, dot);
+		}
+
+		.number {
+			@include tokens.text-style(map.get($spec, number-style), 'semibold');
+		}
+
+		&[data-kind='icon'][data-status='incomplete'] {
+			border: map.get($spec, border) solid tokens.$color-border-disable-subtle;
+		}
+
+		&[data-kind='number']:not([data-status='completed']) {
+			border: map.get($spec, number-border) solid tokens.$color-border-secondary;
+		}
+
+		&[data-kind='icon'][data-status='current'] {
+			box-shadow:
+				0 0 0 map.get($spec, ring-inner) tokens.$color-bg-primary,
+				0 0 0 map.get($spec, ring-outer) tokens.$color-fg-brand-primary;
+		}
+	}
+}

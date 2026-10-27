@@ -1,5 +1,5 @@
 import { useEffect, useState, type CSSProperties, type ReactElement } from 'react';
-import { Toggle } from '../../../toggle';
+import { Toggle } from '../../input/toggle';
 
 type ThemeType = 'light' | 'dark';
 
@@ -10,28 +10,13 @@ interface ThemedContainerProps {
     children: ReactElement;
 }
 
-const themeOptions = [
-    {
-        title: 'Light mode',
-        value: 'light',
-    },
-    {
-        title: 'Dark mode',
-        value: 'dark',
-    },
-];
-
 const ThemedContainer = (props: ThemedContainerProps): ReactElement => {
     const { theme, style, className, children } = props;
-    const [colorMode, setColorMode] = useState<string | string[]>(theme ?? 'light');
+    const [colorMode, setColorMode] = useState<ThemeType>(theme ?? 'light');
 
     useEffect(() => {
-        document.documentElement.setAttribute('data-theme', colorMode as string);
+        document.documentElement.setAttribute('data-theme', colorMode);
     }, [colorMode]);
-
-    const updateColorMode = (value: string | string[]) => {
-        setColorMode(value);
-    };
 
     return (
         <div
@@ -47,14 +32,18 @@ const ThemedContainer = (props: ThemedContainerProps): ReactElement => {
                     display: 'flex',
                     flex: 'row',
                     width: '100%',
-                    alignItems: 'flex-end',
+                    alignItems: 'center',
                     justifyContent: 'flex-end',
+                    gap: '0.5rem',
+                    fontSize: '0.75rem',
+                    color: 'var(--color-text-secondary, #414651)',
                 }}>
+                <span>Dark mode</span>
                 <Toggle
-                    options={themeOptions}
-                    value={colorMode}
-                    onChange={updateColorMode}
-                    smooth
+                    checked={colorMode === 'dark'}
+                    onChange={(_event, checked) => {
+                        setColorMode(checked ? 'dark' : 'light');
+                    }}
                 />
             </div>
             {children}

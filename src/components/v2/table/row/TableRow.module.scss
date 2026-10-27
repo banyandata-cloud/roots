@@ -1,100 +1,14 @@
-@use '../../../../styles/tokens' as tokens;
-@import '../../../../styles';
+@use '../../styles/tokens' as tokens;
+@use '../../styles/mixins' as mixins;
 
+// Row-level states (Figma "row-32/40/48px"). The resting look of header and body cells lives in
+// TableCell.module.scss; this file only changes cells when the row is hovered, selected,
+// active, focused or disabled.
 .root {
-	@include flex(row, flex-start);
+	@include mixins.flex(row, flex-start);
 
 	&:focus {
 		outline: none;
-	}
-
-	&.header-row {
-		> th[data-elem='base-cell'] {
-			background: tokens.$color-bg-secondary;
-			border-bottom: 1px solid tokens.$color-border-tertiary;
-
-			> [data-elem='component2'] {
-				> [data-elem='text'] {
-					color: tokens.$color-text-quanternary;
-				}
-			}
-		}
-
-		> th[data-elem='base-cell']:hover {
-			background: tokens.$color-bg-secondary-hover !important;
-
-			> [data-elem='component2'] {
-				> [data-elem='text'] {
-					color: tokens.$color-text-tertiary;
-				}
-			}
-		}
-
-		> [data-elem='base-cell'].expandable-cell {
-			background: transparent;
-			> [data-elem='component2'] {
-				width: 48px;
-				visibility: hidden;
-			}
-		}
-	}
-
-	&.body-row {
-		background: tokens.$color-bg-primary;
-
-		&:not([data-disabled='true']):hover {
-			> td[data-elem='base-cell'] {
-				background: tokens.$color-bg-primary-hover !important;
-				border-color: tokens.$color-border-tertiary !important;
-
-				> [data-elem='component2'] > [data-elem='text'] {
-					color: tokens.$color-text-primary !important;
-				}
-			}
-		}
-
-		> td[data-elem='base-cell']:hover {
-			background: tokens.$color-bg-primary-hover !important;
-			border-color: tokens.$color-border-tertiary !important;
-			> [data-elem='component2'] {
-				> [data-elem='text'] {
-					color: tokens.$color-text-primary;
-				}
-			}
-		}
-		&[data-disabled='true'] > td[data-elem='base-cell']:hover {
-			> [data-elem='component2'] {
-				> [data-elem='text'] {
-					color: tokens.$color-text-disabled !important;
-				}
-			}
-		}
-
-		&[data-active='true'] {
-			> [data-elem='base-cell'] {
-				background: tokens.$color-bg-tertiary;
-				> [data-elem='component2'] {
-					> [data-elem='text'] {
-						color: tokens.$color-text-primary !important;
-					}
-				}
-			}
-		}
-
-		> td[data-elem='base-cell']:focus-visible {
-			outline: 1px solid tokens.$color-border-brand !important;
-			outline-offset: -1px;
-			background: tokens.$color-bg-primary !important;
-		}
-	}
-
-	> [data-elem='base-cell'] {
-		&:first-child {
-			padding-left: tokens.$spacing-xl;
-		}
-		&:last-child {
-			padding-right: tokens.$spacing-xl;
-		}
 	}
 
 	@each $size, $height in (sm: 32px, md: 40px, lg: 48px) {
@@ -103,100 +17,119 @@
 		}
 	}
 
+	// The 48px header has no right border in Figma; 32px and 40px do.
 	&.row-height-lg.header-row > th[data-elem='base-cell'] {
 		border-right: 0;
 	}
 
-	> [data-elem='base-cell'].expandable-cell {
-		padding-left: tokens.$spacing-xl;
-		padding-right: tokens.$spacing-xl;
-		overflow: visible;
-		> [data-elem='component2'] {
-			overflow: visible;
-			> [data-elem='text'] {
-				overflow: visible;
+	&.header-row > [data-elem='base-cell'].expandable-cell {
+		background: transparent;
+	}
+
+	&.body-row {
+		// Hover. Later rules in this block win over earlier ones at equal specificity.
+		&:hover > td[data-elem='base-cell'] {
+			background: tokens.$color-bg-primary-hover;
+
+			[data-elem='text'] {
+				color: tokens.$color-text-primary;
 			}
 		}
-	}
 
-	button.button[data-elem='base-cell'] {
-		.icon {
-			width: 24px;
-			height: 24px;
+		&[data-active='true'] > td[data-elem='base-cell'] {
+			background: tokens.$color-bg-tertiary;
 		}
 
-		&:disabled {
-			cursor: default;
-			.icon {
-				visibility: hidden;
+		// Selected keeps the resting text colour (Figma "Selected"); hover and a focused
+		// checkbox darken the row to bg-quenternary.
+		&[data-selected='true'] > td[data-elem='base-cell'] {
+			background: tokens.$color-bg-tertiary;
+
+			[data-elem='text'] {
+				color: tokens.$color-text-tertiary;
 			}
 		}
-	}
 
-	.expanded {
-		.button {
-			.icon {
-				transform: rotate(180deg);
+		&[data-selected='true']:hover > td[data-elem='base-cell'],
+		&[data-selected='true']:focus-within > td[data-elem='base-cell'] {
+			background: tokens.$color-bg-quenternary;
+
+			[data-elem='text'] {
+				color: tokens.$color-text-tertiary;
 			}
 		}
-	}
 
-	.disabled {
-		cursor: not-allowed;
-	}
+		// Cell focus: a 1px brand ring inside the cell on the resting background.
+		&:not([data-selected='true']) > td[data-elem='base-cell']:focus-visible {
+			outline: tokens.$spacing-1 solid tokens.$color-border-brand;
+			outline-offset: -1px;
+			background: tokens.$color-bg-primary;
+		}
 
-	td label,
-	th label {
-		background: transparent !important;
-	}
+		// Figma "Unselected + focus": a focused checkbox makes the label medium weight.
+		&:not([data-selected='true']) > td[data-elem='base-cell']:has(input:focus-visible) {
+			[data-elem='text'] {
+				font-weight: tokens.$font-weight-medium;
+				color: tokens.$color-text-secondary;
+				letter-spacing: 0.01rem;
+			}
+		}
 
-	input[type='checkbox']:focus {
-		outline: none;
-	}
-	&.body-row[data-selected='true'] {
-		> td[data-elem='base-cell'] {
-			background: tokens.$color-bg-tertiary !important;
-			border-color: tokens.$color-border-tertiary !important;
-			> [data-elem='component2'] {
-				> [data-elem='text'] {
-					color: tokens.$color-text-primary !important;
+		&[data-disabled='true'] {
+			pointer-events: none;
+
+			> td[data-elem='base-cell'] {
+				background: tokens.$color-bg-primary;
+
+				[data-elem='text'] {
+					color: tokens.$color-text-disabled;
 				}
 			}
 		}
-		&:hover > td[data-elem='base-cell'],
-		&:focus-within > td[data-elem='base-cell'] {
-			background: tokens.$color-bg-quenternary !important;
+	}
+
+	// Expand toggle (Figma "Enabled / Hover / Focus / Disable + expand"): a 24px arrow before the
+	// cell text; the cell takes bg-tertiary on hover.
+	.expand-toggle {
+		display: inline-flex;
+		flex-shrink: 0;
+		align-items: center;
+		justify-content: center;
+		width: 24px;
+		height: 24px;
+		padding: 0;
+		border: none;
+		border-radius: tokens.$radius-xxs;
+		background: transparent;
+		color: tokens.$color-fg-secondary;
+		cursor: pointer;
+
+		svg {
+			transition: transform 150ms ease;
+		}
+
+		&:focus-visible {
+			outline: tokens.$spacing-1 solid tokens.$color-border-brand;
+			outline-offset: 0;
+		}
+
+		&:disabled {
+			color: tokens.$color-fg-disabled;
+			cursor: default;
+		}
+
+		&[aria-expanded='true'] svg {
+			transform: rotate(180deg);
 		}
 	}
-	&[data-disabled='true'] {
-		background: tokens.$color-bg-primary;
+
+	.expand-spacer {
+		flex-shrink: 0;
+		width: 24px;
+		height: 24px;
 	}
 
-	/* body cell background */
-	&[data-disabled='true'] td {
-		background: tokens.$color-bg-primary !important;
-	}
-
-	/* text color */
-	&[data-disabled='true'] [data-elem='text'] {
-		color: tokens.$color-text-disabled !important;
-	}
-
-	/* icons */
-	&[data-disabled='true'] svg path {
-		stroke: tokens.$color-fg-disabled !important;
-		fill: tokens.$color-fg-disabled !important;
-	}
-
-	/* disable pointer interaction */
-	&[data-disabled='true'] {
-		pointer-events: none;
-	}
-	.disabled .cell-text {
-		color: tokens.$color-text-disabled !important;
-	}
-
-	.disabled:hover .cell-text {
-		color: tokens.$color-text-disabled !important;
+	&.body-row:has(.expand-toggle:hover) > td[data-elem='base-cell']:first-child {
+		background: tokens.$color-bg-tertiary;
 	}
 }

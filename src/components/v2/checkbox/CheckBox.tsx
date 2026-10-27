@@ -1,5 +1,5 @@
 import { forwardRef, useEffect, useRef, useState, type RefObject } from 'react';
-import { classes } from '../../../utils';
+import { classes } from '../utils';
 import ErrorIcon from '../icons/error/Error';
 import WarningIcon from '../icons/warning/Warning';
 import type { CheckboxProps } from './';

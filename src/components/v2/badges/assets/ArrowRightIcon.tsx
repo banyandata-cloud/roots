@@ -8,7 +8,7 @@ export interface ArrowRightIconProps {
 
 const ArrowRightIcon: React.FC<ArrowRightIconProps> = ({
 	size = 12,
-	color = '#717680',
+	color = 'var(--color-fg-quaternary)',
 	className,
 }) => {
 	return (

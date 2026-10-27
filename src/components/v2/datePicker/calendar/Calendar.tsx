@@ -1,12 +1,12 @@
 import type { ReactElement } from 'react';
 import { forwardRef } from 'react';
 import { isBefore, startOfMonth } from 'date-fns';
-import { classes } from '../../../../utils';
+import { classes } from '../../utils';
 import { buildDayInfo, buildMonthMatrix, formatMonthTitle } from '../utils';
 import DayCell from '../dayCell/DayCell';
 import MonthHeader from '../monthHeader/MonthHeader';
 import WeekdayRow from '../weekdayRow/WeekdayRow';
-import styles from './Calendar.module.css';
+import styles from './Calendar.module.scss';
 import type { CalendarProps } from './types';
 
 const DAYS_PER_WEEK = 7;

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import ThemedContainer from '../../helpers/themedContainer/ThemedContainer';
+import ThemedContainer from '../helpers/themedContainer/ThemedContainer';
 import AccordionDoc from '../accordion/Story/AccordionDoc';
 import Accordion from './Accordion';
 

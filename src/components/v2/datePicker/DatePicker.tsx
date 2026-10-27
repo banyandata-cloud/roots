@@ -9,9 +9,9 @@ import {
 import { AnimatePresence, motion } from 'framer-motion';
 import type { ReactElement } from 'react';
 import { useEffect } from 'react';
-import { classes } from '../../../utils';
-import { Popper } from '../../popper';
-import styles from './DatePicker.module.css';
+import { classes } from '../utils';
+import { Popper } from '../popper';
+import styles from './DatePicker.module.scss';
 import Footer from './footer/Footer';
 import PresetPanel from './presetPanel/PresetPanel';
 import RangeBody from './rangeBody/RangeBody';

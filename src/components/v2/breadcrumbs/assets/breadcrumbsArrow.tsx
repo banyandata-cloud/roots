@@ -11,7 +11,7 @@ interface BreadcrumbsArrowProps {
 const BreadcrumbsArrow: React.FC<BreadcrumbsArrowProps> = ({
 	width = 16,
 	height = 16,
-	color = '#A4A7AE',
+	color = 'var(--color-fg-quaternary)',
 	className,
 	style,
 }) => {
@@ -32,7 +32,8 @@ const BreadcrumbsArrow: React.FC<BreadcrumbsArrowProps> = ({
 				...style,
 			}}
 			aria-hidden='true'
-			role='img'>
+			role='img'
+		>
 			<path
 				d='M6 4L10 8L6 12'
 				stroke={color}

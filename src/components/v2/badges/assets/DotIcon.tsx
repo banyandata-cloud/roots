@@ -6,7 +6,11 @@ export interface DotIconProps {
 	className?: string | undefined;
 }
 
-const DotIcon: React.FC<DotIconProps> = ({ size = 8, color = '#717680', className }) => {
+const DotIcon: React.FC<DotIconProps> = ({
+	size = 8,
+	color = 'var(--color-fg-quaternary)',
+	className,
+}) => {
 	return (
 		<svg
 			xmlns='http://www.w3.org/2000/svg'

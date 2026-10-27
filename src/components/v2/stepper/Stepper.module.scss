@@ -1,349 +1,273 @@
-@use '../../../styles/tokens' as tokens;
-@import '../../../styles';
-[data-theme='dark'] {
-	--stepper-current-ring: var(--color-bg-primary-alt);
-	--stepper-progress-active: var(--color-fg-white);
-}
+@use 'sass:map';
+@use '../styles/tokens' as tokens;
 
-$primary-blue: tokens.$color-fg-brand-primary;
-$gray-200: tokens.$color-border-secondary;
-$border-secondary: tokens.$color-border-secondary;
-$gray-500: tokens.$color-text-quanternary;
-$gray-900: tokens.$color-text-primary;
-$white: tokens.$color-fg-white;
+// Figma "progress steps" (2067:1010): steps are 68px apart (33px for the text-line bar). Neither
+// has a spacing token.
+$step-gap: 4.25rem;
+$bar-gap: 2.0625rem;
+// Figma "step base": the vertical connector is at least 43px (icon) / 30px (number) tall.
+$icon-connector-min: 2.6875rem;
+$number-connector-min: 1.875rem;
+$connector-width: 2px;
+$bar-width: 4px;
+// Dotted connector: 2px round dots, 4px apart.
+$dot-pitch: 6px;
 
-$text-heading: tokens.$color-text-secondary;
-$below-text: tokens.$color-text-tertiary;
-$text-heading2: tokens.$color-text-brand-secondary;
-$below-text2: tokens.$color-fg-brand-primary;
+$sizes: (
+	sm: (
+		icon: tokens.$spacing-3xl,
+		side-gap: tokens.$spacing-lg,
+		top-gap: tokens.$spacing-lg,
+		number-top-gap: tokens.$spacing-lg,
+		icon-rail-gap: tokens.$spacing-xs,
+		number-rail-gap: tokens.$spacing-sm,
+		bar-padding: tokens.$spacing-lg,
+		text-style: 'body',
+	),
+	md: (
+		icon: tokens.$spacing-4xl,
+		side-gap: tokens.$spacing-xl,
+		top-gap: tokens.$spacing-lg,
+		number-top-gap: tokens.$spacing-xl,
+		icon-rail-gap: tokens.$spacing-sm,
+		number-rail-gap: tokens.$spacing-md,
+		bar-padding: tokens.$spacing-xl,
+		text-style: 'body-large',
+	),
+);
 
-$space-00: tokens.$spacing-none;
-$space-02: tokens.$spacing-xxs;
-$space-04: tokens.$spacing-xs;
-$space-08: tokens.$spacing-md;
-$space-12: tokens.$spacing-lg;
-$space-16: tokens.$spacing-xl;
-$space-24: tokens.$spacing-3xl;
-$space-32: tokens.$spacing-4xl;
-$space-33: 33px; // one-off value, no matching spacing token
-$space-48: tokens.$spacing-6xl;
-
-.root {
-	&.horizontal {
-		@include flex(row, flex-start, flex-start);
-		gap: 1rem;
-	}
-	&.vertical {
-		@include flex(column, flex-start, flex-start);
-		height: 100%;
-		gap: 0.5rem;
+@mixin dotted($direction) {
+	@if $direction == horizontal {
+		background: radial-gradient(
+				circle closest-side,
+				tokens.$color-border-primary 98%,
+				transparent
+			)
+			0
+			0 /
+			#{$dot-pitch}
+			#{$connector-width}
+			repeat-x;
+	} @else {
+		background: radial-gradient(
+				circle closest-side,
+				tokens.$color-border-primary 98%,
+				transparent
+			)
+			0
+			0 /
+			#{$connector-width}
+			#{$dot-pitch}
+			repeat-y;
 	}
 }
 
 .stepper {
 	display: flex;
 	width: 100%;
-	max-width: 1000px;
-	margin: 0 auto;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 
-	&--horizontal {
+	&[data-orientation='horizontal'] {
 		flex-direction: row;
-		justify-content: space-between;
+		column-gap: $step-gap;
 	}
 
-	&--vertical {
+	&[data-orientation='vertical'] {
 		flex-direction: column;
 	}
 
-	&--progressBar {
-		gap: $space-33;
+	&[data-variant='progressBar'] {
+		column-gap: $bar-gap;
 	}
 }
 
-.stepWrapper {
+.step {
+	--stepper-label: #{tokens.$color-text-secondary};
+	--stepper-description: #{tokens.$color-text-tertiary};
+	--stepper-bar: #{tokens.$color-bg-quenternary};
+
 	display: flex;
-	flex: 1;
-	position: relative;
-
-	.stepper--horizontal & {
-		flex-direction: column;
-		align-items: center;
-		min-width: 160px;
-		text-align: center;
-		gap: $space-02;
-	}
-
-	.stepper--vertical & {
-		flex-direction: row;
-		align-items: stretch;
-		text-align: left;
-	}
-}
-
-.verticalIconCol {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	flex-shrink: 0;
-	align-self: stretch;
-}
-
-.verticalLine {
-	flex: 1;
-	min-height: $space-24;
-	width: $space-02;
-	margin-top: $space-04;
-	margin-bottom: $space-04;
-
-	&--solid {
-		background-color: $border-secondary;
-	}
-
-	&--dotted {
-		width: $space-00;
-		border-left: $space-02 dotted $border-secondary;
-	}
-
-	&--completed {
-		&.verticalLine--solid {
-			background-color: $primary-blue;
-		}
-		&.verticalLine--dotted {
-			border-left-color: $border-secondary;
-		}
-	}
-}
-
-.iconSection {
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	.stepper--horizontal & {
-		width: 100%;
-		margin-bottom: $space-12;
-
-		&.hasLine::after {
-			content: '';
-			position: absolute;
-			z-index: 1;
-			top: 50%;
-			transform: translateY(-50%);
-			pointer-events: none;
-			left: calc(50% + #{$space-12});
-			right: calc(-50% + #{$space-12});
-			height: $space-02;
-		}
-
-		&:has(.stepIcon--md).hasLine::after {
-			left: calc(50% + #{$space-16});
-			right: calc(-50% + #{$space-16});
-		}
-
-		&.isIcon.hasLine::after {
-			background-color: $gray-200;
-		}
-		&.isIcon.line--completed::after {
-			background-color: $primary-blue;
-		}
-
-		&.isNumbered.hasLine::after {
-			border-top: $space-02 dotted $gray-200;
-			background-color: transparent;
-		}
-		&.isNumbered.line--completed::after {
-			border-top-color: $gray-200;
-		}
-	}
-}
-
-.stepIcon {
-	position: relative;
-	z-index: 2;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	// Theme-aware: an invariant white here leaked through as a thin fringe at the
-	// SVG circle's anti-aliased edge in dark mode.
-	background-color: tokens.$color-bg-primary;
-	border-radius: 50%;
-	overflow: visible;
-	flex-shrink: 0;
-
-	&--sm {
-		width: $space-24;
-		height: $space-24;
-	}
-	&--md {
-		width: $space-32;
-		height: $space-32;
-	}
-}
-
-.isIcon {
-	.stepIcon--current {
-		// Light: white ring. Dark: same black ring color as the icon's own SVG stroke.
-		box-shadow:
-			0 0 0 $space-02 var(--stepper-current-ring, #{$white}),
-			0 0 0 $space-04 $primary-blue;
-	}
-}
-
-.stepper--vertical {
-	.stepIcon--current {
-		box-shadow:
-			0 0 0 $space-02 var(--stepper-current-ring, #{$white}),
-			0 0 0 $space-04 $primary-blue;
-	}
-}
-
-.progressBarWrapper {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	flex: 1;
 	min-width: 0;
-	gap: $space-02;
-
-	.content {
-		padding: $space-00 !important;
-	}
+	box-sizing: border-box;
 }
 
-.progressBarTrack {
-	width: 100%;
-	border-top: $space-04 solid $gray-200;
+.marker {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
-	&--sm {
-		padding-top: $space-12;
-	}
-	&--md {
-		padding-top: $space-16;
-	}
-	&--active {
-		border-top-color: var(--stepper-progress-active, #{$primary-blue});
-	}
-	&--completed {
-		border-top-color: var(--stepper-progress-active, #{$primary-blue});
-	}
+.connector {
+	background: tokens.$color-border-secondary;
 }
 
 .content {
 	display: flex;
 	flex-direction: column;
-	gap: $space-00;
+	min-width: 0;
+	// Figma text block: 2px above the label.
+	padding-top: tokens.$spacing-xxs;
+}
 
-	.stepper--horizontal & {
-		width: 100%;
-		padding: $space-00 $space-12;
+.label {
+	color: var(--stepper-label);
+}
+
+.description {
+	color: var(--stepper-description);
+}
+
+// Current steps are brand coloured, except numbered ones (Figma keeps those neutral).
+.stepper:not([data-variant='noIcon']) .step[data-status='current'] {
+	--stepper-label: #{tokens.$color-text-brand-secondary};
+	--stepper-description: #{tokens.$color-text-brand-tertiary};
+}
+
+.stepper[data-variant='progressBar'] .step {
+	&[data-status='current'],
+	&[data-status='completed'] {
+		--stepper-bar: #{tokens.$color-fg-brand-primary-alt};
+	}
+}
+
+// Figma dims open numbered steps as a whole (icon, text and vertical rail).
+.stepper[data-variant='noIcon'] .step[data-status='incomplete'] {
+	.content,
+	.marker > :first-child {
+		opacity: 0.6;
+	}
+}
+
+.stepper[data-orientation='horizontal']:not([data-variant='progressBar']) {
+	.step {
+		flex: 1 1 0;
+		flex-direction: column;
 		align-items: center;
 		text-align: center;
 	}
 
-	.stepper--vertical & {
+	.marker {
+		align-self: stretch;
+	}
+
+	.content {
+		align-items: center;
 		width: 100%;
+	}
+
+	// The connector runs from the edge of this icon to the edge of the next one.
+	.connector {
+		position: absolute;
+		top: 50%;
+		left: calc(50% + var(--stepper-icon) / 2);
+		width: calc(100% + #{$step-gap} - var(--stepper-icon));
+		height: $connector-width;
+		transform: translateY(-50%);
+	}
+
+	&[data-variant='icon'] .connector[data-status='completed'] {
+		background: tokens.$color-fg-brand-primary;
+	}
+
+	// Figma draws the line after a completed numbered step dotted and the rest solid.
+	&[data-variant='noIcon'] .connector[data-status='completed'] {
+		@include dotted(horizontal);
+	}
+}
+
+.stepper[data-orientation='vertical']:not([data-variant='progressBar']) {
+	.step {
+		flex-direction: row;
+		align-items: stretch;
+		text-align: left;
+	}
+
+	.marker {
+		flex-direction: column;
+		align-self: stretch;
+	}
+
+	.connector {
+		flex: 1 1 auto;
+		width: $connector-width;
+		border-radius: $connector-width;
+	}
+
+	&[data-variant='noIcon'] .connector {
+		@include dotted(vertical);
+		border-radius: 0;
+	}
+
+	.content {
 		align-items: flex-start;
-		padding-bottom: $space-32;
-	}
-
-	.stepper--vertical &--sm {
-		padding-left: $space-12;
-	}
-
-	.stepper--vertical &--md {
-		padding-left: $space-16;
-	}
-
-	&--sm {
-		.label,
-		.description {
-			font-size: 14px;
-			line-height: 20px;
-		}
-	}
-	&--md {
-		.label,
-		.description {
-			font-size: 16px;
-			line-height: 24px;
-		}
-	}
-
-	&--icon {
-		.label--incomplete,
-		.label--completed {
-			color: $text-heading;
-		}
-		.description--incomplete,
-		.description--completed {
-			color: $below-text;
-		}
-		.label--current {
-			color: $text-heading2;
-		}
-		.description--current {
-			// Same dark-mode-only override as the progress-bar variant, kept pixel-identical.
-			color: var(--stepper-progress-active, #{$below-text2});
-		}
-	}
-
-	&--noIcon {
-		.label--incomplete,
-		.description--incomplete {
-			color: $text-heading;
-			opacity: 0.6;
-		}
-		.label--current,
-		.label--completed {
-			color: $text-heading;
-			opacity: 1;
-		}
-		.description--current,
-		.description--completed {
-			color: $below-text;
-			opacity: 1;
-		}
-	}
-
-	&--progressBar {
-		padding: $space-00;
-		align-items: flex-start !important;
-		text-align: left !important;
-
-		.label--incomplete,
-		.description--incomplete {
-			color: $gray-500;
-		}
-		.label--current,
-		.description--current {
-			color: var(--stepper-progress-active, #{$primary-blue});
-		}
-		.label--completed,
-		.description--completed {
-			// Deliberately distinct from --current (not just a slightly different white).
-			color: $text-heading;
-		}
 	}
 }
 
-.label {
-	font-family: tokens.$font-family-base;
-	font-weight: 600;
-	color: $text-heading;
-
-	.stepper--horizontal & {
-		white-space: nowrap;
+.stepper[data-variant='progressBar'] {
+	.step {
+		flex: 1 1 0;
+		flex-direction: column;
+		border-top: $bar-width solid var(--stepper-bar);
 	}
 
-	.stepper--vertical & {
-		white-space: normal;
+	.content {
+		align-items: flex-start;
+		text-align: left;
 	}
 }
 
-.description {
-	font-family: tokens.$font-family-base;
-	font-weight: 400;
-	color: $below-text;
-	margin-top: $space-00;
+@each $size, $spec in $sizes {
+	.stepper[data-size='#{$size}'] {
+		--stepper-icon: #{map.get($spec, icon)};
+
+		.label {
+			@include tokens.text-style(map.get($spec, text-style), 'semibold');
+		}
+
+		.description {
+			@include tokens.text-style(map.get($spec, text-style), 'regular');
+		}
+
+		&[data-orientation='horizontal'] {
+			&[data-variant='icon'] .step {
+				gap: map.get($spec, top-gap);
+			}
+
+			&[data-variant='noIcon'] .step {
+				gap: map.get($spec, number-top-gap);
+			}
+		}
+
+		&[data-orientation='vertical']:not([data-variant='progressBar']) {
+			.step {
+				gap: map.get($spec, side-gap);
+			}
+
+			&[data-variant='icon'] .marker {
+				gap: map.get($spec, icon-rail-gap);
+				padding-bottom: map.get($spec, icon-rail-gap);
+			}
+
+			&[data-variant='noIcon'] .marker {
+				gap: map.get($spec, number-rail-gap);
+				padding-bottom: map.get($spec, number-rail-gap);
+			}
+
+			&[data-variant='icon'] .connector {
+				min-height: $icon-connector-min;
+			}
+
+			&[data-variant='noIcon'] .connector {
+				min-height: $number-connector-min;
+			}
+		}
+
+		&[data-variant='progressBar'] .step {
+			// Figma counts the 4px bar as part of the padding.
+			padding-top: calc(#{map.get($spec, bar-padding)} - #{$bar-width});
+		}
+	}
 }

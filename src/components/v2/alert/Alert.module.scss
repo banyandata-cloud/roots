@@ -1,244 +1,192 @@
-@use '../../styles/tokens' as tokens;
-@import '../../styles/_index';
+@use '../styles/tokens' as tokens;
+
+// accent: left bar, ring: 1px outline (inline only), from the Figma "Colour token Updated" frames.
+$types: (
+	success: (
+		background: tokens.$color-utility-success-50,
+		ring: tokens.$color-utility-success-500,
+		accent: tokens.$color-utility-success-600,
+	),
+	info: (
+		background: tokens.$color-utility-brand-50,
+		ring: tokens.$color-utility-brand-500,
+		accent: tokens.$color-utility-brand-600,
+	),
+	error: (
+		background: tokens.$color-utility-error-50,
+		ring: tokens.$color-utility-error-500,
+		accent: tokens.$color-utility-error-600,
+	),
+	warning: (
+		background: tokens.$color-utility-warning-50,
+		ring: tokens.$color-utility-warning-500,
+		accent: tokens.$color-utility-warning-600,
+	),
+);
 
 .root {
-	@include flex(row, space-between, flex-start);
 	position: fixed;
-	opacity: 1;
-	border-radius: 8px;
+	display: flex;
+	align-items: stretch;
+	justify-content: space-between;
+	box-sizing: border-box;
+	max-width: calc(100vw - 2rem);
 	color: tokens.$color-text-primary;
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-14;
+	// Figma font-height/18 has no typography token yet.
+	line-height: 1.125rem;
+	letter-spacing: 0.01rem;
 
-	&.shadow {
-		box-shadow: 0 4px 12px rgba(tokens.$base-color-base-black, 0.08);
+	// Figma strokes sit inside the frame, so the left bar overlays the edge instead of
+	// adding width.
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-left: 3px solid var(--alert-accent);
+		border-radius: inherit;
+		pointer-events: none;
 	}
 
 	&.position-bottom-center {
 		left: 50%;
-		bottom: 1rem;
+		bottom: tokens.$spacing-xl;
 		transform: translateX(-50%);
 	}
 
 	&.position-top-right {
-		right: 1rem;
-		top: 1rem;
+		right: tokens.$spacing-xl;
+		top: tokens.$spacing-xl;
 	}
 
 	&.position-bottom-right {
-		right: 1rem;
-		bottom: 1rem;
+		right: tokens.$spacing-xl;
+		bottom: tokens.$spacing-xl;
 	}
 
 	&.position-top-center {
 		left: 50%;
-		top: 1rem;
+		top: tokens.$spacing-xl;
 		transform: translateX(-50%);
 	}
+}
 
-	.left {
-		@include flex(row, flex-start, center);
-		gap: 0.75rem;
-
-		.icon-container {
-			width: 28px;
-			height: 28px;
-			border-radius: 50%;
-			display: grid;
-			place-items: center;
-			flex-shrink: 0;
-
-			background: rgba(tokens.$base-color-base-white, 0.12);
-
-			.icon {
-				width: 16px;
-				height: 16px;
-			}
-		}
-
-		.content {
-			@include flex(column, flex-start, flex-start);
-			gap: 2px;
-
-			.title {
-				font-size: 1rem;
-				font-weight: 600;
-				line-height: 20px;
-			}
-
-			.description {
-				font-size: 0.875rem;
-				line-height: 18px;
-			}
-
-			.time {
-				font-size: 0.875rem;
-				margin-top: 4px;
-			}
-		}
+@each $name, $values in $types {
+	.#{$name} {
+		background: map-get($values, background);
+		--alert-ring: #{map-get($values, ring)};
+		--alert-accent: #{map-get($values, accent)};
 	}
+}
 
-	&.card {
-		.left {
-			align-items: flex-start;
-		}
+.inline {
+	width: 871px;
+	border-radius: tokens.$radius-sm;
+	box-shadow: inset 0 0 0 tokens.$spacing-1 var(--alert-ring);
+}
+
+.card {
+	width: 349px;
+	border-radius: tokens.$radius-lg;
+
+	&.shadow {
+		box-shadow:
+			0 4px 3px rgba(tokens.$base-color-base-black, 0.1),
+			0 2px 2px rgba(tokens.$base-color-base-black, 0.06);
 	}
+}
 
-	.actions {
-		@include flex(row, space-between, flex-start);
-		gap: 0.5rem;
+.body {
+	display: flex;
+	flex: 1 1 auto;
+	align-items: flex-start;
+	gap: tokens.$spacing-xl;
+	min-width: 0;
+	padding: tokens.$spacing-xl 0 tokens.$spacing-xl tokens.$spacing-xl;
+}
+
+.icon-container {
+	display: inline-flex;
+	flex-shrink: 0;
+	color: var(--alert-accent);
+
+	.icon {
+		width: 20px;
+		height: 20px;
 	}
+}
 
-	&.inline {
-		height: 44px;
-		width: 640px;
-		padding: 0 1rem;
-		align-items: center;
-		border: 0.5px solid transparent;
-		border-left: 2px solid transparent;
-		background: tokens.$color-bg-secondary;
-		border-radius: 0.5rem;
+.mark-stroke {
+	stroke: tokens.$color-fg-white;
+}
 
-		.description,
-		.time {
-			display: none;
-		}
+.mark-fill {
+	fill: tokens.$color-fg-white;
+}
+
+.content {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	gap: 1.1875rem;
+	min-width: 0;
+}
+
+.text {
+	display: flex;
+	flex-direction: column;
+	gap: tokens.$spacing-xxs;
+}
+
+.inline .text {
+	flex-direction: row;
+	gap: tokens.$spacing-xs;
+	white-space: nowrap;
+}
+
+.title {
+	font-weight: tokens.$font-weight-bold;
+}
+
+.description {
+	font-weight: tokens.$font-weight-medium;
+}
+
+.action {
+	font-size: tokens.$font-size-12;
+	line-height: tokens.$line-height-16;
+	color: tokens.$color-text-brand-secondary;
+}
+
+.inline .body {
+	align-items: center;
+	padding-right: 0;
+}
+
+.inline .content {
+	flex-direction: row;
+	align-items: center;
+}
+
+.close {
+	display: flex;
+	flex: 0 0 52px;
+	align-items: flex-start;
+	justify-content: center;
+	width: 52px;
+	padding: tokens.$spacing-xl;
+	border: none;
+	background: transparent;
+	color: tokens.$color-fg-primary;
+	cursor: pointer;
+
+	&:focus-visible {
+		outline: 2px solid tokens.$color-border-brand;
+		outline-offset: -2px;
 	}
+}
 
-	&.card {
-		width: 296px;
-		padding: 0.5rem 1rem;
-		flex-direction: column;
-		gap: 0.75rem;
-		border-radius: 0.75rem;
-		border-left: 2px solid transparent;
-		background: tokens.$color-bg-primary;
-	}
-
-	&.success {
-		&.inline {
-			border-color: tokens.$base-color-success-g-500;
-		}
-		&.card {
-			border-color: tokens.$base-color-success-g-500;
-		}
-	}
-
-	&.error,
-	&.danger {
-		&.inline {
-			border-color: tokens.$base-color-error-r-500;
-		}
-		&.card {
-			border-color: tokens.$base-color-error-r-500;
-		}
-	}
-
-	&.warning {
-		&.inline {
-			border-color: tokens.$base-color-warning-o-500;
-		}
-		&.card {
-			border-color: tokens.$base-color-warning-o-500;
-		}
-	}
-
-	&.info {
-		&.inline {
-			border-color: tokens.$base-color-brand-blue-b-500;
-		}
-		&.card {
-			border-color: tokens.$base-color-brand-blue-b-500;
-		}
-	}
-
-	&.light {
-		color: tokens.$base-color-gray-light-mode-g-900;
-
-		&.success {
-			&.inline,
-			&.card {
-				background: tokens.$base-color-success-g-50;
-			}
-		}
-
-		&.error,
-		&.danger {
-			&.inline,
-			&.card {
-				background: tokens.$base-color-error-r-50;
-			}
-		}
-
-		&.warning {
-			&.inline,
-			&.card {
-				background: tokens.$base-color-warning-o-50;
-			}
-		}
-
-		&.info {
-			&.inline,
-			&.card {
-				background: tokens.$base-color-brand-blue-b-50;
-			}
-		}
-
-		&.card {
-			box-shadow: 0 4px 12px rgba(tokens.$base-color-base-black, 0.08);
-		}
-
-		.description,
-		.time {
-			color: tokens.$base-color-gray-light-mode-g-600;
-		}
-	}
-	&.dark {
-		color: tokens.$base-color-gray-drak-mode-g-200;
-
-		&.inline,
-		&.card {
-			background: tokens.$base-color-gray-light-mode-g-950;
-		}
-
-		&.card {
-			box-shadow: 0 6px 16px rgba(tokens.$base-color-base-black, 0.6);
-		}
-
-		.title {
-			color: tokens.$base-color-gray-drak-mode-g-200;
-		}
-
-		.description,
-		.time {
-			color: tokens.$base-color-gray-drak-mode-g-400;
-		}
-
-		.icon-container {
-			background: rgba(tokens.$base-color-base-white, 0.12);
-		}
-
-		&.success {
-			&.inline {
-				border-color: tokens.$base-color-success-g-500;
-			}
-		}
-
-		&.info {
-			&.inline {
-				border-color: tokens.$base-color-brand-blue-b-500;
-			}
-		}
-
-		&.warning {
-			&.inline {
-				border-color: tokens.$base-color-warning-o-500;
-			}
-		}
-
-		&.error,
-		&.danger {
-			&.inline {
-				border-color: tokens.$base-color-error-r-500;
-			}
-		}
-	}
+.inline .close {
+	align-items: center;
 }

@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { HomeIcon } from '../../../../components/icons/Home';
-import { ServerIcon } from '../../../../components/icons/Server';
+import { HomeIcon, ServerIcon } from '../../icons';
+import Badge from '../../badges/Badge';
 import { Button } from '../../buttons';
 import { ThemedContainer } from '../../helpers';
+import { Text } from '../../text';
 import TableDoc from './Story/TableDoc';
 import Table from './Table';
 
@@ -418,66 +419,11 @@ const WithFiltersStory = () => {
 					title: 'Table Title',
 					description: 'Lorem ipsum dolor sit amet consectetur.',
 				}}
-				rightActions={({ toggleDrawer }: any) => (
-					<Button
-						title='Action'
-						onClick={() => toggleDrawer({ data: { index: 0, standalone: true } })}
-					/>
-				)}
 				searchProps={{
 					placeholder: 'Search Employees',
 					onSearch: (s) => setSea(s),
 					...(sea && { onClear: () => setSea('') }),
 				}}
-				tableDrawerProps={() => ({
-					tabsConfig: {
-						tabs: [
-							{
-								id: 1,
-								leftIcon: {
-									Active: (props: any) => <ServerIcon {...props} />,
-									InActive: (props: any) => <HomeIcon {...props} />,
-								},
-							},
-							{
-								id: 2,
-								leftIcon: {
-									Active: (props: any) => <ServerIcon {...props} />,
-									InActive: (props: any) => <HomeIcon {...props} />,
-								},
-							},
-						],
-					},
-					standalone: [
-						() => (
-							<div data-elem='drawer-child'>
-								Hello World
-								<div data-elem='drawer-child-header'>
-									KKKK<div>djkndk</div>
-								</div>
-								<div data-elem='drawer-child-body'>
-									Nondandlk If the elements actually are siblings in the DOM.
-								</div>
-								<div data-elem='drawer-child-body'>Noss</div>
-							</div>
-						),
-					],
-					renderBody: [
-						() => (
-							<div data-elem='drawer-child'>
-								Hello World
-								<div data-elem='drawer-child-header'>
-									YES dsdsd<div>djkndk</div>
-								</div>
-								<div data-elem='drawer-child-body'>
-									Nondandlk If the elements actually are siblings in the DOM.
-								</div>
-								<div data-elem='drawer-child-body'>Noss</div>
-							</div>
-						),
-						() => <div>Hello Everyone</div>,
-					],
-				})}
 				isFloating={true}
 				onRowClick={onRowClick}
 				headerData={headerData}
@@ -596,40 +542,26 @@ const WithTableHeaderStory = () => {
 		<ThemedContainer style={{ height: '100%' }}>
 			<Table
 				onRowClick={onRowClick}
-				tableHeader={({ toggleDrawer }) => (
+				tableHeader={() => (
+					// Figma title row: bold 20/24 title, count tag and the primary action.
 					<div
 						style={{
 							display: 'flex',
-							justifyContent: 'space-between',
 							alignItems: 'center',
-							padding: '17px 20px',
-							borderBottom: '1px solid #F5F5F5',
-						}}
-					>
-						<span>Cloud</span>
-						<Button
-							title='Verb+noun'
-							onClick={() => toggleDrawer?.({ data: { index: 0 } })}
-						/>
+							justifyContent: 'space-between',
+							padding: '0 1.3125rem 0 1.1875rem',
+						}}>
+						<div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+							<Text variant='heading-medium' stroke='bold'>
+								Cloud
+							</Text>
+							<Badge label='20 cloud' size='sm' variant='badge' color='red' />
+						</div>
+						<Button title='Verb+noun' size='md' />
 					</div>
 				)}
 				headerData={headerData}
 				tableData={tableData}
-				tableDrawerProps={() => ({
-					renderBody: [
-						() => (
-							<div data-elem='drawer-child'>
-								Hello World
-								<div data-elem='drawer-child-header'>YES</div>
-								<div data-elem='drawer-child-body'>
-									Nondandlk If the elements actually are siblings in the DOM.
-								</div>
-								<div data-elem='drawer-child-body'>Noss</div>
-							</div>
-						),
-						() => <div>Hello Everyone</div>,
-					],
-				})}
 				dataLabel='cloud'
 			/>
 		</ThemedContainer>

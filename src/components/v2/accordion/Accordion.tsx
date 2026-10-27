@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { classes } from '../../../utils';
+import { classes } from '../utils';
 import { Button } from '../buttons';
-import { BaseCell } from '../../cell';
-import { CaretIcon, ExpandArrowAltIcon } from '../../icons';
-import styles from './Accordion.module.css';
+import { CaretIcon, ExpandArrowAltIcon } from '../icons';
+import styles from './Accordion.module.scss';
 import type { AccordionProps } from './types';
 
 /**
@@ -47,29 +46,31 @@ export function Accordion(props: AccordionProps) {
 				disabled ? styles.disabled : ''
 			)}
 			data-state-open={isOpen}>
-			<BaseCell
-				flexible
-				size='auto'
-				RootDOM='button'
+			<button
+				data-elem='base-cell'
 				className={styles.header}
-				attrs={{
-					onClick: () => {
-						if (isControlled) {
-							onToggle?.(open);
-						} else {
-							setUncontrolledOpen((prevState) => {
-								const newState = !prevState;
-								onClick?.(newState);
-								return newState;
-							});
-						}
-					},
-					disabled,
-					'aria-disabled': disabled,
+				onClick={() => {
+					if (isControlled) {
+						onToggle?.(open);
+					} else {
+						setUncontrolledOpen((prevState) => {
+							const newState = !prevState;
+							onClick?.(newState);
+							return newState;
+						});
+					}
 				}}
-				component2={<span className={styles.title}>{title}</span>}
-				component3={LeftComponent && <LeftComponent />}
-			/>
+				disabled={disabled}
+				aria-disabled={disabled}>
+				<span data-elem='component2'>
+					<span className={styles.title}>{title}</span>
+				</span>
+				{LeftComponent && (
+					<span data-elem='component3'>
+						<LeftComponent />
+					</span>
+				)}
+			</button>
 
 			{isOpen && (
 				<motion.div
@@ -89,7 +90,7 @@ export function Accordion(props: AccordionProps) {
 					{onExpand && (
 						<Button
 							size='auto'
-							variant='text'
+							variant='ghost'
 							onClick={() => {
 								onExpand();
 							}}

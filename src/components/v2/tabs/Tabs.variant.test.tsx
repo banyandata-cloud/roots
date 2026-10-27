@@ -1,27 +1,23 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import Tabs from './Tabs';
 
-jest.mock('../../input/dropdown/Dropdown', () => {
-	return function MockDropdown(props: any) {
-		return (
-			<div data-testid='variant-dropdown'>
-				{props.children?.map?.((child: any) => (
-					<button
-						key={child.props.value}
-						data-testid={`variant-option-${child.props.value}`}
-						onClick={() => props.onChange?.({}, child.props.value)}
-					>
-						{child}
-					</button>
-				))}
-			</div>
-		);
-	};
-});
-
-jest.mock('../../input/dropdown/dropdown-item/DropdownItem', () => {
-	return function MockDropdownItem(props: any) {
-		return <span>{props.title}</span>;
+jest.mock('../input/dropdown', () => {
+	return {
+		Dropdown: function MockDropdown(props: any) {
+			return (
+				<div data-testid='variant-dropdown'>
+					{props.options?.map((option: any) => (
+						<button
+							key={option.value}
+							data-testid={`variant-option-${option.value}`}
+							onClick={() => props.onChange?.(option.value)}
+						>
+							{option.label}
+						</button>
+					))}
+				</div>
+			);
+		},
 	};
 });
 

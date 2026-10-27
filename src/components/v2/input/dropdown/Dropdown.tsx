@@ -1,7 +1,7 @@
 import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
-import { classes } from '../../../../utils';
-import { Popover } from '../../../popover';
-import { Checkbox } from '../../../v2/checkbox';
+import { classes } from '../../utils';
+import { Popover } from '../../popover';
+import { Checkbox } from '../../checkbox';
 import Badge from '../../badges/Badge';
 import { Button } from '../../buttons/button';
 import { HelpIcon, SearchIcon } from '../../icons';
@@ -881,7 +881,6 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(
 					}
 					setOpen={handlePopoverClose}
 					placement='bottom-start'
-					theme='light'
 					withOverlay={false}
 					className={classes(styles.dropdownMenuPopover, popoverClassName)}
 					middlewareOptions={{
@@ -1020,8 +1019,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(
 						open={tagOptionsOpen && focusedTagId !== null}
 						setOpen={handleTagOptionsPopoverClose}
 						placement='bottom-start'
-						theme='light'
-						withOverlay={false}
+							withOverlay={false}
 						className={classes(styles.dropdownMenuPopover, popoverClassName)}
 						middlewareOptions={{
 							offset: popoverOffset ?? 4,

@@ -1,6 +1,6 @@
-import { classes } from '../../../../utils';
+import { classes } from '../../utils';
 import { Button } from '../../buttons';
-import styles from './EmptyState.module.css';
+import styles from './EmptyState.module.scss';
 import type { EmptyStateProps } from './types';
 
 const EmptyState = (props: EmptyStateProps) => {

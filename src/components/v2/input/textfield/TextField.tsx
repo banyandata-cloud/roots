@@ -1,5 +1,5 @@
 import React, { forwardRef, useId, useState } from 'react';
-import { classes } from '../../../../utils';
+import { classes } from '../../utils';
 import { Button } from '../../buttons/button';
 import { HelpIcon } from '../../icons';
 import { ErrorIcon } from '../../icons/error';
@@ -206,7 +206,8 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 						{helpIcon && (
 							<Tooltip
 								content={helpText || 'Additional information about this field'}
-								position='top'>
+								position='top'
+							>
 								<div className={styles.helpIcon}>
 									<HelpIcon />
 								</div>
@@ -224,14 +225,16 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 							actualState === 'filled-focus' &&
 							styles.wrapperFilledFocus,
 						trailingButton && actualState === 'error-focus' && styles.wrapperErrorFocus
-					)}>
+					)}
+				>
 					<div
 						className={classes(
 							styles.inputContainer,
 							styles[actualState],
 							styles[size],
 							trailingButton && styles.inputContainerWithTrailingButton
-						)}>
+						)}
+					>
 						{/* Leading Dropdown - using proper Dropdown component */}
 						{leadingDropdown && (
 							<div className={styles.leadingDropdownWrapper}>
@@ -267,7 +270,8 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 								styles.inputFieldArea,
 								leadingDropdown && styles.inputFieldAreaWithLeadingDropdown,
 								leadingText && styles.inputFieldAreaWithLeadingText
-							)}>
+							)}
+						>
 							<div className={styles.inputContent}>
 								{/* Leading Icon - only show if no leading text or leading dropdown */}
 								{!leadingText &&

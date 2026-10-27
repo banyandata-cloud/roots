@@ -1,10 +1,18 @@
-import { forwardRef, useState, type ForwardedRef, type ReactElement, type ReactNode } from 'react';
-import { Checkbox } from '../../../../components/v2/checkbox';
-import { classes } from '../../../../utils';
-import { Radio } from '../../../input';
+import {
+	forwardRef,
+	useState,
+	type ForwardedRef,
+	type MouseEvent,
+	type ReactElement,
+	type ReactNode,
+} from 'react';
+import { classes } from '../../utils';
+import { Checkbox } from '../../checkbox';
+import { Radio } from '../../input';
 import { TableCellV2 } from '../cell';
+import ExpandArrowIcon from '../assets/ExpandArrowIcon';
 import type { TableProps } from '../types';
-import styles from './TableRow.module.css';
+import styles from './TableRow.module.scss';
 
 interface TableRowProps extends Pick<
 	TableProps,
@@ -28,7 +36,6 @@ interface TableRowProps extends Pick<
 	expandable?:
 		| ((params: { datum: Record<number, unknown>; index: number | undefined }) => ReactElement)
 		| undefined;
-	toggleDrawer?: ((props: object) => void) | undefined;
 	type?: 'body' | 'header';
 	datum: Record<string, unknown>;
 	_index?: number;
@@ -48,7 +55,6 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 		onRowClick,
 		expandable: Expandable,
 		rowHeight = 'md',
-		toggleDrawer,
 		onCheck,
 		checkedRows = [],
 		setCheckedRows,
@@ -105,13 +111,13 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 			}
 		}
 
-		let component1: ReactElement | null = null;
+		let checkControl: ReactElement | null = null;
 		if (index === 0 && onCheck) {
 			const checkStatus = type === 'header' ? headerCheckStatus : !!existingInChecked;
 			const indeterminate = type === 'header' ? headerIndeterminate : false;
 
 			if (type !== 'header' && checkAsRadio) {
-				component1 = (
+				checkControl = (
 					<Radio
 						onChange={() => {
 							if (existingInChecked) {
@@ -128,7 +134,7 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 					/>
 				);
 			} else {
-				component1 = (
+				checkControl = (
 					<Checkbox
 						indeterminate={indeterminate}
 						onChange={() => {
@@ -178,6 +184,37 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 			...item,
 		};
 
+		// The expand toggle sits before the checkbox in the first cell. The header gets an empty
+		// 24px spacer so its title stays aligned with the body text.
+		let expandControl: ReactElement | null = null;
+		if (index === 0 && Expandable) {
+			expandControl =
+				type === 'header' ? (
+					<span className={styles['expand-spacer']} aria-hidden='true' />
+				) : (
+					<button
+						type='button'
+						className={styles['expand-toggle']}
+						aria-label={expanded ? 'Collapse row' : 'Expand row'}
+						aria-expanded={expanded}
+						disabled={!Expandable({ datum, index: _index })}
+						onClick={(event: MouseEvent<HTMLButtonElement>) => {
+							event.stopPropagation();
+							setExpanded((prev) => !prev);
+						}}
+					>
+						<ExpandArrowIcon />
+					</button>
+				);
+		}
+		const component1 =
+			expandControl || checkControl ? (
+				<>
+					{expandControl}
+					{checkControl}
+				</>
+			) : null;
+
 		const { hideColumnLines: hideColumnLinesProp, ...cellPropsWithoutHideColumnLines } =
 			cellProps;
 
@@ -194,11 +231,6 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 					})}
 					{...cellPropsWithoutHideColumnLines}
 					expandableProps={expandableProps}
-					toggleDrawer={(i: number, standalone: boolean) => {
-						toggleDrawer?.({
-							data: { datum, index: i, standalone },
-						});
-					}}
 				/>
 			);
 		}
@@ -222,11 +254,6 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 				rowHeight={rowHeight}
 				component1={component1}
 				{...(hideColumnLines !== undefined && { hideColumnLines })}
-				toggleDrawer={(i: number, standalone: boolean) => {
-					toggleDrawer?.({
-						data: { datum, index: i, standalone },
-					});
-				}}
 			/>
 		);
 	});
@@ -248,9 +275,9 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 					styles.root,
 					styles[`${type}-row`],
 					styles[`row-height-${rowHeight}`],
-					disabledChecking && styles.disabled,
 					className
-				)}>
+				)}
+			>
 				{tableCells}
 			</tr>
 			{Expandable && expanded && (
@@ -259,7 +286,8 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 						onClick: () => {
 							onRowClick?.(datum);
 						},
-					})}>
+					})}
+				>
 					<Expandable datum={datum} index={_index} />
 				</tr>
 			)}

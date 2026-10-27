@@ -58,14 +58,16 @@ const StepperInteractive: React.FC<StepperInteractiveProps> = ({
 				flexDirection: 'column',
 				gap: '24px',
 				width: '100%',
-			}}>
+			}}
+		>
 			<Stepper {...stepperProps} />
 			<div
 				style={{
 					display: 'flex',
 					gap: '12px',
 					justifyContent: 'flex-start',
-				}}>
+				}}
+			>
 				<Button
 					title='Previous'
 					variant='secondary'

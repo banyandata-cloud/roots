@@ -1,9 +1,9 @@
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
-import { classes } from '../../../../utils';
+import { classes } from '../../utils';
 import { ChevronDownIcon } from '../../icons';
 import { CalendarIcon } from '../icons';
-import styles from './Trigger.module.css';
+import styles from './Trigger.module.scss';
 
 export interface TriggerProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	label: string;

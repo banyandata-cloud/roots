@@ -1,9 +1,9 @@
 import { Heading, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../../components/docs';
+import { LinkHeader, PropsTable } from '../../docs';
 
 const CODE = `
 import { useRef } from 'react';
-import { Alert } from '@banyan_cloud/roots';
+import { Alert } from '@banyandata-cloud/roots';
 
 const MyComponent = () => {
   const alertRef = useRef<AlertHandle>(null);
@@ -57,12 +57,6 @@ const propsData = [
 		default: "'card'",
 	},
 	{
-		prop: 'theme',
-		type: "'light' | 'dark'",
-		description: 'Color theme of the alert.',
-		default: "'light'",
-	},
-	{
 		prop: 'className',
 		type: 'string',
 		description: 'Key to change style through external className.',
@@ -95,7 +89,7 @@ const AlertDoc = () => (
 		<Source
 			language='tsx'
 			code={`
-type AlertType = 'info' | 'error' | 'warning' | 'success' | 'danger';
+type AlertType = 'info' | 'error' | 'warning' | 'success';
 type AlertPosition = 'bottom-right' | 'bottom-center' | 'top-right' | 'top-center';
 
 interface AlertConfig {

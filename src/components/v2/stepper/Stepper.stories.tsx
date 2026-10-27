@@ -38,9 +38,9 @@ const sectionStyle = {
 const headingStyle = {
 	fontSize: '14px',
 	fontWeight: '600' as const,
-	fontFamily: 'Jakarta, sans-serif',
+	fontFamily: 'inherit',
 	color: 'var(--color-text-secondary, #414651)',
-	borderBottom: '1px solid #e0e0e0',
+	borderBottom: '1px solid var(--color-border-secondary)',
 	paddingBottom: '8px',
 	marginBottom: '24px',
 };
@@ -94,12 +94,15 @@ const horizontalNumberSteps: Step[] = [
 	},
 ];
 
+// Two steps so the connector between them is visible.
 const verticalSteps = (status: 'incomplete' | 'current' | 'completed'): Step[] => [
-	{ label: 'Your details', description: 'Please provide your name and email', status },
-];
-
-const verticalNumberSteps = (status: 'incomplete' | 'current' | 'completed'): Step[] => [
 	{ label: 'Your details', description: 'Please provide your name and email', status, step: 1 },
+	{
+		label: 'Company info',
+		description: 'A few details about your company',
+		status: 'incomplete',
+		step: 2,
+	},
 ];
 
 /**
@@ -166,19 +169,19 @@ export const SmallSize: Story = {
 						size='sm'
 						variant='noIcon'
 						orientation='vertical'
-						steps={verticalNumberSteps('incomplete')}
+						steps={verticalSteps('incomplete')}
 					/>
 					<Stepper
 						size='sm'
 						variant='noIcon'
 						orientation='vertical'
-						steps={verticalNumberSteps('current')}
+						steps={verticalSteps('current')}
 					/>
 					<Stepper
 						size='sm'
 						variant='noIcon'
 						orientation='vertical'
-						steps={verticalNumberSteps('completed')}
+						steps={verticalSteps('completed')}
 					/>
 				</div>
 			</div>
@@ -247,19 +250,19 @@ export const MediumSize: Story = {
 						size='md'
 						variant='noIcon'
 						orientation='vertical'
-						steps={verticalNumberSteps('incomplete')}
+						steps={verticalSteps('incomplete')}
 					/>
 					<Stepper
 						size='md'
 						variant='noIcon'
 						orientation='vertical'
-						steps={verticalNumberSteps('current')}
+						steps={verticalSteps('current')}
 					/>
 					<Stepper
 						size='md'
 						variant='noIcon'
 						orientation='vertical'
-						steps={verticalNumberSteps('completed')}
+						steps={verticalSteps('completed')}
 					/>
 				</div>
 			</div>
@@ -307,4 +310,3 @@ export const Interactive: StoryObj<typeof StepperInteractive> = {
 		</div>
 	),
 };
-

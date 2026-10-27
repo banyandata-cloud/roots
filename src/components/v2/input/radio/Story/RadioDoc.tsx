@@ -1,5 +1,5 @@
-import { Heading, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../../../components/docs';
+import { Heading, Source, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import { LinkHeader, PropsTable } from '../../../docs';
 
 const propsData = [
 	{
@@ -19,12 +19,6 @@ const propsData = [
 		type: 'boolean',
 		description: 'Specifies the initial checked state in uncontrolled mode.',
 		default: 'undefined',
-	},
-	{
-		prop: 'position',
-		type: "'left' | 'right'",
-		description: 'Position of the radio icon relative to the label.',
-		default: "'left'",
 	},
 	{
 		prop: 'className',
@@ -47,26 +41,39 @@ const propsData = [
 	{
 		prop: 'error',
 		type: 'string',
-		description: 'Shows a red badge icon with a black error message below the radio.',
+		description:
+			'Shows an error message with a red status icon below the radio and colours the radio red. Takes precedence over warning.',
 		default: 'undefined',
 	},
 	{
 		prop: 'warning',
 		type: 'string',
-		description: 'Shows a yellow badge icon with a black warning message below the radio.',
+		description: 'Shows a warning message with an orange status icon below the radio.',
 		default: 'undefined',
 	},
 	{
-		prop: 'focused',
-		type: 'boolean',
-		description: 'Forces the focus visual state.',
-		default: 'false',
+		prop: 'name',
+		type: 'string',
+		description: 'Native input name. Radios sharing a name deselect each other.',
+		default: 'undefined',
+	},
+	{
+		prop: 'value',
+		type: 'string',
+		description: 'Native input value.',
+		default: 'undefined',
+	},
+	{
+		prop: 'id',
+		type: 'string',
+		description: 'Id of the input element.',
+		default: 'undefined',
 	},
 	{
 		prop: 'onChange',
 		type: 'function',
 		description:
-			'Callback fired when the radio state changes. Receives the change event and the new boolean value.',
+			'Callback fired when the radio gets selected, in controlled and uncontrolled mode. Receives the change event and the new boolean value. Not fired when readOnly.',
 		default: 'undefined',
 	},
 ];
@@ -76,7 +83,7 @@ const RadioDoc = () => (
 		<Title />
 		<Subtitle>
 			Radio allows users to select a single option from a set. It supports focused, read-only,
-			disabled, error, and warning states with configurable label positioning.
+			disabled, error, and warning states.
 		</Subtitle>
 
 		<LinkHeader
@@ -88,16 +95,10 @@ const RadioDoc = () => (
 		<p>Props accepted by the Radio component.</p>
 		<PropsTable data={propsData} />
 
-		<Heading>Custom Types</Heading>
-		<p>Custom types for the Radio component props.</p>
-
-		<Subheading>Position</Subheading>
-		<Source language='tsx' code={`type Position = 'left' | 'right';`} />
-
 		<Heading>Usage</Heading>
 		<Source
 			language='tsx'
-			code={`import { Radio } from '@banyan_cloud/roots';
+			code={`import { Radio } from '@banyandata-cloud/roots';
 
 const MyComponent = () => {
   const [checked, setChecked] = useState(false);
@@ -107,7 +108,6 @@ const MyComponent = () => {
       label='Enable notifications'
       checked={checked}
       onChange={(event, value) => setChecked(value)}
-      position='left'
     />
   );
 };`}

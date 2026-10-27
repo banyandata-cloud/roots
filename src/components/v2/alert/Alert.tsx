@@ -2,14 +2,24 @@ import { useDismiss, useFloating, useInteractions } from '@floating-ui/react-dom
 import { useAnimate } from 'framer-motion';
 import type { ForwardRefRenderFunction, ReactNode } from 'react';
 import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
-import { classes } from '../../../utils/utils';
-import { Button } from '../buttons';
-import { AlertIcon, CrossIcon } from '../../icons';
-import Popper from '../../popper/Popper';
-import styles from './Alert.module.css';
+import { classes } from '../utils';
+import Popper from '../popper/Popper';
+import { ButtonCloseIcon } from '../icons';
+import ErrorIcon from './assets/ErrorIcon';
+import InfoIcon from './assets/InfoIcon';
+import TickIcon from './assets/TickIcon';
+import styles from './Alert.module.scss';
 import type { AlertConfig, AlertHandle, AlertProps } from './types';
 
 const ALERT_DISMISS_TIME = 2000;
+
+// Figma uses the tick for success and warning, and dedicated indicators for info and error.
+const STATUS_ICONS = {
+	success: TickIcon,
+	warning: TickIcon,
+	info: InfoIcon,
+	error: ErrorIcon,
+};
 
 const ANIMATION = {
 	transform: {
@@ -43,7 +53,6 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 		animation = true,
 		className = '',
 		variant = 'card',
-		theme = 'light',
 	},
 	ref
 ) => {
@@ -81,30 +90,12 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 
 	const position = appliedPosition ?? defaultPosition;
 
-	let Icon: ReactNode = null;
-	if (CustomIcon != null) {
-		Icon = <CustomIcon className={styles.icon ?? ''} />;
-	} else {
-		switch (type) {
-			case 'info':
-				Icon = <AlertIcon.Info className={styles.icon} />;
-				break;
-			case 'error':
-				Icon = <AlertIcon.Error className={styles.icon} />;
-				break;
-			case 'warning':
-				Icon = <AlertIcon.Warning className={styles.icon} />;
-				break;
-			case 'success':
-				Icon = <AlertIcon.Success className={styles.icon} />;
-				break;
-			case 'danger':
-				Icon = <AlertIcon.Danger className={styles.icon} />;
-				break;
-			default:
-				Icon = null;
-		}
-	}
+	const StatusIcon = STATUS_ICONS[type];
+	const Icon: ReactNode = CustomIcon ? (
+		<CustomIcon className={styles.icon ?? ''} />
+	) : (
+		<StatusIcon className={styles.icon} />
+	);
 
 	const { floating, context } = useFloating({
 		open,
@@ -160,6 +151,8 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 
 	const { getFloatingProps } = useInteractions([useDismiss(context)]);
 
+	const isCard = variant === 'card';
+
 	return (
 		<Popper open={open} className={styles.popper} wrapperId='alert-popper' lockScroll={false}>
 			<div
@@ -169,48 +162,48 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 						styles.root,
 						styles[type],
 						styles[variant],
-						styles[theme],
-						shadow ? styles.shadow : '',
+						shadow && isCard ? styles.shadow : '',
 						styles[`position-${position}`],
 						className
 					),
 				})}
-				ref={scope}>
-				<div className={styles.left}>
-					{showIcon && (
-						<div className={classes(styles['icon-container'], styles[type])}>
-							{Icon}
+				ref={scope}
+			>
+				<div className={styles.body}>
+					{showIcon && <span className={styles['icon-container']}>{Icon}</span>}
+					<div className={styles.content}>
+						<div className={styles.text}>
+							<span className={styles.title}>{title}</span>
+							{description && (
+								<span className={styles.description}>{description}</span>
+							)}
+						</div>
+						{isCard && tag && <span className={styles.description}>{tag}</span>}
+						{isCard && CustomAction && (
+							<div className={styles.action}>
+								<CustomAction />
+							</div>
+						)}
+					</div>
+					{!isCard && CustomAction && (
+						<div className={styles.action}>
+							<CustomAction />
 						</div>
 					)}
-
-					<div className={styles.content}>
-						<span className={styles.title}>{title}</span>
-
-						{variant === 'card' && description && (
-							<span className={styles.description}>{description}</span>
-						)}
-
-						{variant === 'card' && tag && <span className={styles.time}>{tag}</span>}
-					</div>
 				</div>
-				<div className={styles.actions}>
-					{CustomAction && <CustomAction />}
-					{onClose && !autoDismiss && (
-						<Button
-							title=''
-							size='auto'
-							variant='text'
-							onClick={() => {
-								onClose();
-								setOpen(false);
-							}}
-							className={styles.close}
-							leftComponent={() => {
-								return <CrossIcon className={styles.icon} />;
-							}}
-						/>
-					)}
-				</div>
+				{onClose && !autoDismiss && (
+					<button
+						type='button'
+						aria-label='Close'
+						className={styles.close}
+						onClick={() => {
+							onClose();
+							setOpen(false);
+						}}
+					>
+						<ButtonCloseIcon size={20} />
+					</button>
+				)}
 			</div>
 		</Popper>
 	);

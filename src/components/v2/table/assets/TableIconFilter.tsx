@@ -9,7 +9,7 @@ interface TableIconFilterProps {
 const TableIconFilter = ({
     className,
     style,
-    color = '#717680',
+    color = 'currentColor',
 }: TableIconFilterProps) => {
     return (
         <svg

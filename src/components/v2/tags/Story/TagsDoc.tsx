@@ -1,11 +1,11 @@
 import { Heading, Source, Subheading, Subtitle, Title } from '@storybook/blocks';
-import { LinkHeader, PropsTable } from '../../../../components/docs';
+import { LinkHeader, PropsTable } from '../../docs';
 
 const BASIC_USAGE_CODE = `
-import { Tag } from '@banyan_cloud/roots';
+import { Tags } from '@banyandata-cloud/roots';
 
 const MyComponent = () => (
-  <Tag
+  <Tags
     size="md"
     label="Label"
   />
@@ -13,25 +13,26 @@ const MyComponent = () => (
 `;
 
 const CLOSABLE_USAGE_CODE = `
-<Tag size="md" label="Label" closable />
+<Tags size="md" label="Label" closable />
 `;
 
 const INDICATOR_USAGE_CODE = `
-<Tag size="md" label="Active" indicator indicatorType="success" />
-<Tag size="md" label="Pending" indicator indicatorType="warning" />
-<Tag size="md" label="Failed" indicator indicatorType="error" />
+<Tags size="md" label="Active" indicator indicatorType="success" />
+<Tags size="md" label="Pending" indicator indicatorType="warning" />
+<Tags size="md" label="Failed" indicator indicatorType="error" />
 `;
 
 const CHECKBOX_USAGE_CODE = `
-<Tag size="md" label="Label" checkbox />
-<Tag size="md" label="Label" checkboxCloser />
-<Tag size="md" label="Label" checkboxCount count={5} />
+<Tags size="md" label="Label" checkbox />
+<Tags size="md" label="Label" checkbox closable />
+<Tags size="md" label="Label" checkbox count={5} />
+<Tags size="md" label="Label" checkbox indicator indicatorType="warning" count={5} />
 `;
 
-const LOGO_USAGE_CODE = `
-<Tag size="md" label="Label" logo />
-<Tag size="md" label="Label" logo closable />
-<Tag size="md" label="Label" logo count={5} />
+const ICON_USAGE_CODE = `
+<Tags size="md" label="Label" icon={<MyIcon />} />
+<Tags size="md" label="Label" icon={<MyIcon />} closable />
+<Tags size="md" label="Label" icon={<MyIcon />} count={5} />
 `;
 
 const TEXT_FIELD_USAGE_CODE = `
@@ -39,7 +40,7 @@ const MyComponent = () => {
   const [value, setValue] = React.useState('');
 
   return (
-    <Tag
+    <Tags
       size="md"
       label="Label:"
       textField
@@ -55,180 +56,136 @@ const MyComponent = () => {
 
 const propsData = [
 	{
-		prop: 'searchTag',
-		type: 'boolean',
-		description: 'Renders the label-only search tag without an input or closer.',
-		default: 'false',
-	},
-	{
 		prop: 'label',
 		type: 'string',
 		description: 'Text displayed inside the tag.',
 		default: "'Label'",
 	},
 	{
+		prop: 'size',
+		type: "'sm' | 'md' | 'lg'",
+		description: 'Height, paddings, gaps and text size.',
+		default: "'sm'",
+	},
+	{
 		prop: 'closable',
 		type: 'boolean',
-		description: 'Renders a size-matched close (×) icon inside the tag.',
+		description: 'Shows the close button.',
 		default: 'false',
+	},
+	{
+		prop: 'onClose',
+		type: '() => void',
+		description: 'Called when the close button is clicked.',
+		default: 'undefined',
 	},
 	{
 		prop: 'checkbox',
 		type: 'boolean',
-		description: 'Renders a size-matched checkbox inside the tag.',
+		description: 'Leading checkbox sized to the tag.',
 		default: 'false',
 	},
 	{
-		prop: 'size',
-		type: "'sm' | 'md' | 'lg'",
-		description: 'Controls the size of the tag - height, padding, and font size.',
-		default: "'sm'",
+		prop: 'checked / defaultChecked',
+		type: 'boolean',
+		description: 'Controlled / initial state of the checkbox.',
+		default: 'undefined',
+	},
+	{
+		prop: 'onCheckedChange',
+		type: '(checked: boolean) => void',
+		description: 'Called when the checkbox changes.',
+		default: 'undefined',
 	},
 	{
 		prop: 'indicator',
 		type: 'boolean',
-		description:
-			'Renders a coloured status dot inside the tag. Combine with indicatorType to control the colour.',
+		description: 'Leading status dot. Can follow a checkbox.',
 		default: 'false',
 	},
 	{
 		prop: 'indicatorType',
 		type: "'success' | 'warning' | 'error'",
-		description:
-			'Controls the colour of the indicator dot. Only relevant when indicator is true.',
+		description: 'Colour of the status dot.',
 		default: "'success'",
+	},
+	{
+		prop: 'icon',
+		type: 'ReactNode',
+		description: 'Leading 16px icon slot.',
+		default: 'undefined',
 	},
 	{
 		prop: 'count',
 		type: 'number',
-		description:
-			'When provided, renders a count badge inside the tag. Works with onlyCount, logo, checkboxCount, checkboxLogoCount, checkboxIndicatorCount, and indicator variants.',
+		description: 'Count chip shown after the label.',
 		default: 'undefined',
 	},
 	{
-		prop: 'onlyCount',
+		prop: 'searchTag',
 		type: 'boolean',
-		description: 'Renders the label alongside a count badge. No indicator or checkbox.',
-		default: 'false',
-	},
-	{
-		prop: 'checkboxCloser',
-		type: 'boolean',
-		description: 'Renders a checkbox, the label, and a close icon.',
-		default: 'false',
-	},
-	{
-		prop: 'checkboxCount',
-		type: 'boolean',
-		description: 'Renders a checkbox, the label, and a count badge. Requires count prop.',
-		default: 'false',
-	},
-	{
-		prop: 'checkboxIndicator',
-		type: 'boolean',
-		description: 'Renders a checkbox and a coloured status dot alongside the label.',
-		default: 'false',
-	},
-	{
-		prop: 'checkboxIndicatorClosable',
-		type: 'boolean',
-		description: 'Renders a checkbox, a coloured status dot, the label, and a close icon.',
-		default: 'false',
-	},
-	{
-		prop: 'checkboxIndicatorCount',
-		type: 'boolean',
-		description:
-			'Renders a checkbox, a coloured status dot, the label, and a count badge. Requires count prop.',
-		default: 'false',
-	},
-	{
-		prop: 'logo',
-		type: 'boolean',
-		description: 'Renders a logo icon alongside the label.',
-		default: 'false',
-	},
-	{
-		prop: 'checkboxLogo',
-		type: 'boolean',
-		description: 'Renders a checkbox, a logo, and the label.',
-		default: 'false',
-	},
-	{
-		prop: 'checkboxLogoClosable',
-		type: 'boolean',
-		description: 'Renders a checkbox, a logo, the label, and a close icon.',
-		default: 'false',
-	},
-	{
-		prop: 'checkboxLogoCount',
-		type: 'boolean',
-		description:
-			'Renders a checkbox, a logo, the label, and a count badge. Requires count prop.',
+		description: 'Muted label only, e.g. "Label:".',
 		default: 'false',
 	},
 	{
 		prop: 'textField',
 		type: 'boolean',
-		description:
-			'Renders the tag in text field mode - shows a label prefix and an inline editable input.',
+		description: 'Muted label followed by an editable value and a close button.',
 		default: 'false',
 	},
 	{
 		prop: 'inputValue',
 		type: 'string',
-		description:
-			'Controlled value for the text field input. When provided, the component operates in controlled mode.',
+		description: 'Controlled value of the text field.',
 		default: 'undefined',
 	},
 	{
 		prop: 'defaultInputValue',
 		type: 'string',
-		description: 'Initial value for the text field input in uncontrolled mode.',
+		description: 'Initial value of the text field when uncontrolled.',
 		default: "''",
 	},
 	{
 		prop: 'inputPlaceholder',
 		type: 'string',
-		description: 'Placeholder text shown inside the text field input when it is empty.',
+		description: 'Placeholder of the empty text field.',
 		default: "''",
 	},
 	{
 		prop: 'readOnly',
 		type: 'boolean',
-		description: 'Makes the text field input non-editable while still displaying its value.',
+		description: 'Shows the text field value without editing.',
 		default: 'false',
 	},
 	{
 		prop: 'onInputChange',
-		type: '(value: string, event: React.ChangeEvent<HTMLInputElement>) => void',
-		description: 'Callback fired when the text field input value changes.',
+		type: '(value: string, event: ChangeEvent<HTMLInputElement>) => void',
+		description: 'Called when the text field value changes.',
 		default: 'undefined',
 	},
 	{
 		prop: 'onInputBlur',
 		type: '() => void',
-		description: 'Callback fired when the text field input loses focus.',
+		description: 'Called when the text field loses focus.',
 		default: 'undefined',
 	},
 	{
 		prop: 'onInputEnter',
 		type: '() => void',
-		description: 'Callback fired when Enter or Tab is pressed inside the text field input.',
+		description: 'Called on Enter or Tab inside the text field.',
 		default: 'undefined',
 	},
 	{
 		prop: 'onInputClear',
 		type: '() => void',
 		description:
-			'Callback fired when the close icon is clicked or Backspace is pressed on an empty text field input.',
+			'Called when the close button is clicked or Backspace is pressed on an empty text field.',
 		default: 'undefined',
 	},
 	{
 		prop: 'onClick',
 		type: '() => void',
-		description:
-			'Callback fired when the tag is clicked. Primarily used in readOnly text field mode.',
+		description: 'Called when the tag is clicked.',
 		default: 'undefined',
 	},
 ];
@@ -238,8 +195,8 @@ const TagDoc = () => (
 		<Title />
 		<Subtitle>
 			Tag is a lightweight label component used to categorize, highlight, or filter content.
-			It supports a wide range of compositions - checkboxes, indicators, logos, count badges,
-			close buttons, and inline text fields - across three sizes.
+			It composes a leading checkbox, status dot or icon with a label, count chip, close
+			button or inline text field, in three sizes.
 		</Subtitle>
 
 		<LinkHeader
@@ -274,8 +231,8 @@ const TagDoc = () => (
 		<Subheading>With checkbox</Subheading>
 		<Source language='tsx' code={CHECKBOX_USAGE_CODE} />
 
-		<Subheading>With logo</Subheading>
-		<Source language='tsx' code={LOGO_USAGE_CODE} />
+		<Subheading>With icon</Subheading>
+		<Source language='tsx' code={ICON_USAGE_CODE} />
 
 		<Subheading>Text field (controlled)</Subheading>
 		<Source language='tsx' code={TEXT_FIELD_USAGE_CODE} />

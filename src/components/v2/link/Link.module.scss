@@ -1,60 +1,11 @@
-@use '../../../styles/tokens' as tokens;
-@import '../../../styles/index';
+@use '../styles/tokens' as tokens;
 
+// Figma "Link" (text only) and "Link with icon". Focus and active draw a 1px ring that hugs the
+// text, so the box keeps the same size in every state.
 .wrapper {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	border: 1px solid transparent;
-	padding: 1px;
-	border-radius: tokens.$radius-xxs;
-	box-sizing: border-box;
-
-	&:active {
-		border-color: tokens.$color-fg-brand-primary;
-	}
-
-	&:has(.link:focus-visible) {
-		border-color: tokens.$color-fg-brand-primary;
-	}
-
-	// Sizes
-
-	&.size-sm .link {
-		font-size: 12px;
-		line-height: 16px;
-		letter-spacing: 0.32px;
-		gap: 8px;
-	}
-
-	&.size-md .link {
-		font-size: 14px;
-		line-height: 18px;
-		letter-spacing: 0.16px;
-		gap: 10px;
-	}
-
-	&.size-lg .link {
-		font-size: 16px;
-		line-height: 22px;
-		gap: 10px;
-	}
-
-	// Disabled
-
-	&.disabled {
-		pointer-events: none;
-
-		.link {
-			color: tokens.$color-text-disabled;
-		}
-
-		.icon {
-			stroke: tokens.$color-fg-disabled;
-		}
-	}
-
-	// Link
 
 	.link {
 		display: inline-flex;
@@ -62,47 +13,71 @@
 		gap: tokens.$spacing-md;
 		text-decoration: none;
 		cursor: pointer;
-		color: tokens.$color-fg-brand-primary;
-
-		&:focus-visible {
-			outline: none;
-		}
-
-		&:hover {
-			color: tokens.$color-text-brand-secondary;
-
-			.icon {
-				stroke: tokens.$color-text-brand-secondary;
-			}
-		}
+		color: tokens.$color-text-brand-secondary;
+		outline: none;
 
 		&:visited {
-			color: tokens.$color-utility-purple-600; // no semantic "visited" token yet
+			color: tokens.$color-text-brand-tertiary;
+		}
 
-			.icon {
-				stroke: tokens.$color-utility-purple-600;
-			}
+		&:focus-visible {
+			outline: 1px solid tokens.$color-text-brand-secondary;
 		}
 
 		&:active {
+			color: tokens.$color-fg-brand-primary;
+			outline: 1px solid tokens.$color-text-brand-secondary;
+		}
+
+		&.withIcon {
 			color: tokens.$color-fg-primary;
 
-			.icon {
-				stroke: tokens.$color-fg-primary;
+			&:hover {
+				color: tokens.$color-fg-brand-primary-alt;
 			}
+
+			&:visited {
+				color: tokens.$color-fg-brand-primary;
+			}
+
+			&:focus-visible,
+			&:active {
+				color: tokens.$color-fg-primary;
+				outline-color: tokens.$color-fg-primary;
+			}
+		}
+	}
+
+	// Disabled
+
+	&.disabled {
+		pointer-events: none;
+
+		.link,
+		.link.withIcon {
+			opacity: 0.25;
+			color: tokens.$color-fg-disabled;
+		}
+
+		.link.withIcon {
+			color: tokens.$color-text-disabled;
 		}
 	}
 
 	// Icon
 
 	.icon {
-		stroke-width: 1.2px;
-		stroke: tokens.$color-fg-brand-primary;
+		flex-shrink: 0;
 		width: 16px;
 		height: 16px;
+
+		// The icon takes the text colour of the current state.
+		path {
+			fill: currentColor;
+		}
 	}
 
-	.size-lg .icon {
+	&.size-lg .icon {
 		width: 20px;
 		height: 20px;
 	}

@@ -1,11 +1,11 @@
-@use '../../../../styles/tokens' as tokens;
-@import '../../../../styles/_index';
+@use '../../styles/tokens' as tokens;
+@use '../../styles/mixins' as mixins;
 
 .root {
-	@include flex(column, flex-start, stretch);
+	@include mixins.flex(column, flex-start, stretch);
 	background: tokens.$color-bg-primary;
 	overflow: auto;
-	@include customScrollBar;
+	@include mixins.custom-scrollbar;
 	scrollbar-width: none;
 
 	&::-webkit-scrollbar:horizontal {

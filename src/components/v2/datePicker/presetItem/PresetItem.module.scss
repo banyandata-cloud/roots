@@ -1,4 +1,4 @@
-@use '../../../../styles/tokens' as tokens;
+@use '../../styles/tokens' as tokens;
 
 .root {
 	display: flex;
@@ -10,10 +10,7 @@
 	background: transparent;
 	text-align: left;
 	cursor: pointer;
-	font-family: tokens.$font-family-base;
-	font-size: tokens.$font-size-14;
-	line-height: tokens.$line-height-20;
-	font-weight: tokens.$font-weight-regular;
+	@include tokens.text-style(body);
 	color: tokens.$color-text-primary;
 
 	&:hover:not(:disabled) {

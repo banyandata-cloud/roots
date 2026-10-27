@@ -27,7 +27,8 @@ const Indicator: React.FC<IndicatorProps> = ({ type, size = 8, ...props }) => {
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'
 			style={{ aspectRatio: '1 / 1', display: 'block' }}
-			{...props}>
+			{...props}
+		>
 			<g clipPath='url(#indicator_clip)'>
 				<circle
 					cx='4'

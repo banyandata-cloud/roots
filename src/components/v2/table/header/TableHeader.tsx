@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import { TableRow } from '../row';
 import type { TableProps } from '../types';
-import styles from './TableHeader.module.css';
+import styles from './TableHeader.module.scss';
 
 interface TableHeaderProps
 	extends Pick<

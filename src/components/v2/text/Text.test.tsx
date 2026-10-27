@@ -33,14 +33,16 @@ describe('Text — Prop-driven behavior', () => {
 		expect(screen.getByText('Underlined')).toHaveStyle({ textDecoration: 'underline' });
 	});
 
-	test('applies font weight', () => {
-		render(<Text weight={500}>Weighted</Text>);
-		expect(screen.getByText('Weighted')).toHaveStyle({ fontWeight: '500' });
+	test('uses the body text style by default', () => {
+		render(<Text>Default body</Text>);
+		const { className } = screen.getByText('Default body');
+		expect(className).toContain('body');
+		expect(className).not.toContain('stroke');
 	});
 
 	test('applies variant class', () => {
-		render(<Text variant='h1'>Header text</Text>);
-		expect(screen.getByText('Header text').className).toContain('h1');
+		render(<Text variant='heading-xxlarge'>Header text</Text>);
+		expect(screen.getByText('Header text').className).toContain('heading-xxlarge');
 	});
 
 	test('applies stroke class', () => {
@@ -89,14 +91,14 @@ describe('Text — Snapshots', () => {
 	test('matches snapshot with multiple props', () => {
 		const { container } = render(
 			<Text
-				variant='h2'
+				variant='heading-medium'
 				component='p'
 				stroke='bold'
 				italic
 				underline
-				weight={600}
 				className='extra'
-				attrs={{ role: 'note' }}>
+				attrs={{ role: 'note' }}
+			>
 				Complex text
 			</Text>
 		);

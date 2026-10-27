@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
-import { classes } from '../../../../utils';
+import { classes } from '../../utils';
 import { Tags } from '../../tags';
-import styles from './SummaryCard.module.css';
+import styles from './SummaryCard.module.scss';
 import type { SummaryCardProps } from './types';
 
 /**

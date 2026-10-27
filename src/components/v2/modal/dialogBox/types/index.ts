@@ -1,4 +1,4 @@
-import type { ButtonColors } from '@/components/buttons';
+import type { ButtonVariant } from '../../../buttons';
 import type { ComponentType } from 'react';
 
 export type DialogSize = 'sm' | 'md';
@@ -20,7 +20,7 @@ export interface DialogOpenOptions {
 	description?: string | null;
 	actionText?: string;
 	cancelText?: string;
-	variant?: ButtonColors;
+	variant?: ButtonVariant;
 	onAction?: DialogActionCallback | null;
 	onCancel?: (() => void) | null;
 	size?: DialogSize;
@@ -41,7 +41,7 @@ export interface DialogBoxHandle {
 export interface FooterInnerProps {
 	action: string;
 	cancel: string;
-	variant: ButtonColors;
+	variant: ButtonVariant;
 	customAction?:
 		| ComponentType<{
 				dismiss: () => void;

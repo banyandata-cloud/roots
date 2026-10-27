@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import PresetItem from '../presetItem/PresetItem';
-import styles from './PresetPanel.module.css';
+import styles from './PresetPanel.module.scss';
 import type { PresetPanelProps } from './types';
 
 /** Left panel: preset list, one click applies it; a Recent block sits under a divider. */

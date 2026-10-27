@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useRef } from 'react';
-import { ThemedContainer } from '../../../helpers';
+import { ThemedContainer } from '../../helpers';
 import DialogBoxDoc from '../../modal/dialogBox/Story/DialogDoc';
 import DialogBox from './DialogBox';
 import type { DialogBoxHandle } from './types';

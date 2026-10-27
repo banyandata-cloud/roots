@@ -1,11 +1,11 @@
-@use '../../../../styles/tokens' as tokens;
+@use '../../styles/tokens' as tokens;
 
 // TextField Component Styles - Based on Figma Design System
 
 .textField {
 	display: flex;
 	flex-direction: column;
-	gap: 6px;
+	gap: tokens.$spacing-sm;
 	width: 100%;
 	min-width: 320px;
 }
@@ -13,22 +13,22 @@
 // Label Container
 .labelContainer {
 	display: flex;
-	gap: 2px;
+	gap: tokens.$spacing-xxs;
 	align-items: center;
 
 	.label {
-		font-family: Jakarta;
+		font-family: tokens.$font-family-base;
 		font-weight: 500;
-		font-size: 14px;
-		line-height: 20px;
+		font-size: tokens.$font-size-14;
+		line-height: tokens.$line-height-20;
 		color: var(--color-fg-secondary);
 	}
 
 	.required {
-		font-family: Jakarta;
+		font-family: tokens.$font-family-base;
 		font-weight: 500;
-		font-size: 14px;
-		line-height: 20px;
+		font-size: tokens.$font-size-14;
+		line-height: tokens.$line-height-20;
 		color: var(--color-text-brand-secondary);
 	}
 
@@ -71,7 +71,7 @@
 	&.inputContainerWithLeadingDropdown,
 	&.inputContainerWithTrailingDropdown {
 		.inputInner {
-			padding: 0px;
+			padding: 0;
 		}
 	}
 }
@@ -80,11 +80,11 @@
 .inputInner {
 	display: flex;
 	align-items: center;
-	gap: 8px;
+	gap: tokens.$spacing-md;
 	flex: 1;
 	min-width: 0;
 	height: 100%;
-	padding: 10px 12px;
+	padding: 0.625rem tokens.$spacing-lg;
 }
 
 // Adjust inputInner padding for thicker borders in active-typing and error states
@@ -92,15 +92,15 @@
 .inputContainer.active-typing .inputInner,
 .inputContainer.errorFilled .inputInner,
 .inputContainer.error-filled .inputInner {
-	padding: 9.5px 11.5px;
+	padding: 0.5938rem 0.7188rem;
 }
 
 .inputInnerWithLeadingText {
-	padding-left: 12px;
+	padding-left: tokens.$spacing-lg;
 }
 
 .inputInnerWithLeadingDropdown {
-	padding-left: 12px;
+	padding-left: tokens.$spacing-lg;
 	flex: 1;
 }
 
@@ -109,13 +109,13 @@
 .inputContainer.active-typing .inputInnerWithLeadingText,
 .inputContainer.errorFilled .inputInnerWithLeadingText,
 .inputContainer.error-filled .inputInnerWithLeadingText {
-	padding-left: 11.5px;
+	padding-left: 0.7188rem;
 }
 
 .contentArea {
 	display: flex;
 	align-items: center;
-	gap: 8px;
+	gap: tokens.$spacing-md;
 	flex: 1;
 	min-width: 0;
 	position: relative;
@@ -124,7 +124,7 @@
 .trailingArea {
 	display: flex;
 	align-items: center;
-	gap: 12px;
+	gap: tokens.$spacing-lg;
 	flex-shrink: 0;
 }
 
@@ -133,6 +133,7 @@
 	width: 20px;
 	height: 20px;
 	flex-shrink: 0;
+	color: tokens.$color-fg-quaternary;
 
 	svg {
 		width: 100%;
@@ -145,15 +146,15 @@
 	display: flex;
 	align-items: center;
 	height: 100%;
-	padding: 0 12px;
+	padding: 0 tokens.$spacing-lg;
 	border-right: 1px solid var(--color-border-primary);
 	flex-shrink: 0;
 
 	.leadingTextContent {
-		font-family: Jakarta;
+		font-family: tokens.$font-family-base;
 		font-weight: 400;
-		font-size: 16px;
-		line-height: 24px;
+		font-size: tokens.$font-size-16;
+		line-height: tokens.$line-height-24;
 		color: var(--color-text-tertiary);
 		white-space: nowrap;
 	}
@@ -165,7 +166,7 @@
 	align-items: center;
 	flex-shrink: 0;
 	height: 100%;
-	padding-left: 12px; // Left padding for leading dropdown as per Figma design
+	padding-left: tokens.$spacing-lg; // Left padding for leading dropdown as per Figma design
 }
 
 // Input Field Area - takes remaining space after dropdown
@@ -175,24 +176,24 @@
 	min-width: 0;
 	height: 40px;
 	align-items: center;
-	padding: 10px 12px;
-	gap: 8px;
+	padding: 0.625rem tokens.$spacing-lg;
+	gap: tokens.$spacing-md;
 
 	// When there's a leading dropdown, add left padding before placeholder/value
 	&.inputFieldAreaWithLeadingDropdown {
-		padding-left: 12px;
+		padding-left: tokens.$spacing-lg;
 	}
 
 	// When there's leading text, add small left padding for visual gap
 	&.inputFieldAreaWithLeadingText {
-		padding-left: 8px;
+		padding-left: tokens.$spacing-md;
 	}
 }
 
 .inputContent {
 	display: flex;
 	align-items: center;
-	gap: 8px;
+	gap: tokens.$spacing-md;
 	flex: 1;
 	min-width: 0;
 }
@@ -206,7 +207,7 @@
 
 	// Override borderless variant to add internal padding for trailing dropdown
 	.dropdownContainer {
-		padding: 0 12px !important; // 12px padding on both sides as per Figma
+		padding: 0 tokens.$spacing-lg !important; // tokens.$spacing-lg padding on both sides as per Figma
 	}
 }
 
@@ -224,8 +225,8 @@
 
 	// Target the actual DOM structure: buttonWrapper > button > spans > contentArea > dropdownText
 	div > button > span > span > div > span {
-		font-size: 16px !important;
-		line-height: 24px !important;
+		font-size: tokens.$font-size-16 !important;
+		line-height: tokens.$line-height-24 !important;
 		color: var(--color-text-tertiary) !important; // text-tertiary as per Figma
 		font-weight: 400 !important;
 		white-space: nowrap !important;
@@ -237,18 +238,18 @@
 		width: fit-content !important;
 		max-width: none !important;
 		height: 40px !important;
-		padding: 10px 12px !important;
+		padding: 0.625rem tokens.$spacing-lg !important;
 	}
 
 	// Target contentArea div for minimal gap
 	div > button > span > span > div:first-child {
-		gap: 1px !important;
+		gap: tokens.$spacing-1 !important;
 		flex-shrink: 0 !important;
 	}
 
 	// Target trailingArea div for minimal gap and icon color
 	div > button > span > span[data-elem='title'] {
-		gap: 1px !important;
+		gap: tokens.$spacing-1 !important;
 		flex-shrink: 0 !important;
 
 		// Target dropdown icon inside trailingArea
@@ -261,12 +262,12 @@
 
 // Popover positioning class for leading dropdown
 .leadingDropdownPopover {
-	transform: translateX(-12px);
+	transform: translateX(-0.75rem);
 }
 
 // Popover positioning class for trailing dropdown
 .trailingDropdownPopover {
-	transform: translateX(-24px); // Align right edge of popover with dropdown trigger position
+	transform: translateX(-1.5rem); // Align right edge of popover with dropdown trigger position
 }
 
 .trailingArea .helpIcon,
@@ -275,6 +276,7 @@
 	width: 16px;
 	height: 16px;
 	flex-shrink: 0;
+	color: tokens.$color-fg-quaternary;
 
 	svg {
 		width: 100%;
@@ -289,10 +291,10 @@
 
 // Input Text Display
 .inputText {
-	font-family: Jakarta;
+	font-family: tokens.$font-family-base;
 	font-weight: 400;
-	font-size: 16px;
-	line-height: 24px;
+	font-size: tokens.$font-size-16;
+	line-height: tokens.$line-height-24;
 	white-space: pre;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -320,10 +322,10 @@
 	outline: none;
 	background: transparent;
 	cursor: inherit;
-	font-size: 16px; // iOS zoom fix
-	font-family: Jakarta;
+	font-size: tokens.$font-size-16; // iOS zoom fix
+	font-family: tokens.$font-family-base;
 	font-weight: 400;
-	line-height: 24px;
+	line-height: tokens.$line-height-24;
 	color: var(--color-text-primary);
 	white-space: pre;
 	caret-color: var(--color-text-primary); // Thicker cursor
@@ -362,10 +364,10 @@
 	outline: none;
 	background: transparent;
 	cursor: inherit;
-	font-size: 16px; // iOS zoom fix
-	font-family: Jakarta;
+	font-size: tokens.$font-size-16; // iOS zoom fix
+	font-family: tokens.$font-family-base;
 	font-weight: 400;
-	line-height: 24px;
+	line-height: tokens.$line-height-24;
 	color: var(--color-text-primary);
 
 	&.visibleInput {
@@ -380,6 +382,7 @@
 	font-weight: 400;
 	animation: blink 1s infinite;
 	margin-left: 0; // No gap between text and cursor
+	-webkit-user-select: none;
 	user-select: none;
 }
 
@@ -396,10 +399,10 @@
 
 // Helper Text
 .helperText {
-	font-family: Jakarta;
+	font-family: tokens.$font-family-base;
 	font-weight: 400;
-	font-size: 14px;
-	line-height: 20px;
+	font-size: tokens.$font-size-14;
+	line-height: tokens.$line-height-20;
 
 	&.helperDefault {
 		color: var(--color-text-tertiary);
@@ -520,13 +523,13 @@
 }
 
 // Responsive Design
-@media (max-width: 768px) {
+@media (max-width: 48em) {
 	.textField {
 		max-width: 100%;
 	}
 
 	.inputText {
-		font-size: 16px; // Prevent iOS zoom
+		font-size: tokens.$font-size-16; // Prevent iOS zoom
 	}
 }
 
@@ -559,7 +562,7 @@
 		border-right: 1.5px solid var(--color-border-brand) !important;
 		border-bottom: 1.5px solid var(--color-border-brand) !important;
 		border-left: 1px solid var(--color-border-primary) !important; // Keep separator gray and 1px
-		padding: 9.5px 11.5px !important; // Adjust for thicker border
+		padding: 0.5938rem 0.7188rem !important; // Adjust for thicker border
 		transition: all 0.2s ease-in-out !important; // Match input container transition
 	}
 
@@ -594,8 +597,8 @@
 	// Reset Button component defaults and apply trailing button styling
 	display: flex !important;
 	align-items: center !important;
-	gap: 6px !important;
-	padding: 10px 12px !important;
+	gap: tokens.$spacing-sm !important;
+	padding: 0.625rem tokens.$spacing-lg !important;
 	border-top-left-radius: 0 !important;
 	border-bottom-left-radius: 0 !important;
 	border-top-right-radius: 6px !important;
@@ -610,10 +613,10 @@
 	box-shadow:
 		0px 0px 1px 0px rgba(tokens.$base-color-base-black, 0.04),
 		0px 1px 2px 0px rgba(tokens.$base-color-base-black, 0.06) !important;
-	font-family: Jakarta !important;
+	font-family: tokens.$font-family-base !important;
 	font-weight: 500 !important;
-	font-size: 14px !important;
-	line-height: 20px !important;
+	font-size: tokens.$font-size-14 !important;
+	line-height: tokens.$line-height-20 !important;
 	color: var(--color-text-tertiary) !important;
 	text-decoration: none !important;
 	min-width: unset !important;
@@ -669,10 +672,10 @@
 }
 
 .trailingButtonText {
-	font-family: Jakarta;
+	font-family: tokens.$font-family-base;
 	font-weight: 500;
-	font-size: 14px;
-	line-height: 20px;
+	font-size: tokens.$font-size-14;
+	line-height: tokens.$line-height-20;
 	color: var(--color-text-tertiary);
 	white-space: nowrap;
 }

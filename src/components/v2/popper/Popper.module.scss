@@ -1,0 +1,17 @@
+@use '../styles/tokens' as tokens;
+
+.backdrop {
+	position: fixed;
+	z-index: 100;
+	inset: 0;
+	// The overlay token is solid, so the dim is a 40% mix of it.
+	background: color-mix(in srgb, #{tokens.$color-bg-overlay} 40%, transparent);
+
+	&.transparent {
+		background: none;
+	}
+
+	&.hide-backdrop {
+		position: static !important;
+	}
+}

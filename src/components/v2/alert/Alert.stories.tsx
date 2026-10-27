@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useEffect, useRef, useState } from 'react';
-import { AlertIcon } from '../../../components/icons/AlertIcon';
-import { ThemedContainer } from '../../helpers';
+import { HelpIcon } from '../icons';
+import { ThemedContainer } from '../helpers';
 import Alert from './Alert';
 import AlertDoc from './Story/AlertDoc';
 
@@ -68,58 +68,63 @@ const AlertTrigger = ({ config, alertProps = {} }: any) => {
 	);
 };
 
-export const AllAlerts: Story = {
-	name: 'Variants',
+const TYPES = ['success', 'info', 'error', 'warning'] as const;
+
+const ActionLink = () => <span>Link</span>;
+
+const typeTitle = (type: string) => type.charAt(0).toUpperCase() + type.slice(1);
+
+export const Inline: Story = {
 	render: () => (
 		<div style={sectionStyle}>
+			{TYPES.map((type) => (
+				<div key={type}>
+					<p style={headingStyle}>{typeTitle(type)} Inline Alert</p>
+					<AlertTrigger
+						config={{
+							title: 'Server instance location changed',
+							description: 'Server instance location changed',
+							type,
+							action: ActionLink,
+							autoDismiss: false,
+						}}
+						alertProps={{ variant: 'inline' }}
+					/>
+				</div>
+			))}
+		</div>
+	),
+};
+
+export const Card: Story = {
+	render: () => (
+		<div style={sectionStyle}>
+			{TYPES.map((type) => (
+				<div key={type}>
+					<p style={headingStyle}>{typeTitle(type)} Card Alert</p>
+					<AlertTrigger
+						config={{
+							title: 'Server instance location changed',
+							description: 'The server instance is successfully running.',
+							type,
+							action: ActionLink,
+							autoDismiss: false,
+						}}
+						alertProps={{ variant: 'card' }}
+					/>
+				</div>
+			))}
 			<div>
-				<p style={headingStyle}>Info Alert</p>
+				<p style={headingStyle}>Card Alert with timestamp</p>
 				<AlertTrigger
 					config={{
-						title: 'Information',
-						description: 'Basic Info is Here',
-						type: 'info',
-					}}
-				/>
-			</div>
-			<div>
-				<p style={headingStyle}>Info Card Alert</p>
-				<AlertTrigger
-					config={{
-						title: 'Information',
-						description: 'Basic Info is Here',
+						title: 'Server instance location changed',
+						description: 'The server instance is successfully running.',
 						tag: '02:39:05 AM',
 						type: 'info',
+						autoDismiss: false,
 					}}
-					alertProps={{ variant: 'card', theme: 'light' }}
-				/>
-			</div>
-			<div>
-				<p style={headingStyle}>Error Alert</p>
-				<AlertTrigger
-					config={{ title: 'Error', description: 'Basic Error', type: 'error' }}
-				/>
-			</div>
-			<div>
-				<p style={headingStyle}>Warning Alert</p>
-				<AlertTrigger
-					config={{ title: 'Warning', description: 'Basic Warning', type: 'warning' }}
-				/>
-			</div>
-			<div>
-				<p style={headingStyle}>Success Alert</p>
-				<AlertTrigger
-					config={{
-						title: 'Success',
-						description: 'Basic Success Desc.',
-						type: 'success',
-					}}
-				/>
-			</div>
-			<div>
-				<p style={headingStyle}>Danger Alert</p>
-				<AlertTrigger
-					config={{ title: 'Error', description: 'Error Description', type: 'danger' }}
+					alertProps={{ variant: 'card' }}
 				/>
 			</div>
 			<div>
@@ -129,8 +134,10 @@ export const AllAlerts: Story = {
 						title: 'Custom Icon',
 						description: 'This alert uses a custom icon component.',
 						type: 'info',
-						icon: (props: any) => <AlertIcon.Info {...props} />,
+						icon: HelpIcon,
+						autoDismiss: false,
 					}}
+					alertProps={{ variant: 'card' }}
 				/>
 			</div>
 		</div>

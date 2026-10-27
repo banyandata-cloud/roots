@@ -41,5 +41,4 @@ export interface TableBodyProps extends Pick<
 
 	checkedRows: Record<string, unknown>[];
 	setCheckedRows: (rows: Record<string, unknown>[]) => void;
-	toggleDrawer?: (props: object) => void;
 }

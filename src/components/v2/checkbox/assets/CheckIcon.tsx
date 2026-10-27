@@ -1,11 +1,13 @@
+// Geometry from the Figma 14px check; the stroke stays 1.71px at every box size.
 const CheckIcon = () => (
-	<svg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'>
+	<svg viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
 		<path
-			d='M1 4L3.5 6.5L9 1'
+			d='M2.35 6.71863L5.63759 10.0062L11.65 3.9938'
 			stroke='currentColor'
-			strokeWidth='1.5'
+			strokeWidth='1.71'
 			strokeLinecap='round'
 			strokeLinejoin='round'
+			vectorEffect='non-scaling-stroke'
 		/>
 	</svg>
 );

@@ -3,7 +3,7 @@ import RangeArrow from '../rangeArrow/RangeArrow';
 import TimeSelect from '../timeSelect/TimeSelect';
 import type { TimeOfDay } from '../types';
 import { DEFAULT_TIME } from '../utils';
-import styles from './TimeRangeCard.module.css';
+import styles from './TimeRangeCard.module.scss';
 
 export interface TimeRangeCardProps {
 	fromTime: TimeOfDay | null;

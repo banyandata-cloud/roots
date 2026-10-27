@@ -1,4 +1,4 @@
-@use '../../../../styles/tokens' as tokens;
+@use '../../styles/tokens' as tokens;
 
 .root {
 	display: flex;
@@ -21,18 +21,12 @@
 }
 
 .duration {
-	font-family: tokens.$font-family-base;
-	font-size: tokens.$font-size-14;
-	line-height: tokens.$line-height-20;
-	font-weight: tokens.$font-weight-semibold;
+	@include tokens.text-style(body, semibold);
 	color: tokens.$color-text-brand-primary;
 }
 
 .dates {
-	font-family: tokens.$font-family-base;
-	font-size: tokens.$font-size-14;
-	line-height: tokens.$line-height-20;
-	font-weight: tokens.$font-weight-semibold;
+	@include tokens.text-style(body, semibold);
 	color: tokens.$color-text-secondary;
 }
 
@@ -46,17 +40,11 @@
 }
 
 .placeholderTitle {
-	font-family: tokens.$font-family-base;
-	font-size: tokens.$font-size-14;
-	line-height: tokens.$line-height-20;
-	font-weight: tokens.$font-weight-semibold;
+	@include tokens.text-style(body, semibold);
 	color: tokens.$color-text-quanternary;
 }
 
 .placeholderBody {
-	font-family: tokens.$font-family-base;
-	font-size: tokens.$font-size-14;
-	line-height: tokens.$line-height-20;
-	font-weight: tokens.$font-weight-regular;
+	@include tokens.text-style(body);
 	color: tokens.$color-text-placeholder;
 }

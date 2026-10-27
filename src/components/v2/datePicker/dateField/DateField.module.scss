@@ -1,10 +1,11 @@
-@use '../../../../styles/tokens' as tokens;
+@use '../../styles/tokens' as tokens;
 
 .root {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	gap: tokens.$spacing-md;
-	width: 330px;
+	width: fit-content;
 	min-width: 230px;
 	max-width: 100%;
 	padding: tokens.$spacing-lg tokens.$spacing-14;
@@ -26,13 +27,10 @@
 }
 
 .fill {
-	// Mirrors Calendar's flex sizing so each date card's right edge stays aligned with
-	// its paired calendar month even if the popover is forced wider than its natural
-	// content width (e.g. by the footer's "Default to show" dropdown).
+	// Two range fields split the row evenly; each keeps the design's 230px minimum.
 	flex: 1 1 0;
 	width: auto;
-	min-width: 230px;
-	max-width: 400px;
+	max-width: none;
 }
 
 .error {
@@ -40,7 +38,6 @@
 }
 
 .valueBlock {
-	position: relative;
 	display: flex;
 	flex-direction: column;
 	gap: tokens.$spacing-xxs;
@@ -50,14 +47,11 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding-right: 24px;
+	padding-right: tokens.$spacing-3xl;
 }
 
 .label {
-	font-family: tokens.$font-family-base;
-	font-size: tokens.$font-size-12;
-	line-height: tokens.$line-height-16;
-	font-weight: tokens.$font-weight-semibold;
+	@include tokens.text-style(body-small, semibold);
 	color: tokens.$color-text-quanternary;
 }
 
@@ -66,10 +60,7 @@
 	padding: 0;
 	border: none;
 	background: transparent;
-	font-family: tokens.$font-family-base;
-	font-size: tokens.$font-size-16;
-	line-height: tokens.$line-height-24;
-	font-weight: tokens.$font-weight-semibold;
+	@include tokens.text-style(body-large, semibold);
 	color: tokens.$color-text-primary;
 
 	&:focus {
@@ -82,10 +73,11 @@
 	}
 }
 
+// Figma anchors the 24px clear target 8px from the top-right corner of the card.
 .clear {
 	position: absolute;
-	top: 0;
-	right: 0;
+	top: tokens.$spacing-md;
+	right: 0.4375rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -96,6 +88,11 @@
 	background: transparent;
 	color: tokens.$color-fg-quaternary;
 	cursor: pointer;
+
+	svg {
+		width: 18px;
+		height: 18px;
+	}
 
 	&:hover {
 		background: tokens.$color-bg-secondary-hover;
@@ -108,9 +105,20 @@
 	}
 }
 
+// Figma's divider is a 0-height line drawn 1px above its slot, so it adds no height.
 .divider {
-	height: 1px;
-	background: tokens.$color-border-secondary;
+	position: relative;
+	height: 0;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: -#{tokens.$spacing-1};
+		right: 0;
+		left: 0;
+		height: tokens.$spacing-1;
+		background: tokens.$color-border-secondary;
+	}
 }
 
 .timeBlock {

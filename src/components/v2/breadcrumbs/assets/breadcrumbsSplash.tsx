@@ -11,7 +11,7 @@ interface BreadcrumbsSplashProps {
 const BreadcrumbsSplash: React.FC<BreadcrumbsSplashProps> = ({
 	width = 20,
 	height = 20,
-	color = '#A4A7AE',
+	color = 'var(--color-fg-quaternary)',
 	className,
 	style,
 }) => {
@@ -31,7 +31,8 @@ const BreadcrumbsSplash: React.FC<BreadcrumbsSplashProps> = ({
 				...style,
 			}}
 			aria-hidden='true'
-			role='img'>
+			role='img'
+		>
 			<line
 				x1='5.96276'
 				y1='16.7667'

@@ -1,5 +1,5 @@
 import { Heading, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../../components/docs';
+import { LinkHeader, PropsTable } from '../../docs';
 
 const propsData = [
 	{
@@ -28,6 +28,12 @@ const propsData = [
 		description:
 			'Controls where the pointer appears along the active side (start, center, end).',
 		default: "'center'",
+	},
+	{
+		prop: 'supportingText',
+		type: 'ReactNode',
+		description: 'Optional second line shown under the content (the Figma supporting-text tooltip).',
+		default: 'undefined',
 	},
 	{
 		prop: 'showPointer',
@@ -86,7 +92,7 @@ const TooltipDoc = () => (
 		<Subheading>Basic Usage</Subheading>
 		<Source
 			language='tsx'
-			code={`import { Tooltip } from '@banyan_cloud/roots';
+			code={`import { Tooltip } from '@banyandata-cloud/roots';
  
 <Tooltip content='Helpful context'>
   <button>Hover me</button>

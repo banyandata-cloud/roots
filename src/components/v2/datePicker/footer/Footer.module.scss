@@ -1,4 +1,4 @@
-@use '../../../../styles/tokens' as tokens;
+@use '../../styles/tokens' as tokens;
 
 .root {
 	display: flex;
@@ -7,7 +7,7 @@
 	flex-wrap: wrap;
 	gap: tokens.$spacing-14;
 	width: 100%;
-	height: 68px;
+	// Natural height: 14px + 40px controls + 14px, under the 1px divider (Figma: 68 + 1).
 	padding: tokens.$spacing-14 tokens.$spacing-3xl;
 	border-top: 1px solid tokens.$color-border-secondary;
 	background: tokens.$color-bg-tertiary;
@@ -21,10 +21,7 @@
 }
 
 .label {
-	font-family: tokens.$font-family-base;
-	font-size: tokens.$font-size-14;
-	line-height: tokens.$line-height-20;
-	font-weight: tokens.$font-weight-medium;
+	@include tokens.text-style(body, medium);
 	color: tokens.$color-text-secondary;
 }
 
@@ -42,6 +39,18 @@
 	gap: tokens.$spacing-xl;
 }
 
+.info {
+	display: flex;
+	align-items: center;
+	gap: tokens.$spacing-lg;
+}
+
+.actions {
+	display: flex;
+	align-items: center;
+	gap: tokens.$spacing-md;
+}
+
 .toggleGroup {
 	display: flex;
 	align-items: center;
@@ -49,18 +58,12 @@
 }
 
 .toggleLabel {
-	font-family: tokens.$font-family-base;
-	font-size: tokens.$font-size-14;
-	line-height: tokens.$line-height-20;
-	font-weight: tokens.$font-weight-semibold;
+	@include tokens.text-style(body, semibold);
 	color: tokens.$color-text-primary;
 }
 
 .timeZone {
-	font-family: tokens.$font-family-base;
-	font-size: tokens.$font-size-14;
-	line-height: tokens.$line-height-20;
-	font-weight: tokens.$font-weight-semibold;
+	@include tokens.text-style(body, semibold);
 	color: tokens.$color-text-tertiary;
 	white-space: nowrap;
 }

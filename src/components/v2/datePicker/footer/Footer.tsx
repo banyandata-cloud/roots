@@ -2,7 +2,7 @@ import type { ReactElement } from 'react';
 import { Button } from '../../buttons';
 import { Dropdown } from '../../input/dropdown';
 import { Toggle } from '../../input/toggle';
-import styles from './Footer.module.css';
+import styles from './Footer.module.scss';
 import type { FooterProps } from './types';
 
 /** C14-C18: Default to show, 24-hour switch, time zone, Cancel, Apply dates. */
@@ -34,25 +34,29 @@ const Footer = (props: FooterProps): ReactElement => {
 				/>
 			</div>
 			<div className={styles.rightGroup}>
-				<div className={styles.toggleGroup}>
-					<span className={styles.toggleLabel}>24-hour</span>
-					<Toggle
-						size='s'
-						checked={!hour12}
-						onChange={(_event, checked) => onHour12Change(!checked)}
-					/>
+				<div className={styles.info}>
+					<div className={styles.toggleGroup}>
+						<span className={styles.toggleLabel}>24-hour</span>
+						<Toggle
+							size='s'
+							checked={!hour12}
+							onChange={(_event, checked) => onHour12Change(!checked)}
+						/>
+					</div>
+					<span className={styles.timeZone}>Time zone: {timeZone}</span>
 				</div>
-				<span className={styles.timeZone}>Time zone: {timeZone}</span>
-				<Button variant='outlined' size='sm' title='Cancel' onClick={onCancel} />
-				{showApply && (
-					<Button
-						variant='primary'
-						size='sm'
-						title='Apply dates'
-						disabled={applyDisabled}
-						onClick={onApply}
-					/>
-				)}
+				<div className={styles.actions}>
+					<Button variant='outlined' size='sm' title='Cancel' onClick={onCancel} />
+					{showApply && (
+						<Button
+							variant='primary'
+							size='sm'
+							title='Apply dates'
+							disabled={applyDisabled}
+							onClick={onApply}
+						/>
+					)}
+				</div>
 			</div>
 		</div>
 	);

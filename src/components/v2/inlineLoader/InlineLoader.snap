@@ -6,30 +6,31 @@ exports[`InlineLoader — Snapshots matches error snapshot 1`] = `
     class="container"
     data-testid="inline-loader"
   >
-    <div
-      class="iconWrapper"
+    <svg
+      aria-hidden="true"
+      class="icon errorIcon"
+      fill="none"
+      viewBox="-1 0 16 16"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <svg
-        class="errorIcon"
-        fill="none"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M12 1L22 6.5V17.5L12 23L2 17.5V6.5L12 1Z"
-          fill="var(--color-fg-error-primary, #D92D20)"
-        />
-        <path
-          d="M12 7V14M12 17V18"
-          stroke="var(--color-fg-white, #ffffff)"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2.5"
-        />
-      </svg>
-    </div>
+      <path
+        class="shape"
+        d="M7 0L14 4V12L7 16L0 12V4L7 0Z"
+      />
+      <path
+        class="mark"
+        d="M6.92257 4.29032V9.29032"
+        stroke-width="1.2"
+      />
+      <circle
+        class="dot"
+        cx="6.92258"
+        cy="11.0903"
+        r="0.6"
+      />
+    </svg>
     <span
-      class="root b2 regular-stroke text"
+      class="root body medium-stroke text"
     >
       Network Failure
     </span>
@@ -44,12 +45,8 @@ exports[`InlineLoader — Snapshots matches loading snapshot 1`] = `
     data-testid="inline-loader"
   >
     <div
-      class="iconWrapper"
-    >
-      <div
-        class="spinner"
-      />
-    </div>
+      class="spinner"
+    />
   </div>
 </div>
 `;
@@ -60,32 +57,27 @@ exports[`InlineLoader — Snapshots matches success snapshot 1`] = `
     class="container"
     data-testid="inline-loader"
   >
-    <div
-      class="iconWrapper"
+    <svg
+      aria-hidden="true"
+      class="icon successIcon"
+      fill="none"
+      viewBox="0 0 16 16"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <svg
-        class="successIcon"
-        fill="none"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle
-          cx="12"
-          cy="12"
-          fill="var(--color-fg-success-primary, #039855)"
-          r="12"
-        />
-        <path
-          d="M7 13l3 3 7-7"
-          stroke="var(--color-fg-white, #ffffff)"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2.5"
-        />
-      </svg>
-    </div>
+      <circle
+        class="shape"
+        cx="8"
+        cy="8"
+        r="8"
+      />
+      <path
+        class="mark"
+        d="M4 7.5L7 10.5L12.5 5"
+        stroke-width="1.2"
+      />
+    </svg>
     <span
-      class="root b2 regular-stroke text"
+      class="root body medium-stroke text"
     >
       Upload Complete
     </span>

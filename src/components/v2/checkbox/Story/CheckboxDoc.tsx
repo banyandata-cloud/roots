@@ -1,5 +1,5 @@
 import { Heading, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../../components/docs';
+import { LinkHeader, PropsTable } from '../../docs';
 
 const propsData = [
 	{
@@ -133,7 +133,7 @@ const CheckboxDoc = () => (
 		<Heading>Usage</Heading>
 		<Source
 			language='tsx'
-			code={`import { Checkbox } from '@banyan_cloud/roots';
+			code={`import { Checkbox } from '@banyandata-cloud/roots';
 
 const MyComponent = () => {
   const [checked, setChecked] = useState(false);

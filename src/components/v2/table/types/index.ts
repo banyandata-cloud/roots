@@ -1,12 +1,4 @@
-import type {
-	ComponentType,
-	CSSProperties,
-	Dispatch,
-	FC,
-	ReactElement,
-	ReactNode,
-	SetStateAction,
-} from 'react';
+import type { ComponentType, CSSProperties, FC, ReactElement, ReactNode } from 'react';
 import type { TableCellProps } from '../cell/types';
 
 export type RowHeight = 'sm' | 'md' | 'lg';
@@ -41,46 +33,6 @@ export interface TableColumn {
 		| undefined;
 }
 
-export interface TableDrawerData {
-	datum: Record<string, unknown>;
-	index: number;
-	setActiveId?: (reset?: boolean, multiSelect?: boolean) => void;
-	standalone?: boolean;
-}
-
-export interface TableDrawerToggle {
-	open: boolean;
-	data: Partial<TableDrawerData>;
-}
-
-export interface TableDrawerProps {
-	renderBody?: FC<{
-		datum: Record<string, unknown>;
-		toggle?: (props: Record<string, unknown>) => void;
-		toggleTableDrawer?: {
-			open: boolean;
-			data: Record<string, unknown>;
-		};
-		setToggleTableDrawer?: Dispatch<SetStateAction<TableDrawerToggle>>;
-	}>[];
-	standalone?: FC<{
-		datum: Record<string, unknown>;
-		toggle?: (props: Record<string, unknown>) => void;
-		toggleTableDrawer?: {
-			open: boolean;
-			data: Record<string, unknown>;
-		};
-		setToggleTableDrawer?: Dispatch<SetStateAction<TableDrawerToggle>>;
-	}>[];
-	className?: string;
-	tabsConfig?:
-		| {
-				tabs?: unknown[];
-				className?: string;
-		  }
-		| undefined;
-}
-
 export interface PaginationData {
 	page: number;
 	pageSize: number;
@@ -110,9 +62,7 @@ export interface TableProps {
 	loading?: boolean;
 	onIntersection?: (isVisible: boolean) => void;
 	isFloating?: boolean;
-	tableHeader?: (props: {
-		toggleDrawer?: (({ data }: { data?: Record<string, unknown> }) => void) | undefined;
-	}) => ReactNode | undefined;
+	tableHeader?: () => ReactNode | undefined;
 	tableSection?: ReactNode;
 	hideColumnLines?: boolean;
 	disabledFilterOptions?: {
@@ -130,10 +80,6 @@ export interface TableProps {
 	};
 	dataLabel?: string;
 	clearSearch?: boolean | undefined;
-	tableDrawerProps?:
-		| TableDrawerProps
-		| ((data: Partial<TableDrawerData>) => TableDrawerProps)
-		| undefined;
 	searchProps?: SearchProps;
 	filtersCount?: number;
 	emptyPlaceholder?: ComponentType | undefined;

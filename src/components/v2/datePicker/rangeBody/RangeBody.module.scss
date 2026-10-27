@@ -1,30 +1,36 @@
-@use '../../../../styles/tokens' as tokens;
+@use '../../styles/tokens' as tokens;
 
+// Figma rhythm: 24px between the fields and calendars, then 16px to the summary card and
+// 12px to the message line.
 .root {
 	display: flex;
 	flex-direction: column;
-	gap: tokens.$spacing-xl;
+	gap: tokens.$spacing-lg;
 	width: 100%;
+}
+
+.stack {
+	display: flex;
+	flex-direction: column;
+	gap: tokens.$spacing-3xl;
+}
+
+.summary {
+	margin-top: tokens.$spacing-xs;
 }
 
 .fieldsRow {
 	position: relative;
 	display: flex;
 	align-items: flex-start;
-	// Each DateField's width is pinned (via the `width` prop, measured from its paired
-	// Calendar) rather than derived from this row's own flex-grow math, so this gap can
-	// differ from the calendars row's without breaking the right-edge alignment (item 9).
-	// 44px = 12px clearance + the 20px arrow icon + 12px clearance, so there's a real,
-	// equal 12px of breathing room on each side of the icon itself (not just to its
-	// center) — must stay in sync with the FIELDS_ROW_GAP_PX constant in RangeBody.tsx.
-	gap: 44px;
+	// 44px = 12px clearance + the 20px arrow icon + 12px clearance.
+	gap: 2.75rem;
 }
 
-// The arrow is absolutely positioned (not a normal flex sibling) so it floats over the
-// gap between the two date cards instead of adding its own width.
+// The arrow floats over the gap between the two date cards instead of adding its own width.
 .arrowOverlay {
 	position: absolute;
-	top: 42px;
+	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	pointer-events: none;
@@ -32,10 +38,7 @@
 
 .calendarsRow {
 	display: flex;
-	gap: tokens.$spacing-xl;
-	// Bumps the gap from fieldsRow specifically to 24px (16px flex `gap` + 8px extra
-	// margin), while the calendar-to-summary-card and other internal gaps stay 16px.
-	margin-top: tokens.$spacing-md;
+	gap: tokens.$spacing-3xl;
 }
 
 .messageLine {

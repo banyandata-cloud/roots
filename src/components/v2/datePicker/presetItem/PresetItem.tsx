@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
-import { classes } from '../../../../utils';
-import styles from './PresetItem.module.css';
+import { classes } from '../../utils';
+import styles from './PresetItem.module.scss';
 import type { PresetItemProps } from './types';
 
 /** C2 Preset item: one click applies a preset (or a recent custom range). */

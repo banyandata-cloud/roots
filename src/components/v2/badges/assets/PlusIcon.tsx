@@ -6,7 +6,11 @@ export interface PlusIconProps {
 	className?: string | undefined;
 }
 
-const PlusIcon: React.FC<PlusIconProps> = ({ size = 12, color = '#717680', className }) => {
+const PlusIcon: React.FC<PlusIconProps> = ({
+	size = 12,
+	color = 'var(--color-fg-quaternary)',
+	className,
+}) => {
 	return (
 		<svg
 			xmlns='http://www.w3.org/2000/svg'

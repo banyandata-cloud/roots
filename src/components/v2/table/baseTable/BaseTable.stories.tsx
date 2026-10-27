@@ -80,7 +80,6 @@ export const Default: Story = {
 		headerData,
 		tableData,
 		uniqueKey: 'name',
-		toggleDrawer: () => {},
 	},
 };
 
@@ -91,7 +90,6 @@ export const Expandable: Story = {
 		tableData: tableData.slice(0, 5),
 		uniqueKey: 'name',
 		customCells,
-		toggleDrawer: () => {},
 		expandable: ({ datum }: any) => (
 			<div style={{ padding: '1rem', background: '#f9f9f9' }}>
 				<strong>Details for:</strong> {datum.name} from {datum.state}
@@ -106,6 +104,5 @@ export const Loading: Story = {
 		headerData,
 		tableData: [],
 		loading: true,
-		toggleDrawer: () => {},
 	},
 };

@@ -1,19 +1,18 @@
-@use '../../../../styles/tokens' as tokens;
+@use '../../styles/tokens' as tokens;
 
+// Figma single view: a 630px column whose blocks sit 24px apart, then 12px to the message line.
 .root {
 	display: flex;
 	flex-direction: column;
-	gap: tokens.$spacing-xl;
-	width: 100%;
-	min-width: 600px;
+	gap: tokens.$spacing-lg;
+	width: 630px;
+	max-width: 100%;
+}
 
-	// The Calendar is always the second-to-last child (messageLine is last), whether
-	// it's preceded directly by the DateField or by the TimeRangeCard ("Time range"
-	// sub-mode). Bumps that specific gap to 24px (16px flex `gap` + 8px extra
-	// margin) without touching any of the other 16px gaps in this column.
-	> :nth-last-child(2) {
-		margin-top: tokens.$spacing-md;
-	}
+.stack {
+	display: flex;
+	flex-direction: column;
+	gap: tokens.$spacing-3xl;
 }
 
 .messageLine {

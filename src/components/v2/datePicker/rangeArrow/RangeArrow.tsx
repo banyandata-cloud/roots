@@ -1,7 +1,7 @@
 import type { CSSProperties, ReactElement } from 'react';
-import { classes } from '../../../../utils';
+import { classes } from '../../utils';
 import { ArrowRightIcon } from '../icons';
-import styles from './RangeArrow.module.css';
+import styles from './RangeArrow.module.scss';
 
 export interface RangeArrowProps {
 	className?: string | undefined;

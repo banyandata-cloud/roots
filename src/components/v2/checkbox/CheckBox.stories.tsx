@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { ThemedContainer } from '../../helpers';
+import { ThemedContainer } from '../helpers';
 import { Checkbox } from './index';
 import CheckboxDoc from './Story/CheckboxDoc';
 

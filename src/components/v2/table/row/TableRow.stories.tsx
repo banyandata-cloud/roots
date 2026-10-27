@@ -89,7 +89,7 @@ const AllVariants = (args: React.ComponentProps<typeof TableRow>) => {
 						{ title: 'Designation', id: 'designation' },
 						{ title: 'State', id: 'state', size: 'sm' as const },
 					]}
-					expandable={({ datum }: any) => <Text variant='h2'>Welcome {datum.name}!</Text>}
+					expandable={({ datum }: any) => <Text variant='heading-medium'>Welcome {datum.name}!</Text>}
 					customCells={{
 						body: () => ({
 							name: ({ datum, expandableProps, ...rest }: any) => (

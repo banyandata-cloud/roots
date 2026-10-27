@@ -1,6 +1,5 @@
 import { forwardRef } from 'react';
-import { classes } from '../../../utils';
-import ArrowLeftIcon from '../badges/assets/ArrowLeftIcon';
+import { classes } from '../utils';
 import ArrowIcon from '../badges/assets/ArrowRightIcon';
 import UpArrowIcon from '../badges/assets/ArrowUpIcon';
 import DotIcon from '../badges/assets/DotIcon';
@@ -11,8 +10,8 @@ import CrossIcon from './assets/CrossIcon/CrossIcon';
 import Text from '../text/Text';
 import styles from './Badge.module.scss';
 
-const DEFAULT_ICON_COLOR = 'var(--badge-icon-color, var(--color-fg-quaternary, #717680))';
-const CLOSE_ICON_COLOR = 'var(--badge-cross-icon-color, var(--color-fg-disabled, #c1c5cd))';
+const DEFAULT_ICON_COLOR = 'var(--badge-icon-color, var(--color-fg-quaternary))';
+const CLOSE_ICON_COLOR = 'var(--badge-cross-icon-color, var(--color-fg-disabled))';
 
 const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 	(
@@ -26,8 +25,6 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 			dotColor = DEFAULT_ICON_COLOR,
 			arrow = false,
 			arrowColor = DEFAULT_ICON_COLOR,
-			arrowLead = false,
-			arrowLeadColor = DEFAULT_ICON_COLOR,
 			upArrow = false,
 			upArrowColor = DEFAULT_ICON_COLOR,
 			plus = false,
@@ -44,7 +41,6 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 			variant !== 'modern' && styles[`badge--color-${color}`],
 			dot && styles['badge--has-dot'],
 			arrow && styles['badge--has-arrow'],
-			arrowLead && styles['badge--has-lead'],
 			upArrow && styles['badge--has-up-arrow'],
 			plus && styles['badge--has-plus'],
 			onClose && styles['badge--has-closer'],
@@ -61,13 +57,6 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 						className={styles.badge__icon}
 					/>
 				)}
-				{arrowLead && (
-					<ArrowLeftIcon
-						size={ARROW_SIZE}
-						color={arrowLeadColor}
-						className={styles.badge__icon}
-					/>
-				)}
 				{upArrow && (
 					<UpArrowIcon
 						size={ARROW_SIZE}
@@ -79,7 +68,12 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 					<PlusIcon size={ARROW_SIZE} color={plusColor} className={styles.badge__icon} />
 				)}
 				{label && (
-					<Text component='span' stroke='medium' className={styles.badge__label}>
+					<Text
+						component='span'
+						variant={size === 'sm' ? 'body-small' : 'body'}
+						stroke='medium'
+						className={styles.badge__label}
+					>
 						{label}
 					</Text>
 				)}
@@ -95,7 +89,8 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 						type='button'
 						aria-label={`Remove ${label || 'badge'}`}
 						className={styles.badge__closer}
-						onClick={onClose}>
+						onClick={onClose}
+					>
 						<CrossIcon size={ICON_SIZE[size]} color={CLOSE_ICON_COLOR} />
 					</button>
 				)}

@@ -1,12 +1,13 @@
 import { Heading, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../../components/docs';
+import { LinkHeader, PropsTable } from '../../docs';
 
 const propsData = [
 	{
 		prop: 'variant',
-		type: "'h1' | 'h2' | 'b1' | 'b2' | 'b3'",
-		description: 'Controls the typographic scale and semantic HTML element rendered.',
-		default: "'b2'",
+		type: 'TextVariant',
+		description:
+			'Figma text style: heading-xxlarge to heading-xxsmall, body-large, body, body-small, metric-large/medium/small or code. Sets the font size and line-height.',
+		default: "'body'",
 	},
 	{
 		prop: 'component',
@@ -16,14 +17,9 @@ const propsData = [
 	},
 	{
 		prop: 'stroke',
-		type: "'light' | 'regular' | 'medium' | 'semibold' | 'bold'",
-		description: 'Sets the font weight of the text.',
-		default: "'regular'",
-	},
-	{
-		prop: 'weight',
-		type: '100 | 200 | 300 | 400 | 500 | 600',
-		description: 'Applies a custom numeric font weight, overriding the stroke value.',
+		type: "'regular' | 'medium' | 'semibold' | 'bold'",
+		description:
+			"Overrides the font weight of the variant. Without it the variant's default weight is used (regular, or bold for metric).",
 		default: 'undefined',
 	},
 	{
@@ -59,13 +55,13 @@ const propsData = [
 ];
 
 const CODE = `
-import { Text } from '@banyan_cloud/roots';
+import { Text } from '@banyandata-cloud/roots';
 
 const MyComponent = () => (
   <>
-    <Text variant="h1" stroke="bold">Welcome back</Text>
-    <Text variant="b1" stroke="regular">Here is a summary of your recent activity.</Text>
-    <Text variant="b2" italic underline>Highlighted note</Text>
+    <Text variant="heading-xxlarge" stroke="bold">Welcome back</Text>
+    <Text variant="body-large">Here is a summary of your recent activity.</Text>
+    <Text italic underline>Highlighted note</Text>
   </>
 );
 `;
@@ -75,7 +71,8 @@ const TextDoc = () => (
 		<Title />
 		<Subtitle>
 			Text is a typography primitive for rendering consistent, scalable text across the UI. It
-			supports heading and body variants with configurable weight, stroke, and style options.
+			supports the Figma heading, body, metric and code text styles with a configurable
+			weight.
 		</Subtitle>
 
 		<LinkHeader
@@ -91,16 +88,30 @@ const TextDoc = () => (
 		<p>Custom types used by the Text component.</p>
 
 		<Subheading>TextVariant</Subheading>
-		<Source language='tsx' code={`type TextVariant = 'h1' | 'h2' | 'b1' | 'b2' | 'b3';`} />
+		<Source
+			language='tsx'
+			code={`type TextVariant =
+  | 'heading-xxlarge' // 32 / 36
+  | 'heading-xlarge' // 28 / 32
+  | 'heading-large' // 24 / 28
+  | 'heading-medium' // 20 / 24
+  | 'heading-small' // 16 / 20
+  | 'heading-xsmall' // 14 / 20
+  | 'heading-xxsmall' // 12 / 16
+  | 'body-large' // 16 / 24
+  | 'body' // 14 / 20
+  | 'body-small' // 12 / 16
+  | 'metric-large' // 28 / 32, bold only
+  | 'metric-medium' // 24 / 28, bold only
+  | 'metric-small' // 16 / 20, bold only
+  | 'code'; // 12 / 20, regular only`}
+		/>
 
 		<Subheading>TextStroke</Subheading>
 		<Source
 			language='tsx'
-			code={`type TextStroke = 'light' | 'regular' | 'medium' | 'semibold' | 'bold';`}
+			code={`type TextStroke = 'regular' | 'medium' | 'semibold' | 'bold';`}
 		/>
-
-		<Subheading>TextFontWeight</Subheading>
-		<Source language='tsx' code={`type TextFontWeight = 100 | 200 | 300 | 400 | 500 | 600;`} />
 
 		<Subheading>TextComponentType</Subheading>
 		<Source

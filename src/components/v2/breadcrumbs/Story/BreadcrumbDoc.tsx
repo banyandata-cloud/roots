@@ -1,9 +1,9 @@
 import { Heading, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../docs';
+import { LinkHeader, PropsTable } from '../../docs';
 
 const BASIC_USAGE_CODE = `
-import { Breadcrumbs } from '@banyan_cloud/roots';
-import type { BreadcrumbItem } from '@banyan_cloud/roots';
+import { Breadcrumbs } from '@banyandata-cloud/roots';
+import type { BreadcrumbItem } from '@banyandata-cloud/roots';
 
 const crumbs: BreadcrumbItem[] = [
   {

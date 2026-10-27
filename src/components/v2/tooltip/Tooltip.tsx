@@ -10,14 +10,17 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { cloneElement, forwardRef, useRef, useState, type CSSProperties, type RefObject } from 'react';
 import { mergeRefs } from 'react-merge-refs';
-import { classes } from '../../../utils';
-import { Popper } from '../../popper';
+import { classes } from '../utils';
+import { Popper } from '../popper';
 import { Text } from '../text';
-import styles from './Tooltip.module.css';
+import styles from './Tooltip.module.scss';
 import type { ReactElementWithRef, TooltipPointerPosition, TooltipPosition, TooltipProps } from './types';
 
-const POINTER_EDGE_OFFSET = '12px';
-const POINTER_SIZE = '8px';
+// Figma places the rotated pointer 12px from the edge, measured on its bounding box (12px * sqrt 2 wide).
+const POINTER_SIZE = '0.75rem';
+const POINTER_EDGE_OFFSET = '0.9053rem';
+// The pointer's centre sits 1.5px inside the tooltip edge, so its box starts 4.5px outside.
+const POINTER_STATIC_OFFSET = '-0.28125rem';
 
 const getPointerStyle = ({
   side,
@@ -27,8 +30,8 @@ const getPointerStyle = ({
 }: {
   side: TooltipPosition;
   pointerPosition: TooltipPointerPosition;
-  arrowX?: number;
-  arrowY?: number;
+  arrowX?: number | undefined;
+  arrowY?: number | undefined;
 }): Pick<CSSProperties, 'left' | 'top'> => {
   if (pointerPosition === 'center') {
     return {
@@ -57,6 +60,7 @@ export const Tooltip = forwardRef<RefObject<HTMLElement>, TooltipProps>((props, 
     interactive = false,
     className = '',
     showPointer = true,
+    supportingText,
   } = props;
 
   const arrowEl = useRef<HTMLDivElement>(null);
@@ -134,7 +138,12 @@ export const Tooltip = forwardRef<RefObject<HTMLElement>, TooltipProps>((props, 
             <motion.div
               {...getFloatingProps({
                 ref: floating,
-                className: classes(styles.tooltip, interactive ? styles.interactive : '', className),
+                className: classes(
+                  styles.tooltip,
+                  interactive ? styles.interactive : '',
+                  supportingText ? styles.withSupporting : '',
+                  className
+                ),
                 style: {
                   position: strategy,
                   top: y ?? 0,
@@ -160,14 +169,21 @@ export const Tooltip = forwardRef<RefObject<HTMLElement>, TooltipProps>((props, 
                     }),
                     right: undefined,
                     bottom: undefined,
-                    [staticSide]: '-4px', // Shift it precisely halfway out of the tooltip edge
+                    [staticSide]: POINTER_STATIC_OFFSET,
                   }}
                 />
               )}
               {typeof content === 'string' ? (
-                <Text className={styles.textContent}>{content}</Text>
+                <Text variant="body-small" stroke="semibold" className={styles.title}>
+                  {content}
+                </Text>
               ) : (
                 content
+              )}
+              {supportingText != null && (
+                <Text variant="body-small" stroke="medium" className={styles.supporting}>
+                  {supportingText}
+                </Text>
               )}
             </motion.div>
           )}

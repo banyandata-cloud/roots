@@ -1,11 +1,9 @@
 import { forwardRef, isValidElement, useEffect, useState, type ForwardedRef } from 'react';
-import { classes } from '../../../../utils';
-import { BaseCell } from '../../../v2/cell';
-import { SortIcon } from '../../../v2/icons/Sort';
+import { classes } from '../../utils';
 import Checkbox from '../../checkbox/CheckBox';
-import CrossIcon from '../../badges/assets/CrossIcon/CrossIcon';
+import { ButtonCloseIcon, SortIcon } from '../../icons';
 import TableIconFilter from '../assets/TableIconFilter';
-import styles from './TableCell.module.css';
+import styles from './TableCell.module.scss';
 import type { SortType, TableCellProps } from './types';
 
 const getNextSortState = (currentSort: string): SortType => {
@@ -19,15 +17,10 @@ const getNextSortState = (currentSort: string): SortType => {
 // Single up arrow — same paths as Sort.tsx left arrow
 const AscIcon = () => (
 	<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'>
-		<path
-			d='M8 12L8 4'
-			stroke='var(--color-fg-brand-primary, #1570ef)'
-			strokeWidth='1.3'
-			strokeLinecap='round'
-		/>
+		<path d='M8 12L8 4' stroke='currentColor' strokeWidth='1.3' strokeLinecap='round' />
 		<path
 			d='M5 7L8 4L11 7'
-			stroke='var(--color-fg-brand-primary, #1570ef)'
+			stroke='currentColor'
 			strokeWidth='1.3'
 			strokeLinecap='round'
 			strokeLinejoin='round'
@@ -37,15 +30,10 @@ const AscIcon = () => (
 
 const DescIcon = () => (
 	<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'>
-		<path
-			d='M8 4L8 12'
-			stroke='var(--color-fg-brand-primary, #1570ef)'
-			strokeWidth='1.3'
-			strokeLinecap='round'
-		/>
+		<path d='M8 4L8 12' stroke='currentColor' strokeWidth='1.3' strokeLinecap='round' />
 		<path
 			d='M5 9L8 12L11 9'
-			stroke='var(--color-fg-brand-primary, #1570ef)'
+			stroke='currentColor'
 			strokeWidth='1.3'
 			strokeLinecap='round'
 			strokeLinejoin='round'
@@ -117,7 +105,8 @@ const TableCell = forwardRef((props: TableCellProps, ref: ForwardedRef<HTMLTable
 				className: classes(styles['cell-text'], multiLine ? styles['multi-line'] : ''),
 				style,
 				'data-elem': 'text',
-			}}>
+			}}
+		>
 			{typeof cellContent === 'string' || isValidElement(cellContent)
 				? cellContent
 				: JSON.stringify(cellContent)}
@@ -141,171 +130,167 @@ const TableCell = forwardRef((props: TableCellProps, ref: ForwardedRef<HTMLTable
 
 	const isCentered = style?.justifyContent === 'center';
 
-	return (
-		<BaseCell
-			{...{
-				ref,
-				className: classes(
-					styles.root,
-					styles[`${type}-cell`],
-					styles[`sticky-${String(sticky)}`],
-					type === 'header' && (sort || columnFilter) && styles.sortable,
-					isCentered && styles.centered,
-					hideColumnLines && styles['no-column-lines'],
-					className
-				),
-				attrs: {
-					style,
-					tabIndex,
-					...attrs,
-				},
-				size,
-				flexible,
-				component1,
-				component2: spanElement,
-				component3:
-					type === 'header' && (sort || columnFilter) ? (
-						<div
-							className={classes(
-								styles['header-actions'],
-								actionsFocused && styles['header-actions--focused']
-							)}>
-							{sort && (
+	const component3Content =
+		type === 'header' && (sort || columnFilter) ? (
+			<div
+				className={classes(
+					styles['header-actions'],
+					actionsFocused && styles['header-actions--focused']
+				)}
+			>
+				{sort && (
+					<button
+						type='button'
+						aria-label={`Sort ${cellTitle || id}`}
+						className={classes(
+							styles['icon-btn'],
+							styles['sort-btn'],
+							isSortActive && styles['sort-btn--active']
+						)}
+						onFocus={() => setActionsFocused(true)}
+						onBlur={() => setActionsFocused(false)}
+						onClick={() => {
+							const next = getNextSortState(sortState);
+							onSort?.(id, next);
+							setSortState(next);
+						}}
+					>
+						{sortState === 'default' && (
+							<SortIcon className={styles['sort-icon']} position='default' />
+						)}
+						{sortState === 'asc' && <AscIcon />}
+						{sortState === 'desc' && <DescIcon />}
+					</button>
+				)}
+				{columnFilter && (
+					<div className={styles['filter-wrapper']} data-filter-wrapper='true'>
+						<div className={styles['filter-icon-group']}>
+							<button
+								type='button'
+								aria-label={`Filter ${cellTitle || id}`}
+								className={classes(
+									styles['icon-btn'],
+									styles['filter-btn'],
+									isFilterActive && styles['filter-btn--active'],
+									filterOpen && styles['filter-btn--open']
+								)}
+								onFocus={() => setActionsFocused(true)}
+								onBlur={() => setActionsFocused(false)}
+								onClick={() => setFilterOpen((prev) => !prev)}
+							>
+								<TableIconFilter />
+							</button>
+							{isFilterActive && (
 								<button
 									type='button'
-									aria-label={`Sort ${cellTitle || id}`}
+									aria-label={`Clear filter ${cellTitle || id}`}
 									className={classes(
 										styles['icon-btn'],
-										styles['sort-btn'],
-										isSortActive && styles['sort-btn--active']
+										styles['filter-close-btn']
 									)}
 									onFocus={() => setActionsFocused(true)}
 									onBlur={() => setActionsFocused(false)}
-									onClick={() => {
-										const next = getNextSortState(sortState);
-										onSort?.(id, next);
-										setSortState(next);
-									}}>
-									{sortState === 'default' && (
-										<SortIcon
-											className={styles['sort-icon']}
-											position='default'
-										/>
-									)}
-									{sortState === 'asc' && <AscIcon />}
-									{sortState === 'desc' && <DescIcon />}
+									onClick={(e) => {
+										e.stopPropagation();
+										setSelectedFilters([]);
+										onFilter?.(id, []);
+										setFilterOpen(false);
+									}}
+								>
+									<ButtonCloseIcon size={16} />
 								</button>
 							)}
-							{columnFilter && (
-								<div
-									className={styles['filter-wrapper']}
-									data-filter-wrapper='true'>
-									<div className={styles['filter-icon-group']}>
-										<button
-											type='button'
-											aria-label={`Filter ${cellTitle || id}`}
-											className={classes(
-												styles['icon-btn'],
-												styles['filter-btn'],
-												isFilterActive && styles['filter-btn--active'],
-												filterOpen && styles['filter-btn--open']
-											)}
-											onFocus={() => setActionsFocused(true)}
-											onBlur={() => setActionsFocused(false)}
-											onClick={() => setFilterOpen((prev) => !prev)}>
-											<TableIconFilter
-												color={
-													isFilterActive || filterOpen
-														? 'var(--color-fg-brand-primary)'
-														: 'var(--color-fg-disabled)'
-												}
-											/>
-										</button>
-										{isFilterActive && (
-											<button
-												type='button'
-												aria-label={`Clear filter ${cellTitle || id}`}
-												className={classes(
-													styles['icon-btn'],
-													styles['filter-close-btn']
-												)}
-												onFocus={() => setActionsFocused(true)}
-												onBlur={() => setActionsFocused(false)}
-												onClick={(e) => {
-													e.stopPropagation();
-													setSelectedFilters([]);
-													onFilter?.(id, []);
-													setFilterOpen(false);
-												}}>
-												<CrossIcon size={16} color='currentColor' />
-											</button>
-										)}
-									</div>
-									{filterOpen && (
-										<div className={styles['filter-dropdown']}>
-											<div
-												className={classes(
-													styles['filter-option'],
-													styles['filter-option-all']
-												)}>
-												<Checkbox
-													size='md'
-													label='All'
-													indeterminate={
-														selectedFilters.length > 0 &&
-														selectedFilters.length <
-															filterOptions.length
-													}
-													checked={
-														selectedFilters.length ===
-														filterOptions.length
-													}
-													onChange={() => {
-														const next =
-															selectedFilters.length ===
-															filterOptions.length
-																? []
-																: filterOptions;
-														setSelectedFilters(next);
-														onFilter?.(id, next);
-													}}
-												/>
-											</div>
-											{filterOptions.map((option) => (
-												<div
-													key={option}
-													data-selected={selectedFilters.includes(option)}
-													className={styles['filter-option']}>
-													<Checkbox
-														size='md'
-														label={option}
-														checked={selectedFilters.includes(option)}
-														onChange={() => {
-															const next = selectedFilters.includes(
-																option
-															)
-																? selectedFilters.filter(
-																		(o) => o !== option
-																	)
-																: [...selectedFilters, option];
-															setSelectedFilters(next);
-															onFilter?.(id, next);
-														}}
-													/>
-												</div>
-											))}
-										</div>
-									)}
-								</div>
-							)}
 						</div>
-					) : (
-						component3
-					),
-				RootDOM,
-				radius,
-			}}
-		/>
+						{filterOpen && (
+							<div className={styles['filter-dropdown']}>
+								<div
+									data-selected={selectedFilters.length > 0}
+									className={classes(
+										styles['filter-option'],
+										styles['filter-option-all']
+									)}
+								>
+									<div className={styles['filter-option-row']}>
+										<Checkbox
+											size='md'
+											label='All'
+											indeterminate={
+												selectedFilters.length > 0 &&
+												selectedFilters.length < filterOptions.length
+											}
+											checked={
+												selectedFilters.length === filterOptions.length
+											}
+											onChange={() => {
+												const next =
+													selectedFilters.length === filterOptions.length
+														? []
+														: filterOptions;
+												setSelectedFilters(next);
+												onFilter?.(id, next);
+											}}
+										/>
+									</div>
+								</div>
+								{filterOptions.map((option) => (
+									<div
+										key={option}
+										data-selected={selectedFilters.includes(option)}
+										className={styles['filter-option']}
+									>
+										<div className={styles['filter-option-row']}>
+											<Checkbox
+												size='md'
+												label={option}
+												checked={selectedFilters.includes(option)}
+												onChange={() => {
+													const next = selectedFilters.includes(option)
+														? selectedFilters.filter(
+																(o) => o !== option
+															)
+														: [...selectedFilters, option];
+													setSelectedFilters(next);
+													onFilter?.(id, next);
+												}}
+											/>
+										</div>
+									</div>
+								))}
+							</div>
+						)}
+					</div>
+				)}
+			</div>
+		) : (
+			component3
+		);
+
+	const isHeaderActions = type === 'header' && (sort || columnFilter);
+
+	return (
+		<RootDOM
+			ref={ref}
+			data-elem='base-cell'
+			className={classes(
+				styles.root,
+				styles[size],
+				styles[`border-radius-${radius}`],
+				flexible && styles.flexible,
+				styles[`${type}-cell`],
+				styles[`sticky-${String(sticky)}`],
+				isHeaderActions && styles.sortable,
+				isCentered && styles.centered,
+				hideColumnLines && styles['no-column-lines'],
+				className
+			)}
+			style={style}
+			tabIndex={tabIndex}
+			{...attrs}
+		>
+			{component1 && <span data-elem='component1'>{component1}</span>}
+			<span data-elem='component2'>{spanElement}</span>
+			{component3Content && <span data-elem='component3'>{component3Content}</span>}
+		</RootDOM>
 	);
 });
 

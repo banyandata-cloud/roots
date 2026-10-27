@@ -6,12 +6,12 @@ import {
 } from '@floating-ui/react-dom-interactions';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { ComponentType, FC } from 'react';
-import { classes } from '../../../utils';
+import { classes } from '../utils';
 import { Button } from '../buttons';
-import { CrossIcon } from '../../icons';
-import { Popper } from '../../popper';
-import { Text } from '../../text';
-import styles from './BaseModal.module.css';
+import { ButtonCloseIcon } from '../icons';
+import { Popper } from '../popper';
+import ModalHeader from './ModalHeader';
+import styles from './BaseModal.module.scss';
 import type { BaseModalProps, FooterProps, ModalFooterProps } from './types';
 
 const MotionFooter = motion.footer as ComponentType<FooterProps>;
@@ -29,22 +29,6 @@ const footerAnimations = {
 		duration: 0.5,
 	},
 } as const;
-
-const ModalHeader: FC<{ title?: string | undefined; description?: string | undefined }> = ({
-	title,
-	description,
-}) => {
-	return (
-		<>
-			<Text component='h2' variant='h2' weight={600}>
-				{title}
-			</Text>
-			<Text component='span' variant='b1' weight={400}>
-				{description}
-			</Text>
-		</>
-	);
-};
 
 const ModalFooter: FC<ModalFooterProps> = (props) => {
 	const {
@@ -72,12 +56,15 @@ const ModalFooter: FC<ModalFooterProps> = (props) => {
 	return (
 		<>
 			<Button
+				size='md'
+				variant='outlined'
 				className={styles.dismiss}
 				title={cancelTitle}
 				onClick={handleDismiss}
 				disabled={disabled.cancel}
 			/>
 			<Button
+				size='md'
 				className={styles.action}
 				title={actionTitle}
 				onClick={handleAction}
@@ -164,7 +151,8 @@ const BaseModal: FC<BaseModalProps> = (props) => {
 				open={open}
 				className={popperClassName}
 				transparent={false}
-				wrapperId='base-modal-popper'>
+				wrapperId='base-modal-popper'
+			>
 				{open && (
 					<FloatingFocusManager context={context}>
 						<motion.div
@@ -174,7 +162,8 @@ const BaseModal: FC<BaseModalProps> = (props) => {
 								...(animation && {
 									...animationProperties,
 								}),
-							})}>
+							})}
+						>
 							{renderHeader ? (
 								<header data-elem='header' className={styles.header}>
 									{typeof renderHeader !== 'function'
@@ -197,7 +186,8 @@ const BaseModal: FC<BaseModalProps> = (props) => {
 										...footerAnimations,
 									})}
 									data-elem='footer'
-									className={styles.footer}>
+									className={styles.footer}
+								>
 									{typeof renderFooter !== 'function'
 										? renderFooter
 										: renderFooter({
@@ -211,21 +201,23 @@ const BaseModal: FC<BaseModalProps> = (props) => {
 											...footerAnimations,
 										})}
 										data-elem='footer'
-										className={styles.footer}>
+										className={styles.footer}
+									>
 										<ModalFooter {...footerProps} />
 									</MotionFooter>
 								)
 							)}
 							{!hideCrossDismiss && (
-								<Button
-									size='auto'
-									variant='text'
+								<button
+									type='button'
+									aria-label='Close'
 									className={styles.close}
 									onClick={() => {
 										toggle?.(false);
 									}}
-									title={<CrossIcon className={styles.icon} />}
-								/>
+								>
+									<ButtonCloseIcon />
+								</button>
 							)}
 						</motion.div>
 					</FloatingFocusManager>

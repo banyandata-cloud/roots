@@ -1,15 +1,19 @@
-@use '../../../../styles/tokens' as tokens;
+@use '../../styles/tokens' as tokens;
 
 .root {
 	display: flex;
 	flex-direction: column;
 	gap: tokens.$spacing-md;
-	flex: 1 1 0;
+	// 340px is the Figma month width; it shrinks to 252px and grows to 400px with the popover.
+	// The width (not just the flex-basis) is what sizes the fit-content popover.
+	flex: 0 1 340px;
+	width: 340px;
 	min-width: 252px;
 	max-width: 400px;
 }
 
 .wide {
+	flex: none;
 	width: 100%;
 	max-width: 100%;
 }

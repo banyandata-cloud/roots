@@ -1,0 +1,6 @@
+@use '../../styles/tokens' as tokens;
+@use '../../styles/mixins' as mixins;
+
+.root {
+	@include mixins.flex(column, flex-start, stretch);
+}

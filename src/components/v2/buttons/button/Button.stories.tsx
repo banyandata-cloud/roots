@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ThemedContainer } from '../../../helpers';
+import { ThemedContainer } from '../../helpers';
 import Button from '../button/Button';
 import ButtonDoc from '../button/Story/ButtonDoc';
 

@@ -1,5 +1,5 @@
 import { Heading, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../../../components/docs';
+import { LinkHeader, PropsTable } from '../../../docs';
 
 const propsData = [
 	{
@@ -43,7 +43,7 @@ const dialogOpenOptionsData = [
 	},
 	{
 		prop: 'variant',
-		type: 'ButtonColors',
+		type: 'ButtonVariant',
 		description: 'Visual color variant applied to the primary action button.',
 		default: 'undefined',
 	},
@@ -155,8 +155,8 @@ const DialogBoxDoc = () => (
 		<Source
 			language='tsx'
 			code={`import { useRef } from 'react';
-import { DialogBox } from '@banyan_cloud/roots';
-import type { DialogBoxHandle } from '@banyan_cloud/roots';
+import { DialogBox } from '@banyandata-cloud/roots';
+import type { DialogBoxHandle } from '@banyandata-cloud/roots';
 
 const MyComponent = () => {
   const dialogRef = useRef<DialogBoxHandle>(null);

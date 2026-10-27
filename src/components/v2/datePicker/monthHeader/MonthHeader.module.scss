@@ -1,4 +1,4 @@
-@use '../../../../styles/tokens' as tokens;
+@use '../../styles/tokens' as tokens;
 
 .root {
 	display: flex;
@@ -10,10 +10,7 @@
 .title {
 	flex: 1 1 auto;
 	text-align: center;
-	font-family: tokens.$font-family-base;
-	font-size: tokens.$font-size-16;
-	line-height: tokens.$line-height-24;
-	font-weight: tokens.$font-weight-medium;
+	@include tokens.text-style(body-large, medium);
 	color: tokens.$color-text-primary;
 }
 
@@ -30,9 +27,10 @@
 	justify-content: center;
 	width: 28px;
 	height: 28px;
-	border: 1px solid tokens.$color-border-primary;
+	padding: 0;
+	border: none;
 	border-radius: tokens.$radius-sm;
-	background: tokens.$color-bg-primary;
+	background: transparent;
 	color: tokens.$color-fg-quaternary;
 	cursor: pointer;
 

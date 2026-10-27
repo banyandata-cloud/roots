@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { CopyIcon, EmailIcon, PasswordIcon } from '../../../icons';
+import { CopyIcon, EmailIcon, PasswordIcon } from '../../icons';
 import TextFieldDoc from './Story/TextFieldDoc';
 import { TextField } from './index';
 

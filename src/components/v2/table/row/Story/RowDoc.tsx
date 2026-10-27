@@ -1,5 +1,5 @@
 import { Heading, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../../docs';
+import { LinkHeader, PropsTable } from '../../../docs';
 
 const tableRowPropsData = [
 	{
@@ -90,12 +90,6 @@ const tableRowPropsData = [
 		prop: 'customCells',
 		type: 'CustomCells',
 		description: 'Custom header or body cell renderers mapped by column id.',
-		default: 'undefined',
-	},
-	{
-		prop: 'toggleDrawer',
-		type: '(props: object) => void',
-		description: 'Callback to open the side drawer for this row.',
 		default: 'undefined',
 	},
 ];

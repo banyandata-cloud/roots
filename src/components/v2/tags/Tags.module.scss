@@ -1,970 +1,286 @@
-@use '../../../styles/tokens' as tokens;
+@use 'sass:map';
+@use 'sass:math';
+@use '../styles/tokens' as tokens;
 
-$tag-sm-closable-padding-left: 8px;
-$tag-sm-closable-padding-right: 4px;
-$tag-sm-closable-gap: 3px;
-
-$tag-md-closable-padding-left: 9px;
-$tag-md-closable-padding-right: 4px;
-$tag-md-closable-gap: 3px;
-
-$tag-lg-closable-padding-left: 10px;
-$tag-lg-closable-padding-right: 4px;
-$tag-lg-closable-gap: 3px;
-
-$tag-sm-checkbox-padding-left: 5px;
-$tag-sm-checkbox-padding-right: 8px;
-$tag-sm-checkbox-gap: 4px;
-
-$tag-md-checkbox-padding-left: 4px;
-$tag-md-checkbox-padding-right: 9px;
-$tag-md-checkbox-gap: 5px;
-
-$tag-lg-checkbox-padding-left: 5px;
-$tag-lg-checkbox-padding-right: 10px;
-$tag-lg-checkbox-gap: 6px;
-
-$tag-sm-checkbox-closable-padding-left: 5px;
-$tag-sm-checkbox-closable-padding-right: 4px;
-$tag-sm-checkbox-closable-gap: 4px;
-
-$tag-md-checkbox-closable-padding-left: 4px;
-$tag-md-checkbox-closable-padding-right: 4px;
-$tag-md-checkbox-closable-gap: 5px;
-
-$tag-lg-checkbox-closable-padding-left: 5px;
-$tag-lg-checkbox-closable-padding-right: 4px;
-$tag-lg-checkbox-closable-gap: 6px;
-
-$tag-sm-indicator-padding-left: 6px;
-$tag-sm-indicator-padding-right: 8px;
-$tag-sm-indicator-gap: 4px;
-
-$tag-md-indicator-padding-left: 7px;
-$tag-md-indicator-padding-right: 9px;
-$tag-md-indicator-gap: 5px;
-
-$tag-lg-indicator-padding-left: 9px;
-$tag-lg-indicator-padding-right: 10px;
-$tag-lg-indicator-gap: 6px;
-
-$tag-sm-indicator-closable-padding-left: 6px;
-$tag-sm-indicator-closable-padding-right: 4px;
-$tag-sm-indicator-closable-dot-gap: 4px;
-$tag-sm-indicator-closable-closer-gap: 3px;
-
-$tag-md-indicator-closable-padding-left: 7px;
-$tag-md-indicator-closable-padding-right: 4px;
-$tag-md-indicator-closable-dot-gap: 5px;
-$tag-md-indicator-closable-closer-gap: 3px;
-
-$tag-lg-indicator-closable-padding-left: 9px;
-$tag-lg-indicator-closable-padding-right: 4px;
-$tag-lg-indicator-closable-dot-gap: 6px;
-$tag-lg-indicator-closable-closer-gap: 3px;
-
-$tag-sm-indicator-count-padding-left: 6px;
-$tag-sm-indicator-count-padding-right: 4px;
-$tag-sm-indicator-count-dot-gap: 4px;
-$tag-sm-indicator-count-badge-gap: 4px;
-
-$tag-md-indicator-count-padding-left: 7px;
-$tag-md-indicator-count-padding-right: 3px;
-$tag-md-indicator-count-dot-gap: 5px;
-$tag-md-indicator-count-badge-gap: 5px;
-
-$tag-lg-indicator-count-padding-left: 9px;
-$tag-lg-indicator-count-padding-right: 4px;
-$tag-lg-indicator-count-dot-gap: 6px;
-$tag-lg-indicator-count-badge-gap: 6px;
-
-$tag-sm-checkbox-indicator-padding-left: 5px;
-$tag-sm-checkbox-indicator-padding-right: 8px;
-$tag-sm-checkbox-indicator-checkbox-gap: 4px;
-$tag-sm-checkbox-indicator-dot-gap: 4px;
-
-$tag-md-checkbox-indicator-padding-left: 4px;
-$tag-md-checkbox-indicator-padding-right: 9px;
-$tag-md-checkbox-indicator-checkbox-gap: 5px;
-$tag-md-checkbox-indicator-dot-gap: 5px;
-
-$tag-lg-checkbox-indicator-padding-left: 5px;
-$tag-lg-checkbox-indicator-padding-right: 10px;
-$tag-lg-checkbox-indicator-checkbox-gap: 6px;
-$tag-lg-checkbox-indicator-dot-gap: 6px;
-
-$tag-sm-checkbox-indicator-closable-padding-left: 5px;
-$tag-sm-checkbox-indicator-closable-padding-right: 4px;
-$tag-sm-checkbox-indicator-closable-checkbox-gap: 4px;
-$tag-sm-checkbox-indicator-closable-dot-gap: 4px;
-$tag-sm-checkbox-indicator-closable-closer-gap: 3px;
-
-$tag-md-checkbox-indicator-closable-padding-left: 4px;
-$tag-md-checkbox-indicator-closable-padding-right: 4px;
-$tag-md-checkbox-indicator-closable-checkbox-gap: 5px;
-$tag-md-checkbox-indicator-closable-dot-gap: 5px;
-$tag-md-checkbox-indicator-closable-closer-gap: 3px;
-
-$tag-lg-checkbox-indicator-closable-padding-left: 5px;
-$tag-lg-checkbox-indicator-closable-padding-right: 4px;
-$tag-lg-checkbox-indicator-closable-checkbox-gap: 6px;
-$tag-lg-checkbox-indicator-closable-dot-gap: 6px;
-$tag-lg-checkbox-indicator-closable-closer-gap: 3px;
-
-$tag-sm-checkbox-indicator-count-padding-left: 5px;
-$tag-sm-checkbox-indicator-count-padding-right: 4px;
-$tag-sm-checkbox-indicator-count-checkbox-gap: 4px;
-$tag-sm-checkbox-indicator-count-dot-gap: 4px;
-$tag-sm-checkbox-indicator-count-badge-gap: 4px;
-
-$tag-md-checkbox-indicator-count-padding-left: 4px;
-$tag-md-checkbox-indicator-count-padding-right: 3px;
-$tag-md-checkbox-indicator-count-checkbox-gap: 5px;
-$tag-md-checkbox-indicator-count-dot-gap: 5px;
-$tag-md-checkbox-indicator-count-badge-gap: 5px;
-
-$tag-lg-checkbox-indicator-count-padding-left: 5px;
-$tag-lg-checkbox-indicator-count-padding-right: 4px;
-$tag-lg-checkbox-indicator-count-checkbox-gap: 6px;
-$tag-lg-checkbox-indicator-count-dot-gap: 6px;
-$tag-lg-checkbox-indicator-count-badge-gap: 6px;
-
-$tag-sm-count-padding-left: 8px;
-$tag-sm-count-padding-right: 4px;
-$tag-sm-count-badge-gap: 3px;
-
-$tag-md-count-padding-left: 9px;
-$tag-md-count-padding-right: 4px;
-$tag-md-count-badge-gap: 3px;
-
-$tag-lg-count-padding-left: 10px;
-$tag-lg-count-padding-right: 5px;
-$tag-lg-count-badge-gap: 3px;
-
-$tag-sm-checkbox-count-padding-left: 5px;
-$tag-sm-checkbox-count-padding-right: 4px;
-$tag-sm-checkbox-count-checkbox-gap: 4px;
-$tag-sm-checkbox-count-badge-gap: 4px;
-
-$tag-md-checkbox-count-padding-left: 4px;
-$tag-md-checkbox-count-padding-right: 3px;
-$tag-md-checkbox-count-checkbox-gap: 5px;
-$tag-md-checkbox-count-badge-gap: 5px;
-
-$tag-lg-checkbox-count-padding-left: 5px;
-$tag-lg-checkbox-count-padding-right: 4px;
-$tag-lg-checkbox-count-checkbox-gap: 6px;
-$tag-lg-checkbox-count-badge-gap: 6px;
-
-$tag-sm-textfield-padding-left: 8px;
-$tag-sm-textfield-padding-right: 4px;
-$tag-sm-textfield-gap: 3px;
-
-$tag-md-textfield-padding-left: 9px;
-$tag-md-textfield-padding-right: 4px;
-$tag-md-textfield-gap: 3px;
-
-$tag-lg-textfield-padding-left: 10px;
-$tag-lg-textfield-padding-right: 4px;
-$tag-lg-textfield-gap: 3px;
-
-@mixin closer-hover {
-	cursor: pointer;
-
-	&:hover {
-		color: tokens.$color-fg-quaternary-hover;
-		.tag__close-icon::before {
-			background-color: tokens.$color-fg-quaternary-hover;
-		}
-
-		svg * {
-			stroke: tokens.$color-fg-quaternary-hover;
-			fill: tokens.$color-fg-quaternary-hover;
-		}
-	}
+// Figma "Tag" (1730:3914) uses half-step paddings (4.5, 6.5, ...) that have no spacing token, so
+// the geometry below is written in Figma pixels and converted to rem here.
+@function rem($px) {
+	@return math.div($px, 16) * 1rem;
 }
+
+// Per size: height, gap between content items, text style, and the paddings from the Figma table.
+$sizes: (
+	sm: (
+		height: 24px,
+		gap: 4,
+		text: 'body-small',
+		lead: (
+			checkbox: 5,
+			indicator: 6,
+			icon: 4,
+			none: 8,
+		),
+		trail: (
+			none: 8,
+			closer: 4,
+			count: 4,
+			count-only: 4,
+			stacked-count: 5,
+		),
+		count: (
+			height: 16px,
+			padding: 4,
+			radius: 3,
+		),
+		close: (
+			box: 14px,
+		),
+	),
+	md: (
+		height: 24px,
+		gap: 5,
+		text: 'body',
+		lead: (
+			checkbox: 4,
+			indicator: 7,
+			icon: 5,
+			none: 9,
+		),
+		trail: (
+			none: 9,
+			closer: 4,
+			count: 3,
+			count-only: 4,
+			stacked-count: 3,
+		),
+		count: (
+			height: 18px,
+			padding: 5,
+			radius: 3,
+		),
+		close: (
+			box: 16px,
+		),
+	),
+	lg: (
+		height: 28px,
+		gap: 6,
+		text: 'body',
+		lead: (
+			checkbox: 5,
+			indicator: 9,
+			icon: 7,
+			none: 10,
+		),
+		trail: (
+			none: 10,
+			closer: 4,
+			count: 4,
+			count-only: 5,
+			stacked-count: 4,
+		),
+		count: (
+			height: 20px,
+			padding: 6,
+			radius: 3,
+		),
+		close: (
+			box: 20px,
+		),
+	),
+);
+
+$close-gap: rem(3);
+$icon-size: 16px;
+$count-text: (
+	sm: 'body-small',
+	md: 'body-small',
+	lg: 'body',
+);
 
 .tag {
 	display: inline-flex;
-	justify-content: center;
 	align-items: center;
-	width: max-content;
-	white-space: nowrap;
 	box-sizing: border-box;
-	cursor: default;
-	transition: all 0.2s ease;
-
-	border-radius: tokens.$radius-sm;
-	border: 1px solid tokens.$color-border-primary;
-	background: tokens.$color-bg-primary;
-
+	flex-shrink: 0;
+	max-width: 100%;
 	color: tokens.$color-text-secondary;
-	font-style: normal;
-	font-weight: tokens.$font-weight-medium;
-	font-family: tokens.$font-family-base;
+	background: tokens.$color-bg-primary;
+	border-radius: tokens.$radius-sm;
+	// Figma strokes sit inside the frame, so the border is an inset ring and padding stays exact.
+	box-shadow: inset 0 0 0 1px tokens.$color-border-primary;
+	white-space: nowrap;
 
-	&__indicator {
-		flex-shrink: 0;
-		display: block;
-		margin-right: 0;
+	&.clickable {
+		cursor: pointer;
 	}
-	&__indicator--closable-sm {
-		margin-right: $tag-sm-indicator-closable-dot-gap;
+}
+
+.content {
+	display: inline-flex;
+	align-items: center;
+	min-width: 0;
+}
+
+.label {
+	color: tokens.$color-text-secondary;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	&.muted {
+		color: tokens.$color-text-quanternary;
 	}
+}
 
-	&__indicator--closable-md {
-		margin-right: $tag-md-indicator-closable-dot-gap;
+.spacedLabel::after {
+	// Figma's "Label: " keeps its trailing space.
+	content: '\00a0';
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: $icon-size;
+	height: $icon-size;
+	flex-shrink: 0;
+
+	svg {
+		width: 100%;
+		height: 100%;
 	}
+}
 
-	&__indicator--closable-lg {
-		margin-right: $tag-lg-indicator-closable-dot-gap;
-	}
+.count {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	background: tokens.$color-bg-tertiary;
+	color: tokens.$color-text-secondary;
+}
 
-	&__indicator--checkbox-closable-sm {
-		margin-left: $tag-sm-checkbox-indicator-closable-checkbox-gap;
-		margin-right: $tag-sm-checkbox-indicator-closable-dot-gap;
-	}
+.close {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	padding: 0;
+	margin: 0;
+	margin-left: $close-gap;
+	border: 0;
+	background: transparent;
+	border-radius: tokens.$radius-xs;
+	color: tokens.$color-fg-quaternary;
+	cursor: pointer;
+	transition: color 120ms ease;
 
-	&__indicator--checkbox-closable-md {
-		margin-left: $tag-md-checkbox-indicator-closable-checkbox-gap;
-		margin-right: $tag-md-checkbox-indicator-closable-dot-gap;
-	}
-
-	&__indicator--checkbox-closable-lg {
-		margin-left: $tag-lg-checkbox-indicator-closable-checkbox-gap;
-		margin-right: $tag-lg-checkbox-indicator-closable-dot-gap;
-	}
-
-	&__logo {
-		position: relative;
-		flex-shrink: 0;
-		display: block;
-		width: 16px;
-		height: 16px;
-		border-radius: 50%;
-		background: tokens.$color-utility-brand-100;
-
-		img {
-			position: absolute;
-			left: 32.22%;
-			top: 35.69%;
-			display: block;
-		}
-	}
-
-	&__close-icon {
-		position: relative;
-		display: block;
-		flex-shrink: 0;
-		width: 14px;
-		height: 14px;
-
-		&::before {
-			position: absolute;
-			content: '';
-			background-color: tokens.$color-fg-quaternary;
-			-webkit-mask-repeat: no-repeat;
-			mask-repeat: no-repeat;
-			-webkit-mask-size: 100% 100%;
-			mask-size: 100% 100%;
-		}
-
-		&--sm {
-			width: 14px;
-			height: 14px;
-
-			&::before {
-				left: 3.75px;
-				top: 3.75px;
-				width: 6.5px;
-				height: 6.5px;
-				-webkit-mask-image: url('./assets/TagCloseSm.svg');
-				mask-image: url('./assets/TagCloseSm.svg');
-			}
-		}
-
-		&--md {
-			width: 16px;
-			height: 16px;
-
-			&::before {
-				left: 4.25px;
-				top: 4.25px;
-				width: 7.5px;
-				height: 7.5px;
-				-webkit-mask-image: url('./assets/TagCloseMd.svg');
-				mask-image: url('./assets/TagCloseMd.svg');
-			}
-		}
-
-		&--lg {
-			width: 20px;
-			height: 20px;
-
-			&::before {
-				left: 5.7px;
-				top: 5.7px;
-				width: 8.6px;
-				height: 8.6px;
-				-webkit-mask-image: url('./assets/TagCloseLg.svg');
-				mask-image: url('./assets/TagCloseLg.svg');
-			}
-		}
-	}
-	&__logo--closable-sm {
-		margin-right: $tag-sm-indicator-closable-dot-gap;
+	&:hover {
+		color: tokens.$color-fg-tertiary;
 	}
 
-	&__logo--closable-md {
-		margin-right: $tag-md-indicator-closable-dot-gap;
+	&:focus-visible {
+		outline: 2px solid tokens.$color-fg-brand-primary;
+		outline-offset: 1px;
 	}
+}
 
-	&__logo--closable-lg {
-		margin-right: $tag-lg-indicator-closable-dot-gap;
-	}
+// Editable value for the Figma "Search" tag. The input is overlaid on a sizer that carries the
+// same text, so the tag grows with the value without any JavaScript measuring.
+.field {
+	display: inline-grid;
+	align-items: center;
+	// Room for the caret when the value is empty (Figma draws it as a 3px "|").
+	min-width: rem(3);
 
-	&__logo--checkbox-closable-sm {
-		margin-left: $tag-sm-checkbox-indicator-closable-checkbox-gap;
-		margin-right: $tag-sm-checkbox-indicator-closable-dot-gap;
-	}
-
-	&__logo--checkbox-closable-md {
-		margin-left: $tag-md-checkbox-indicator-closable-checkbox-gap;
-		margin-right: $tag-md-checkbox-indicator-closable-dot-gap;
-	}
-
-	&__logo--checkbox-closable-lg {
-		margin-left: $tag-lg-checkbox-indicator-closable-checkbox-gap;
-		margin-right: $tag-lg-checkbox-indicator-closable-dot-gap;
-	}
-
-	&__closer {
-		flex-shrink: 0;
-		display: flex;
-		align-items: center;
-		@include closer-hover;
-
-		&--sm {
-			margin-left: $tag-sm-indicator-closable-closer-gap;
-		}
-
-		&--md {
-			margin-left: $tag-md-indicator-closable-closer-gap;
-		}
-
-		&--lg {
-			margin-left: $tag-lg-indicator-closable-closer-gap;
-		}
-	}
-
-	&__closer--checkbox-indicator-sm {
-		flex-shrink: 0;
-		display: flex;
-		align-items: center;
-		margin-left: $tag-sm-checkbox-indicator-closable-closer-gap;
-		@include closer-hover;
-	}
-
-	&__closer--checkbox-indicator-md {
-		flex-shrink: 0;
-		display: flex;
-		align-items: center;
-		margin-left: $tag-md-checkbox-indicator-closable-closer-gap;
-		@include closer-hover;
-	}
-
-	&__closer--checkbox-indicator-lg {
-		flex-shrink: 0;
-		display: flex;
-		align-items: center;
-		margin-left: $tag-lg-checkbox-indicator-closable-closer-gap;
-		@include closer-hover;
-	}
-
-	&__count {
-		flex-shrink: 0;
-		display: flex;
-		align-items: center;
-
-		&--sm {
-			margin-left: $tag-sm-indicator-count-badge-gap;
-		}
-
-		&--md {
-			margin-left: $tag-md-indicator-count-badge-gap;
-		}
-
-		&--lg {
-			margin-left: $tag-lg-indicator-count-badge-gap;
-		}
-
-		&--checkbox-indicator-sm {
-			margin-left: $tag-sm-checkbox-indicator-count-badge-gap;
-		}
-
-		&--checkbox-indicator-md {
-			margin-left: $tag-md-checkbox-indicator-count-badge-gap;
-		}
-
-		&--checkbox-indicator-lg {
-			margin-left: $tag-lg-checkbox-indicator-count-badge-gap;
-		}
-
-		&--count-sm {
-			margin-left: $tag-sm-count-badge-gap;
-		}
-
-		&--count-md {
-			margin-left: $tag-md-count-badge-gap;
-		}
-
-		&--count-lg {
-			margin-left: $tag-lg-count-badge-gap;
-		}
-
-		&--checkbox-sm {
-			margin-left: $tag-sm-checkbox-count-badge-gap;
-		}
-
-		&--checkbox-md {
-			margin-left: $tag-md-checkbox-count-badge-gap;
-		}
-
-		&--checkbox-lg {
-			margin-left: $tag-lg-checkbox-count-badge-gap;
-		}
-	}
-
-	&__input {
-		flex: 1;
-		min-width: 0;
-		border: none;
-		outline: none;
-		background: transparent;
-		padding: 0;
-		margin: 0;
-		color: tokens.$color-text-secondary;
-		font-style: normal;
-		font-weight: tokens.$font-weight-medium;
-		font-family: inherit;
-		line-height: inherit;
-
-		&::placeholder {
-			color: tokens.$color-text-placeholder;
-		}
-
-		&--sm {
-			font-size: tokens.$font-size-12;
-			line-height: tokens.$line-height-16;
-		}
-
-		&--md {
-			font-size: tokens.$font-size-14;
-			line-height: tokens.$line-height-20;
-		}
-
-		&--lg {
-			font-size: tokens.$font-size-14;
-			line-height: tokens.$line-height-20;
-		}
-	}
-
-	&__textfield_sizer {
-		position: absolute;
+	&::after {
+		content: attr(data-value);
+		grid-area: 1 / 1;
 		visibility: hidden;
 		white-space: pre;
-		font-style: normal;
-		font-weight: tokens.$font-weight-medium;
-		font-family: tokens.$font-family-base;
-		pointer-events: none;
-		top: -9999px;
-		left: -9999px;
-		max-width: none;
-		width: auto;
-
-		&--sm {
-			font-size: tokens.$font-size-12;
-			line-height: tokens.$line-height-16;
-		}
-
-		&--md {
-			font-size: tokens.$font-size-14;
-			line-height: tokens.$line-height-20;
-		}
-
-		&--lg {
-			font-size: tokens.$font-size-14;
-			line-height: tokens.$line-height-20;
-		}
+		font: inherit;
 	}
+}
 
-	&__textfield_label {
-		flex-shrink: 0;
-		white-space: nowrap;
+.input {
+	grid-area: 1 / 1;
+	// The sizer drives the width; the input only fills it.
+	width: 0;
+	min-width: 100%;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	font: inherit;
+	color: tokens.$color-text-secondary;
+
+	&::placeholder {
 		color: tokens.$color-text-quanternary;
-		font-style: normal;
-		font-weight: tokens.$font-weight-medium;
-		font-family: tokens.$font-family-base;
-
-		&--sm {
-			font-size: tokens.$font-size-12;
-			line-height: tokens.$line-height-16;
-		}
-
-		&--md {
-			font-size: tokens.$font-size-14;
-			line-height: tokens.$line-height-20;
-		}
-
-		&--lg {
-			font-size: tokens.$font-size-14;
-			line-height: tokens.$line-height-20;
-		}
 	}
+}
 
-	&__textfield_input {
-		min-width: 1px;
-		width: 1px;
-		flex: 0 0 auto;
-		border: none;
-		outline: none;
-		background: transparent;
-		padding: 0;
-		margin: 0;
-		color: tokens.$color-text-secondary;
-		font-style: normal;
-		font-weight: tokens.$font-weight-medium;
-		font-family: tokens.$font-family-base;
+@each $size, $spec in $sizes {
+	$lead: map.get($spec, lead);
+	$trail: map.get($spec, trail);
+	$count: map.get($spec, count);
+	$gap: rem(map.get($spec, gap));
 
-		&::placeholder {
-			color: tokens.$color-text-placeholder;
+	.tag.#{$size} {
+		min-height: map.get($spec, height);
+		height: map.get($spec, height);
+
+		.label,
+		.input,
+		.field::after {
+			@include tokens.text-style(map.get($spec, text), 'medium');
 		}
 
-		&--sm {
-			font-size: tokens.$font-size-12;
-			line-height: tokens.$line-height-16;
+		.content {
+			gap: $gap;
 		}
 
-		&--md {
-			font-size: tokens.$font-size-14;
-			line-height: tokens.$line-height-20;
+		.field {
+			margin-left: calc(#{rem(3)} - #{$gap});
 		}
 
-		&--lg {
-			font-size: tokens.$font-size-14;
-			line-height: tokens.$line-height-20;
-		}
-	}
-
-	&__textfield_closer {
-		flex-shrink: 0;
-		display: flex;
-		align-items: center;
-		@include closer-hover;
-	}
-
-	@each $size, $gap, $logo-padding in ('sm', 4px, 4px), ('md', 5px, 5px), ('lg', 6px, 7px) {
-		&--#{$size}--closable > .tag__closer {
-			margin-left: 0;
-		}
-		&--#{$size}--checkbox-closable > .tag__closer {
-			margin-left: 3px - $gap;
-		}
-		&--#{$size}--count > .tag__count {
-			margin-left: 3px;
-		}
-		&--#{$size}--checkbox-count > .tag__count,
-		&--#{$size}--indicator-count > .tag__count,
-		&--#{$size}--checkbox-indicator-count > .tag__count {
-			margin-left: 0;
-		}
-		&--#{$size}--indicator:has(> .tag__logo),
-		&--#{$size}--indicator-count:has(> .tag__logo),
-		&--#{$size}--indicator-closable:has(> .tag__logo) {
-			padding-left: $logo-padding;
-		}
-	}
-
-	&--sm {
-		height: 24px;
-		padding: 0 8px;
-		font-size: tokens.$font-size-12;
-		line-height: tokens.$line-height-16;
-
-		&--closable {
-			padding: 0 $tag-sm-closable-padding-right 0 $tag-sm-closable-padding-left;
-			gap: $tag-sm-closable-gap;
+		.count {
+			height: map.get($count, height);
+			min-width: map.get($count, height);
+			padding: 0 rem(map.get($count, padding));
+			border-radius: map.get($count, radius);
+			@include tokens.text-style(map.get($count-text, $size), 'medium');
 		}
 
-		&--checkbox {
-			padding: 0 $tag-sm-checkbox-padding-right 0 $tag-sm-checkbox-padding-left;
-			gap: $tag-sm-checkbox-gap;
+		.close {
+			width: map.get(map.get($spec, close), box);
+			height: map.get(map.get($spec, close), box);
+		}
 
-			> :first-child {
-				flex-shrink: 0;
+		@each $name, $value in $lead {
+			&[data-lead='#{$name}'] {
+				padding-left: rem($value);
+			}
+		}
 
-				.box {
-					margin-top: 0;
+		@each $name, $value in $trail {
+			@if $name != count-only and $name != stacked-count {
+				&[data-trail='#{$name}'] {
+					padding-right: rem($value);
 				}
 			}
 		}
 
-		&--checkbox-closable {
-			padding: 0 $tag-sm-checkbox-closable-padding-right 0
-				$tag-sm-checkbox-closable-padding-left;
-			gap: $tag-sm-checkbox-closable-gap;
-
-			> :first-child {
-				flex-shrink: 0;
-
-				.box {
-					margin-top: 0;
-				}
-			}
+		&[data-trail='count'][data-stacked='true'] {
+			padding-right: rem(map.get($trail, stacked-count));
 		}
 
-		&--indicator {
-			padding: 0 $tag-sm-indicator-padding-right 0 $tag-sm-indicator-padding-left;
-			gap: $tag-sm-indicator-gap;
-		}
-
-		&--indicator-closable {
-			padding: 0 $tag-sm-indicator-closable-padding-right 0
-				$tag-sm-indicator-closable-padding-left;
-		}
-
-		&--indicator-count {
-			padding: 0 $tag-sm-indicator-count-padding-right 0 $tag-sm-indicator-count-padding-left;
-			gap: $tag-sm-indicator-count-dot-gap;
-		}
-
-		&--checkbox-indicator {
-			padding: 0 $tag-sm-checkbox-indicator-padding-right 0
-				$tag-sm-checkbox-indicator-padding-left;
-			gap: $tag-sm-checkbox-indicator-checkbox-gap;
-
-			> :first-child {
-				flex-shrink: 0;
-
-				.box {
-					margin-top: 0;
-				}
-			}
-		}
-
-		&--checkbox-indicator-closable {
-			padding: 0 $tag-sm-checkbox-indicator-closable-padding-right 0
-				$tag-sm-checkbox-indicator-closable-padding-left;
-
-			> :first-child {
-				flex-shrink: 0;
-
-				.box {
-					margin-top: 0;
-				}
-			}
-		}
-
-		&--checkbox-indicator-count {
-			padding: 0 $tag-sm-checkbox-indicator-count-padding-right 0
-				$tag-sm-checkbox-indicator-count-padding-left;
-			gap: $tag-sm-checkbox-indicator-count-checkbox-gap;
-
-			> :first-child {
-				flex-shrink: 0;
-
-				.box {
-					margin-top: 0;
-				}
-			}
-		}
-
-		&--count {
-			padding: 0 $tag-sm-count-padding-right 0 $tag-sm-count-padding-left;
-		}
-
-		&--checkbox-count {
-			padding: 0 $tag-sm-checkbox-count-padding-right 0 $tag-sm-checkbox-count-padding-left;
-			gap: $tag-sm-checkbox-count-checkbox-gap;
-
-			> :first-child {
-				flex-shrink: 0;
-
-				.box {
-					margin-top: 0;
-				}
-			}
-		}
-
-		&--textfield {
-			padding: 0 $tag-sm-textfield-padding-right 0 $tag-sm-textfield-padding-left;
-			gap: $tag-sm-textfield-gap;
-			cursor: text;
-			width: max-content;
-			height: 24px;
-			/* Consistent styling regardless of focus state */
-			border: 1px solid tokens.$color-border-primary;
-			background: tokens.$color-bg-primary;
-
-			&-readonly {
-				cursor: default;
-				/* Readonly state looks exactly like Figma static design */
-				border: 1px solid tokens.$color-border-primary;
-				background: tokens.$color-bg-primary;
-
-				.tag__textfield_input {
-					pointer-events: none;
-					cursor: default;
-					color: tokens.$color-text-secondary !important;
-				}
-			}
-		}
-	}
-
-	&--md {
-		height: 24px;
-		padding: 0 9px;
-		font-size: tokens.$font-size-14;
-		line-height: tokens.$line-height-20;
-
-		&--closable {
-			padding: 0 $tag-md-closable-padding-right 0 $tag-md-closable-padding-left;
-			gap: $tag-md-closable-gap;
-		}
-
-		&--checkbox {
-			padding: 0 $tag-md-checkbox-padding-right 0 $tag-md-checkbox-padding-left;
-			gap: $tag-md-checkbox-gap;
-
-			> :first-child {
-				flex-shrink: 0;
-
-				.box {
-					margin-top: 0;
-				}
-			}
-		}
-
-		&--checkbox-closable {
-			padding: 0 $tag-md-checkbox-closable-padding-right 0
-				$tag-md-checkbox-closable-padding-left;
-			gap: $tag-md-checkbox-closable-gap;
-
-			> :first-child {
-				flex-shrink: 0;
-
-				.box {
-					margin-top: 0;
-				}
-			}
-		}
-
-		&--indicator {
-			padding: 0 $tag-md-indicator-padding-right 0 $tag-md-indicator-padding-left;
-			gap: $tag-md-indicator-gap;
-		}
-
-		&--indicator-closable {
-			padding: 0 $tag-md-indicator-closable-padding-right 0
-				$tag-md-indicator-closable-padding-left;
-		}
-
-		&--indicator-count {
-			padding: 0 $tag-md-indicator-count-padding-right 0 $tag-md-indicator-count-padding-left;
-			gap: $tag-md-indicator-count-dot-gap;
-		}
-
-		&--checkbox-indicator {
-			padding: 0 $tag-md-checkbox-indicator-padding-right 0
-				$tag-md-checkbox-indicator-padding-left;
-			gap: $tag-md-checkbox-indicator-checkbox-gap;
-
-			> :first-child {
-				flex-shrink: 0;
-
-				.box {
-					margin-top: 0;
-				}
-			}
-		}
-
-		&--checkbox-indicator-closable {
-			padding: 0 $tag-md-checkbox-indicator-closable-padding-right 0
-				$tag-md-checkbox-indicator-closable-padding-left;
-
-			> :first-child {
-				flex-shrink: 0;
-
-				.box {
-					margin-top: 0;
-				}
-			}
-		}
-
-		&--checkbox-indicator-count {
-			padding: 0 $tag-md-checkbox-indicator-count-padding-right 0
-				$tag-md-checkbox-indicator-count-padding-left;
-			gap: $tag-md-checkbox-indicator-count-checkbox-gap;
-
-			> :first-child {
-				flex-shrink: 0;
-
-				.box {
-					margin-top: 0;
-				}
-			}
-		}
-
-		&--count {
-			padding: 0 $tag-md-count-padding-right 0 $tag-md-count-padding-left;
-		}
-
-		&--checkbox-count {
-			padding: 0 $tag-md-checkbox-count-padding-right 0 $tag-md-checkbox-count-padding-left;
-			gap: $tag-md-checkbox-count-checkbox-gap;
-
-			> :first-child {
-				flex-shrink: 0;
-
-				.box {
-					margin-top: 0;
-				}
-			}
-		}
-
-		&--textfield {
-			padding: 0 $tag-md-textfield-padding-right 0 $tag-md-textfield-padding-left;
-			gap: $tag-md-textfield-gap;
-			cursor: text;
-			width: max-content;
-
-			&:focus-within {
-				border-color: tokens.$color-border-brand;
-				box-shadow: 0 0 0 2px rgba(tokens.$base-color-brand-blue-b-400, 0.2);
-			}
-		}
-	}
-
-	&--lg {
-		height: 28px;
-		padding: 0 10px;
-		font-size: tokens.$font-size-14;
-		line-height: tokens.$line-height-20;
-
-		&--closable {
-			padding: 0 $tag-lg-closable-padding-right 0 $tag-lg-closable-padding-left;
-			gap: $tag-lg-closable-gap;
-		}
-
-		&--checkbox {
-			padding: 0 $tag-lg-checkbox-padding-right 0 $tag-lg-checkbox-padding-left;
-			gap: $tag-lg-checkbox-gap;
-
-			> :first-child {
-				flex-shrink: 0;
-
-				.box {
-					margin-top: 0;
-				}
-			}
-		}
-
-		&--checkbox-closable {
-			padding: 0 $tag-lg-checkbox-closable-padding-right 0
-				$tag-lg-checkbox-closable-padding-left;
-			gap: $tag-lg-checkbox-closable-gap;
-
-			> :first-child {
-				flex-shrink: 0;
-
-				.box {
-					margin-top: 0;
-				}
-			}
-		}
-
-		&--indicator {
-			padding: 0 $tag-lg-indicator-padding-right 0 $tag-lg-indicator-padding-left;
-			gap: $tag-lg-indicator-gap;
-		}
-
-		&--indicator-closable {
-			padding: 0 $tag-lg-indicator-closable-padding-right 0
-				$tag-lg-indicator-closable-padding-left;
-		}
-
-		&--indicator-count {
-			padding: 0 $tag-lg-indicator-count-padding-right 0 $tag-lg-indicator-count-padding-left;
-			gap: $tag-lg-indicator-count-dot-gap;
-		}
-
-		&--checkbox-indicator {
-			padding: 0 $tag-lg-checkbox-indicator-padding-right 0
-				$tag-lg-checkbox-indicator-padding-left;
-			gap: $tag-lg-checkbox-indicator-checkbox-gap;
-
-			> :first-child {
-				flex-shrink: 0;
-
-				.box {
-					margin-top: 0;
-				}
-			}
-		}
-
-		&--checkbox-indicator-closable {
-			padding: 0 $tag-lg-checkbox-indicator-closable-padding-right 0
-				$tag-lg-checkbox-indicator-closable-padding-left;
-
-			> :first-child {
-				flex-shrink: 0;
-
-				.box {
-					margin-top: 0;
-				}
-			}
-		}
-
-		&--checkbox-indicator-count {
-			padding: 0 $tag-lg-checkbox-indicator-count-padding-right 0
-				$tag-lg-checkbox-indicator-count-padding-left;
-			gap: $tag-lg-checkbox-indicator-count-checkbox-gap;
-
-			> :first-child {
-				flex-shrink: 0;
-
-				.box {
-					margin-top: 0;
-				}
-			}
-		}
-
-		&--count {
-			padding: 0 $tag-lg-count-padding-right 0 $tag-lg-count-padding-left;
-		}
-
-		&--checkbox-count {
-			padding: 0 $tag-lg-checkbox-count-padding-right 0 $tag-lg-checkbox-count-padding-left;
-			gap: $tag-lg-checkbox-count-checkbox-gap;
-
-			> :first-child {
-				flex-shrink: 0;
-
-				.box {
-					margin-top: 0;
-				}
-			}
-		}
-
-		&--textfield {
-			padding: 0 $tag-lg-textfield-padding-right 0 $tag-lg-textfield-padding-left;
-			gap: $tag-lg-textfield-gap;
-			cursor: text;
-			width: max-content;
-
-			&:focus-within {
-				border-color: tokens.$color-border-brand;
-				box-shadow: 0 0 0 2px rgba(tokens.$base-color-brand-blue-b-400, 0.2);
+		// A count with nothing before the label uses its own right padding and a 3px label gap.
+		&[data-count-plain='true'] {
+			padding-right: rem(map.get($trail, count-only));
+
+			.content {
+				gap: $close-gap;
 			}
 		}
 	}

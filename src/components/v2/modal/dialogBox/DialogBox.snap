@@ -9,8 +9,7 @@ exports[`DialogBox — Snapshot Testing matches snapshot structure 1`] = `
       data-testid="header"
     >
       <h2
-        class="root b1 regular-stroke"
-        style="font-weight: 600;"
+        class="root heading-medium medium-stroke title"
       >
         Snap
       </h2>
@@ -31,10 +30,8 @@ exports[`DialogBox — Snapshot Testing matches snapshot structure 1`] = `
         class="footer"
       >
         <button
-          class="root sm border-radius-default root outlined root radius-default outlined primary cancel"
+          class="root outline size-md cancel"
           data-elem="base-cell"
-          data-testid="dismiss-btn-test"
-          title="Dismiss"
           type="submit"
         >
           <span

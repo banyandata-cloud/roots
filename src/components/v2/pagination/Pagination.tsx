@@ -1,276 +1,250 @@
 import { forwardRef, useEffect, useReducer, useRef, useState } from 'react';
-import { classes } from '../../../utils';
+import { classes } from '../utils';
 import { Dropdown } from '../input';
 import { Button } from '../../v2/buttons';
 import type { PaginationAction, PaginationProps, PaginationState } from '../pagination/types/index';
-import styles from './Pagination.module.css';
-import arrowLeft from './ArrowLeft.svg';
-import arrowLeftDisabled from './ArrowLeftDisabled.svg';
-import arrowRight from './ArrowRight.svg';
-import arrowRightDisabled from './ArrowRightDisabled.svg';
-import arrowLeftLarge from './ArrowLeftLarge.svg';
-import arrowRightLarge from './ArrowRightLarge.svg';
+import styles from './Pagination.module.scss';
+import PaginationArrowIcon from './assets/PaginationArrowIcon';
 
 type UsePaginationArgs = Partial<
- Pick<PaginationState, 'totalPages' | 'currentPage' | 'step' | 'totalData'>
+	Pick<PaginationState, 'totalPages' | 'currentPage' | 'step' | 'totalData'>
 >;
 
 const reducer = (state: PaginationState, action: PaginationAction): PaginationState => {
- switch (action.type) {
-  case 'NEXT_PAGE':
-   return { ...state, currentPage: (state.currentPage ?? 0) + 1 };
-  case 'PREV_PAGE':
-   return { ...state, currentPage: (state.currentPage ?? 0) - 1 };
-  case 'SET_PAGE':
-   return { ...state, currentPage: action.payload ?? 1 };
-  case 'SET_STEP': {
-   const firstRow = ((state.currentPage ?? 1) - 1) * state.step + 1;
-   const newPage = Math.ceil(firstRow / action.payload);
-   const newTotalPages =
-    state.totalData != null
-     ? Math.ceil(state.totalData / action.payload)
-     : state.totalPages;
-   return {
-    ...state,
-    step: action.payload,
-    currentPage: newPage,
-    totalPages: newTotalPages,
-   };
-  }
-  case 'SET_TOTAL_PAGES':
-   return { ...state, totalPages: action.payload };
-  case 'SET_TOTAL_DATA':
-   return { ...state, totalData: action.payload };
-  default:
-   return state;
- }
+	switch (action.type) {
+		case 'NEXT_PAGE':
+			return { ...state, currentPage: (state.currentPage ?? 0) + 1 };
+		case 'PREV_PAGE':
+			return { ...state, currentPage: (state.currentPage ?? 0) - 1 };
+		case 'SET_PAGE':
+			return { ...state, currentPage: action.payload ?? 1 };
+		case 'SET_STEP': {
+			const firstRow = ((state.currentPage ?? 1) - 1) * state.step + 1;
+			const newPage = Math.ceil(firstRow / action.payload);
+			const newTotalPages =
+				state.totalData != null
+					? Math.ceil(state.totalData / action.payload)
+					: state.totalPages;
+			return {
+				...state,
+				step: action.payload,
+				currentPage: newPage,
+				totalPages: newTotalPages,
+			};
+		}
+		case 'SET_TOTAL_PAGES':
+			return { ...state, totalPages: action.payload };
+		case 'SET_TOTAL_DATA':
+			return { ...state, totalData: action.payload };
+		default:
+			return state;
+	}
 };
 
 export const usePagination = (props: UsePaginationArgs) => {
- const { totalPages = null, currentPage = null, step = 10, totalData = null } = props;
- const [paginationState, paginationDispatch] = useReducer(reducer, {
-  totalPages,
-  currentPage,
-  step,
-  totalData,
- });
+	const { totalPages = null, currentPage = null, step = 10, totalData = null } = props;
+	const [paginationState, paginationDispatch] = useReducer(reducer, {
+		totalPages,
+		currentPage,
+		step,
+		totalData,
+	});
 
- useEffect(() => {
-  if (
-   paginationState.currentPage != null &&
-   totalPages != null &&
-   paginationState.currentPage > totalPages
-  ) {
-   paginationDispatch({ type: 'SET_PAGE', payload: totalPages });
-  }
-  if (paginationState.totalData !== totalData) {
-   paginationDispatch({ type: 'SET_TOTAL_DATA', payload: totalData });
-  }
-  paginationDispatch({ type: 'SET_TOTAL_PAGES', payload: totalPages });
- }, [totalPages, totalData]);
+	useEffect(() => {
+		if (
+			paginationState.currentPage != null &&
+			totalPages != null &&
+			paginationState.currentPage > totalPages
+		) {
+			paginationDispatch({ type: 'SET_PAGE', payload: totalPages });
+		}
+		if (paginationState.totalData !== totalData) {
+			paginationDispatch({ type: 'SET_TOTAL_DATA', payload: totalData });
+		}
+		paginationDispatch({ type: 'SET_TOTAL_PAGES', payload: totalPages });
+	}, [totalPages, totalData]);
 
- return [paginationState, paginationDispatch] as const;
+	return [paginationState, paginationDispatch] as const;
 };
 
 const ALL_DROPDOWN_OPTIONS = [
- { title: '10', value: 10 },
- { title: '20', value: 20 },
- { title: '30', value: 30 },
- { title: '40', value: 40 },
+	{ title: '10', value: 10 },
+	{ title: '20', value: 20 },
+	{ title: '30', value: 30 },
+	{ title: '40', value: 40 },
 ] as const;
 
 export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, ref) => {
- const {
-  className = '',
-  navigationSize = 'sm',
-  floating,
-  paginationState = {
-   totalPages: null,
-   currentPage: null,
-   step: 30,
-   totalData: null,
-  },
-  paginationDispatch,
-  loading,
-  dataLabel,
-  onChange,
- } = props;
+	const {
+		className = '',
+		navigationSize = 'sm',
+		floating,
+		paginationState = {
+			totalPages: null,
+			currentPage: null,
+			step: 30,
+			totalData: null,
+		},
+		paginationDispatch,
+		loading,
+		dataLabel,
+		onChange,
+	} = props;
 
- const { totalPages = 0, currentPage = 1, step = 30, totalData = null } = paginationState;
- const mountedRef = useRef(false);
+	const { totalPages = 0, currentPage = 1, step = 30, totalData = null } = paginationState;
+	const mountedRef = useRef(false);
 
- const [pageInputValue, setPageInputValue] = useState<string>('');
+	const [pageInputValue, setPageInputValue] = useState<string>('');
 
- const dispatch = (action: PaginationAction) => paginationDispatch?.(action);
+	const dispatch = (action: PaginationAction) => paginationDispatch?.(action);
 
- useEffect(() => {
-  if (mountedRef.current && onChange) {
-   onChange({ currentPage: currentPage ?? 1, step, totalPages });
-  }
- }, [currentPage, step, totalPages]);
+	useEffect(() => {
+		if (mountedRef.current && onChange) {
+			onChange({ currentPage: currentPage ?? 1, step, totalPages });
+		}
+	}, [currentPage, step, totalPages]);
 
- useEffect(() => {
-  mountedRef.current = true;
-  return () => {
-   mountedRef.current = false;
-  };
- }, []);
+	useEffect(() => {
+		mountedRef.current = true;
+		return () => {
+			mountedRef.current = false;
+		};
+	}, []);
 
- useEffect(() => {
-  const curr = currentPage === 0 ? 1 : (currentPage ?? 1);
-  setPageInputValue(curr.toString());
- }, [currentPage]);
+	useEffect(() => {
+		const curr = currentPage === 0 ? 1 : (currentPage ?? 1);
+		setPageInputValue(curr.toString());
+	}, [currentPage]);
 
- const curr = currentPage === 0 ? 1 : (currentPage ?? 1);
- const start = (curr - 1) * step + 1;
- const end = curr === totalPages ? (totalData ?? curr * step) : curr * step;
- const isSinglePage = (totalPages ?? 0) <= 1;
- const parsedPage = Number(pageInputValue);
- const pageInputInvalid =
-  !isSinglePage &&
-  pageInputValue !== '' &&
-  (!Number.isInteger(parsedPage) || parsedPage < 1 || parsedPage > (totalPages ?? 1));
- const canGoPrev = !isSinglePage && curr > 1;
- const canGoNext = !isSinglePage && totalPages != null && totalPages > 0 && curr < totalPages;
- const showData = typeof totalData === 'number' && totalData > 0 && !loading;
- const availableDropdownOptions = ALL_DROPDOWN_OPTIONS.filter((opt) => {
-  if (opt.value === step) return true;
-  if (totalData == null) return true;
-  const prevOption = ALL_DROPDOWN_OPTIONS[ALL_DROPDOWN_OPTIONS.indexOf(opt) - 1];
-  if (!prevOption) return true;
-  return totalData > prevOption.value;
- });
- const isRowsPerPageDisabled = availableDropdownOptions.length <= 1;
+	const curr = currentPage === 0 ? 1 : (currentPage ?? 1);
+	const start = (curr - 1) * step + 1;
+	const end = curr === totalPages ? (totalData ?? curr * step) : curr * step;
+	const isSinglePage = (totalPages ?? 0) <= 1;
+	const parsedPage = Number(pageInputValue);
+	const pageInputInvalid =
+		!isSinglePage &&
+		pageInputValue !== '' &&
+		(!Number.isInteger(parsedPage) || parsedPage < 1 || parsedPage > (totalPages ?? 1));
+	const canGoPrev = !isSinglePage && curr > 1;
+	const canGoNext = !isSinglePage && totalPages != null && totalPages > 0 && curr < totalPages;
+	const showData = typeof totalData === 'number' && totalData > 0 && !loading;
+	const availableDropdownOptions = ALL_DROPDOWN_OPTIONS.filter((opt) => {
+		if (opt.value === step) return true;
+		if (totalData == null) return true;
+		const prevOption = ALL_DROPDOWN_OPTIONS[ALL_DROPDOWN_OPTIONS.indexOf(opt) - 1];
+		if (!prevOption) return true;
+		return totalData > prevOption.value;
+	});
+	const isRowsPerPageDisabled = availableDropdownOptions.length <= 1;
 
- const handlePageInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  setPageInputValue(e.target.value);
- };
+	const handlePageInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setPageInputValue(e.target.value);
+	};
 
- const handlePageInputCommit = () => {
-  const parsed = parseInt(pageInputValue, 10);
-  const maxPage = totalPages ?? 1;
+	const handlePageInputCommit = () => {
+		const parsed = parseInt(pageInputValue, 10);
+		const maxPage = totalPages ?? 1;
 
-  if (isNaN(parsed) || parsed < 1) {
-   dispatch({ type: 'SET_PAGE', payload: 1 });
-   setPageInputValue('1');
-  } else if (parsed > maxPage) {
-   dispatch({ type: 'SET_PAGE', payload: maxPage });
-   setPageInputValue(maxPage.toString());
-  } else {
-   dispatch({ type: 'SET_PAGE', payload: parsed });
-  }
- };
+		if (isNaN(parsed) || parsed < 1) {
+			dispatch({ type: 'SET_PAGE', payload: 1 });
+			setPageInputValue('1');
+		} else if (parsed > maxPage) {
+			dispatch({ type: 'SET_PAGE', payload: maxPage });
+			setPageInputValue(maxPage.toString());
+		} else {
+			dispatch({ type: 'SET_PAGE', payload: parsed });
+		}
+	};
 
- const handlePageInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-  if (e.key === 'Enter') {
-   handlePageInputCommit();
-   (e.target as HTMLInputElement).blur();
-  }
- };
+	const handlePageInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+		if (e.key === 'Enter') {
+			handlePageInputCommit();
+			(e.target as HTMLInputElement).blur();
+		}
+	};
 
- return (
-  <div
-   ref={ref}
-   data-navigation-size={navigationSize}
-   className={classes(styles.root, floating ? styles.floating : '', className)}>
-   <div className={styles['left']}>
-    <div className={styles['rows-per-page']}>
-     <span className={styles['rows-label']}>Rows per page :</span>
-     <Dropdown
-      className={classes(
-       styles['dropdown'],
-       isRowsPerPageDisabled ? styles['dropdown-disabled'] : ''
-      )}
-      popoverClassName={styles['dropdown-popper']}
-      options={availableDropdownOptions.map(({ title, value }) => ({
-       label: title,
-       value: value.toString(),
-      }))}
-      value={step.toString()}
-      placeholder=''
-      helperText=''
-      size='sm'
-      disabled={isRowsPerPageDisabled}
-      onChange={(newStep) => {
-       dispatch({ type: 'SET_STEP', payload: Number(newStep || 30) });
-      }}
-     />
-    </div>
+	return (
+		<div
+			ref={ref}
+			data-navigation-size={navigationSize}
+			className={classes(styles.root, floating ? styles.floating : '', className)}
+		>
+			<div className={styles['left']}>
+				<div className={styles['rows-per-page']}>
+					<span className={styles['rows-label']}>Rows per page :</span>
+					<Dropdown
+						className={classes(
+							styles['dropdown'],
+							isRowsPerPageDisabled ? styles['dropdown-disabled'] : ''
+						)}
+						popoverClassName={styles['dropdown-popper']}
+						options={availableDropdownOptions.map(({ title, value }) => ({
+							label: title,
+							value: value.toString(),
+						}))}
+						value={step.toString()}
+						placeholder=''
+						helperText=''
+						size='sm'
+						disabled={isRowsPerPageDisabled}
+						onChange={(newStep) => {
+							dispatch({ type: 'SET_STEP', payload: Number(newStep || 30) });
+						}}
+					/>
+				</div>
 
-    {showData && (
-     <div className={styles['showing']}>
-      <span className={styles['showing-text']}>
-       Showing {start}-{end} from {totalData}
-       {dataLabel ? ` ${dataLabel}` : ''}
-      </span>
-     </div>
-    )}
-   </div>
+				{showData && (
+					<div className={styles['showing']}>
+						<span className={styles['showing-text']}>
+							Showing {start}-{end} from {totalData}
+							{dataLabel ? ` ${dataLabel}` : ''}
+						</span>
+					</div>
+				)}
+			</div>
 
-   <div className={styles['right']}>
-    <div className={styles['page-counter']}>
-     <div className={styles['page-num-box']} data-invalid={pageInputInvalid}>
-      <input
-       className={styles['page-input']}
-       type='number'
-       min={1}
-       max={totalPages ?? 1}
-       value={pageInputValue}
-       aria-label='Page number'
-       aria-invalid={pageInputInvalid}
-       style={{ width: `${Math.max(pageInputValue.length, 1)}ch` }}
-       onChange={handlePageInputChange}
-       onBlur={handlePageInputCommit}
-       onKeyDown={handlePageInputKeyDown}
-       disabled={isSinglePage}
-      />
-     </div>
-     <span className={styles['page-of']}>of</span>
-     <span className={styles['page-total']}>{totalPages ?? 1}</span>
-    </div>
+			<div className={styles['right']}>
+				<div className={styles['page-counter']}>
+					<div className={styles['page-num-box']} data-invalid={pageInputInvalid}>
+						<input
+							className={styles['page-input']}
+							type='number'
+							min={1}
+							max={totalPages ?? 1}
+							value={pageInputValue}
+							aria-label='Page number'
+							aria-invalid={pageInputInvalid}
+							style={{ width: `${Math.max(pageInputValue.length, 1)}ch` }}
+							onChange={handlePageInputChange}
+							onBlur={handlePageInputCommit}
+							onKeyDown={handlePageInputKeyDown}
+							disabled={isSinglePage}
+						/>
+					</div>
+					<span className={styles['page-of']}>of</span>
+					<span className={styles['page-total']}>{totalPages ?? 1}</span>
+				</div>
 
-    <div className={styles['nav-buttons']}>
-     <Button
-      className={styles['nav-btn']}
-      disabled={!canGoPrev}
-      onClick={() => dispatch({ type: 'PREV_PAGE' })}
-      title={
-       <img
-        className={styles['arrow-left']}
-        src={
-         navigationSize === 'md'
-          ? arrowLeftLarge
-          : canGoPrev
-           ? arrowLeft
-           : arrowLeftDisabled
-        }
-        alt='Previous page'
-       />
-      }
-      type='button'
-     />
+				<div className={styles['nav-buttons']}>
+					<Button
+						className={styles['nav-btn']}
+						disabled={!canGoPrev}
+						onClick={() => dispatch({ type: 'PREV_PAGE' })}
+						aria-label='Previous page'
+						title={<PaginationArrowIcon direction='left' size={navigationSize} />}
+						type='button'
+					/>
 
-     <Button
-      className={styles['nav-btn']}
-      disabled={!canGoNext}
-      onClick={() => dispatch({ type: 'NEXT_PAGE' })}
-      title={
-       <img
-        src={
-         navigationSize === 'md'
-          ? arrowRightLarge
-          : canGoNext
-           ? arrowRight
-           : arrowRightDisabled
-        }
-        alt='Next page'
-       />
-      }
-      type='button'
-     />
-    </div>
-   </div>
-  </div>
- );
+					<Button
+						className={styles['nav-btn']}
+						disabled={!canGoNext}
+						onClick={() => dispatch({ type: 'NEXT_PAGE' })}
+						aria-label='Next page'
+						title={<PaginationArrowIcon direction='right' size={navigationSize} />}
+						type='button'
+					/>
+				</div>
+			</div>
+		</div>
+	);
 });
- 

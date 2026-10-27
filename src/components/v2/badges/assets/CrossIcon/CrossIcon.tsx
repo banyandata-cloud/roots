@@ -5,7 +5,11 @@ interface CrossIconProps extends React.SVGProps<SVGSVGElement> {
 	className?: string | undefined;
 }
 
-const CrossIcon: React.FC<CrossIconProps> = ({ size = 16, color = '#A4A7AE', ...props }) => {
+const CrossIcon: React.FC<CrossIconProps> = ({
+	size = 16,
+	color = 'var(--color-fg-disabled)',
+	...props
+}) => {
 	return (
 		<svg
 			{...props}

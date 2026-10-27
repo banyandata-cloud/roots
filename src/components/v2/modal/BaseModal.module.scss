@@ -1,83 +1,113 @@
-@use '../../../styles/tokens' as tokens;
-@import '../../styles/_index';
+@use '../styles/tokens' as tokens;
 
+// Figma "Modal layout": 24px radius, header (32 top / 12 bottom / 24 sides), an 8px gap to the
+// divider, 32px to the body (24 sides), 64px to the footer, which has a top border, 16px / 32px
+// padding and 16px between its buttons.
 .root {
-	@include flex(column, flex-start, stretch);
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	height: 43.75rem;
 	max-height: 100%;
-	background: $light-color3;
-	box-shadow: 4px 4px 4px rgba(tokens.$base-color-base-black, 0.13);
-	border-radius: 8px;
+	background: tokens.$color-bg-primary;
+	color: tokens.$color-text-primary;
+	border-radius: tokens.$radius-4xl;
 	outline: none;
+	overflow: hidden;
 	width: 96%;
 
-	@media (min-width: 768px) {
+	@media (min-width: 48em) {
 		width: 72%;
 	}
 
-	@media (min-width: 1024px) {
+	@media (min-width: 64em) {
 		width: 60%;
 		max-width: 84%;
 	}
 
-	@media (min-width: 1280px) {
+	@media (min-width: 80em) {
 		width: 48%;
 		max-width: 62.5rem;
 	}
 
-	.body {
-		overflow-y: scroll;
-		padding: 1rem;
-		@include removeScrollbar;
-		color: $text-color;
-	}
-
-	.header,
-	.footer {
-		padding: 1rem;
-		color: $text-color;
-	}
-
 	.header {
-		font-weight: 500;
-		font-size: 1.375rem;
-		@include boxShadow(0.1px, 2px);
-	}
+		flex-shrink: 0;
+		// The close button sits in the right padding, so the title is never under it.
+		padding: tokens.$spacing-4xl tokens.$spacing-3xl tokens.$spacing-lg;
 
-	.footer {
-		margin-top: auto;
-		border-radius: 0 0 8px 8px;
-		@include flex(row, flex-end);
-		gap: 1rem;
-		button.dismiss[data-elem='base-cell'] {
-			@include flex(row, center, stretch);
-			color: $mono-color1;
-			background-color: $light-color2;
-			border-radius: 0.25rem;
-			outline: 1px solid $light-color2 !important;
-			border: none;
-			&:hover {
-				background-color: $light-color1;
-			}
+		// Figma title: heading-medium, but with the font-height/28 line-height.
+		.title {
+			margin: 0;
+			line-height: tokens.$line-height-28;
+		}
+
+		.description {
+			display: block;
+		}
+
+		// A dialog without a body goes straight from the header to the footer.
+		&:has(+ .footer) {
+			margin-bottom: tokens.$spacing-7xl;
 		}
 	}
 
-	button.close[data-elem='base-cell'] {
-		position: absolute;
-		right: 1rem;
-		top: 1rem;
-		padding: 0.25rem;
-		height: auto;
-		background: $light-color3;
+	.body {
+		flex: 1 1 auto;
+		min-height: 0;
+		overflow-y: scroll;
+		margin-top: tokens.$spacing-md;
+		// Figma draws the 1px divider inside the 32px gap, so the border is taken off the padding.
+		padding: calc(#{tokens.$spacing-4xl} - #{tokens.$spacing-1}) tokens.$spacing-3xl tokens.$spacing-7xl;
+		border-top: tokens.$spacing-1 solid tokens.$color-border-secondary;
+		scrollbar-width: none;
 
-		.icon {
-			width: 1.5rem;
-			height: 1.5rem;
-			fill: $text-color;
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		&:empty {
+			display: none;
+		}
+	}
+
+	.footer {
+		display: flex;
+		flex-shrink: 0;
+		align-items: center;
+		justify-content: flex-end;
+		gap: tokens.$spacing-xl;
+		margin-top: auto;
+		// Figma draws the 1px top border inside the 16px padding.
+		padding: calc(#{tokens.$spacing-xl} - #{tokens.$spacing-1}) tokens.$spacing-4xl tokens.$spacing-xl;
+		border-top: tokens.$spacing-1 solid tokens.$color-border-secondary;
+
+		button {
+			min-width: 142px;
+		}
+	}
+
+	button.close {
+		position: absolute;
+		top: tokens.$spacing-4xl;
+		right: tokens.$spacing-3xl;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 24px;
+		height: 24px;
+		padding: 0;
+		border: none;
+		background: transparent;
+		color: tokens.$color-fg-primary;
+		cursor: pointer;
+
+		&:focus-visible {
+			outline: 2px solid tokens.$color-border-brand;
+			outline-offset: 2px;
 		}
 	}
 }

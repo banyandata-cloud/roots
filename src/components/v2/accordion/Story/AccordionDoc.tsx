@@ -1,5 +1,5 @@
 import { Heading, Source, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../docs';
+import { LinkHeader, PropsTable } from '../../docs';
 
 const CODE = `
 import { useState } from 'react';

@@ -1,4 +1,4 @@
-@use '../../../../styles/tokens' as tokens;
+@use '../../styles/tokens' as tokens;
 
 .root {
 	position: relative;
@@ -49,10 +49,7 @@
 	border: none;
 	background: transparent;
 	cursor: pointer;
-	font-family: tokens.$font-family-base;
-	font-size: tokens.$font-size-14;
-	line-height: tokens.$line-height-20;
-	font-weight: tokens.$font-weight-regular;
+	@include tokens.text-style(body);
 	color: tokens.$color-text-primary;
 
 	&:hover:not(:disabled) {
@@ -76,7 +73,7 @@
 /* Small dot under the number — not a ring around the cell. */
 .today-dot {
 	position: absolute;
-	bottom: 2px;
+	bottom: tokens.$spacing-xxs;
 	left: 50%;
 	width: 4px;
 	height: 4px;

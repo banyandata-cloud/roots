@@ -1,8 +1,8 @@
 import { Heading, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../docs';
+import { LinkHeader, PropsTable } from '../../docs';
 
 const BASIC_USAGE_CODE = `
-import { Stepper } from '@banyan_cloud/roots';
+import { Stepper } from '@banyandata-cloud/roots';
 
 const steps: Step[] = [
   { label: 'Your details', description: 'Please provide your name and email', status: 'completed' },
@@ -38,13 +38,14 @@ const propsData = [
 		prop: 'variant',
 		type: "'icon' | 'noIcon' | 'progressBar'",
 		description:
-			'Determines the visual style of each step indicator. Use icon for check/status icons, noIcon for numbered steps, and progressBar for a continuous bar.',
+			'Determines the visual style of each step indicator. Use icon for dot/check icons, noIcon for numbered steps, and progressBar for a text-only bar per step.',
 		default: "'icon'",
 	},
 	{
 		prop: 'orientation',
 		type: "'horizontal' | 'vertical'",
-		description: 'Sets the layout direction of the stepper.',
+		description:
+			'Sets the layout direction of the stepper. The progressBar variant is always horizontal.',
 		default: "'horizontal'",
 	},
 	{
@@ -84,8 +85,8 @@ const stepTypeData = [
 		prop: 'step',
 		type: 'number',
 		description:
-			'The step number displayed inside the indicator. Required when using the noIcon variant.',
-		default: 'undefined',
+			'The step number displayed inside the indicator of the noIcon variant. Defaults to the position in the list.',
+		default: 'index + 1',
 	},
 ];
 

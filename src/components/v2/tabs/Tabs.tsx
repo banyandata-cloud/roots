@@ -1,20 +1,11 @@
-import {
-	useCallback,
-	useEffect,
-	useId,
-	useRef,
-	useState,
-	type ReactElement,
-	type SyntheticEvent,
-} from 'react';
-import { classes } from '../../../utils';
-import { Button } from '../../buttons';
-import Dropdown from '../../input/dropdown/Dropdown';
-import DropdownItem from '../../input/dropdown/dropdown-item/DropdownItem';
-import styles from './Tabs.module.css';
+import { useCallback, useEffect, useId, useRef, useState, type ReactElement } from 'react';
+import { classes } from '../utils';
+import { Button } from '../buttons';
+import { Dropdown } from '../input/dropdown';
+import styles from './Tabs.module.scss';
 import TabButtonBase from './tabButtonBase/TabButtonBase';
 import type { TabButtonBaseType } from './tabButtonBase/types';
-import listStyles from './TabList.module.css';
+import listStyles from './TabList.module.scss';
 import type { TabsProps, TabsType } from './types';
 
 const buttonTypes: Record<TabsType, TabButtonBaseType> = {
@@ -106,20 +97,18 @@ const VariantTabs = (props: TabsProps & { type: TabsType }): ReactElement => {
 						return (
 							<div key={id} className={listStyles.dropdown}>
 								<Dropdown
+									variant='borderless'
+									size='sm'
 									value={selectedTab}
 									placeholder={title}
-									onChange={(_: SyntheticEvent, value) => {
-										if (value != null) setSelectedTab(value.toString());
+									options={tab.dropdownItems?.map((item) => ({
+										value: item.id,
+										label: item.title,
+									}))}
+									onChange={(value) => {
+										if (value) setSelectedTab(value);
 									}}
-								>
-									{tab.dropdownItems?.map((item) => (
-										<DropdownItem
-											key={item.id}
-											title={item.title}
-											value={item.id}
-										/>
-									))}
-								</Dropdown>
+								/>
 							</div>
 						);
 					}
@@ -299,34 +288,32 @@ const LegacyTabs = (props: TabsProps): ReactElement => {
 							)}
 						>
 							{dropdown ? (
-								<Dropdown
-									className={classes(
-										styles.dropdown,
-										isActive ? styles.active : ''
-									)}
-									onChange={(_: SyntheticEvent, selectedValue) => {
-										handleDropClick(selectedValue?.toString() ?? '');
-										setActiveTab(index);
-									}}
-									value={selectedTab}
-									placeholder={title}
-								>
-									{dropdownItems?.map((option) => {
-										return (
-											<DropdownItem
-												key={option.id}
-												title={option.title}
-												value={option.id}
-											/>
-										);
-									})}
-								</Dropdown>
+								<div className={styles['dropdown-slot']}>
+									<Dropdown
+										variant='borderless'
+										size='sm'
+										className={classes(
+											styles.dropdown,
+											isActive ? styles.active : ''
+										)}
+										onChange={(selectedValue) => {
+											handleDropClick(selectedValue);
+											setActiveTab(index);
+										}}
+										value={selectedTab}
+										placeholder={title}
+										options={dropdownItems?.map((option) => ({
+											value: option.id,
+											label: option.title,
+										}))}
+									/>
+								</div>
 							) : (
 								<Button
 									size='auto'
 									radius='none'
 									key={id}
-									variant='text'
+									variant='ghost'
 									disabled={disabled}
 									className={isActive ? styles.active : ''}
 									title={title}

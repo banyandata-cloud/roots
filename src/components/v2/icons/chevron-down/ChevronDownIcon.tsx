@@ -8,7 +8,8 @@ const ChevronDownIcon = (props: { className?: string | undefined }) => {
 			height='16'
 			viewBox='0 0 16 16'
 			className={className}
-			fill='currentColor'>
+			fill='currentColor'
+		>
 			<path
 				d='M12 6L8 10L4 6'
 				stroke='currentColor'

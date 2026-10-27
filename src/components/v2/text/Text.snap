@@ -3,7 +3,7 @@
 exports[`Text — Snapshots matches default snapshot 1`] = `
 <div>
   <span
-    class="root b2 regular-stroke"
+    class="root body"
   >
     Snapshot text
   </span>
@@ -13,9 +13,9 @@ exports[`Text — Snapshots matches default snapshot 1`] = `
 exports[`Text — Snapshots matches snapshot with multiple props 1`] = `
 <div>
   <p
-    class="root h2 bold-stroke extra"
+    class="root heading-medium bold-stroke extra"
     role="note"
-    style="font-style: italic; text-decoration: underline; font-weight: 600;"
+    style="font-style: italic; text-decoration: underline;"
   >
     Complex text
   </p>

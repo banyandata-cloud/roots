@@ -6,12 +6,12 @@ import {
 	type ForwardedRef,
 	type ReactElement,
 } from 'react';
-import { classes } from '../../../../utils';
+import { classes } from '../../utils';
 import { TableBody } from '../body';
 import { TableHeader } from '../header';
 import { NoDataPlaceHolder } from '../placeholders/general';
 import type { TableProps } from '../types';
-import styles from './BaseTable.module.css';
+import styles from './BaseTable.module.scss';
 import { Skeleton } from './Skeleton';
 
 interface BaseTableProps
@@ -41,7 +41,6 @@ interface BaseTableProps
 	expandable?:
 		| ((params: { datum: Record<number, unknown>; index: number | undefined }) => ReactElement)
 		| undefined;
-	toggleDrawer: () => void;
 	defaultCheckedRows?: Record<string, unknown>[];
 }
 
@@ -59,7 +58,6 @@ const BaseTable = forwardRef(
 			sortValue,
 			rowHeight = 'md',
 			defaultActiveIndex,
-			toggleDrawer,
 			emptyPlaceholder,
 			emptyTitle,
 			emptyDescription,
@@ -144,7 +142,6 @@ const BaseTable = forwardRef(
 							...(expandable !== undefined && { expandable }),
 							tableData: tabularData,
 							defaultActiveIndex,
-							toggleDrawer,
 						}}
 					/>
 				)}

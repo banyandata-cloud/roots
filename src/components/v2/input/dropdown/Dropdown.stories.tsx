@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ThemedContainer } from '../../../helpers';
-import Email from '../../../icons/Email/Email';
+import { ThemedContainer } from '../../helpers';
+import { EmailIcon as Email } from '../../icons';
 import DropdownDoc from '../dropdown/Story/DropdownDoc';
 import { Dropdown } from './index';
 

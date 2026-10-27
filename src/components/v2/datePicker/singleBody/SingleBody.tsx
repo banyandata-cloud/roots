@@ -5,7 +5,7 @@ import TimeModeSwitch from '../timeModeSwitch/TimeModeSwitch';
 import TimeRangeCard from '../timeRangeCard/TimeRangeCard';
 import TimeSelect from '../timeSelect/TimeSelect';
 import type { DatePickerController } from '../useDatePickerState';
-import styles from './SingleBody.module.css';
+import styles from './SingleBody.module.scss';
 
 /** Single-date main area: optional time-mode switch, one date card, one calendar. */
 const SingleBody = (props: { controller: DatePickerController }): ReactElement => {
@@ -46,49 +46,51 @@ const SingleBody = (props: { controller: DatePickerController }): ReactElement =
 
 	return (
 		<div className={styles.root}>
-			{time && (
-				<TimeModeSwitch
-					value={timeMode}
-					onChange={onChangeTimeMode}
-					disabled={!draft.from}
+			<div className={styles.stack}>
+				{time && (
+					<TimeModeSwitch
+						value={timeMode}
+						onChange={onChangeTimeMode}
+						disabled={!draft.from}
+					/>
+				)}
+				<DateField
+					role='date'
+					date={draft.from}
+					future={future}
+					now={now}
+					onChangeDate={(date) => onChangeDateField('date', date)}
+					onClear={onClearStart}
+				>
+					{embeddedTimeContent}
+				</DateField>
+				{time && timeMode === 'range' && (
+					<TimeRangeCard
+						fromTime={draft.fromTime ?? null}
+						toTime={draft.toTime ?? null}
+						onChangeFromTime={onChangeFromTime}
+						onChangeToTime={onChangeToTime}
+						hour12={hour12}
+						disabled={!draft.from}
+					/>
+				)}
+				<Calendar
+					month={leftMonth}
+					position='single'
+					now={now}
+					future={future}
+					selectionStart={draft.from}
+					selectionEnd={draft.from}
+					hoverPreviewEnd={null}
+					onSelectDay={onSelectDay}
+					onHoverDay={() => undefined}
+					onHoverLeave={() => undefined}
+					onPrevYear={onNavPrevYear}
+					onPrevMonth={onNavPrevMonth}
+					onNextMonth={onNavNextMonth}
+					onNextYear={onNavNextYear}
 				/>
-			)}
-			<DateField
-				role='date'
-				date={draft.from}
-				future={future}
-				now={now}
-				onChangeDate={(date) => onChangeDateField('date', date)}
-				onClear={onClearStart}
-			>
-				{embeddedTimeContent}
-			</DateField>
-			{time && timeMode === 'range' && (
-				<TimeRangeCard
-					fromTime={draft.fromTime ?? null}
-					toTime={draft.toTime ?? null}
-					onChangeFromTime={onChangeFromTime}
-					onChangeToTime={onChangeToTime}
-					hour12={hour12}
-					disabled={!draft.from}
-				/>
-			)}
-			<Calendar
-				month={leftMonth}
-				position='single'
-				now={now}
-				future={future}
-				selectionStart={draft.from}
-				selectionEnd={draft.from}
-				hoverPreviewEnd={null}
-				onSelectDay={onSelectDay}
-				onHoverDay={() => undefined}
-				onHoverLeave={() => undefined}
-				onPrevYear={onNavPrevYear}
-				onPrevMonth={onNavPrevMonth}
-				onNextMonth={onNavNextMonth}
-				onNextYear={onNavNextYear}
-			/>
+			</div>
 			<div className={styles.messageLine}>{dataStartNote}</div>
 		</div>
 	);

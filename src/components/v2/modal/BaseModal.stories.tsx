@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { ThemedContainer } from '../../helpers';
-import { Dropdownv2 as Dropdown, DropdownItemv2 as DropdownItem } from '../../input';
+import { ThemedContainer } from '../helpers';
+import { Dropdown } from '../input';
 import BaseModal from './BaseModal';
 import BaseModalDoc from './Story/BaseModalDoc';
 
@@ -24,7 +24,7 @@ type Story = StoryObj<typeof BaseModal>;
 
 const DefaultStory = () => {
 	const [open, setOpen] = useState(false);
-	const [dropdownValue, setDropdownValue] = useState<any>(null);
+	const [dropdownValue, setDropdownValue] = useState<string | undefined>(undefined);
 
 	const toggle = () => {
 		setOpen((prevState) => !prevState);
@@ -46,17 +46,21 @@ const DefaultStory = () => {
 						toggle,
 					}}
 					open={open}
-					toggle={toggle}>
+					toggle={toggle}
+				>
 					<div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
 						<p>Modal description: Pass the header and footer as a Component</p>
 						<Dropdown
 							label='Select Type 1'
+							placeholder='Select an item'
 							value={dropdownValue}
-							onChange={(val: any) => setDropdownValue(val)}>
-							<DropdownItem title='Item 1' value={1} />
-							<DropdownItem title='Item 2' value={2} />
-							<DropdownItem title='Item 3' value={3} />
-						</Dropdown>
+							onChange={setDropdownValue}
+							options={[
+								{ value: '1', label: 'Item 1' },
+								{ value: '2', label: 'Item 2' },
+								{ value: '3', label: 'Item 3' },
+							]}
+						/>
 					</div>
 				</BaseModal>
 			</>

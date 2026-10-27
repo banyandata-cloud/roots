@@ -1,5 +1,5 @@
 import { Heading, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../../docs';
+import { LinkHeader, PropsTable } from '../../../docs';
 
 const tableCellPropsData = [
 	{
@@ -91,12 +91,6 @@ const tableCellPropsData = [
 		prop: 'hideColumnLines',
 		type: 'boolean',
 		description: 'Hides the vertical divider line on this cell.',
-		default: 'undefined',
-	},
-	{
-		prop: 'toggleDrawer',
-		type: '(index: number, standalone: boolean) => void',
-		description: 'Callback to open the row drawer from within a cell.',
 		default: 'undefined',
 	},
 	{
@@ -204,7 +198,7 @@ const TableCellDoc = () => (
 
 		<Heading>Internal Components</Heading>
 		<p>
-			The cell uses <code>BaseCell</code> as its foundation and injects specific components:
+			The cell renders a <code>td</code> or <code>th</code> with three slots:
 		</p>
 		<ul>
 			<li>

@@ -1,4 +1,4 @@
-@use '../../../styles/tokens' as tokens;
+@use '../styles/tokens' as tokens;
 
 .root {
 	display: flex;
@@ -29,9 +29,9 @@
 .rows-per-page {
 	display: flex;
 	height: 32px;
-	padding: 0 16px;
+	padding: 0 tokens.$spacing-xl;
 	align-items: center;
-	gap: 4px;
+	gap: tokens.$spacing-xs;
 	box-sizing: border-box;
 	flex-shrink: 0;
 	width: fit-content;
@@ -39,10 +39,8 @@
 
 .rows-label {
 	color: tokens.$color-text-secondary;
-	font-family: var(--font-font-family, 'Plus Jakarta Sans'), sans-serif;
-	font-size: tokens.$font-size-14;
-	font-weight: tokens.$font-weight-medium;
-	line-height: tokens.$line-height-20;
+	font-family: tokens.$font-family-base;
+	@include tokens.text-style(body, medium);
 	white-space: nowrap;
 }
 
@@ -65,8 +63,8 @@
 		width: fit-content !important;
 		min-width: 0 !important;
 		max-width: none !important;
-		padding: 2px 5px 2px 12px !important;
-		gap: 4px !important;
+		padding: tokens.$spacing-xxs 0.3125rem tokens.$spacing-xxs tokens.$spacing-lg !important;
+		gap: tokens.$spacing-xs !important;
 		border: 1px solid tokens.$color-border-primary !important;
 		border-radius: tokens.$radius-sm !important;
 		background: tokens.$color-bg-primary !important;
@@ -81,7 +79,6 @@
 
 	&[data-dropdown-open='true'] button[data-elem='base-cell'][class][type='button'] {
 		border-color: tokens.$color-bg-brand-solid !important;
-		box-shadow: 0 0 0 1px tokens.$color-bg-brand-solid !important;
 	}
 
 	& [data-elem='component2'],
@@ -94,13 +91,13 @@
 		width: fit-content !important;
 		min-width: 0 !important;
 		flex: 0 0 auto !important;
-		gap: 4px !important;
+		gap: tokens.$spacing-xs !important;
 	}
 
 	& button [data-elem='title'] > div:first-child > span {
 		width: fit-content !important;
 		flex: 0 0 auto !important;
-		font-family: var(--font-font-family, 'Plus Jakarta Sans'), sans-serif !important;
+		font-family: tokens.$font-family-base !important;
 		font-size: tokens.$font-size-14 !important;
 		font-weight: tokens.$font-weight-medium !important;
 		line-height: tokens.$line-height-20 !important;
@@ -108,7 +105,7 @@
 	}
 
 	& button [data-elem='title'] > div:last-child {
-		gap: 4px !important;
+		gap: tokens.$spacing-xs !important;
 	}
 
 	& button [data-elem='title'] > div:last-child > div,
@@ -124,14 +121,11 @@
 
 .dropdown-disabled {
 	pointer-events: none;
-	& button[data-elem='base-cell'] {
-		border-color: tokens.$color-border-disable !important;
-	}
 	& button [data-elem='title'] > div:first-child > span {
 		color: tokens.$color-text-disabled !important;
 	}
 	& button [data-elem='title'] svg {
-		color: tokens.$color-fg-disabled !important;
+		color: tokens.$color-fg-disabled-subtle !important;
 	}
 }
 
@@ -139,7 +133,7 @@
 	width: 69px !important;
 	min-width: 69px !important;
 	max-width: 69px !important;
-	padding: 4px !important;
+	padding: tokens.$spacing-xs !important;
 	border-radius: tokens.$radius-sm !important;
 	border: 1px solid tokens.$color-border-primary !important;
 	background: tokens.$color-bg-primary !important;
@@ -149,7 +143,7 @@
 		display: flex !important;
 		width: 100% !important;
 		min-width: 0 !important;
-		padding: 2px 5px 2px 12px !important;
+		padding: tokens.$spacing-xxs 0.3125rem tokens.$spacing-xxs tokens.$spacing-lg !important;
 		align-items: center !important;
 		justify-content: space-between !important;
 		border-radius: tokens.$radius-sm !important;
@@ -189,10 +183,11 @@
 		max-height: none;
 		overflow: visible;
 	}
+	// The row itself carries the selected background; the inner wrapper must not add a second one.
 	[data-dropdown-menu] > div > div {
 		padding: 0;
-		gap: 4px;
-		background: transparent;
+		gap: tokens.$spacing-xs;
+		background: transparent !important;
 	}
 	[data-dropdown-menu] > div > div > div:last-child:has(svg) {
 		width: 20px;
@@ -210,10 +205,10 @@
 
 .showing {
 	display: flex;
-	padding: 10px 16px;
+	padding: 0.625rem tokens.$spacing-xl;
 	justify-content: center;
 	align-items: center;
-	gap: 10px;
+	gap: 0.625rem;
 	align-self: stretch;
 	border-left: 1px solid tokens.$color-border-tertiary;
 	box-sizing: border-box;
@@ -221,19 +216,17 @@
 
 .showing-text {
 	color: tokens.$color-text-secondary;
-	font-family: var(--font-font-family, 'Plus Jakarta Sans'), sans-serif;
-	font-size: tokens.$font-size-14;
-	font-weight: tokens.$font-weight-medium;
-	line-height: tokens.$line-height-20;
+	font-family: tokens.$font-family-base;
+	@include tokens.text-style(body, medium);
 	white-space: nowrap;
 }
 
 .right {
 	display: flex;
 	flex-direction: row;
-	padding-right: 16px;
+	padding-right: tokens.$spacing-xl;
 	align-items: center;
-	gap: 16px;
+	gap: tokens.$spacing-xl;
 	align-self: stretch;
 	flex-shrink: 0;
 }
@@ -241,21 +234,21 @@
 .page-counter {
 	display: flex;
 	flex-direction: row;
-	padding: 10px 16px;
+	padding: 0.625rem tokens.$spacing-xl;
 	justify-content: center;
 	align-items: center;
-	gap: 4px;
+	gap: tokens.$spacing-xs;
 	align-self: stretch;
 	border-right: 1px solid tokens.$color-border-tertiary;
 }
 
 .page-num-box {
 	display: flex;
-	padding: 2px 12px;
+	padding: tokens.$spacing-xxs tokens.$spacing-lg;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	gap: 10px;
+	gap: 0.625rem;
 	border-radius: tokens.$radius-sm;
 	border: 1px solid tokens.$color-border-primary;
 	background: tokens.$color-bg-primary;
@@ -278,10 +271,8 @@
 	outline: none !important;
 	background: transparent;
 	color: tokens.$color-text-secondary;
-	font-family: var(--font-font-family, 'Plus Jakarta Sans'), sans-serif;
-	font-size: tokens.$font-size-14;
-	font-weight: tokens.$font-weight-medium;
-	line-height: tokens.$line-height-20;
+	font-family: tokens.$font-family-base;
+	@include tokens.text-style(body, medium);
 	text-align: center;
 	padding: 0;
 	box-sizing: border-box;
@@ -301,25 +292,21 @@
 
 .page-of {
 	color: tokens.$color-text-tertiary;
-	font-family: var(--font-font-family, 'Plus Jakarta Sans'), sans-serif;
-	font-size: tokens.$font-size-14;
-	font-weight: tokens.$font-weight-medium;
-	line-height: tokens.$line-height-20;
+	font-family: tokens.$font-family-base;
+	@include tokens.text-style(body, medium);
 }
 
 .page-total {
 	color: tokens.$color-text-tertiary;
-	font-family: var(--font-font-family, 'Plus Jakarta Sans'), sans-serif;
-	font-size: tokens.$font-size-14;
-	font-weight: tokens.$font-weight-medium;
-	line-height: tokens.$line-height-20;
+	font-family: tokens.$font-family-base;
+	@include tokens.text-style(body, medium);
 }
 
 .nav-buttons {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	gap: 12px;
+	gap: tokens.$spacing-lg;
 	flex-shrink: 0;
 }
 
@@ -331,7 +318,7 @@
 	align-items: center;
 	aspect-ratio: 1/1;
 	flex-shrink: 0;
-	border-radius: tokens.$radius-md;
+	border-radius: tokens.$radius-md !important;
 	border: 1px solid tokens.$color-border-primary !important;
 	background: tokens.$color-bg-primary !important;
 	color: tokens.$color-text-secondary !important;
@@ -414,10 +401,6 @@
 	}
 }
 
-.arrow-left {
-	transform: rotate(180deg);
-}
-
 .root[data-navigation-size='md'] .nav-btn[data-elem='base-cell'] {
 	width: 44px !important;
 	min-width: 44px !important;
@@ -427,7 +410,9 @@
 		width: 24px !important;
 		height: 24px !important;
 	}
-	&:disabled img {
-		opacity: 0.3;
+
+	svg {
+		width: 24px !important;
+		height: 24px !important;
 	}
 }

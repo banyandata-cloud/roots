@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { classes } from '../../../utils';
+import { classes } from '../utils';
 import Button from '../../v2/buttons/button/Button';
 import Link from '../../v2/link/Link';
+import BreadcrumbsDropdown from './assets/breadcrumbsDropdown';
 import BreadcrumbsArrow from './assets/breadcrumbsArrow';
 import BreadcrumbsHome from './assets/breadcrumbsHome';
 import BreadcrumbsSplash from './assets/breadcrumbsSplash';
@@ -43,7 +44,8 @@ const CrumbDropdown: React.FC<DropdownProps> = ({ options, onClose, anchorRef })
 		<div
 			ref={ref}
 			className={styles.dropdown}
-			style={{ top: position.top, left: position.left }}>
+			style={{ top: position.top, left: position.left }}
+		>
 			{options.map((opt, i) => (
 				<div
 					key={`${opt.value}-${i}`}
@@ -51,7 +53,8 @@ const CrumbDropdown: React.FC<DropdownProps> = ({ options, onClose, anchorRef })
 					onClick={() => {
 						opt.onClick?.();
 						onClose();
-					}}>
+					}}
+				>
 					{opt.label}
 				</div>
 			))}
@@ -111,7 +114,8 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 			}}
 			onMouseUp={() => {
 				isMouseDown.current = false;
-			}}>
+			}}
+		>
 			{crumbs.map((crumb, index) => {
 				const crumbId = crumb.id ?? `crumb-${index}`;
 				const isFirst = index === 0;
@@ -134,19 +138,37 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 
 				const iconColor = isHomeIcon
 					? isActive
-						? '#1570EF'
+						? 'var(--color-fg-brand-primary)'
 						: isHovered
-							? '#414651'
-							: '#A4A7AE'
-					: '#A4A7AE';
+							? 'var(--color-fg-tertiary-hover)'
+							: 'var(--color-fg-quaternary)'
+					: 'var(--color-fg-quaternary)';
 
 				const buttonIconColor = isHomeIcon
 					? isActive
-						? '#535862'
+						? 'var(--color-fg-tertiary)'
 						: isHovered
-							? '#414651'
-							: '#A4A7AE'
-					: '#A4A7AE';
+							? 'var(--color-fg-tertiary-hover)'
+							: 'var(--color-fg-quaternary)'
+					: 'var(--color-fg-quaternary)';
+
+				// Figma "Dropdown" crumb: the label is followed by an up/down chevron.
+				const labelNode = (
+					<>
+						<span
+							className={
+								crumb.label === '...' ? styles.crumbEllipsis : styles.crumbLabel
+							}
+						>
+							{crumb.label}
+						</span>
+						{hasDropdown && crumb.label !== '...' && (
+							<span className={styles.dropdownIcon}>
+								<BreadcrumbsDropdown />
+							</span>
+						)}
+					</>
+				);
 
 				const handleDropdownToggle = () => {
 					setOpenDropdownId(isDropdownOpen ? null : crumbId);
@@ -179,7 +201,8 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 							onMouseEnter={() => setHoveredId(crumbId)}
 							onMouseLeave={() => setHoveredId(null)}
 							onKeyDown={handleKeyDown}
-							{...focusHandlers}>
+							{...focusHandlers}
+						>
 							{isHomeIcon ? (
 								isTextVariant ? (
 									<Link
@@ -187,7 +210,8 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 										href={crumb.href ?? 'javascript:void(0)'}
 										disabled={crumb.isDisabled ?? false}
 										className={breadcrumbBtnClass}
-										attrs={{ id: crumbId }}>
+										attrs={{ id: crumbId }}
+									>
 										<span className={styles.iconWrapper}>
 											<BreadcrumbsHome color={iconColor} />
 										</span>
@@ -238,15 +262,9 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 													}
 													crumb.onClick?.();
 												},
-											}}>
-											<span
-												className={
-													crumb.label === '...'
-														? styles.crumbEllipsis
-														: styles.crumbLabel
-												}>
-												{crumb.label}
-											</span>
+											}}
+										>
+											{labelNode}
 										</Link>
 									) : (
 										<Button
@@ -267,16 +285,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 												}
 												crumb.onClick?.();
 											}}
-											title={
-												<span
-													className={
-														crumb.label === '...'
-															? styles.crumbEllipsis
-															: styles.crumbLabel
-													}>
-													{crumb.label}
-												</span>
-											}
+											title={labelNode}
 										/>
 									)}
 									{hasDropdown && isDropdownOpen && (

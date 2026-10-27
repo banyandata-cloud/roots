@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ThemedContainer } from '../../helpers';
+import { ThemedContainer } from '../helpers';
 import Badge from '../../v2/badges/Badge';
 import BadgeDoc from '../badges/Story/BadgeDoc';
 
@@ -88,11 +88,6 @@ export const Pill: Story = {
 				<Row label='With Arrow (right)'>
 					{sizes.map((size) => (
 						<Badge key={size} size={size} variant='pill' label='Label' arrow />
-					))}
-				</Row>
-				<Row label='With Arrow (left)'>
-					{sizes.map((size) => (
-						<Badge key={size} size={size} variant='pill' label='Label' arrowLead />
 					))}
 				</Row>
 				<Row label='With Arrow (up)'>

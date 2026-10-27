@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import { classes } from '../../utils';
 import { Dropdown } from '../../input/dropdown';
 import {
 	DEFAULT_TIME,
@@ -10,7 +11,7 @@ import {
 	to12Hour,
 } from '../utils';
 import type { TimeOfDay } from '../types';
-import styles from './TimeSelect.module.css';
+import styles from './TimeSelect.module.scss';
 import type { TimeSelectProps } from './types';
 
 /**
@@ -98,7 +99,7 @@ const TimeSelect = (props: TimeSelectProps): ReactElement => {
 					<Dropdown
 						variant='simple'
 						size='sm'
-						className={styles.select}
+						className={classes(styles.select, styles.period)}
 						options={PERIOD_OPTIONS}
 						value={disabled ? '' : period}
 						placeholder='--'

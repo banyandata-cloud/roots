@@ -1,38 +1,26 @@
-@import '../../../styles/_index';
+@use '../../styles/tokens' as tokens;
 
+// Surface, header, divider and footer come from BaseModal (Figma "Modal layout" 576 wide).
 .root {
-	padding: 0.25rem 0px;
 	height: fit-content;
 	max-height: 30rem;
-	background: $light-color3;
-	border-radius: 0.625rem;
 
 	&.sm {
 		width: 18.75rem;
 	}
 
 	&.md {
-		width: 35rem;
+		width: 36rem;
 	}
 
 	.footer {
-		@include flex(row);
-		gap: 1rem;
-		button.cancel[data-elem='base-cell'] {
-			@include flex(row, center, stretch);
-			color: $mono-color1;
-			background-color: $light-color2;
-			border-radius: 0.25rem;
-			outline: 1px solid $light-color2 !important;
-			border: none;
-			&:hover {
-				background-color: $light-color1;
-			}
-		}
+		display: flex;
+		justify-content: flex-end;
+		gap: tokens.$spacing-xl;
 	}
+
 	.description {
-		font-size: 1rem;
+		@include tokens.text-style(body-large);
 		height: fit-content;
-		color: $text-color;
 	}
 }

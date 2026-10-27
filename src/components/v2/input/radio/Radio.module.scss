@@ -1,101 +1,173 @@
-@use '../../../../styles/tokens' as tokens;
-@import '../../../../styles';
+@use '../../styles/tokens' as tokens;
+
+// Figma "Radio" (907:1903): a 20px box holding a 16px circle with a 6px dot.
+$box: tokens.$spacing-2xl;
+$circle: tokens.$spacing-xl;
+$dot: tokens.$spacing-sm;
 
 .container {
 	display: flex;
 	flex-direction: column;
-	gap: 8px;
+	gap: tokens.$spacing-md;
 	align-items: flex-start;
 }
 
 .root {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	gap: tokens.$spacing-md;
+	color: tokens.$color-text-primary;
 	cursor: pointer;
-	gap: 8px;
-	color: $grey1;
-	font-family: Jakarta;
-	font-size: 14px;
-
-	&.position-left {
-		@include flex(row, flex-start);
-		align-items: center;
-	}
-	&.position-right {
-		@include flex(row-reverse, flex-end);
-		align-items: center;
-	}
 
 	&.disabled {
-		cursor: default;
-		color: $grey4;
+		cursor: not-allowed;
+		color: tokens.$color-text-disabled;
 	}
 
 	&.readonly {
 		cursor: default;
-		pointer-events: none;
-		color: $grey3;
-	}
-
-	&.selected {
-		color: $text-color;
-	}
-
-	&.error {
-		color: $text-color;
-	}
-
-	&.warning {
-		color: $text-color;
-	}
-
-	&:hover:not(.disabled):not(.readonly) {
-		color: $text-color;
-	}
-
-	input[type='radio'] {
-		opacity: 0;
-		z-index: 1;
-		position: absolute;
-		width: 1px;
-		height: 1px;
-	}
-
-	[data-elem='label'] {
-		user-select: none;
-		line-height: 1.5;
 	}
 }
 
-.radio-icon {
+.input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: 0;
+	opacity: 0;
+}
+
+.control {
+	position: relative;
 	display: inline-flex;
-	border-radius: 50%;
-	line-height: 0;
-
-	&.focus {
-		box-shadow: 0 0 0 2px tokens.$color-fg-brand-primary;
-	}
-
-	&.focus-error {
-		box-shadow: 0 0 0 2px tokens.$color-fg-error-primary;
-	}
-}
-
-.feedback {
-	display: flex;
-	flex-direction: row;
 	align-items: center;
-	gap: 8px;
+	justify-content: center;
+	flex-shrink: 0;
+	width: $box;
+	height: $box;
+
+	&::before {
+		content: '';
+		box-sizing: border-box;
+		width: $circle;
+		height: $circle;
+		border: 1px solid tokens.$color-border-primary;
+		border-radius: 50%;
+		transition:
+			background-color 120ms ease,
+			border-color 120ms ease;
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		width: $dot;
+		height: $dot;
+		border-radius: 50%;
+		background: tokens.$color-fg-white;
+		opacity: 0;
+	}
 }
 
-.feedbackTextError {
-	font-size: 14px;
-	line-height: 1rem;
-	color: $text-color;
-	font-family: Jakarta;
+.input:checked ~ .control {
+	&::before {
+		background: tokens.$color-bg-brand-solid;
+		border-color: tokens.$color-bg-brand-solid;
+	}
+
+	&::after {
+		opacity: 1;
+	}
 }
 
-.feedbackTextWarning {
-	font-size: 14px;
-	line-height: 1rem;
-	color: $text-color;
-	font-family: Jakarta;
+.label {
+	-webkit-user-select: none;
+	user-select: none;
+	@include tokens.text-style(body, medium);
+}
+
+// Figma focus: 2px page-coloured ring inside a 4px brand ring, with a filled circle.
+@mixin focus-ring {
+	background: tokens.$color-bg-primary;
+	box-shadow:
+		0 0 0 2px tokens.$color-bg-primary,
+		0 0 0 4px tokens.$color-fg-brand-primary;
+}
+
+.input:focus-visible ~ .control::before {
+	@include focus-ring;
+}
+
+.input:checked:focus-visible ~ .control::before {
+	background: tokens.$color-bg-brand-solid;
+}
+
+.error {
+	.control::before {
+		border-color: tokens.$color-border-error-subtle;
+	}
+
+	.input:checked ~ .control::before {
+		background: tokens.$color-bg-error-solid;
+		border-color: tokens.$color-bg-error-solid;
+	}
+}
+
+.disabled {
+	.control::before,
+	.input:checked ~ .control::before {
+		background: transparent;
+		border-color: tokens.$color-border-disable;
+	}
+
+	.input:checked ~ .control::after {
+		background: tokens.$color-fg-disabled;
+	}
+}
+
+// Figma read-only: a 25% ring (#161616 in light) and a darker dot.
+.readonly {
+	.control::before,
+	.input:checked ~ .control::before {
+		background: transparent;
+		border-color: color-mix(in srgb, #{tokens.$color-fg-primary} 25%, transparent);
+	}
+
+	.input:checked ~ .control::after {
+		background: tokens.$color-fg-secondary;
+	}
+}
+
+.message {
+	display: flex;
+	align-items: center;
+	gap: tokens.$spacing-md;
+	@include tokens.text-style(body-small, medium);
+
+	&[data-type='error'] {
+		color: tokens.$color-text-error-primary;
+
+		.messageIcon {
+			color: tokens.$color-fg-error-primary;
+		}
+	}
+
+	&[data-type='warning'] {
+		color: tokens.$color-text-primary;
+
+		.messageIcon {
+			color: tokens.$color-fg-warning-primary;
+		}
+	}
+}
+
+// Sits under the radio, so the text lines up with the label.
+.messageIcon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: $box;
+	height: $box;
 }

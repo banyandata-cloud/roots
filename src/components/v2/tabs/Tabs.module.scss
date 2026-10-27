@@ -1,4 +1,4 @@
-@use '../../../styles/tokens' as t;
+@use '../styles/tokens' as t;
 
 .tabs-container {
 	width: fit-content;
@@ -51,7 +51,7 @@
 
 		gap: 0.5rem;
 		padding: 0;
-		font-size: 14px;
+		font-size: t.$font-size-14;
 		font-weight: 500;
 		color: t.$color-text-primary;
 		height: 40px;
@@ -127,27 +127,24 @@
 		}
 	}
 
+	.dropdown-slot {
+		// The v2 Dropdown fills its container (min 297px), so a tab-sized slot is set here.
+		width: 9rem;
+
+		> :first-child {
+			min-width: 0;
+		}
+	}
+
 	.dropdown {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		[data-elem='base-cell'] {
-			height: 2.3125rem;
+		min-height: 2.3125rem;
 
-			&.active {
-				color: t.$color-fg-brand-primary;
-			}
-		}
-		> [data-elem='header'] {
-			> [data-elem='select'] {
-				background-color: transparent;
-				border: none;
-				padding: 5px;
-				width: auto;
-				font-size: 0.875rem;
-				font-weight: 500;
-			}
+		&.active {
+			color: t.$color-fg-brand-primary;
 		}
 	}
 }
@@ -174,7 +171,7 @@
 }
 
 .tab-content {
-	padding-top: 10px;
+	padding-top: 0.625rem;
 	// Intentionally no top border; the active indicator anchors the content.
 	z-index: -1;
 }

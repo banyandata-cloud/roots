@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import ThemedContainer from '../../helpers/themedContainer/ThemedContainer';
-import Button from '../../v2/buttons/button/Button';
+import Button from '../buttons/button/Button';
+import ThemedContainer from '../helpers/themedContainer/ThemedContainer';
 import Breadcrumbs from './Breadcrumbs';
 import type { BreadcrumbItem, BreadcrumbType } from './types';
 

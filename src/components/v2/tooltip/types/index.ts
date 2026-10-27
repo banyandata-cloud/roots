@@ -17,6 +17,10 @@ export interface TooltipProps {
 	 */
 	content: ReactNode;
 	/**
+	 * Optional second line shown under the content, as in the Figma supporting-text tooltip.
+	 */
+	supportingText?: ReactNode;
+	/**
 	 * Standard position directive around the target element.
 	 * @default "top"
 	 */

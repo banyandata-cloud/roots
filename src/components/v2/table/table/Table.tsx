@@ -1,10 +1,9 @@
-import { isValidElement, useEffect, useRef, useState, type ReactElement } from 'react';
-import { classes } from '../../../../utils';
-import BaseSidePanel from '../../../sidePanel/BaseSidePanel';
+import { useEffect, useRef, useState, type ReactElement } from 'react';
+import { classes } from '../../utils';
 import { Pagination, usePagination } from '../../pagination';
 import { BaseTableV2 } from '../baseTable';
-import type { TableDrawerToggle, TableProps } from '../types';
-import styles from './Table.module.css';
+import type { TableProps } from '../types';
+import styles from './Table.module.scss';
 
 const SIZE_MAP = {
 	sm: 9.063,
@@ -36,7 +35,6 @@ const Table = ({
 	onRowClick,
 	defaultActiveIndex,
 	dataLabel,
-	tableDrawerProps,
 	emptyPlaceholder,
 	emptyTitle,
 	emptyDescription,
@@ -64,12 +62,6 @@ const Table = ({
 
 	const [floating, setFloating] = useState<boolean>(false);
 	const [hiddenColumns, setHiddenColumns] = useState<Record<string, boolean | null>>();
-	const [toggleTableDrawer, setToggleTableDrawer] = useState<TableDrawerToggle>({
-		open: false,
-		data: {
-			datum: {},
-		},
-	});
 
 	useEffect(() => {
 		if (paginationData) {
@@ -78,39 +70,9 @@ const Table = ({
 		}
 	}, [paginationData?.page, paginationData?.pageSize]);
 
-	useEffect(() => {
-		setToggleTableDrawer({
-			open: false,
-			data: {},
-		});
-	}, [tableData, loading]);
-
-	const toggleDrawer = ({ data = {} }: { data?: Record<string, unknown> } = {}) => {
-		setToggleTableDrawer((prevState) => {
-			return {
-				open: !prevState.open,
-				data,
-			};
-		});
-	};
-
 	const visibleColumns = headerData.filter((header) => {
 		return [null, false, undefined].includes(hiddenColumns?.[header.id]);
 	});
-
-	const drawerProps =
-		typeof tableDrawerProps === 'function'
-			? tableDrawerProps(toggleTableDrawer.data)
-			: tableDrawerProps;
-
-	const hasSingleBody =
-		toggleTableDrawer.data.standalone ?? drawerProps?.renderBody?.length === 1;
-
-	let Body = drawerProps?.standalone?.[toggleTableDrawer.data.index ?? 0] ?? null;
-
-	if (!toggleTableDrawer.data.standalone) {
-		Body = drawerProps?.renderBody?.[toggleTableDrawer.data.index ?? 0] ?? null;
-	}
 
 	useEffect(() => {
 		let observer: IntersectionObserver | undefined;
@@ -178,6 +140,8 @@ const Table = ({
 	}, [headerData]);
 
 	const tabularData = Array.isArray(tableData) ? tableData : [];
+	const isEmpty = !loading && tabularData.length === 0;
+	const headerContent = tableHeader?.();
 	const handlePaginationChange = ({
 		currentPage,
 		step,
@@ -194,10 +158,8 @@ const Table = ({
 	};
 
 	return (
-		<div className={classes(styles.root, className)}>
-			{tableHeader?.({
-				toggleDrawer,
-			})}
+		<div className={classes(styles.root, isEmpty && styles.empty, className)}>
+			{headerContent != null && <div className={styles.header}>{headerContent}</div>}
 			{tableSection != null && <div className={styles.section}>{tableSection}</div>}
 			<BaseTableV2
 				{...{
@@ -212,7 +174,6 @@ const Table = ({
 					rowHeight,
 					onRowClick,
 					defaultActiveIndex,
-					toggleDrawer,
 					emptyPlaceholder,
 					emptyTitle,
 					emptyDescription,
@@ -237,44 +198,6 @@ const Table = ({
 					floating={floating}
 					dataLabel={dataLabel}
 					loading={loading}
-				/>
-			)}
-
-			{drawerProps && (
-				<BaseSidePanel
-					toggle={toggleDrawer}
-					animation
-					{...drawerProps}
-					{...(hasSingleBody && {
-						tabsConfig: null,
-					})}
-					activeTab={toggleTableDrawer.data.index}
-					open={toggleTableDrawer.open}
-					toggleTableDrawer={toggleTableDrawer}
-					setToggleTableDrawer={setToggleTableDrawer}
-					className={classes(
-						styles.drawer,
-						hasSingleBody && styles.standalone,
-						drawerProps.className
-					)}
-				>
-					{Body && isValidElement(<Body datum={toggleTableDrawer.data} />) && (
-						<Body
-							datum={toggleTableDrawer.data}
-							toggle={toggleDrawer}
-							toggleTableDrawer={toggleTableDrawer}
-							setToggleTableDrawer={setToggleTableDrawer}
-						/>
-					)}
-				</BaseSidePanel>
-			)}
-
-			{toggleTableDrawer.open && (
-				<div
-					className={styles.overlay}
-					onClick={() => {
-						toggleDrawer();
-					}}
 				/>
 			)}
 		</div>

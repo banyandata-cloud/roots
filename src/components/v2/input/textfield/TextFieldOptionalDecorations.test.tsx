@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import TextField from './TextField';
 
-jest.mock('../../../../utils', () => ({
+jest.mock('../../utils', () => ({
 	classes: (...args: string[]) => args.filter(Boolean).join(' '),
 }));
 

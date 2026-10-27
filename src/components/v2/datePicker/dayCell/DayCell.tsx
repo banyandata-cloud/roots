@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
-import { classes } from '../../../../utils';
-import styles from './DayCell.module.css';
+import { classes } from '../../utils';
+import styles from './DayCell.module.scss';
 import type { DayCellProps } from './types';
 
 const DayCell = (props: DayCellProps): ReactElement => {

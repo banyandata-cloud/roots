@@ -1,5 +1,5 @@
 import { Heading, Source, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../../components/docs';
+import { LinkHeader, PropsTable } from '../../docs';
 
 const propsData = [
 	{
@@ -43,7 +43,7 @@ const InlineLoaderDoc = () => (
 		<Heading>Usage</Heading>
 		<Source
 			language='tsx'
-			code={`import { InlineLoader } from '@banyan_cloud/roots/v2';
+			code={`import { InlineLoader } from '@banyandata-cloud/roots';
 
 // Loading state
 <InlineLoader status='loading' />

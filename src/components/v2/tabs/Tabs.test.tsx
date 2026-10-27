@@ -5,27 +5,23 @@ import Tabs from './Tabs';
 // MOCKS
 // -----------------------------
 
-jest.mock('../../input/dropdown/Dropdown', () => {
-	return function MockDropdown(props: any) {
-		return (
-			<div data-testid='dropdown'>
-				{props.children &&
-					props.children.map?.((child: any) => (
+jest.mock('../input/dropdown', () => {
+	return {
+		Dropdown: function MockDropdown(props: any) {
+			return (
+				<div data-testid='dropdown'>
+					{props.options?.map((option: any) => (
 						<div
-							key={child.props.value}
-							data-testid={`dropdown-item-${child.props.value}`}
-							onClick={() => props.onChange?.({}, child.props.value)}>
-							{child}
+							key={option.value}
+							data-testid={`dropdown-item-${option.value}`}
+							onClick={() => props.onChange?.(option.value)}
+						>
+							{option.label}
 						</div>
 					))}
-			</div>
-		);
-	};
-});
-
-jest.mock('../../input/dropdown/dropdown-item/DropdownItem', () => {
-	return function MockDropdownItem(props: any) {
-		return <div>{props.title}</div>;
+				</div>
+			);
+		},
 	};
 });
 
@@ -78,7 +74,8 @@ describe('Tabs — Rendering', () => {
 				tabs={basicTabs}
 				selectedTab='1'
 				setSelectedTab={jest.fn()}
-				direction='horizontal'>
+				direction='horizontal'
+			>
 				<div>Child Content</div>
 			</Tabs>
 		);

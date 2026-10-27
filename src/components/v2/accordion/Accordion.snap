@@ -7,7 +7,7 @@ exports[`Accordion — Snapshots matches default snapshot 1`] = `
   >
     <button
       aria-disabled="false"
-      class="root auto border-radius-none flexible header"
+      class="header"
       data-elem="base-cell"
     >
       <span
@@ -23,8 +23,8 @@ exports[`Accordion — Snapshots matches default snapshot 1`] = `
         data-elem="component3"
       >
         <svg
-          class=""
-          fill="#141920"
+          aria-hidden="true"
+          fill="currentColor"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -46,7 +46,7 @@ exports[`Accordion — Snapshots matches snapshot when open with description and
   >
     <button
       aria-disabled="false"
-      class="root auto border-radius-none flexible header"
+      class="header"
       data-elem="base-cell"
     >
       <span
@@ -62,8 +62,8 @@ exports[`Accordion — Snapshots matches snapshot when open with description and
         data-elem="component3"
       >
         <svg
-          class=""
-          fill="#141920"
+          aria-hidden="true"
+          fill="currentColor"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -85,7 +85,7 @@ exports[`Accordion — Snapshots matches snapshot when open with description and
         Complex Content
       </div>
       <button
-        class="root sm border-radius-default root contained root text size-auto text-14"
+        class="root ghost size-auto"
         data-elem="base-cell"
         type="submit"
       >
@@ -96,8 +96,9 @@ exports[`Accordion — Snapshots matches snapshot when open with description and
             data-elem="title"
           >
             <svg
+              aria-hidden="true"
               class="expand"
-              fill="#888888"
+              fill="currentColor"
               viewBox="0 0 21 21"
               xmlns="http://www.w3.org/2000/svg"
             >

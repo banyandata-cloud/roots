@@ -45,6 +45,29 @@ describe('Toggle — Controlled and uncontrolled behavior', () => {
 	});
 });
 
+describe('Toggle — Uncontrolled onChange', () => {
+	test('reports the new value when uncontrolled', () => {
+		const onChange = jest.fn();
+
+		render(<Toggle label='Uncontrolled' onChange={onChange} />);
+
+		fireEvent.click(screen.getByRole('checkbox'));
+
+		expect(onChange).toHaveBeenCalledWith(expect.any(Object), true);
+	});
+
+	test('keeps readonly toggles focusable and marked as read-only', () => {
+		render(<Toggle label='Readonly toggle' readonly defaultChecked />);
+
+		const input = screen.getByRole('checkbox') as HTMLInputElement;
+
+		expect(input.disabled).toBe(false);
+		expect(input).toHaveAttribute('aria-readonly', 'true');
+		fireEvent.click(input);
+		expect(input.checked).toBe(true);
+	});
+});
+
 // RISKY PATH
 describe('Toggle — Risky paths', () => {
 	test('does not change state when disabled', () => {

@@ -1,15 +1,35 @@
-@use '../../../styles/tokens' as tokens;
-@import '../../../styles/index';
+@use '../styles/tokens' as tokens;
+@use '../styles/mixins' as mixins;
 
 .root {
-	@include flex(column, flex-start, stretch);
+	@include mixins.flex(column, flex-start, stretch);
+	position: relative;
 	width: 100%;
 	background: tokens.$color-bg-primary;
-	border-bottom: 1px solid tokens.$color-border-tertiary;
-	border-top: 1px solid tokens.$color-border-tertiary;
 
-	& + .root {
-		border-top: 0;
+	// Figma strokes sit inside the 44px row, so the dividers overlay the item instead of
+	// adding to its height (an open or stacked item would otherwise grow by the border widths).
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		height: tokens.$spacing-1;
+		background: tokens.$color-border-tertiary;
+		pointer-events: none;
+	}
+
+	&::before {
+		top: 0;
+	}
+
+	&::after {
+		bottom: 0;
+	}
+
+	& + .root::before {
+		display: none;
 	}
 
 	&:has(> .header:focus-visible) {
@@ -18,13 +38,15 @@
 	}
 
 	& > .header[data-elem='base-cell'] {
-		@include flex(row, flex-start);
-		gap: 0.5rem;
+		@include mixins.flex(row, flex-start);
+		gap: tokens.$spacing-md;
 		height: 44px;
 		padding: 0 tokens.$spacing-xl;
 		text-align: left;
 		cursor: pointer;
 		border: 0;
+		border-radius: 0;
+		background: tokens.$color-bg-primary;
 
 		& > [data-elem='component3'] {
 			svg {
@@ -34,7 +56,7 @@
 
 		& > [data-elem='component1'],
 		& > [data-elem='component3'] {
-			@include flex;
+			@include mixins.flex;
 			svg {
 				transform: rotate(180deg);
 				width: 16px;
@@ -49,18 +71,16 @@
 
 		.title {
 			flex: 1 1 auto;
+			-webkit-user-select: none;
 			user-select: none;
-			color: var(--color-text-primary, #181d27);
-			font-family: tokens.$font-family-base;
-			font-size: tokens.$font-size-14;
-			font-weight: tokens.$font-weight-medium;
-			line-height: tokens.$line-height-20;
+			color: tokens.$color-text-primary;
+			@include tokens.text-style(body, medium);
 			letter-spacing: 0;
 		}
 
 		&:hover {
 			box-shadow: inset 2px 0 tokens.$color-fg-brand-primary;
-			background: var(--color-bg-primary-hover, #f7f7f7);
+			background: tokens.$color-bg-primary-hover;
 		}
 
 		&:focus-visible {
@@ -70,11 +90,8 @@
 
 	& > .body {
 		padding: tokens.$spacing-md tokens.$spacing-xl tokens.$spacing-4xl;
-		color: var(--color-text-primary, #181d27);
-		font-family: tokens.$font-family-base;
-		font-size: tokens.$font-size-14;
-		font-weight: tokens.$font-weight-regular;
-		line-height: tokens.$line-height-20;
+		color: tokens.$color-text-primary;
+		@include tokens.text-style(body);
 		letter-spacing: 0;
 
 		> p {
@@ -95,11 +112,11 @@
 		}
 
 		& > .body {
-			@include flex(column, flex-start, stretch);
+			@include mixins.flex(column, flex-start, stretch);
 			> button[data-elem='base-cell'] {
 				width: fit-content;
 				align-self: flex-end;
-				@include flex(row, flex-end);
+				@include mixins.flex(row, flex-end);
 				.expand {
 					height: 1.5rem;
 					width: 1.5rem;
@@ -115,9 +132,9 @@
 			background: transparent;
 
 			.title {
-				color: var(--color-text-disabled, #c1c5cd);
+				color: tokens.$color-text-disabled;
 				opacity: 0.25;
-				letter-spacing: 0.16px;
+				letter-spacing: 0.01rem;
 			}
 
 			svg {

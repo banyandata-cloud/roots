@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import styles from './WeekdayRow.module.css';
+import styles from './WeekdayRow.module.scss';
 
 const WEEKDAY_LABELS = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 

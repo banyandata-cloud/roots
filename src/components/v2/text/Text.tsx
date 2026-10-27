@@ -5,16 +5,15 @@ import {
 	type ReactElement,
 	type RefObject,
 } from 'react';
-import { classes } from '../../../utils';
-import styles from './Text.module.css';
+import { classes } from '../utils';
+import styles from './Text.module.scss';
 import type { TextProps } from './types';
 
 const Text = forwardRef<RefObject<HTMLElement>, TextProps>((props, ref): ReactElement | null => {
 	const {
-		variant = 'b2',
+		variant = 'body',
 		component = 'span',
-		stroke = 'regular',
-		weight,
+		stroke,
 		italic,
 		underline,
 		children,
@@ -33,11 +32,13 @@ const Text = forwardRef<RefObject<HTMLElement>, TextProps>((props, ref): ReactEl
 				...(underline && {
 					textDecoration: 'underline',
 				}),
-				...(weight && {
-					fontWeight: weight,
-				}),
 			},
-			className: classes(styles.root, styles[variant], styles[`${stroke}-stroke`], className),
+			className: classes(
+				styles.root,
+				styles[variant],
+				stroke && styles[`${stroke}-stroke`],
+				className
+			),
 			...(attrs as Record<string, unknown>),
 		},
 		children

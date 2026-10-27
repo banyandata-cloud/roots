@@ -1,7 +1,7 @@
 import type { ComponentType } from 'react';
-import { classes } from '../../../../../utils';
+import { classes } from '../../../utils';
 import { EmptyState } from '../../emptyState';
-import styles from './General.module.css';
+import styles from './General.module.scss';
 
 interface GeneralPlaceholderProps {
     className?: string;

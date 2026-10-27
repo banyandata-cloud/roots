@@ -1,7 +1,6 @@
-import { forwardRef } from 'react';
-import { classes } from '../../../../utils/utils';
-import { BaseButton } from '../baseButton';
-import styles from './Button.module.css';
+import { forwardRef, type MouseEvent } from 'react';
+import { classes } from '../../utils';
+import styles from './Button.module.scss';
 import type { ButtonProps } from './types';
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
@@ -18,6 +17,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 		blurOnClick = true,
 		id,
 		type = 'submit',
+		'aria-label': ariaLabel,
 	} = props;
 
 	const isIconOnly = !title && !!LeftComponent;
@@ -28,37 +28,23 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 				? styles.outline
 				: styles[variant];
 
+	const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+		if (blurOnClick) {
+			event.currentTarget.blur();
+		}
+
+		void onClick?.(event);
+	};
+
 	return (
-		<BaseButton
+		<button
 			ref={ref}
 			type={type}
-			title={
-				isIconOnly ? (
-					<LeftComponent className={styles[`icon-${size}`]} />
-				) : (
-					title || undefined
-				)
-			}
-			component1={
-				!isIconOnly && LeftComponent ? (
-					<LeftComponent className={styles[`icon-${size}`]} />
-				) : undefined
-			}
-			component3={
-				!isIconOnly && RightComponent ? (
-					<RightComponent
-						className={classes(
-							styles[`icon-${size}`],
-							size === 'lg' && styles['icon-trailing-lg']
-						)}
-					/>
-				) : undefined
-			}
-			disabled={disabled}
-			onClick={onClick}
-			blurOnClick={blurOnClick}
 			id={id}
-			radius={radius === 'pill' ? 'default' : (radius ?? 'default')}
+			aria-label={ariaLabel}
+			disabled={disabled}
+			onClick={handleClick}
+			data-elem='base-cell'
 			className={classes(
 				styles.root,
 				variantClass,
@@ -67,7 +53,32 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 				isIconOnly && styles['icon-only'],
 				className
 			)}
-		/>
+		>
+			{!isIconOnly && LeftComponent && (
+				<span data-elem='component1'>
+					<LeftComponent className={styles[`icon-${size}`]} />
+				</span>
+			)}
+			<span data-elem='component2'>
+				<span data-elem='title'>
+					{isIconOnly ? (
+						<LeftComponent className={styles[`icon-${size}`]} />
+					) : (
+						title || undefined
+					)}
+				</span>
+			</span>
+			{!isIconOnly && RightComponent && (
+				<span data-elem='component3'>
+					<RightComponent
+						className={classes(
+							styles[`icon-${size}`],
+							size === 'lg' && styles['icon-trailing-lg']
+						)}
+					/>
+				</span>
+			)}
+		</button>
 	);
 });
 

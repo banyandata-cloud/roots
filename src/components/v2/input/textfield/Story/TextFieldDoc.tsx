@@ -1,5 +1,5 @@
 import { Heading, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../../docs';
+import { LinkHeader, PropsTable } from '../../../docs';
 
 const propsData = [
 	{
@@ -328,7 +328,7 @@ const TextFieldDoc = () => (
 		<Heading>Usage</Heading>
 		<Source
 			language='tsx'
-			code={`import { TextField } from '@banyan_cloud/roots';
+			code={`import { TextField } from '@banyandata-cloud/roots';
 
 // Default variant with leading icon
 const MyForm = () => {

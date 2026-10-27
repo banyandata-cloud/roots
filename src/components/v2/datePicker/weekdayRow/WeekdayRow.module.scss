@@ -1,4 +1,4 @@
-@use '../../../../styles/tokens' as tokens;
+@use '../../styles/tokens' as tokens;
 
 .root {
 	display: flex;
@@ -10,9 +10,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-family: tokens.$font-family-base;
-	font-size: tokens.$font-size-12;
-	line-height: tokens.$line-height-16;
-	font-weight: tokens.$font-weight-semibold;
+	@include tokens.text-style(body-small, semibold);
 	color: tokens.$color-text-tertiary;
 }

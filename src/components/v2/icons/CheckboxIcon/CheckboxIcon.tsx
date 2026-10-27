@@ -8,7 +8,8 @@ const CheckboxIcon = {
 				height='16'
 				viewBox='0 0 20 20'
 				fill='none'
-				xmlns='http://www.w3.org/2000/svg'>
+				xmlns='http://www.w3.org/2000/svg'
+			>
 				<path
 					d='M2 6C2 3.79086 3.79086 2 6 2H14C16.2091 2 18 3.79086 18 6V14C18 16.2091 16.2091 18 14 18H6C3.79086 18 2 16.2091 2 14V6Z'
 					fill='#1570EF'
@@ -31,7 +32,8 @@ const CheckboxIcon = {
 				height='16'
 				viewBox='0 0 20 20'
 				fill='none'
-				xmlns='http://www.w3.org/2000/svg'>
+				xmlns='http://www.w3.org/2000/svg'
+			>
 				<path
 					d='M6 2.5H14C15.933 2.5 17.5 4.067 17.5 6V14C17.5 15.933 15.933 17.5 14 17.5H6C4.067 17.5 2.5 15.933 2.5 14V6C2.5 4.067 4.067 2.5 6 2.5Z'
 					stroke='#D5D7DA'
@@ -50,7 +52,8 @@ const CheckboxIcon = {
 				height='16'
 				viewBox='0 0 20 20'
 				fill='none'
-				xmlns='http://www.w3.org/2000/svg'>
+				xmlns='http://www.w3.org/2000/svg'
+			>
 				<path
 					d='M2 6C2 3.79086 3.79086 2 6 2H14C16.2091 2 18 3.79086 18 6V14C18 16.2091 16.2091 18 14 18H6C3.79086 18 2 16.2091 2 14V6Z'
 					fill='#1570EF'

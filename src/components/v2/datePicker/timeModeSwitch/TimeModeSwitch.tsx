@@ -1,10 +1,10 @@
 import type { ReactElement } from 'react';
 import type { ComponentType, SVGProps } from 'react';
-import { classes } from '../../../../utils';
+import { classes } from '../../utils';
 import { Tooltip } from '../../tooltip';
 import { CalendarIcon, ClockIcon, TimeRangeIcon } from '../icons';
 import type { SingleTimeMode } from '../types';
-import styles from './TimeModeSwitch.module.css';
+import styles from './TimeModeSwitch.module.scss';
 import type { TimeModeSwitchProps } from './types';
 
 const SEGMENTS: {

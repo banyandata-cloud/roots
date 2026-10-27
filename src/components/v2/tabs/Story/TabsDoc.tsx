@@ -1,5 +1,5 @@
 import { Heading, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../../components/docs';
+import { LinkHeader, PropsTable } from '../../docs';
 
 const propsData = [
 	{
@@ -42,7 +42,7 @@ const propsData = [
 
 const CODE = `
 import { useState } from 'react';
-import { Tabs } from '@banyan_cloud/roots';
+import { Tabs } from '@banyandata-cloud/roots';
 
 const MyComponent = () => {
   const [selectedTab, setSelectedTab] = useState('tab1');

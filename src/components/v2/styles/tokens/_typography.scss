@@ -1,0 +1,130 @@
+// GENERATED FILE — do not edit by hand.
+// Run `bun run tokens:build` to regenerate from design-system/.
+
+@use 'sass:list';
+@use 'sass:map';
+
+$font-family-base: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+$font-weight-bold: 700;
+$font-weight-semibold: 600;
+$font-weight-medium: 500;
+$font-weight-regular: 400;
+
+$font-size-12: 0.75rem;
+$font-size-14: 0.875rem;
+$font-size-16: 1rem;
+$font-size-20: 1.25rem;
+$font-size-24: 1.5rem;
+$font-size-28: 1.75rem;
+$font-size-32: 2rem;
+
+$line-height-16: 1rem;
+$line-height-20: 1.25rem;
+$line-height-24: 1.5rem;
+$line-height-28: 1.75rem;
+$line-height-32: 2rem;
+$line-height-36: 2.25rem;
+
+$paragraph-spacing-8: 0.5rem;
+$paragraph-spacing-12: 0.75rem;
+$paragraph-spacing-16: 1rem;
+
+$font-weights: (
+  bold: $font-weight-bold,
+  semibold: $font-weight-semibold,
+  medium: $font-weight-medium,
+  regular: $font-weight-regular,
+);
+
+$text-styles: (
+  'heading-xxlarge': (
+    font-size: $font-size-32,
+    line-height: $line-height-36,
+    weights: (regular, medium, semibold, bold),
+  ),
+  'heading-xlarge': (
+    font-size: $font-size-28,
+    line-height: $line-height-32,
+    weights: (regular, medium, semibold, bold),
+  ),
+  'heading-large': (
+    font-size: $font-size-24,
+    line-height: $line-height-28,
+    weights: (regular, medium, semibold, bold),
+  ),
+  'heading-medium': (
+    font-size: $font-size-20,
+    line-height: $line-height-24,
+    weights: (regular, medium, semibold, bold),
+  ),
+  'heading-small': (
+    font-size: $font-size-16,
+    line-height: $line-height-20,
+    weights: (regular, medium, semibold, bold),
+  ),
+  'heading-xsmall': (
+    font-size: $font-size-14,
+    line-height: $line-height-20,
+    weights: (regular, medium, semibold, bold),
+  ),
+  'heading-xxsmall': (
+    font-size: $font-size-12,
+    line-height: $line-height-16,
+    weights: (regular, medium, semibold, bold),
+  ),
+  'body-large': (
+    font-size: $font-size-16,
+    line-height: $line-height-24,
+    weights: (regular, medium, semibold, bold),
+  ),
+  'body': (
+    font-size: $font-size-14,
+    line-height: $line-height-20,
+    weights: (regular, medium, semibold, bold),
+  ),
+  'body-small': (
+    font-size: $font-size-12,
+    line-height: $line-height-16,
+    weights: (regular, medium, semibold, bold),
+  ),
+  'metric-large': (
+    font-size: $font-size-28,
+    line-height: $line-height-32,
+    weights: (bold),
+  ),
+  'metric-medium': (
+    font-size: $font-size-24,
+    line-height: $line-height-28,
+    weights: (bold),
+  ),
+  'metric-small': (
+    font-size: $font-size-16,
+    line-height: $line-height-20,
+    weights: (bold),
+  ),
+  'code': (
+    font-size: $font-size-12,
+    line-height: $line-height-20,
+    weights: (regular),
+  ),
+);
+
+// Applies a Figma text style. Without $weight the style's default (first listed) weight is used.
+@mixin text-style($name, $weight: null) {
+  $style: map.get($text-styles, $name);
+  @if not $style {
+    @error "Unknown text style '#{$name}'.";
+  }
+  $weights: map.get($style, weights);
+  @if not $weight {
+    $weight: list.nth($weights, 1);
+  }
+  @if not list.index($weights, $weight) {
+    @error "Text style '#{$name}' has no '#{$weight}' weight. Available: #{$weights}.";
+  }
+  font-family: $font-family-base;
+  font-size: map.get($style, font-size);
+  line-height: map.get($style, line-height);
+  font-weight: map.get($font-weights, $weight);
+}

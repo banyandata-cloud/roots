@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
-import { classes } from '../../../../utils';
+import { classes } from '../../utils';
 import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeftIcon, ChevronsRightIcon } from '../icons';
-import styles from './MonthHeader.module.css';
+import styles from './MonthHeader.module.scss';
 import type { MonthHeaderProps } from './types';
 
 /** C7 Month header: title plus the buttons that move the calendar view (never the selection). */

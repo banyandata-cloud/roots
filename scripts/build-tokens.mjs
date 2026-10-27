@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-/* Regenerates src/styles/tokens/*.scss from the Figma exports in design-system/. */
+/* Regenerates src/components/v2/styles/tokens/*.scss (the v2 package's own tokens) from the Figma exports in design-system/. v1 keeps its own committed copy in src/styles/tokens. */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const rootDir = join(dirname(fileURLToPath(import.meta.url)), '..')
 const tokensDir = join(rootDir, 'design-system')
-const outDir = join(rootDir, 'src/styles/tokens')
+const outDir = join(rootDir, 'src/components/v2/styles/tokens')
 const BANNER =
   '// GENERATED FILE — do not edit by hand.\n// Run `bun run tokens:build` to regenerate from design-system/.\n\n'
 
@@ -79,14 +79,30 @@ function numberEntries(tokens) {
     })
 }
 
-function dimensionScss(name, entries) {
+// Single place that decides which unit each token family is emitted in.
+// The Figma exports are unitless pixel numbers; rem is derived from the browser
+// default root font size (100% = 16px) so tokens follow the user's font-size setting.
+const ROOT_FONT_SIZE_PX = 16
+
+// Tokens that stay in px on purpose (hairlines). Radii are always px.
+const PX_SPACING_TOKENS = new Set(['spacing-1'])
+
+const toPx = (value) => `${value}px`
+
+function toRem(value) {
+  return `${Number((value / ROOT_FONT_SIZE_PX).toFixed(4))}rem`
+}
+
+const spacingUnit = (key, value) => (PX_SPACING_TOKENS.has(key) ? toPx(value) : toRem(value))
+
+function dimensionScss(name, entries, format) {
   let scss = `${BANNER}$${name}: (\n`
   for (const [key, value] of entries) {
-    scss += `  '${key}': ${value}px,\n`
+    scss += `  '${key}': ${format(key, value)},\n`
   }
   scss += ');\n\n'
   for (const [key, value] of entries) {
-    scss += `$${key}: ${value}px;\n`
+    scss += `$${key}: ${format(key, value)};\n`
   }
   return scss
 }
@@ -131,28 +147,70 @@ const fontFamily = typography.font['font-family'].$value
 const quotedFontFamily = fontFamily
   .replaceAll('\\', String.raw`\\`)
   .replaceAll("'", String.raw`\'`)
-let typographyScss = `${BANNER}$font-family-base: '${quotedFontFamily}', system-ui, -apple-system, sans-serif;\n`
+let typographyScss = `${BANNER}@use 'sass:list';\n@use 'sass:map';\n\n$font-family-base: '${quotedFontFamily}', system-ui, -apple-system, sans-serif;\n`
 let typographyCount = 1
-for (const [group, prefix, unit] of [
-  ['font weight', 'font-weight', ''],
-  ['font-size', 'font-size', 'px'],
-  ['Line-height', 'line-height', 'px'],
-  ['para-spacing', 'paragraph-spacing', 'px'],
+for (const [group, prefix, format] of [
+  ['font weight', 'font-weight', (_key, value) => `${value}`],
+  ['font-size', 'font-size', (_key, value) => toRem(value)],
+  ['Line-height', 'line-height', (_key, value) => toRem(value)],
+  ['para-spacing', 'paragraph-spacing', (_key, value) => toRem(value)],
 ]) {
   typographyScss += '\n'
   const entries = numberEntries(typography[group])
   typographyCount += entries.length
   for (const [key, value] of entries) {
-    typographyScss += `$${prefix}-${key}: ${value}${unit};\n`
+    typographyScss += `$${prefix}-${key}: ${format(key, value)};\n`
   }
 }
+
+// Figma text styles: a named size + line-height pair that exists in one or more weights.
+const textStyles = Object.entries(readJson('text-styles.json')).filter(([name]) => !name.startsWith('$'))
+const weightKeys = numberEntries(typography['font weight']).map(([key]) => key)
+const sizeKeys = new Set(numberEntries(typography['font-size']).map(([key]) => key))
+const lineHeightKeys = new Set(numberEntries(typography['Line-height']).map(([key]) => key))
+typographyScss += `\n$font-weights: (\n${weightKeys.map((key) => `  ${key}: $font-weight-${key},`).join('\n')}\n);\n`
+typographyScss += '\n$text-styles: (\n'
+for (const [name, style] of textStyles) {
+  if (!sizeKeys.has(style['font-size'])) throw new Error(`Text style ${name}: unknown font-size ${style['font-size']}`)
+  if (!lineHeightKeys.has(style['line-height'])) {
+    throw new Error(`Text style ${name}: unknown line-height ${style['line-height']}`)
+  }
+  for (const weight of style.weights) {
+    if (!weightKeys.includes(weight)) throw new Error(`Text style ${name}: unknown weight ${weight}`)
+  }
+  typographyScss +=
+    `  '${name}': (\n    font-size: $font-size-${style['font-size']},\n` +
+    `    line-height: $line-height-${style['line-height']},\n    weights: (${style.weights.join(', ')}),\n  ),\n`
+}
+typographyScss += `);
+
+// Applies a Figma text style. Without $weight the style's default (first listed) weight is used.
+@mixin text-style($name, $weight: null) {
+  $style: map.get($text-styles, $name);
+  @if not $style {
+    @error "Unknown text style '#{$name}'.";
+  }
+  $weights: map.get($style, weights);
+  @if not $weight {
+    $weight: list.nth($weights, 1);
+  }
+  @if not list.index($weights, $weight) {
+    @error "Text style '#{$name}' has no '#{$weight}' weight. Available: #{$weights}.";
+  }
+  font-family: $font-family-base;
+  font-size: map.get($style, font-size);
+  line-height: map.get($style, line-height);
+  font-weight: map.get($font-weights, $weight);
+}
+`
+typographyCount += textStyles.length
 
 const outputs = new Map([
   ['_root-colors.scss', rootColorsScss.trimEnd() + '\n'],
   ['_colors.scss', colorsScss],
   ['_base-colors.scss', baseColorsScss],
-  ['_spacing.scss', dimensionScss('spacing', spacingEntries)],
-  ['_radius.scss', dimensionScss('radius', radiusEntries)],
+  ['_spacing.scss', dimensionScss('spacing', spacingEntries, spacingUnit)],
+  ['_radius.scss', dimensionScss('radius', radiusEntries, (_key, value) => toPx(value))],
   ['_typography.scss', typographyScss],
   [
     '_index.scss',
@@ -183,6 +241,6 @@ if (process.argv.includes('--check')) {
   console.log(
     `Generated ${lightMap.size} color tokens per theme, ${baseMap.size} primitive colors, ` +
       `${spacingEntries.length} spacing tokens, ${radiusEntries.length} radius tokens, ` +
-      `and ${typographyCount} typography tokens into src/styles/tokens/`,
+      `and ${typographyCount} typography tokens into src/components/v2/styles/tokens/`,
   )
 }

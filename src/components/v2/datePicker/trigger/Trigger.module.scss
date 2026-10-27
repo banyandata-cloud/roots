@@ -1,4 +1,4 @@
-@use '../../../../styles/tokens' as tokens;
+@use '../../styles/tokens' as tokens;
 
 .root {
 	display: flex;
@@ -44,10 +44,7 @@
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	font-family: tokens.$font-family-base;
-	font-size: tokens.$font-size-14;
-	line-height: tokens.$line-height-20;
-	font-weight: tokens.$font-weight-semibold;
+	@include tokens.text-style(body, semibold);
 	color: tokens.$color-text-secondary;
 }
 
@@ -57,10 +54,7 @@
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	font-family: tokens.$font-family-base;
-	font-size: tokens.$font-size-14;
-	line-height: tokens.$line-height-20;
-	font-weight: tokens.$font-weight-medium;
+	@include tokens.text-style(body, medium);
 	color: tokens.$color-text-tertiary;
 }
 

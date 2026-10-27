@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { Dropdown } from './index';
 
 // Mock utils
-jest.mock('../../../../utils', () => ({
+jest.mock('../../utils', () => ({
 	classes: (...args: string[]) => args.filter(Boolean).join(' '),
 }));
 
@@ -43,7 +43,7 @@ jest.mock('../../checkbox', () => ({
 	),
 }));
 
-jest.mock('../../../popover', () => ({
+jest.mock('../../popover', () => ({
 	Popover: ({ children, open, ...props }: any) =>
 		open ? (
 			<div data-testid='popover' {...props}>

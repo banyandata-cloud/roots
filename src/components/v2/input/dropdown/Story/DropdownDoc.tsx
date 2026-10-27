@@ -1,8 +1,8 @@
 import { Heading, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../../docs';
+import { LinkHeader, PropsTable } from '../../../docs';
 
 const BASIC_USAGE_CODE = `
-import { Dropdown } from '@banyan_cloud/roots';
+import { Dropdown } from '@banyandata-cloud/roots';
 
 // Single-select dropdown
 <Dropdown
@@ -20,7 +20,7 @@ import { Dropdown } from '@banyan_cloud/roots';
 `;
 
 const MULTI_SELECT_CODE = `
-import { Dropdown } from '@banyan_cloud/roots';
+import { Dropdown } from '@banyandata-cloud/roots';
 
 // Multi-select dropdown
 <Dropdown
@@ -42,7 +42,7 @@ import { Dropdown } from '@banyan_cloud/roots';
 `;
 
 const ICON_VARIANT_CODE = `
-import { Dropdown } from '@banyan_cloud/roots';
+import { Dropdown } from '@banyandata-cloud/roots';
 import Email from '../../icons/Email/Email';
 
 // Dropdown with icons
@@ -60,7 +60,7 @@ import Email from '../../icons/Email/Email';
 `;
 
 const SEARCH_VARIANT_CODE = `
-import { Dropdown } from '@banyan_cloud/roots';
+import { Dropdown } from '@banyandata-cloud/roots';
 
 // Search variant with shortcuts
 <Dropdown
@@ -80,7 +80,7 @@ import { Dropdown } from '@banyan_cloud/roots';
 `;
 
 const ADVANCED_SEARCH_CODE = `
-import { Dropdown } from '@banyan_cloud/roots';
+import { Dropdown } from '@banyandata-cloud/roots';
 
 // Advanced search with key-value pairs and tag options
 <Dropdown
@@ -106,7 +106,7 @@ import { Dropdown } from '@banyan_cloud/roots';
 `;
 
 const CONTROLLED_CODE = `
-import { Dropdown } from '@banyan_cloud/roots';
+import { Dropdown } from '@banyandata-cloud/roots';
 import { useState } from 'react';
 
 function ControlledDropdown() {

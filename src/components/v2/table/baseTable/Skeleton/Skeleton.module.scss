@@ -1,27 +1,63 @@
-@use '../../../../../styles/tokens' as tokens;
-@import '../../../../../styles/';
+@use '../../../styles/tokens' as tokens;
+@use '../../../styles/mixins' as mixins;
 
 .row {
-	@include flex;
-	gap: 16px;
-	margin-bottom: 16px;
+	@include mixins.flex;
+	gap: tokens.$spacing-xl;
+	margin-bottom: tokens.$spacing-xl;
 	padding: 0 tokens.$spacing-md;
-
-	&.header {
-		height: 40px;
-		background: tokens.$color-bg-secondary;
-		.th {
-			@include flex(row, flex-start);
-			.skeleton {
-				background: tokens.$color-bg-tertiary;
-			}
-		}
-	}
 
 	& > .column {
 		width: 100%;
+	}
+}
+
+// The shimmering bar. Colours come from tokens, so it follows the page theme.
+.skeleton {
+	display: inline-block;
+	height: 32px;
+	border-radius: tokens.$radius-xs;
+	background-color: tokens.$color-fg-quaternary;
+	background-image: linear-gradient(
+		to right,
+		tokens.$color-fg-quaternary 0%,
+		tokens.$color-fg-disabled 20%,
+		tokens.$color-fg-quaternary 40%,
+		tokens.$color-fg-quaternary 100%
+	);
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 0.2;
+	animation: shimmer 1.25s linear infinite forwards;
+}
+
+.row.header {
+	height: 40px;
+	background: tokens.$color-bg-secondary;
+
+	.th {
+		@include mixins.flex(row, flex-start);
+
 		.skeleton {
-			height: 32px;
+			background: tokens.$color-bg-tertiary;
+			opacity: 1;
+			animation: none;
 		}
+	}
+}
+
+@keyframes shimmer {
+	0% {
+		background-position: -50rem 0;
+	}
+
+	100% {
+		background-position: 50rem 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.skeleton {
+		animation: none;
 	}
 }

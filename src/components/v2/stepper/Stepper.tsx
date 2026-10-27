@@ -1,230 +1,63 @@
 import React from 'react';
-import { classes } from '../../../utils';
+import { classes } from '../utils';
+import StepIcon from './stepIcon/StepIcon';
 import styles from './Stepper.module.scss';
-import type { StepperProps, StepperSize, StepperVariant, StepStatus } from './types';
+import type { StepperProps } from './types';
 
-import CompletedIconMd from './assets/Icons-md/CompletedIconMd';
-import CurrentIconMd from './assets/Icons-md/CurrentIconMd';
-import IncompleteIconMd from './assets/Icons-md/IncompleteIconMd';
-import CompletedIconSm from './assets/Icons-sm/CompletedIconSm';
-import CurrentIconSm from './assets/Icons-sm/CurrentIconSm';
-import IncompleteIconSm from './assets/Icons-sm/IncompleteIconSm';
-import CompletedNoIconMd from './assets/NumberIcon-md/CompletedNoIconMd';
-import CurrentNoIconMd from './assets/NumberIcon-md/CurrentNoIconMd';
-import IncompleteNoIconMd from './assets/NumberIcon-md/IncompleteNoIconMd';
-import CompletedNoIconSm from './assets/NumberIcon-sm/CompletedNoIconSm';
-import CurrentNoIconSm from './assets/NumberIcon-sm/CurrentNoIconSm';
-import IncompleteNoIconSm from './assets/NumberIcon-sm/IncompleteNoIconSm';
-
-const resolveIcon = (
-	status: StepStatus,
-	size: StepperSize,
-	variant: StepperVariant,
-	step?: number
-) => {
-	const isSm = size === 'sm';
-	if (variant === 'timeline') {
-		const isActive = status === 'current' || status === 'completed';
-		const fill = isActive
-			? 'var(--color-fg-brand-primary, #1570EF)'
-			: 'var(--color-text-quanternary, #717680)';
-		const r = isSm ? 5 : 6;
-		const size_ = isSm ? 24 : 32;
-		return (
-			<svg width={size_} height={size_} viewBox={`0 0 ${size_} ${size_}`} fill='none'>
-				<circle cx={size_ / 2} cy={size_ / 2} r={r} fill={fill} />
-			</svg>
-		);
-	}
-	if (variant === 'icon') {
-		if (status === 'incomplete') return isSm ? <IncompleteIconSm /> : <IncompleteIconMd />;
-		if (status === 'current') return isSm ? <CurrentIconSm /> : <CurrentIconMd />;
-		return isSm ? <CompletedIconSm /> : <CompletedIconMd />;
-	}
-	if (status === 'incomplete')
-		return isSm ? <IncompleteNoIconSm step={step} /> : <IncompleteNoIconMd step={step} />;
-	if (status === 'current')
-		return isSm ? <CurrentNoIconSm step={step} /> : <CurrentNoIconMd step={step} />;
-	return isSm ? <CompletedNoIconSm /> : <CompletedNoIconMd />;
-};
-
+// Figma maps the props like this: icon + horizontal = "icon top", icon + vertical = "icon left",
+// noIcon = "number top" / "number left" and progressBar = "text line" (horizontal only).
 const Stepper: React.FC<StepperProps> = ({
-	steps,
+	steps = [],
 	size = 'sm',
 	variant = 'icon',
 	orientation = 'horizontal',
 	className,
 	style,
 }) => {
-	if (variant === 'progressBar') {
-		return (
-			<div
-				className={classes(
-					styles.stepper,
-					styles['stepper--horizontal'],
-					styles['stepper--progressBar'],
-					className
-				)}
-				style={style}>
-				{steps?.map((step, index) => (
-					<div key={index} className={styles.progressBarWrapper}>
-						<div
-							className={classes(
-								styles.progressBarTrack,
-								styles[`progressBarTrack--${size}`],
-								step.status === 'completed' &&
-									styles['progressBarTrack--completed'],
-								step.status === 'current' && styles['progressBarTrack--active']
-							)}
-						/>
-						<div
-							className={classes(
-								styles.content,
-								styles[`content--${size}`],
-								styles[`content--${variant}`],
-								styles['content--progressBar']
-							)}>
-							<span
-								className={classes(styles.label, styles[`label--${step.status}`])}>
-								{step.label}
-							</span>
-							{step.description && (
-								<span
-									className={classes(
-										styles.description,
-										styles[`description--${step.status}`]
-									)}>
-									{step.description}
-								</span>
-							)}
-						</div>
-					</div>
-				))}
-			</div>
-		);
-	}
-
-	if (orientation === 'vertical') {
-		return (
-			<div
-				className={classes(styles.stepper, styles['stepper--vertical'], className)}
-				style={style}>
-				{steps?.map((step, index) => {
-					const lineStatus = step.status === 'completed' ? 'completed' : 'incomplete';
-
-					return (
-						<div key={index} className={styles.stepWrapper}>
-							<div className={styles.verticalIconCol}>
-								<div
-									className={classes(
-										styles.stepIcon,
-										styles[`stepIcon--${size}`],
-										step.status === 'current' &&
-											variant === 'icon' &&
-											styles['stepIcon--current']
-									)}>
-									{resolveIcon(
-										step.status,
-										size,
-										variant,
-										step.step ?? index + 1
-									)}
-								</div>
-								<div
-									className={classes(
-										styles.verticalLine,
-										variant === 'noIcon'
-											? styles['verticalLine--dotted']
-											: styles['verticalLine--solid'],
-										lineStatus === 'completed' &&
-											styles['verticalLine--completed']
-									)}
-								/>
-							</div>
-
-							<div
-								className={classes(
-									styles.content,
-									styles[`content--${size}`],
-									styles[`content--${variant}`]
-								)}>
-								<span
-									className={classes(
-										styles.label,
-										styles[`label--${step.status}`]
-									)}>
-									{step.label}
-								</span>
-								{step.description && (
-									<span
-										className={classes(
-											styles.description,
-											styles[`description--${step.status}`]
-										)}>
-										{step.description}
-									</span>
-								)}
-							</div>
-						</div>
-					);
-				})}
-			</div>
-		);
-	}
+	const isBar = variant === 'progressBar';
+	const layout = isBar ? 'horizontal' : orientation;
 
 	return (
-		<div
-			className={classes(styles.stepper, styles['stepper--horizontal'], className)}
-			style={style}>
-			{steps?.map((step, index) => {
-				const isLast = index === (steps?.length ?? 0) - 1;
-				const lineStatus = step.status === 'completed' ? 'completed' : 'incomplete';
-
-				return (
-					<div key={index} className={styles.stepWrapper}>
-						<div
-							className={classes(
-								styles.iconSection,
-								!isLast && styles.hasLine,
-								!isLast && styles[`line--${lineStatus}`],
-								variant === 'noIcon' ? styles.isNumbered : styles.isIcon
-							)}>
-							<div
-								className={classes(
-									styles.stepIcon,
-									styles[`stepIcon--${size}`],
-									step.status === 'current' &&
-										variant === 'icon' &&
-										styles['stepIcon--current']
-								)}>
-								{resolveIcon(step.status, size, variant, step.step ?? index + 1)}
-							</div>
-						</div>
-
-						<div
-							className={classes(
-								styles.content,
-								styles[`content--${size}`],
-								styles[`content--${variant}`]
-							)}>
-							<span
-								className={classes(styles.label, styles[`label--${step.status}`])}>
-								{step.label}
-							</span>
-							{step.description && (
+		<ol
+			className={classes(styles.stepper, className)}
+			style={style}
+			data-size={size}
+			data-variant={variant}
+			data-orientation={layout}
+		>
+			{steps.map((step, index) => (
+				<li
+					key={index}
+					className={styles.step}
+					data-status={step.status}
+					aria-current={step.status === 'current' ? 'step' : undefined}
+				>
+					{!isBar && (
+						<div className={styles.marker}>
+							<StepIcon
+								size={size}
+								status={step.status}
+								kind={variant === 'noIcon' ? 'number' : 'icon'}
+								number={step.step ?? index + 1}
+							/>
+							{index < steps.length - 1 && (
 								<span
-									className={classes(
-										styles.description,
-										styles[`description--${step.status}`]
-									)}>
-									{step.description}
-								</span>
+									className={styles.connector}
+									data-status={step.status}
+									aria-hidden='true'
+								/>
 							)}
 						</div>
+					)}
+					<div className={styles.content}>
+						<span className={styles.label}>{step.label}</span>
+						{step.description && (
+							<span className={styles.description}>{step.description}</span>
+						)}
 					</div>
-				);
-			})}
-		</div>
+				</li>
+			))}
+		</ol>
 	);
 };
 

@@ -1,0 +1,17 @@
+{
+  "$description": "Figma text styles (Design System 26, node 1079:119). Each entry references the font-size and Line-height variables in typography.json. 'weights' lists the weights the style exists in; the first one is the default.",
+  "heading-xxlarge": { "font-size": "32", "line-height": "36", "weights": ["regular", "medium", "semibold", "bold"] },
+  "heading-xlarge": { "font-size": "28", "line-height": "32", "weights": ["regular", "medium", "semibold", "bold"] },
+  "heading-large": { "font-size": "24", "line-height": "28", "weights": ["regular", "medium", "semibold", "bold"] },
+  "heading-medium": { "font-size": "20", "line-height": "24", "weights": ["regular", "medium", "semibold", "bold"] },
+  "heading-small": { "font-size": "16", "line-height": "20", "weights": ["regular", "medium", "semibold", "bold"] },
+  "heading-xsmall": { "font-size": "14", "line-height": "20", "weights": ["regular", "medium", "semibold", "bold"] },
+  "heading-xxsmall": { "font-size": "12", "line-height": "16", "weights": ["regular", "medium", "semibold", "bold"] },
+  "body-large": { "font-size": "16", "line-height": "24", "weights": ["regular", "medium", "semibold", "bold"] },
+  "body": { "font-size": "14", "line-height": "20", "weights": ["regular", "medium", "semibold", "bold"] },
+  "body-small": { "font-size": "12", "line-height": "16", "weights": ["regular", "medium", "semibold", "bold"] },
+  "metric-large": { "font-size": "28", "line-height": "32", "weights": ["bold"] },
+  "metric-medium": { "font-size": "24", "line-height": "28", "weights": ["bold"] },
+  "metric-small": { "font-size": "16", "line-height": "20", "weights": ["bold"] },
+  "code": { "font-size": "12", "line-height": "20", "weights": ["regular"] }
+}

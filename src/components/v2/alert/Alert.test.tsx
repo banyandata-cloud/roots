@@ -28,23 +28,6 @@ jest.mock('@floating-ui/react-dom-interactions', () => ({
 	}),
 }));
 
-// mock icons
-jest.mock('../icons', () => ({
-	AlertIcon: {
-		Info: (props: any) => <div data-testid='icon-info' {...props} />,
-		Error: (props: any) => <div data-testid='icon-error' {...props} />,
-		Warning: (props: any) => <div data-testid='icon-warning' {...props} />,
-		Success: (props: any) => <div data-testid='icon-success' {...props} />,
-		Danger: (props: any) => <div data-testid='icon-danger' {...props} />,
-	},
-	CrossIcon: (props: any) => <div data-testid='cross-icon' {...props} />,
-}));
-
-// mock utils
-jest.mock('../../utils/utils', () => ({
-	classes: (...args: string[]) => args.filter(Boolean).join(' '),
-}));
-
 jest.useFakeTimers();
 
 describe('Alert — Basic Rendering Behaviour', () => {
@@ -63,19 +46,22 @@ describe('Alert — Basic Rendering Behaviour', () => {
 
 		expect(screen.queryByText('Test Title')).not.toBeNull();
 		expect(screen.queryByText('Test Description')).not.toBeNull();
-		expect(screen.queryByTestId('icon-info')).not.toBeNull();
+		expect(document.querySelector('svg')).not.toBeNull();
 	});
 
-	test('renders correct icon based on type', () => {
+	test('applies the type class to the alert', () => {
 		const ref = createRef<any>();
-		render(<Alert ref={ref} />);
+		const { container } = render(<Alert ref={ref} />);
 
 		act(() => {
 			ref.current.alert({ title: 'Error', type: 'error' });
 		});
 
-		expect(screen.queryByTestId('icon-error')).not.toBeNull();
+		expect(container.querySelector('[data-testid="mock-popper"] div')!.className).toContain(
+			'error'
+		);
 	});
+
 });
 
 describe('Alert — Styling & Behaviour', () => {
@@ -100,7 +86,7 @@ describe('Alert — Styling & Behaviour', () => {
 			ref.current.alert({ title: 'Test' });
 		});
 
-		expect(screen.queryByTestId('icon-info')).toBeNull();
+		expect(document.querySelector('svg')).toBeNull();
 	});
 });
 
@@ -139,8 +125,7 @@ describe('Alert — Edge Case Behaviour', () => {
 			});
 		});
 
-		const closeBtn = screen.getByTestId('cross-icon').parentElement!;
-		fireEvent.click(closeBtn);
+		fireEvent.click(screen.getByRole('button', { name: 'Close' }));
 
 		expect(onClose).toHaveBeenCalledTimes(1);
 	});

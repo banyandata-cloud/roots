@@ -6,35 +6,36 @@ exports[`Toggle — Snapshots matches default snapshot 1`] = `
     class="root size-s"
   >
     <span
-      data-elem="label"
+      class="label"
     >
       Snapshot toggle
     </span>
     <input
+      class="input"
       type="checkbox"
     />
-    <div
+    <span
       class="pill"
     >
       <span
-        class="tick hide-tick"
+        class="knob"
       >
         <svg
+          aria-hidden="true"
           fill="none"
-          height="3"
-          viewBox="0 0 4 3"
-          width="4"
-          xmlns="http://www.w3.org/2000/svg"
+          height="100%"
+          viewBox="0 0 10 10"
+          width="100%"
         >
           <path
-            class=""
-            d="M0.176777 1.21846L1.42678 2.46846L3.71844 0.176788"
-            stroke="#24A148"
+            d="M3.33333 4.79167L4.58333 6.04167L6.875 3.75"
+            stroke="currentColor"
+            stroke-linecap="round"
             stroke-width="0.5"
           />
         </svg>
       </span>
-    </div>
+    </span>
   </label>
 </div>
 `;
@@ -45,17 +46,22 @@ exports[`Toggle — Snapshots matches snapshot with complex props 1`] = `
     class="root size-l custom-class"
   >
     <span
-      data-elem="label"
+      class="label"
     >
       Complex toggle
     </span>
     <input
       checked=""
+      class="input"
       type="checkbox"
     />
-    <div
+    <span
       class="pill"
-    />
+    >
+      <span
+        class="knob"
+      />
+    </span>
   </label>
 </div>
 `;

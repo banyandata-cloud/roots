@@ -1,7 +1,7 @@
 import { useRef, type Key } from 'react';
-import { classes } from '../../../../utils';
+import { classes } from '../../utils';
 import { TableRow } from '../row';
-import styles from './TableBody.module.css';
+import styles from './TableBody.module.scss';
 import type { TableBodyProps } from './types';
 
 const TableBody = (props: TableBodyProps) => {
@@ -14,7 +14,6 @@ const TableBody = (props: TableBodyProps) => {
 		rowHeight = 'md',
 		onRowClick,
 		defaultActiveIndex,
-		toggleDrawer,
 		onCheck,
 		checkedRows,
 		setCheckedRows,
@@ -70,7 +69,6 @@ const TableBody = (props: TableBodyProps) => {
 							expandable,
 							rowHeight,
 							onRowClick,
-							toggleDrawer,
 							onCheck,
 							checkedRows,
 							setCheckedRows,

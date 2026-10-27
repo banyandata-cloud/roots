@@ -1,5 +1,5 @@
 import { Heading, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../../../components/docs';
+import { LinkHeader, PropsTable } from '../../../docs';
 
 const propsData = [
 	{
@@ -126,7 +126,7 @@ const ButtonDoc = () => (
 		<Heading>Usage</Heading>
 		<Source
 			language='tsx'
-			code={`import { Button } from '@banyan_cloud/roots';
+			code={`import { Button } from '@banyandata-cloud/roots';
 
 const MyComponent = () => (
   <Button

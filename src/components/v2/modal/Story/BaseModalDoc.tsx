@@ -1,5 +1,5 @@
 import { Heading, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../../components/docs';
+import { LinkHeader, PropsTable } from '../../docs';
 
 const propsData = [
 	{
@@ -173,7 +173,7 @@ type FooterProps = ComponentPropsWithoutRef<'footer'> & MotionProps;`}
 		<Source
 			language='tsx'
 			code={`import { useState } from 'react';
-import { BaseModal } from '@banyan_cloud/roots';
+import { BaseModal } from '@banyandata-cloud/roots';
 
 const MyComponent = () => {
   const [open, setOpen] = useState(false);

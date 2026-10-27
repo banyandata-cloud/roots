@@ -1,4 +1,4 @@
-@use '../../../../styles/tokens' as tokens;
+@use '../../styles/tokens' as tokens;
 
 .root {
 	display: flex;
@@ -8,10 +8,7 @@
 }
 
 .label {
-	font-family: tokens.$font-family-base;
-	font-size: tokens.$font-size-12;
-	line-height: tokens.$line-height-16;
-	font-weight: tokens.$font-weight-semibold;
+	@include tokens.text-style(body-small, semibold);
 	color: tokens.$color-text-quanternary;
 }
 
@@ -21,15 +18,20 @@
 	gap: tokens.$spacing-xxs;
 }
 
+// Figma time dropdowns hug at 75px instead of stretching to fill the card.
 .select {
+	flex: 0 0 75px;
+	width: 75px;
 	min-width: 75px;
 }
 
+// Figma spaces the AM/PM select 4px (not 2px) from the minutes.
+.period {
+	margin-left: tokens.$spacing-xxs;
+}
+
 .colon {
-	font-family: tokens.$font-family-base;
-	font-size: tokens.$font-size-16;
-	line-height: tokens.$line-height-24;
-	font-weight: tokens.$font-weight-medium;
+	@include tokens.text-style(body-large, medium);
 	color: tokens.$color-text-tertiary;
 }
 

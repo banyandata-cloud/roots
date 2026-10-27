@@ -1,4 +1,4 @@
-@use '../../../styles/tokens' as t;
+@use '../styles/tokens' as t;
 
 $border-width: t.$spacing-1;
 
@@ -15,9 +15,15 @@ $border-width: t.$spacing-1;
 
 	&.vertical {
 		flex-direction: column;
-		align-items: stretch;
+		// Figma: brand, gray and line tabs hug their text; minimal and border tabs fill the column.
+		align-items: flex-start;
 		width: fit-content;
 		gap: t.$spacing-xs;
+
+		&.border,
+		&.minimal {
+			align-items: stretch;
+		}
 
 		> button {
 			justify-content: flex-start;
@@ -67,14 +73,15 @@ $border-width: t.$spacing-1;
 		display: flex;
 		align-items: center;
 		min-height: 36px;
+		// The v2 Dropdown fills its container (min 297px), so a tab-sized slot is set here.
+		width: 9rem;
 
-		:global([data-elem='base-cell']) {
-			background: transparent;
-			color: t.$color-text-quanternary;
-			font-family: t.$font-family-base;
-			font-size: t.$font-size-14;
-			font-weight: t.$font-weight-semibold;
+		> :first-child {
+			min-width: 0;
 		}
+
+		color: t.$color-text-quanternary;
+		@include t.text-style(body, semibold);
 	}
 }
 

@@ -7,7 +7,7 @@ exports[`Link — Snapshots matches default snapshot 1`] = `
   >
     <a
       aria-disabled="false"
-      class="root b2 regular-stroke link"
+      class="root body link"
       tabindex="0"
       target="_self"
     >
@@ -28,7 +28,7 @@ exports[`Link — Snapshots matches snapshot with icon, size and disabled state 
   >
     <a
       aria-disabled="true"
-      class="root b2 regular-stroke link withIcon custom-class"
+      class="root body-large link withIcon custom-class"
       tabindex="-1"
       target="_self"
     >

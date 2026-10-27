@@ -1,9 +1,9 @@
 import { forwardRef, useEffect, useImperativeHandle, useState, type FC } from 'react';
-import { classes } from '../../../../utils';
+import { classes } from '../../utils';
 import { Button } from '../../buttons';
-import { Text } from '../../../text';
 import BaseModal from '../BaseModal';
-import styles from './Dialog.module.css';
+import ModalHeader from '../ModalHeader';
+import styles from './Dialog.module.scss';
 import type {
 	DialogBoxHandle,
 	DialogBoxProps,
@@ -25,14 +25,6 @@ const DIALOG_DEFAULTS: DialogOpenOptions = {
 	body: null,
 };
 
-const Header: FC<{ title?: string | null }> = ({ title }) => {
-	return (
-		<Text component='h2' variant='b1' weight={600}>
-			{title}
-		</Text>
-	);
-};
-
 const Footer: FC<FooterInnerProps> = ({
 	action,
 	cancel,
@@ -48,6 +40,7 @@ const Footer: FC<FooterInnerProps> = ({
 		<div className={styles.footer}>
 			{!hideCancel && (
 				<Button
+					size='md'
 					variant='outlined'
 					className={styles.cancel}
 					onClick={onCancel}
@@ -66,6 +59,7 @@ const Footer: FC<FooterInnerProps> = ({
 
 			{onAction && (
 				<Button
+					size='md'
 					onClick={() => {
 						onAction({
 							dismiss: () => {
@@ -75,7 +69,7 @@ const Footer: FC<FooterInnerProps> = ({
 					}}
 					className={styles.save}
 					title={action}
-					color={variant}
+					variant={variant}
 				/>
 			)}
 		</div>
@@ -147,7 +141,7 @@ const DialogBox = forwardRef<DialogBoxHandle, DialogBoxProps>(
 				hideCrossDismiss={hideCrossDismiss}
 				noDismiss={dismissEnabled}
 				className={classes(styles.root, styles[size], className)}
-				renderHeader={title ? <Header title={title} /> : undefined}
+				renderHeader={title ? <ModalHeader title={title} /> : undefined}
 				renderFooter={
 					<Footer
 						action={actionText}
@@ -160,7 +154,8 @@ const DialogBox = forwardRef<DialogBoxHandle, DialogBoxProps>(
 						onAction={onAction ?? undefined}
 						onCancel={!hideCancel ? toggle : undefined}
 					/>
-				}>
+				}
+			>
 				{Body && (
 					<Body
 						dismiss={() => {

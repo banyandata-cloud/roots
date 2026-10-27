@@ -1,8 +1,8 @@
-@use '../../../../../styles/tokens' as tokens;
-@import '../../../../../styles';
+@use '../../../styles/tokens' as tokens;
+@use '../../../styles/mixins' as mixins;
 
 .root {
-	@include flex;
+	@include mixins.flex;
 	margin: auto;
 	position: relative;
 	width: 100%;

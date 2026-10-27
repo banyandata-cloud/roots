@@ -1,5 +1,6 @@
-@import '../../../../styles';
+@use '../../styles/tokens' as tokens;
+@use '../../styles/mixins' as mixins;
 
 .root {
-	@include flex(column, flex-start, stretch);
+	@include mixins.flex(column, flex-start, stretch);
 }

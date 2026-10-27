@@ -6,7 +6,11 @@ export interface ArrowUpIconProps {
 	className?: string | undefined;
 }
 
-const ArrowUpIcon: React.FC<ArrowUpIconProps> = ({ size = 12, color = '#717680', className }) => {
+const ArrowUpIcon: React.FC<ArrowUpIconProps> = ({
+	size = 12,
+	color = 'var(--color-fg-quaternary)',
+	className,
+}) => {
 	return (
 		<svg
 			xmlns='http://www.w3.org/2000/svg'

@@ -1,5 +1,5 @@
 import { Heading, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../../../components/docs';
+import { LinkHeader, PropsTable } from '../../../docs';
 
 const propsData = [
 	{
@@ -48,7 +48,7 @@ const propsData = [
 		prop: 'onChange',
 		type: 'function',
 		description:
-			'Callback fired when the toggle state changes. Receives the change event and the new boolean value.',
+			'Callback fired when the toggle state changes, in controlled and uncontrolled mode. Receives the change event and the new boolean value. Not fired when readonly.',
 		default: 'undefined',
 	},
 ];
@@ -79,7 +79,7 @@ const ToggleDoc = () => (
 		<Heading>Usage</Heading>
 		<Source
 			language='tsx'
-			code={`import { Toggle } from '@banyan_cloud/roots';
+			code={`import { Toggle } from '@banyandata-cloud/roots';
 
 const MyComponent = () => {
   const [checked, setChecked] = useState(false);

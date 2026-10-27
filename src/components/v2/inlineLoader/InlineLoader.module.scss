@@ -1,42 +1,63 @@
-@use '../../../styles/tokens' as tokens;
+@use '../styles/tokens' as tokens;
+
+// Figma "inline loading" and "Inline" (states Loading / Finished / Error): a 16px indicator,
+// 8px gap, 14/18 medium label.
+$indicator-size: 16px;
 
 .container {
-  display: inline-flex;
-  align-items: center;
-  gap: tokens.$spacing-md;
-  font-family: inherit;
-  color: inherit;
-}
-
-.iconWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
+	display: inline-flex;
+	align-items: center;
+	gap: tokens.$spacing-md;
+	font-family: inherit;
+	color: tokens.$color-text-primary;
 }
 
 .spinner {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 2px solid tokens.$color-border-secondary-alt; /* Faint placeholder track */
-  border-top-color: tokens.$color-fg-brand-primary; /* Brand color from design tokens */
-  animation: roots-inline-spin 0.85s linear infinite;
+	flex-shrink: 0;
+	box-sizing: border-box;
+	width: $indicator-size;
+	height: $indicator-size;
+	border-radius: 50%;
+	border: 2px solid tokens.$color-fg-disabled-subtle;
+	border-top-color: tokens.$color-border-brand;
+	animation: roots-inline-spin 0.85s linear infinite;
 }
 
 @keyframes roots-inline-spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
 
-.successIcon, .errorIcon {
-  width: 16px;
-  height: 16px;
+.icon {
+	flex-shrink: 0;
+	width: $indicator-size;
+	height: $indicator-size;
 }
 
-.text {
-  font-size: tokens.$font-size-14;
-  font-weight: tokens.$font-weight-medium;
-  line-height: 1;
+.successIcon .shape {
+	fill: tokens.$color-fg-success-primary;
+}
+
+.errorIcon .shape {
+	fill: tokens.$color-fg-error-primary;
+}
+
+.mark {
+	stroke: tokens.$color-fg-white;
+}
+
+.dot {
+	fill: tokens.$color-fg-white;
+}
+
+.container .text {
+	// Figma uses font-height/18 and font-spacing/small here, which are not text styles or tokens yet.
+	line-height: 1.125rem;
+	letter-spacing: 0.01rem;
+	color: tokens.$color-text-primary;
+	white-space: nowrap;
 }

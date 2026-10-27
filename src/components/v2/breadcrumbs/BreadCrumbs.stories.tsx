@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ThemedContainer } from '../../helpers';
+import { ThemedContainer } from '../helpers';
 import Breadcrumbs from './Breadcrumbs';
 import InteractiveBreadcrumbs from './InteractiveBreadcrumbs';
 import BreadcrumbDoc from './Story/BreadcrumbDoc';
@@ -38,14 +38,28 @@ const defaultCrumbs: BreadcrumbItem[] = [
 ];
 
 const SectionHeading = ({ label }: { label: string }) => (
-	<p style={{ fontSize: '13px', fontWeight: 600, color: '#444', margin: '0 0 12px 0' }}>
+	<p
+		style={{
+			fontSize: '13px',
+			fontWeight: 600,
+			color: 'var(--color-text-secondary)',
+			margin: '0 0 12px 0',
+		}}
+	>
 		{label}
 	</p>
 );
 
 const Row = ({ label, children }: { label: string; children: React.ReactNode }) => (
 	<div style={{ display: 'flex', alignItems: 'center', gap: '24px', marginBottom: '12px' }}>
-		<span style={{ width: '160px', fontSize: '12px', color: '#888', flexShrink: 0 }}>
+		<span
+			style={{
+				width: '160px',
+				fontSize: '12px',
+				color: 'var(--color-text-tertiary)',
+				flexShrink: 0,
+			}}
+		>
 			{label}
 		</span>
 		<div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>{children}</div>
@@ -61,9 +75,9 @@ const sectionStyle = {
 const headingStyle = {
 	fontSize: '14px',
 	fontWeight: '600' as const,
-	fontFamily: 'Jakarta, sans-serif',
-	color: '#333',
-	borderBottom: '1px solid #e0e0e0',
+	fontFamily: 'inherit',
+	color: 'var(--color-text-secondary)',
+	borderBottom: '1px solid var(--color-border-secondary)',
 	paddingBottom: '8px',
 	marginBottom: '24px',
 };
@@ -158,6 +172,21 @@ export const ButtonVariant: Story = {
 			</Row>
 			<Row label='Slash'>
 				<Breadcrumbs type='button' separator='slash' crumbs={defaultCrumbs} />
+			</Row>
+		</div>
+	),
+};
+
+export const DropdownVariant: Story = {
+	name: 'Dropdown',
+	render: () => (
+		<div style={{ padding: '16px' }}>
+			<SectionHeading label='Dropdown' />
+			<Row label='Chevron'>
+				<Breadcrumbs type='text' separator='chevron' crumbs={defaultCrumbs} />
+			</Row>
+			<Row label='Slash'>
+				<Breadcrumbs type='text' separator='slash' crumbs={defaultCrumbs} />
 			</Row>
 		</div>
 	),

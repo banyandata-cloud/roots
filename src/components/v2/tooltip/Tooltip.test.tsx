@@ -2,7 +2,7 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Tooltip } from './Tooltip';
-import styles from './Tooltip.module.css';
+import styles from './Tooltip.module.scss';
 
 // HAPPY PATH
 describe('Tooltip — Basic Rendering', () => {
@@ -50,7 +50,7 @@ describe('Tooltip — Pointer Position Variants', () => {
 		const tooltip = await screen.findByRole('tooltip');
 		const arrow = tooltip.querySelector(`.${styles.arrow}`);
 
-		expect(arrow).toHaveStyle('left: 12px');
+		expect(arrow).toHaveStyle('left: 0.9053rem');
 	});
 
 	test('applies end pointer positioning on bottom placement', async () => {
@@ -65,6 +65,6 @@ describe('Tooltip — Pointer Position Variants', () => {
 		const tooltip = await screen.findByRole('tooltip');
 		const arrow = tooltip.querySelector(`.${styles.arrow}`);
 
-		expect(arrow).toHaveStyle('left: calc(100% - 12px - 8px)');
+		expect(arrow).toHaveStyle('left: calc(100% - 0.9053rem - 0.75rem)');
 	});
 });

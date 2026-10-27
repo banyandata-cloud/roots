@@ -1,47 +1,20 @@
-@use '../../../styles/tokens' as tokens;
-@import '../../../styles/index';
+@use 'sass:map';
+@use '../styles/tokens' as tokens;
 
+// One class per Figma text style, generated from design-system/text-styles.json.
 .root {
 	color: tokens.$color-text-primary;
+}
 
-	&.h1 {
-		font-size: 2.25rem;
-		line-height: 2.75rem;
+@each $name, $style in tokens.$text-styles {
+	.#{$name} {
+		@include tokens.text-style($name);
 	}
+}
 
-	&.h2 {
-		font-size: 1.375rem;
-		line-height: 1.688rem;
-	}
-
-	&.b1 {
-		font-size: 1rem;
-		line-height: 1.188rem;
-	}
-
-	&.b2 {
-		font-size: 0.875rem;
-		line-height: 1.188rem;
-	}
-
-	&.b3 {
-		font-size: 0.75rem;
-		line-height: 1.063rem;
-	}
-
-	&.regular-stroke {
-		font-weight: 400;
-	}
-
-	&.medium-stroke {
-		font-weight: 500;
-	}
-
-	&.semibold-stroke {
-		font-weight: 600;
-	}
-
-	&.bold-stroke {
-		font-weight: 800;
+// Stroke overrides the weight of the variant. Declared after the variants so it wins.
+@each $stroke, $weight in tokens.$font-weights {
+	.#{$stroke}-stroke {
+		font-weight: $weight;
 	}
 }

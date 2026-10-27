@@ -1,8 +1,8 @@
 import { Heading, Source, Subheading, Subtitle, Title } from '@storybook/blocks';
-import { LinkHeader, PropsTable } from '../../../../components/docs';
+import { LinkHeader, PropsTable } from '../../docs';
 
 const BASIC_USAGE_CODE = `
-import { Badge } from '@banyan_cloud/roots';
+import { Badge } from '@banyandata-cloud/roots';
 
 const MyComponent = () => (
   <Badge
@@ -111,7 +111,7 @@ const propsData = [
 		prop: 'dotColor',
 		type: 'string',
 		description: 'Color of the dot indicator.',
-		default: "'var(--color-fg-quaternary, #717680)'",
+		default: "'var(--color-fg-quaternary)'",
 	},
 	{
 		prop: 'arrow',
@@ -124,19 +124,7 @@ const propsData = [
 		prop: 'arrowColor',
 		type: 'string',
 		description: 'Color of the trailing right-arrow icon.',
-		default: "'var(--color-fg-quaternary, #717680)'",
-	},
-	{
-		prop: 'arrowLead',
-		type: 'boolean',
-		description: 'Renders a leading left-arrow icon.',
-		default: 'false',
-	},
-	{
-		prop: 'arrowLeadColor',
-		type: 'string',
-		description: 'Color of the leading left-arrow icon.',
-		default: "'var(--color-fg-quaternary, #717680)'",
+		default: "'var(--color-fg-quaternary)'",
 	},
 	{
 		prop: 'upArrow',
@@ -149,7 +137,7 @@ const propsData = [
 		prop: 'upArrowColor',
 		type: 'string',
 		description: 'Color of the leading up-arrow icon.',
-		default: "'var(--color-fg-quaternary, #717680)'",
+		default: "'var(--color-fg-quaternary)'",
 	},
 	{
 		prop: 'plus',
@@ -162,7 +150,7 @@ const propsData = [
 		prop: 'plusColor',
 		type: 'string',
 		description: 'Color of the plus icon.',
-		default: "'var(--color-fg-quaternary, #717680)'",
+		default: "'var(--color-fg-quaternary)'",
 	},
 	{
 		prop: 'className',

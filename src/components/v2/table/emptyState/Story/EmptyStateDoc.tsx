@@ -1,5 +1,5 @@
 import { Heading, Source, Title, Subtitle } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../../../components/docs';
+import { LinkHeader, PropsTable } from '../../../docs';
 
 const propsData = [
 	{
@@ -66,7 +66,7 @@ const EmptyStateDoc = () => (
 		<Heading>Usage</Heading>
 		<Source
 			language='tsx'
-			code={`import { EmptyState } from '@banyan_cloud/roots';
+			code={`import { EmptyState } from '@banyandata-cloud/roots';
 
 const MyComponent = () => (
   <EmptyState

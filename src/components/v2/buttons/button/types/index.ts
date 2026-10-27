@@ -25,6 +25,8 @@ export interface ButtonProps {
 	textSize?: ButtonTextSize;
 	disabled?: boolean | undefined;
 	id?: string | undefined;
+	/** Accessible name for buttons whose title is an icon. */
+	'aria-label'?: string | undefined;
 	type?: 'button' | 'submit' | 'reset';
 	onClick?: ((event: MouseEvent<HTMLButtonElement>) => void | Promise<void>) | undefined;
 	blurOnClick?: boolean | undefined;

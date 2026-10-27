@@ -1,5 +1,4 @@
-@use '../../../../styles/tokens' as tokens;
-@import '../../../../styles/_index';
+@use '../../styles/tokens' as tokens;
 
 .root {
 	display: flex;
@@ -13,6 +12,26 @@
 	min-height: 0;
 	overflow: hidden;
 	border: 1px solid tokens.$color-border-tertiary;
+
+	// Slot above the table (Figma: 24px above the title row, 16px between it and the grid).
+	.header {
+		flex: 0 0 auto;
+		padding: tokens.$spacing-3xl 0 tokens.$spacing-xl;
+	}
+
+	// No data: the table becomes the Figma error card (border-secondary); the placeholder
+	// supplies the 20px side padding.
+	// It also fills the space the consumer gives the table (percentage height is ignored when
+	// the parent has none) and centres the placeholder in the body.
+	&.empty {
+		border-color: tokens.$color-border-secondary;
+		height: 100%;
+
+		.table {
+			flex: 1 1 auto;
+			max-height: none;
+		}
+	}
 
 	.table {
 		flex: 0 1 auto;
@@ -34,61 +53,9 @@
 
 		&.floating {
 			position: absolute;
-			bottom: 16px;
+			bottom: tokens.$spacing-xl;
 			left: 50%;
 			transform: translateX(-50%);
-		}
-	}
-
-	.drawer {
-		width: 40%;
-		overflow: hidden;
-		@include removeScrollbar;
-
-		&.standalone {
-			> [data-elem='body'] {
-				@include removeScrollbar;
-				height: 100%;
-				> div {
-					@include flex(column, space-between, flex-start);
-					height: 100%;
-					> div {
-						height: auto;
-						&:nth-child(2) {
-							overflow-y: scroll;
-							@include customScrollBar;
-							flex: 1;
-						}
-					}
-				}
-			}
-		}
-
-		> div {
-			> div {
-				&:nth-last-child(1) {
-					height: 100%;
-					> div {
-						height: 100%;
-						> [data-elem='body'] {
-							@include removeScrollbar;
-							height: 100%;
-							> div {
-								@include flex(column, space-between, flex-start);
-								height: 100%;
-								> div {
-									height: auto;
-									&:nth-child(2) {
-										overflow-y: scroll;
-										@include customScrollBar;
-										flex: 1;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
 		}
 	}
 
@@ -98,15 +65,5 @@
 		position: sticky;
 		z-index: 1;
 		top: 0;
-	}
-	.overlay {
-		background: rgba(tokens.$base-color-base-black, 0.16);
-		backdrop-filter: blur(5px);
-		height: 100%;
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		z-index: 1;
 	}
 }

@@ -1,15 +1,30 @@
 import type { ReactNode } from 'react';
 
-export type TextVariant = 'h1' | 'h2' | 'b1' | 'b2' | 'b3';
-export type TextStroke = 'light' | 'regular' | 'medium' | 'semibold' | 'bold';
-export type TextFontWeight = 100 | 200 | 300 | 400 | 500 | 600;
+// Figma text styles (design-system/text-styles.json).
+export type TextVariant =
+	| 'heading-xxlarge'
+	| 'heading-xlarge'
+	| 'heading-large'
+	| 'heading-medium'
+	| 'heading-small'
+	| 'heading-xsmall'
+	| 'heading-xxsmall'
+	| 'body-large'
+	| 'body'
+	| 'body-small'
+	| 'metric-large'
+	| 'metric-medium'
+	| 'metric-small'
+	| 'code';
+export type TextStroke = 'regular' | 'medium' | 'semibold' | 'bold';
 export type TextComponentType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'a';
 
 export interface TextProps {
+	/** Figma text style. Defaults to 'body' (14/20). */
 	variant?: TextVariant;
 	component?: TextComponentType;
-	stroke?: TextStroke;
-	weight?: TextFontWeight;
+	/** Overrides the weight of the variant. Metric is bold-only and code is regular-only in Figma. */
+	stroke?: TextStroke | undefined;
 	italic?: boolean;
 	underline?: boolean;
 	children?: ReactNode;

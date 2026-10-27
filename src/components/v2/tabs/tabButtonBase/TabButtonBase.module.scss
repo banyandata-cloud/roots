@@ -1,13 +1,13 @@
-@use '../../../../styles/tokens' as t;
+@use '../../styles/tokens' as t;
 
 $shadow-xs:
 	0 0 1px rgba(t.$base-color-base-black, 0.04),
 	0 1px 2px rgba(t.$base-color-base-black, 0.06);
 $focus-ring:
-	0 0 0 t.$spacing-xxs t.$color-bg-primary,
-	0 0 0 t.$spacing-xs t.$color-fg-brand-primary;
+	0 0 0 2px t.$color-bg-primary,
+	0 0 0 4px t.$color-fg-brand-primary;
 $border-width: t.$spacing-1;
-$indicator-width: t.$spacing-xxs;
+$indicator-width: 2px;
 
 .root {
 	display: inline-flex;
@@ -18,10 +18,7 @@ $indicator-width: t.$spacing-xxs;
 	border: 0 solid transparent;
 	background: transparent;
 	color: t.$color-text-quanternary;
-	font-family: t.$font-family-base;
-	font-size: t.$font-size-14;
-	font-weight: t.$font-weight-semibold;
-	line-height: t.$line-height-20;
+	@include t.text-style(body, semibold);
 	white-space: nowrap;
 	cursor: pointer;
 	outline: none;
@@ -72,7 +69,7 @@ $indicator-width: t.$spacing-xxs;
 	}
 
 	&.underline {
-		--tab-padding-top: 0px;
+		--tab-padding-top: 0rem;
 		--tab-padding-right: #{t.$spacing-xs};
 		--tab-padding-bottom: calc(#{t.$spacing-lg} - #{$indicator-width});
 		--tab-padding-left: #{t.$spacing-xs};
@@ -181,9 +178,7 @@ $indicator-width: t.$spacing-xxs;
 	border-radius: t.$radius-full;
 	background: t.$color-utility-gray-50;
 	color: t.$color-utility-gray-700;
-	font-size: t.$font-size-12;
-	font-weight: t.$font-weight-medium;
-	line-height: t.$line-height-16;
+	@include t.text-style(body-small, medium);
 }
 
 .button-brand.current .badge-brand,

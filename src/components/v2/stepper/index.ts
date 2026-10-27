@@ -1,4 +1,3 @@
-export { Step } from './step';
 export { default as Stepper } from './Stepper';
 export type {
 	Orientation,

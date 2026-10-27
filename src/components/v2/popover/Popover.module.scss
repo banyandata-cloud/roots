@@ -1,0 +1,13 @@
+@use '../styles/tokens' as tokens;
+
+.root {
+	padding: tokens.$spacing-md;
+	border-radius: tokens.$radius-xs;
+	border: tokens.$spacing-1 solid tokens.$color-border-secondary;
+	background-color: tokens.$color-bg-primary;
+	color: tokens.$color-text-primary;
+	box-shadow:
+		0 10px 15px 0 rgba(tokens.$base-color-base-black, 0.1),
+		0 4px 6px 0 rgba(tokens.$base-color-base-black, 0.06);
+	z-index: 10;
+}
