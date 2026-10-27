@@ -30,7 +30,6 @@ $sizes: (
 		count: (
 			height: 16px,
 			padding: 4,
-			radius: 3,
 		),
 		close: (
 			box: 14px,
@@ -56,7 +55,6 @@ $sizes: (
 		count: (
 			height: 18px,
 			padding: 5,
-			radius: 3,
 		),
 		close: (
 			box: 16px,
@@ -82,7 +80,6 @@ $sizes: (
 		count: (
 			height: 20px,
 			padding: 6,
-			radius: 3,
 		),
 		close: (
 			box: 20px,
@@ -90,6 +87,8 @@ $sizes: (
 	),
 );
 
+// Figma count chip radius (3px) sits between the radius-xxs and radius-xs tokens.
+$count-radius: 3px;
 $close-gap: rem(3);
 $icon-size: 16px;
 $count-text: (
@@ -248,7 +247,7 @@ $count-text: (
 			height: map.get($count, height);
 			min-width: map.get($count, height);
 			padding: 0 rem(map.get($count, padding));
-			border-radius: map.get($count, radius);
+			border-radius: $count-radius;
 			@include tokens.text-style(map.get($count-text, $size), 'medium');
 		}
 
