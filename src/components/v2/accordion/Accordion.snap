@@ -7,8 +7,10 @@ exports[`Accordion — Snapshots matches default snapshot 1`] = `
   >
     <button
       aria-disabled="false"
+      aria-expanded="false"
       class="header"
       data-elem="base-cell"
+      id="_r_8_-header"
     >
       <span
         data-elem="component2"
@@ -45,9 +47,12 @@ exports[`Accordion — Snapshots matches snapshot when open with description and
     data-state-open="true"
   >
     <button
+      aria-controls="_r_9_-body"
       aria-disabled="false"
+      aria-expanded="true"
       class="header"
       data-elem="base-cell"
+      id="_r_9_-header"
     >
       <span
         data-elem="component2"
@@ -74,8 +79,11 @@ exports[`Accordion — Snapshots matches snapshot when open with description and
       </span>
     </button>
     <div
+      aria-labelledby="_r_9_-header"
       class="body"
       data-elem="body"
+      id="_r_9_-body"
+      role="region"
       style="opacity: 0;"
     >
       <p>

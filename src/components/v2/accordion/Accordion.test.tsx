@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Accordion from './Accordion';
 
 // HAPPY PATH
@@ -130,11 +131,62 @@ describe('Accordion — Snapshots', () => {
 				defaultOpen
 				description='Detailed description'
 				onExpand={onExpand}
-				className='extra-class'>
+				className='extra-class'
+			>
 				<div>Complex Content</div>
 			</Accordion>
 		);
 
 		expect(container).toMatchSnapshot();
+	});
+});
+
+describe('Accordion — Keyboard and accessibility', () => {
+	test('exposes the open state through aria-expanded and links the region to its header', () => {
+		render(
+			<Accordion title='Details'>
+				<div>Content</div>
+			</Accordion>
+		);
+
+		const header = screen.getByRole('button', { name: 'Details' });
+		expect(header).toHaveAttribute('aria-expanded', 'false');
+		expect(screen.queryByRole('region')).not.toBeInTheDocument();
+
+		fireEvent.click(header);
+
+		expect(header).toHaveAttribute('aria-expanded', 'true');
+		const region = screen.getByRole('region', { name: 'Details' });
+		expect(header).toHaveAttribute('aria-controls', region.id);
+	});
+
+	test('can be reached with Tab and skips disabled accordions', async () => {
+		const user = userEvent.setup();
+
+		render(
+			<>
+				<Accordion title='First' />
+				<Accordion title='Disabled' disabled />
+				<Accordion title='Last' />
+			</>
+		);
+
+		await user.tab();
+		expect(screen.getByRole('button', { name: 'First' })).toHaveFocus();
+		await user.tab();
+		expect(screen.getByRole('button', { name: 'Last' })).toHaveFocus();
+	});
+
+	test('toggles with Enter and Space', async () => {
+		const user = userEvent.setup();
+
+		render(<Accordion title='Details' />);
+
+		await user.tab();
+		const header = screen.getByRole('button', { name: 'Details' });
+		await user.keyboard('{Enter}');
+		expect(header).toHaveAttribute('aria-expanded', 'true');
+		await user.keyboard(' ');
+		expect(header).toHaveAttribute('aria-expanded', 'false');
 	});
 });

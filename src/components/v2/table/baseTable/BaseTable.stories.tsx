@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from '../../buttons';
 import BaseTableDoc from '../baseTable/Story/BaseTableDoc';
-import { TableCellV2 } from '../cell';
+import { TableCell } from '../cell';
 import BaseTable from './BaseTable';
 
 const meta: Meta<typeof BaseTable> = {
@@ -58,7 +58,7 @@ const tableData = [
 const customCells = {
 	body: () => ({
 		name: ({ datum, expandableProps, ...rest }: any) => (
-			<TableCellV2
+			<TableCell
 				{...rest}
 				component3={
 					!expandableProps?.disabled && (

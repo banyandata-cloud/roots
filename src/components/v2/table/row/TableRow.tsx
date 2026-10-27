@@ -9,7 +9,7 @@ import {
 import { classes } from '../../utils';
 import { Checkbox } from '../../checkbox';
 import { Radio } from '../../input';
-import { TableCellV2 } from '../cell';
+import { TableCell } from '../cell';
 import ExpandArrowIcon from '../assets/ExpandArrowIcon';
 import type { TableProps } from '../types';
 import styles from './TableRow.module.scss';
@@ -236,7 +236,7 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 		}
 
 		return (
-			<TableCellV2
+			<TableCell
 				key={item.id}
 				{...cellPropsWithoutHideColumnLines}
 				tabIndex={-1}

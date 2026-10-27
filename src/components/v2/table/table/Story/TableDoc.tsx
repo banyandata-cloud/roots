@@ -476,8 +476,7 @@ const TableDoc = () => (
 		<Title />
 		<Subtitle>
 			Table renders structured data in rows and columns with support for sorting, column
-			filters, checkboxes, sticky columns, infinite scroll, and a fully
-			customisable toolbar.
+			filters, checkboxes, sticky columns, infinite scroll, and a fully customisable toolbar.
 		</Subtitle>
 
 		<LinkHeader

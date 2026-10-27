@@ -550,7 +550,8 @@ const WithTableHeaderStory = () => {
 							alignItems: 'center',
 							justifyContent: 'space-between',
 							padding: '0 1.3125rem 0 1.1875rem',
-						}}>
+						}}
+					>
 						<div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
 							<Text variant='heading-medium' stroke='bold'>
 								Cloud

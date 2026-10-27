@@ -1,1 +1,1 @@
-export { default as BaseTableV2 } from './BaseTable';
+export { default as BaseTable } from './BaseTable';

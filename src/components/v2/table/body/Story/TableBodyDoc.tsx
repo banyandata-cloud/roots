@@ -101,8 +101,8 @@ const TableBodyDoc = () => (
 		<Title />
 		<Subtitle>
 			TableBody renders the row data of a table. It handles row selection, checkboxes, active
-			state and expandable rows. Always wrap it in a native table element
-			and manage checkedRows state externally.
+			state and expandable rows. Always wrap it in a native table element and manage
+			checkedRows state externally.
 		</Subtitle>
 
 		<LinkHeader

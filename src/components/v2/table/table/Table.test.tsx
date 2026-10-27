@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { BaseTableV2 } from '../baseTable';
+import { BaseTable } from '../baseTable';
 import Table from './Table';
 
 class IntersectionObserverMock {
@@ -146,7 +146,7 @@ describe('Table — selection', () => {
 describe('BaseTable — expandable rows', () => {
 	const renderExpandable = () =>
 		render(
-			<BaseTableV2
+			<BaseTable
 				headerData={[{ id: 'name', title: 'Name' }]}
 				tableData={tableData}
 				uniqueKey='id'

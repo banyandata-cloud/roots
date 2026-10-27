@@ -13,8 +13,14 @@ describe('v2 public API', () => {
 		expect(v2).not.toHaveProperty('Skeleton');
 	});
 
+	test('does not export version-suffixed names (v2 is its own package)', () => {
+		const suffixed = Object.keys(v2).filter((name) => /v2$/i.test(name));
+
+		expect(suffixed).toEqual([]);
+	});
+
 	test('still exports the components', () => {
-		['Accordion', 'Alert', 'Badge', 'Button', 'Checkbox', 'TableV2', 'Text', 'Tooltip'].forEach(
+		['Accordion', 'Alert', 'Badge', 'Button', 'Checkbox', 'Table', 'Text', 'Tooltip'].forEach(
 			(name) => {
 				expect(v2).toHaveProperty(name);
 			}

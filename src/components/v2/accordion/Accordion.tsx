@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useId, useRef, useState } from 'react';
 import { classes } from '../utils';
 import { Button } from '../buttons';
 import { CaretIcon, ExpandArrowAltIcon } from '../icons';
@@ -37,6 +37,10 @@ export function Accordion(props: AccordionProps) {
 
 	const isOpen = isControlled ? open : uncontrolledOpen;
 
+	const baseId = useId();
+	const headerId = `${baseId}-header`;
+	const bodyId = `${baseId}-body`;
+
 	return (
 		<div
 			className={classes(
@@ -45,8 +49,10 @@ export function Accordion(props: AccordionProps) {
 				className,
 				disabled ? styles.disabled : ''
 			)}
-			data-state-open={isOpen}>
+			data-state-open={isOpen}
+		>
 			<button
+				id={headerId}
 				data-elem='base-cell'
 				className={styles.header}
 				onClick={() => {
@@ -61,7 +67,10 @@ export function Accordion(props: AccordionProps) {
 					}
 				}}
 				disabled={disabled}
-				aria-disabled={disabled}>
+				aria-disabled={disabled}
+				aria-expanded={Boolean(isOpen)}
+				aria-controls={isOpen ? bodyId : undefined}
+			>
 				<span data-elem='component2'>
 					<span className={styles.title}>{title}</span>
 				</span>
@@ -83,8 +92,12 @@ export function Accordion(props: AccordionProps) {
 					transition={{
 						duration: 0.2,
 					}}
+					id={bodyId}
+					role='region'
+					aria-labelledby={headerId}
 					data-elem='body'
-					className={styles.body}>
+					className={styles.body}
+				>
 					{description && <p>{description}</p>}
 					{children}
 					{onExpand && (

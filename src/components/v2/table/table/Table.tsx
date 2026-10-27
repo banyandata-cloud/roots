@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type ReactElement } from 'react';
 import { classes } from '../../utils';
 import { Pagination, usePagination } from '../../pagination';
-import { BaseTableV2 } from '../baseTable';
+import { BaseTable } from '../baseTable';
 import type { TableProps } from '../types';
 import styles from './Table.module.scss';
 
@@ -161,7 +161,7 @@ const Table = ({
 		<div className={classes(styles.root, isEmpty && styles.empty, className)}>
 			{headerContent != null && <div className={styles.header}>{headerContent}</div>}
 			{tableSection != null && <div className={styles.section}>{tableSection}</div>}
-			<BaseTableV2
+			<BaseTable
 				{...{
 					ref,
 					headerData: visibleColumns,

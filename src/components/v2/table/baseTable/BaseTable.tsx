@@ -14,30 +14,29 @@ import type { TableProps } from '../types';
 import styles from './BaseTable.module.scss';
 import { Skeleton } from './Skeleton';
 
-interface BaseTableProps
-	extends Pick<
-		TableProps,
-		| 'headerData'
-		| 'customCells'
-		| 'tableData'
-		| 'className'
-		| 'loading'
-		| 'onRowClick'
-		| 'onSort'
-		| 'sortValue'
-		| 'rowHeight'
-		| 'defaultActiveIndex'
-		| 'emptyPlaceholder'
-		| 'emptyTitle'
-		| 'emptyDescription'
-		| 'onRetry'
-		| 'retryLabel'
-		| 'onCheck'
-		| 'uniqueKey'
-		| 'checkAsRadio'
-		| 'disableCheck'
-		| 'hideColumnLines'
-	> {
+interface BaseTableProps extends Pick<
+	TableProps,
+	| 'headerData'
+	| 'customCells'
+	| 'tableData'
+	| 'className'
+	| 'loading'
+	| 'onRowClick'
+	| 'onSort'
+	| 'sortValue'
+	| 'rowHeight'
+	| 'defaultActiveIndex'
+	| 'emptyPlaceholder'
+	| 'emptyTitle'
+	| 'emptyDescription'
+	| 'onRetry'
+	| 'retryLabel'
+	| 'onCheck'
+	| 'uniqueKey'
+	| 'checkAsRadio'
+	| 'disableCheck'
+	| 'hideColumnLines'
+> {
 	expandable?:
 		| ((params: { datum: Record<number, unknown>; index: number | undefined }) => ReactElement)
 		| undefined;
@@ -115,7 +114,8 @@ const BaseTable = forwardRef(
 					styles.root,
 					tabularData.length === 0 ? styles['no-scroll'] : '',
 					className
-				)}>
+				)}
+			>
 				{tabularData.length > 0 && (
 					<TableHeader
 						{...{

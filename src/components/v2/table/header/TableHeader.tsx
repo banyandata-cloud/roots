@@ -3,26 +3,25 @@ import { TableRow } from '../row';
 import type { TableProps } from '../types';
 import styles from './TableHeader.module.scss';
 
-interface TableHeaderProps
-	extends Pick<
-		TableProps,
-		| 'headerData'
-		| 'customCells'
-		| 'tableData'
-		| 'className'
-		| 'loading'
-		| 'onRowClick'
-		| 'onSort'
-		| 'sortValue'
-		| 'rowHeight'
-		| 'defaultActiveIndex'
-		| 'emptyPlaceholder'
-		| 'onCheck'
-		| 'uniqueKey'
-		| 'checkAsRadio'
-		| 'disableCheck'
-		| 'hideColumnLines'
-	> {
+interface TableHeaderProps extends Pick<
+	TableProps,
+	| 'headerData'
+	| 'customCells'
+	| 'tableData'
+	| 'className'
+	| 'loading'
+	| 'onRowClick'
+	| 'onSort'
+	| 'sortValue'
+	| 'rowHeight'
+	| 'defaultActiveIndex'
+	| 'emptyPlaceholder'
+	| 'onCheck'
+	| 'uniqueKey'
+	| 'checkAsRadio'
+	| 'disableCheck'
+	| 'hideColumnLines'
+> {
 	expandable?:
 		| ((params: { datum: Record<string, unknown>; index: number | undefined }) => ReactElement)
 		| undefined;

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { Button } from '../../buttons';
 import Text from '../../text/Text';
-import { TableCellV2 } from '../cell';
+import { TableCell } from '../cell';
 import TableRowDoc from '../row/Story/RowDoc';
 import TableRow from './TableRow';
 
@@ -89,11 +89,13 @@ const AllVariants = (args: React.ComponentProps<typeof TableRow>) => {
 						{ title: 'Designation', id: 'designation' },
 						{ title: 'State', id: 'state', size: 'sm' as const },
 					]}
-					expandable={({ datum }: any) => <Text variant='heading-medium'>Welcome {datum.name}!</Text>}
+					expandable={({ datum }: any) => (
+						<Text variant='heading-medium'>Welcome {datum.name}!</Text>
+					)}
 					customCells={{
 						body: () => ({
 							name: ({ datum, expandableProps, ...rest }: any) => (
-								<TableCellV2
+								<TableCell
 									{...rest}
 									component3={
 										<Button

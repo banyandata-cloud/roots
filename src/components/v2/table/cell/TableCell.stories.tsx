@@ -22,7 +22,8 @@ const meta: Meta<typeof TableCell> = {
 					padding: '1rem',
 					// Ensuring left alignment
 					display: 'block',
-				}}>
+				}}
+			>
 				<table style={{ borderCollapse: 'collapse' }}>
 					<tbody>
 						<tr>
