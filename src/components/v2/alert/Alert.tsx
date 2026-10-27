@@ -170,7 +170,16 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 				ref={scope}
 			>
 				<div className={styles.body}>
-					{showIcon && <span className={styles['icon-container']}>{Icon}</span>}
+					{showIcon && (
+						<span
+							className={classes(
+								styles['icon-container'],
+								CustomIcon && styles['custom-icon']
+							)}
+						>
+							{Icon}
+						</span>
+					)}
 					<div className={styles.content}>
 						<div className={styles.text}>
 							<span className={styles.title}>{title}</span>

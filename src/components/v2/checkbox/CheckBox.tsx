@@ -65,7 +65,12 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 
 	return (
 		<label className={wrapperClass} htmlFor={id}>
-			<span className={styles.checkboxWrap}>
+			<span
+				className={classes(
+					styles.checkboxWrap,
+					Boolean(label || subLabel) && styles.withLabel
+				)}
+			>
 				<input
 					ref={resolvedRef}
 					type='checkbox'

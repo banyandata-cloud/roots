@@ -211,7 +211,9 @@
 	}
 }
 
-.inlineDropdown {
+.inlineDropdown.inlineDropdown {
+	// Doubled on purpose: the Dropdown's own `.dropdown` rule (min-width: 297px) has the same
+	// specificity and wins whenever the bundle emits its CSS after this file.
 	// Hide the outer dropdown container padding and spacing
 	gap: 0;
 	min-width: fit-content;

@@ -113,10 +113,14 @@ $sizes: (
 	.#{$size} {
 		--checkbox-icon: #{map.get($values, icon)};
 
-		// The box is centred on the first text line (Figma pads it down by 2px).
 		.box {
 			width: map.get($values, box);
 			height: map.get($values, box);
+		}
+
+		// With a label the box is centred on the first text line (Figma pads it down by 2px);
+		// a bare checkbox has no line to align to and must stay centred in its parent.
+		.withLabel .box {
 			margin-top: calc((#{map.get($values, line-height)} - #{map.get($values, box)}) / 2);
 		}
 

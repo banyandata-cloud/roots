@@ -61,7 +61,6 @@ describe('Alert — Basic Rendering Behaviour', () => {
 			'error'
 		);
 	});
-
 });
 
 describe('Alert — Styling & Behaviour', () => {

@@ -60,7 +60,8 @@ const AlertTrigger = ({ config, alertProps = {} }: any) => {
 			<button
 				type='button'
 				onClick={() => alertFns.alert?.(config)}
-				style={{ padding: '8px 16px', cursor: 'pointer', borderRadius: '4px' }}>
+				style={{ padding: '8px 16px', cursor: 'pointer', borderRadius: '4px' }}
+			>
 				Alert
 			</button>
 			<Alert ref={alertRef} {...alertProps} />

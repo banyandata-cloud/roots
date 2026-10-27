@@ -26,6 +26,8 @@ $sizes: (
 
 .icon {
 	position: relative;
+	// Above the connector lines, so the focus ring of the current step sits in front of them.
+	z-index: 1;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;

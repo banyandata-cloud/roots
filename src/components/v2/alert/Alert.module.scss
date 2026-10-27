@@ -117,6 +117,12 @@ $types: (
 	}
 }
 
+// A custom icon carries no accent circle, so it takes the primary foreground (white in dark mode)
+// instead of the accent colour.
+.icon-container.custom-icon {
+	color: tokens.$color-fg-primary;
+}
+
 .mark-stroke {
 	stroke: tokens.$color-fg-white;
 }
