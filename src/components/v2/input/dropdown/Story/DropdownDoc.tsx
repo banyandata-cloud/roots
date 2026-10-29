@@ -197,8 +197,9 @@ const propsData = [
 	},
 	{
 		prop: 'size',
-		type: "'sm' | 'md'",
-		description: 'Size variant of the dropdown.',
+		type: "'xxs' | 'xs' | 'sm' | 'md'",
+		description:
+			'Size variant of the dropdown: xxs (28px), xs (32px), sm (40px), or md (44px).',
 		default: "'sm'",
 	},
 	{

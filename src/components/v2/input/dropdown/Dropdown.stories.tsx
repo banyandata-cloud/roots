@@ -8,6 +8,12 @@ const meta = {
 	title: 'Components/v2/Input/Dropdown',
 	component: Dropdown,
 	tags: ['autodocs'],
+	argTypes: {
+		size: {
+			control: 'select',
+			options: ['xxs', 'xs', 'sm', 'md'],
+		},
+	},
 	parameters: {
 		layout: 'padded',
 		docs: {
@@ -55,6 +61,30 @@ const gridStyle = {
 const itemStyle = {
 	minWidth: '320px',
 	width: '320px',
+};
+
+export const ExtraSmall: Story = {
+	name: 'XS / Default',
+	args: {
+		size: 'xs',
+		state: 'default',
+		variant: 'simple',
+		label: 'Dropdown',
+		required: true,
+		helpIcon: true,
+		placeholder: 'Select the option',
+		helperText: 'This is a hint text to help user.',
+		options: [
+			{ value: 'admin', label: 'Admin User' },
+			{ value: 'editor', label: 'Editor User' },
+			{ value: 'viewer', label: 'Viewer User' },
+		],
+	},
+};
+
+export const ExtraExtraSmall: Story = {
+	name: 'XXS / Default',
+	args: { ...ExtraSmall.args, size: 'xxs' },
 };
 
 export const AllVariants: Story = {

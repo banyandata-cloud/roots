@@ -126,6 +126,29 @@
 	}
 
 	// Size variants
+	&.xs,
+	&.xxs {
+		padding: tokens.$spacing-xs tokens.$spacing-lg !important;
+	}
+
+	&.xs {
+		height: 32px !important;
+
+		.dropdownText {
+			font-size: tokens.$font-size-14 !important;
+			line-height: tokens.$line-height-20 !important;
+		}
+	}
+
+	&.xxs {
+		height: 28px !important;
+
+		.dropdownText {
+			font-size: tokens.$font-size-12 !important;
+			line-height: tokens.$line-height-16 !important;
+		}
+	}
+
 	&.sm {
 		height: 40px !important;
 		padding: tokens.$spacing-md tokens.$spacing-lg !important;
@@ -283,6 +306,11 @@
 	}
 
 	// Adjust size-specific padding for focus state
+	&.xs,
+	&.xxs {
+		padding: calc(#{tokens.$spacing-xs} - 1px) calc(#{tokens.$spacing-lg} - 1px) !important;
+	}
+
 	&.sm {
 		padding: 0.4375rem 0.6875rem !important;
 	}
@@ -321,6 +349,11 @@
 	border: 2px solid var(--color-border-error) !important;
 	padding: 0.4375rem 0.6875rem !important; // Adjust for thicker border
 	box-shadow: none !important;
+
+	&.xs,
+	&.xxs {
+		padding: calc(#{tokens.$spacing-xs} - 1px) calc(#{tokens.$spacing-lg} - 1px) !important;
+	}
 
 	.statusIcon svg {
 		color: var(--color-fg-error-secondary) !important;
@@ -734,6 +767,29 @@
 	width: 100%;
 
 	// Size variants
+	&.xs,
+	&.xxs {
+		padding: tokens.$spacing-xs tokens.$spacing-lg;
+	}
+
+	&.xs {
+		height: 32px;
+
+		.searchInput {
+			font-size: tokens.$font-size-14;
+			line-height: tokens.$line-height-20;
+		}
+	}
+
+	&.xxs {
+		height: 28px;
+
+		.searchInput {
+			font-size: tokens.$font-size-12;
+			line-height: tokens.$line-height-16;
+		}
+	}
+
 	&.sm {
 		height: 40px;
 		padding: 0.625rem tokens.$spacing-lg;
@@ -751,6 +807,11 @@
 		box-shadow: none;
 
 		// Adjust size-specific padding for focus state
+		&.xs,
+		&.xxs {
+			padding: calc(#{tokens.$spacing-xs} - 1px) calc(#{tokens.$spacing-lg} - 1px);
+		}
+
 		&.sm {
 			padding: 0.5625rem 0.6875rem;
 		}

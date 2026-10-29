@@ -713,6 +713,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(
 								onBlur={(e) => handleSearchBlur(e as any)}
 								disabled={disabled}
 								readOnly={readOnly}
+								unstyled={size === 'xs' || size === 'xxs'}
 								type='default'
 								size='sm'
 								leadingIcon={false}
@@ -791,7 +792,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(
 							ref={dropdownButtonRef}
 							type='button'
 							variant='ghost'
-							size={size === 'sm' ? 'sm' : 'md'}
+							size={size === 'xxs' ? 'xs' : size}
 							title={
 								<>
 									<div className={styles.contentArea}>
@@ -975,7 +976,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(
 													<div
 														className={styles.dropdownMenuItemCheckbox}>
 														<Checkbox
-															size={size === 'sm' ? 'sm' : 'md'}
+															size={size === 'md' ? 'md' : 'sm'}
 															checked={isOptionSelected}
 															indeterminate={isIndeterminate}
 															onChange={() => {}} // Handled by parent click

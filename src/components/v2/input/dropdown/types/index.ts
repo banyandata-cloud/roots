@@ -51,7 +51,7 @@ export interface DropdownProps {
 		| 'warning'
 		| 'read-only'
 		| undefined;
-	size?: 'sm' | 'md' | undefined;
+	size?: 'xxs' | 'xs' | 'sm' | 'md' | undefined;
 	variant?: 'simple' | 'multi-select' | 'with-icon' | 'borderless' | 'search' | undefined;
 
 	// Control props
