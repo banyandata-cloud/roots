@@ -11,7 +11,7 @@ const propsData = [
 	{
 		prop: 'time',
 		type: 'boolean',
-		description: 'Shows the time controls. Turns auto-apply off.',
+		description: 'Shows the time controls.',
 		default: 'false',
 	},
 	{
@@ -23,8 +23,8 @@ const propsData = [
 	{
 		prop: 'autoApply',
 		type: 'boolean',
-		description: 'Applies after the second click or a preset. Ignored when time is on.',
-		default: 'true',
+		description: 'Deprecated and ignored. All selections require Apply dates.',
+		default: 'undefined',
 	},
 	{
 		prop: 'dataStart',
@@ -53,7 +53,7 @@ const propsData = [
 	{
 		prop: 'onChange',
 		type: '(value: DatePickerValue) => void',
-		description: 'Fires when a value is applied (auto-apply or Apply dates).',
+		description: 'Fires only when Apply dates is clicked.',
 		default: 'undefined',
 	},
 	{ prop: 'hour12', type: 'boolean', description: 'Set by the 24-hour switch.', default: 'true' },

@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { addMonths, isSameDay, startOfDay, subMonths } from 'date-fns';
 import type { RecentRange } from './presetPanel/types';
 import type { DatePickerProps, DatePickerValue, PresetDefinition, SingleTimeMode } from './types';
@@ -6,6 +6,8 @@ import {
 	clampRangeToToday,
 	clampToDataStart,
 	findPreset,
+	formatDateLabel,
+	formatRecentRange,
 	getPresets,
 	getSystemTimeZone,
 	swapIfReversed,
@@ -23,7 +25,6 @@ export function useDatePickerState(props: DatePickerProps) {
 		mode = 'range',
 		time = false,
 		future = false,
-		autoApply = true,
 		dataStart = null,
 		defaultPreset,
 		value,
@@ -83,23 +84,27 @@ export function useDatePickerState(props: DatePickerProps) {
 	const [dataStartNote, setDataStartNote] = useState<string | null>(null);
 
 	const [leftMonth, setLeftMonth] = useState<Date>(() => appliedValue.from ?? now);
+	const wasOpen = useRef(open);
+
+	useEffect(() => {
+		if (open && !wasOpen.current) {
+			// Reset on every reopening, including changes to the controlled open prop.
+			setDraft(appliedValue);
+			setLeftMonth(appliedValue.from ?? now);
+			setHoverPreviewEnd(null);
+			setDataStartNote(null);
+		}
+		wasOpen.current = open;
+	}, [appliedValue, now, open]);
 
 	const setOpen = useCallback(
 		(next: boolean) => {
-			if (next) {
-				// Reopen on the month of the applied start date, with the applied values (edge case #34).
-				setDraft(appliedValue);
-				setLeftMonth(appliedValue.from ?? now);
-				setHoverPreviewEnd(null);
-				setDataStartNote(null);
-			}
 			if (!isOpenControlled) {
 				setUncontrolledOpen(next);
 			}
 			onOpenChange?.(next);
 		},
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[appliedValue, isOpenControlled, onOpenChange]
+		[isOpenControlled, onOpenChange]
 	);
 
 	const setHour12 = useCallback(
@@ -153,11 +158,9 @@ export function useDatePickerState(props: DatePickerProps) {
 			};
 			setDraft(next);
 			setLeftMonth(resolved.from);
-			// Preset click always applies instantly (but never closes the popover —
-			// only Cancel/Apply do that).
-			commit(next);
+			setHoverPreviewEnd(null);
 		},
-		[commit, draft, future, now]
+		[draft, future, now]
 	);
 
 	const onSelectRecent = useCallback(
@@ -166,17 +169,17 @@ export function useDatePickerState(props: DatePickerProps) {
 				...draft,
 				preset: null,
 				from: recent.from,
-				to: recent.to,
+				to: mode === 'single' ? null : recent.to,
 			};
 			setDraft(next);
 			setLeftMonth(recent.from);
-			commit(next);
+			setHoverPreviewEnd(null);
 		},
-		[commit, draft]
+		[draft, mode]
 	);
 
-	const pushRecent = useCallback((from: Date, to: Date) => {
-		const label = `${from.toDateString()} \u2192 ${to.toDateString()}`;
+	const pushRecent = useCallback((from: Date, to: Date, single: boolean) => {
+		const label = single ? formatDateLabel(from) : formatRecentRange(from, to);
 		setRecents((prev) => {
 			const withoutDupe = prev.filter(
 				(item) => !(isSameDay(item.from, from) && isSameDay(item.to, to))
@@ -188,18 +191,6 @@ export function useDatePickerState(props: DatePickerProps) {
 		});
 	}, []);
 
-	const maybeAutoApply = useCallback(
-		(next: DatePickerValue, complete: boolean) => {
-			if (complete && autoApply && !time) {
-				if (mode === 'range' && !next.preset && next.from && next.to) {
-					pushRecent(next.from, next.to);
-				}
-				commit(next);
-			}
-		},
-		[autoApply, commit, mode, pushRecent, time]
-	);
-
 	const onSelectDay = useCallback(
 		(rawDate: Date) => {
 			const date = clampFrom(startOfDay(rawDate));
@@ -207,7 +198,6 @@ export function useDatePickerState(props: DatePickerProps) {
 			if (mode === 'single') {
 				const next: DatePickerValue = { ...draft, preset: null, from: date, to: null };
 				setDraft(next);
-				maybeAutoApply(next, true);
 				return;
 			}
 
@@ -222,9 +212,8 @@ export function useDatePickerState(props: DatePickerProps) {
 			const next: DatePickerValue = { ...draft, preset: null, from, to };
 			setDraft(next);
 			setHoverPreviewEnd(null);
-			maybeAutoApply(next, true);
 		},
-		[clampFrom, draft, maybeAutoApply, mode]
+		[clampFrom, draft, mode]
 	);
 
 	const onHoverDay = useCallback(
@@ -254,7 +243,6 @@ export function useDatePickerState(props: DatePickerProps) {
 			if (role === 'date') {
 				const next: DatePickerValue = { ...draft, preset: null, from: clamped, to: null };
 				setDraft(next);
-				maybeAutoApply(next, true);
 				return;
 			}
 			if (role === 'start') {
@@ -267,9 +255,8 @@ export function useDatePickerState(props: DatePickerProps) {
 			const [from, to] = swapIfReversed(start, clamped);
 			const next: DatePickerValue = { ...draft, preset: null, from, to };
 			setDraft(next);
-			maybeAutoApply(next, !!next.from && !!next.to);
 		},
-		[clampFrom, draft, maybeAutoApply]
+		[clampFrom, draft]
 	);
 
 	const onPasteRange = useCallback(
@@ -279,9 +266,8 @@ export function useDatePickerState(props: DatePickerProps) {
 			const next: DatePickerValue = { ...draft, preset: null, from, to };
 			setDraft(next);
 			setLeftMonth(from);
-			maybeAutoApply(next, true);
 		},
-		[clampFrom, draft, future, maybeAutoApply, now]
+		[clampFrom, draft, future, now]
 	);
 
 	const onChangeFromTime = useCallback((fromTime: { hour: number; minute: number }) => {
@@ -312,8 +298,8 @@ export function useDatePickerState(props: DatePickerProps) {
 		if (applyDisabled) {
 			return;
 		}
-		if (mode === 'range' && !draft.preset && draft.from && draft.to) {
-			pushRecent(draft.from, draft.to);
+		if (!draft.preset && draft.from && (mode === 'single' || draft.to)) {
+			pushRecent(draft.from, draft.to ?? draft.from, mode === 'single');
 		}
 		commit(draft, { close: true });
 	}, [applyDisabled, commit, draft, mode, pushRecent]);

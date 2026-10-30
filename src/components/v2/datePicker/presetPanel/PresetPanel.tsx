@@ -3,7 +3,7 @@ import PresetItem from '../presetItem/PresetItem';
 import styles from './PresetPanel.module.scss';
 import type { PresetPanelProps } from './types';
 
-/** Left panel: preset list, one click applies it; a Recent block sits under a divider. */
+/** Left panel: draft preset selection and previously applied custom dates. */
 const PresetPanel = (props: PresetPanelProps): ReactElement => {
 	const { presets, selectedPresetId, onSelectPreset, recents = [], onSelectRecent } = props;
 

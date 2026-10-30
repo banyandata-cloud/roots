@@ -10,6 +10,6 @@ export interface FooterProps {
 	onCancel: () => void;
 	onApply: () => void;
 	applyDisabled?: boolean | undefined;
-	/** Hides the Apply button text area change — auto-apply already applied the value. */
+	/** Whether to show the Apply button. */
 	showApply?: boolean | undefined;
 }

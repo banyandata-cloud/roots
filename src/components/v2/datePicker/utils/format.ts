@@ -5,6 +5,13 @@ export function formatDateLabel(date: Date): string {
 	return format(date, 'MMM dd, yyyy');
 }
 
+export function formatRecentRange(from: Date, to: Date): string {
+	if (from.getFullYear() === to.getFullYear()) {
+		return `${format(from, 'MMM dd')} \u2192 ${formatDateLabel(to)}`;
+	}
+	return `${format(from, 'MMM dd')}, '${format(from, 'yy')} \u2192 ${format(to, 'MMM dd')}, '${format(to, 'yy')}`;
+}
+
 export function formatMonthTitle(date: Date): string {
 	return format(date, 'MMMM yyyy');
 }

@@ -24,6 +24,16 @@
 		display: block;
 	}
 
+	&.band-start::before {
+		display: block;
+		left: 50%;
+	}
+
+	&.band-end::before {
+		display: block;
+		right: 50%;
+	}
+
 	&.hover-preview::before {
 		opacity: 0.6;
 	}

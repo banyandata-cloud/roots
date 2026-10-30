@@ -3,7 +3,7 @@ import { classes } from '../../utils';
 import styles from './PresetItem.module.scss';
 import type { PresetItemProps } from './types';
 
-/** C2 Preset item: one click applies a preset (or a recent custom range). */
+/** C2 Preset item: selects a preset or recent custom date for the draft. */
 const PresetItem = (props: PresetItemProps): ReactElement => {
 	const { label, selected = false, variant = 'default', onClick } = props;
 

@@ -31,11 +31,11 @@ export interface DatePickerValue {
 export interface DatePickerProps {
 	/** One date or a range. Fixed per page. */
 	mode?: DatePickerMode | undefined;
-	/** Shows the time controls. Turns auto-apply off. */
+	/** Shows the time controls. */
 	time?: boolean | undefined;
 	/** Allows future days and adds the future presets. */
 	future?: boolean | undefined;
-	/** Applies after the second click or a preset. Ignored when time is on. */
+	/** @deprecated Selections always require Apply dates; this prop is ignored. */
 	autoApply?: boolean | undefined;
 	/** First day with data (new tenant). Earlier starts are moved to it. */
 	dataStart?: Date | null | undefined;
@@ -43,7 +43,7 @@ export interface DatePickerProps {
 	defaultPreset?: string | undefined;
 	value?: DatePickerValue | undefined;
 	defaultValue?: DatePickerValue | undefined;
-	/** Fires when a value is applied (auto-apply or the Apply button). */
+	/** Fires only when Apply dates is clicked. */
 	onChange?: ((value: DatePickerValue) => void) | undefined;
 	onCancel?: (() => void) | undefined;
 	/** Set by the 24-hour switch; shared by all time controls. */
@@ -65,7 +65,7 @@ export interface DatePickerProps {
 	id?: string | undefined;
 }
 
-export type DayBand = 'none' | 'full';
+export type DayBand = 'none' | 'full' | 'start' | 'end';
 
 export interface DayInfo {
 	date: Date;
@@ -76,7 +76,7 @@ export interface DayInfo {
 	isSelectionEnd: boolean;
 	isInRange: boolean;
 	isHoverPreview: boolean;
-	/** A strictly-in-between day gets the flat, full-width band; the selected pill never does. */
+	/** Full bands join the half bands beneath the start and end pills. */
 	band: DayBand;
 }
 

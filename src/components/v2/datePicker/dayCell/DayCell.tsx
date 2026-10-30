@@ -29,6 +29,8 @@ const DayCell = (props: DayCellProps): ReactElement => {
 				styles.root,
 				styles[`size-${size}`],
 				band === 'full' && styles.band,
+				band === 'start' && styles['band-start'],
+				band === 'end' && styles['band-end'],
 				isHoverPreview && styles['hover-preview']
 			)}
 		>

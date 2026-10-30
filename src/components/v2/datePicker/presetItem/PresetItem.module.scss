@@ -31,7 +31,7 @@
 .recent {
 	font-size: tokens.$font-size-12;
 	line-height: tokens.$line-height-16;
-	white-space: normal;
+	white-space: nowrap;
 	color: tokens.$color-text-primary;
 }
 

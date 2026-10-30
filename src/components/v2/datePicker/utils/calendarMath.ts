@@ -106,9 +106,18 @@ export function buildDayInfo(options: {
 		!isSelectionStart &&
 		(isInRange || isSameDay(date, previewEnd));
 
-	// The Figma master component shows the selected (start/end) pill with no band of its
-	// own — only the strictly-in-between days carry the flat, full-width band.
-	const band: DayInfo['band'] = isInRange ? 'full' : 'none';
+	// Extend the range beneath each endpoint toward the adjacent day. A single day
+	// (including single-date mode) keeps its standalone selected pill.
+	let band: DayInfo['band'] = 'none';
+	if (lo && hi && !isSameDay(lo, hi)) {
+		if (isSameDay(date, lo)) {
+			band = 'start';
+		} else if (isSameDay(date, hi)) {
+			band = 'end';
+		} else if (isInRange) {
+			band = 'full';
+		}
+	}
 
 	return {
 		date,
@@ -118,7 +127,7 @@ export function buildDayInfo(options: {
 		isSelectionStart,
 		isSelectionEnd,
 		isInRange,
-		isHoverPreview,
+		isHoverPreview: isHoverPreview || (!!previewEnd && isSelectionStart && band !== 'none'),
 		band,
 	};
 }

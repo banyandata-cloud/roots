@@ -6,7 +6,7 @@ import {
 	clampToDataStart,
 	swapIfReversed,
 } from './calendarMath';
-import { formatDuration, formatTimeOfDay } from './format';
+import { formatDuration, formatRecentRange, formatTimeOfDay } from './format';
 import { parseRangeText, parseTypedDate } from './parse';
 import { getPresets } from './presets';
 
@@ -139,7 +139,76 @@ describe('calendarMath', () => {
 	});
 });
 
+describe('range bands', () => {
+	test.each([
+		[10, 'start'],
+		[11, 'full'],
+		[12, 'end'],
+		[9, 'none'],
+		[13, 'none'],
+	])('range band at day %s is %s', (date, band) => {
+		const info = buildDayInfo({
+			date: new Date(2024, 8, Number(date)),
+			month: new Date(2024, 8, 1),
+			now: new Date(2024, 8, 30),
+			future: false,
+			selectionStart: new Date(2024, 8, 10),
+			selectionEnd: new Date(2024, 8, 12),
+			hoverPreviewEnd: null,
+		});
+		expect(info.band).toBe(band);
+	});
+
+	test.each([null, new Date(2024, 8, 10)])(
+		'a lone start or same-day range has no connecting band (%s)',
+		(selectionEnd) => {
+			const date = new Date(2024, 8, 10);
+			const info = buildDayInfo({
+				date,
+				month: date,
+				now: date,
+				future: false,
+				selectionStart: date,
+				selectionEnd,
+				hoverPreviewEnd: null,
+			});
+			expect(info.band).toBe('none');
+		}
+	);
+
+	test.each([8, 12])('hover preview connects both endpoints toward day %s', (endDay) => {
+		const start = new Date(2024, 8, 10);
+		const end = new Date(2024, 8, endDay);
+		const options = {
+			month: start,
+			now: new Date(2024, 8, 30),
+			future: false,
+			selectionStart: start,
+			selectionEnd: null,
+			hoverPreviewEnd: end,
+		};
+		const startInfo = buildDayInfo({ ...options, date: start });
+		const endInfo = buildDayInfo({ ...options, date: end });
+		expect(startInfo.band).toBe(endDay > 10 ? 'start' : 'end');
+		expect(endInfo.band).toBe(endDay > 10 ? 'end' : 'start');
+		expect(startInfo.isHoverPreview).toBe(true);
+		expect(endInfo.isHoverPreview).toBe(true);
+	});
+});
+
 describe('format', () => {
+	test('recent ranges show a shared four-digit year once', () => {
+		expect(formatRecentRange(new Date(2026, 7, 24), new Date(2026, 9, 12))).toBe(
+			'Aug 24 → Oct 12, 2026'
+		);
+	});
+
+	test('recent ranges show both years shortened when they differ', () => {
+		expect(formatRecentRange(new Date(2025, 11, 28), new Date(2026, 0, 4))).toBe(
+			"Dec 28, '25 → Jan 04, '26"
+		);
+	});
+
 	test('formatDuration counts whole days without time', () => {
 		const from = new Date(2026, 8, 1);
 		const to = new Date(2026, 8, 30);
