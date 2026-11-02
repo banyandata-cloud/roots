@@ -60,12 +60,13 @@
 .root .date-picker .container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 0.9375rem;
   align-items: center;
   position: relative;
   background-color: transparent;
   border-radius: 0.3125rem;
-  width: auto;
+  width: fit-content;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
   padding: 0.75rem 1rem;
   cursor: pointer;
@@ -167,7 +168,6 @@
 .root .date-picker .container .value {
   color: var(--grey2);
   font-weight: 500;
-  margin-right: 0.625rem;
 }
 .root .date-picker .container.highlight .value {
   color: var(--text-color);
